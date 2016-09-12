@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		9A0CFCE21D84F95E009F4E83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFCE11D84F95E009F4E83 /* AppDelegate.swift */; };
-		9A0CFCE41D84F95E009F4E83 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFCE31D84F95E009F4E83 /* ViewController.swift */; };
 		9A0CFCE71D84F95E009F4E83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CFCE51D84F95E009F4E83 /* Main.storyboard */; };
 		9A0CFCE91D84F95E009F4E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CFCE81D84F95E009F4E83 /* Assets.xcassets */; };
 		9A0CFCEC1D84F95E009F4E83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CFCEA1D84F95E009F4E83 /* LaunchScreen.storyboard */; };
@@ -16,6 +15,7 @@
 		9A0CFD021D84F95E009F4E83 /* Hyphenate_MessengerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFD011D84F95E009F4E83 /* Hyphenate_MessengerUITests.swift */; };
 		9A0CFD141D8515C1009F4E83 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFD131D8515C1009F4E83 /* LoginViewController.swift */; };
 		9A0CFD161D851EAC009F4E83 /* HyphenateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFD151D851EAC009F4E83 /* HyphenateTextField.swift */; };
+		9A0CFD181D868A9A009F4E83 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFD171D868A9A009F4E83 /* SignUpViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,7 +38,6 @@
 /* Begin PBXFileReference section */
 		9A0CFCDE1D84F95D009F4E83 /* Hyphenate Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyphenate Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A0CFCE11D84F95E009F4E83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9A0CFCE31D84F95E009F4E83 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9A0CFCE61D84F95E009F4E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		9A0CFCE81D84F95E009F4E83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A0CFCEB1D84F95E009F4E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -51,6 +50,7 @@
 		9A0CFD031D84F95E009F4E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A0CFD131D8515C1009F4E83 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9A0CFD151D851EAC009F4E83 /* HyphenateTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyphenateTextField.swift; sourceTree = "<group>"; };
+		9A0CFD171D868A9A009F4E83 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -106,7 +106,6 @@
 				9A0CFD101D851570009F4E83 /* Protocols */,
 				9A0CFD0F1D851560009F4E83 /* Controllers */,
 				9A0CFCE11D84F95E009F4E83 /* AppDelegate.swift */,
-				9A0CFCE31D84F95E009F4E83 /* ViewController.swift */,
 				9A0CFCE51D84F95E009F4E83 /* Main.storyboard */,
 				9A0CFCE81D84F95E009F4E83 /* Assets.xcassets */,
 				9A0CFCEA1D84F95E009F4E83 /* LaunchScreen.storyboard */,
@@ -137,6 +136,7 @@
 			isa = PBXGroup;
 			children = (
 				9A0CFD131D8515C1009F4E83 /* LoginViewController.swift */,
+				9A0CFD171D868A9A009F4E83 /* SignUpViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -301,9 +301,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				9A0CFD141D8515C1009F4E83 /* LoginViewController.swift in Sources */,
-				9A0CFCE41D84F95E009F4E83 /* ViewController.swift in Sources */,
 				9A0CFD161D851EAC009F4E83 /* HyphenateTextField.swift in Sources */,
 				9A0CFCE21D84F95E009F4E83 /* AppDelegate.swift in Sources */,
+				9A0CFD181D868A9A009F4E83 /* SignUpViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

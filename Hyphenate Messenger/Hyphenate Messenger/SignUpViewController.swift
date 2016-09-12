@@ -1,31 +1,30 @@
 //
-//  LoginViewController.swift
+//  SignUpViewController.swift
 //  Hyphenate Messenger
 //
-//  Created by peng wan on 9/10/16.
+//  Created by peng wan on 9/12/16.
 //  Copyright © 2016 Hyphenate Inc. All rights reserved.
 //
 
 import UIKit
 
-class LoginViewController: UIViewController {
-
-    @IBOutlet weak var userNameTextField: HyphenateTextField!
-    @IBOutlet weak var passwordTextField: HyphenateTextField!
+class SignUpViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Do any additional setup after loading the view.
-
     }
-    
+
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
 
+    @IBAction func loginAction(_ sender: AnyObject) {
+        _ = navigationController?.popViewController(animated: true)
+    }
     /*
     // MARK: - Navigation
 
