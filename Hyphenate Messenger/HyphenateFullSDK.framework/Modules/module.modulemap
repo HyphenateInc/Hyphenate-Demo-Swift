@@ -1,0 +1,6 @@
+framework module HyphenateFullSDK {
+  umbrella header "HyphenateFullSDK.h"
+
+  export *
+  module * { export * }
+}
