@@ -12,11 +12,29 @@ import HyphenateFullSDK
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
+    /** Hyphenate configuration constants **/
+    static let kHyphenateAppKey = "hyphenatedemo#hyphenatedemo"
+    static let kHyphenatePushServiceDevelopment = "DevelopmentCertificate"
+    static let kHyphenatePushServiceProduction = "ProductionCertificate"
+    
+    /** Google Analytics configuration constants **/
+    static let kGaPropertyId = "updateKey"
+    static let kTrackingPreferenceKey = "allowTracking"
+    static let kGaDryRun = false
+    static let kGaDispatchPeriod = 30
+    
     var window: UIWindow?
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
+        var apnsCertName : String? = nil
+        #if DEBUG
+            apnsCertName = AppDelegate.kHyphenatePushServiceDevelopment
+        #else
+            apnsCertName = AppDelegate.kHyphenatePushServiceProduction
+        #endif
+        
         
         return true
     }
@@ -59,18 +77,54 @@ extension AppDelegate {
         
     }
     
+    // login
     func proceedLogin() {
         
     }
     
+    //logout
     func proceedLogout() {
-        
+        if EMClient.shared().isLoggedIn {
+            
+        } else {
+            
+        }
+    }
+  
+    // Push Notification Delegate
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        EMClient.shared().registerForRemoteNotifications(withDeviceToken: deviceToken) { (error : EMError?) in
+            if ((error) != nil) {
+                print("Error!!! Failed to register remote notification - \(error?.description)")
+            }
+        }
+    }
+    
+    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+        print("Error!!! Failed to register remote notification - \(error.localizedDescription)")
+    }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    
+        do {
+            let jsonData : Data = try JSONSerialization.data(withJSONObject: userInfo, options: .prettyPrinted) as Data
+            let str : String = String(data: jsonData, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
+            let alert = UIAlertController(title: NSLocalizedString("apns.content", comment: ""), message: str, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+            alert.show((window?.rootViewController)!, sender: self)
+            
+        } catch let parseError as NSError {
+            print(parseError.localizedDescription)
+        }
     }
     
     func registerMessagingNotification() {
         let application : UIApplication = UIApplication.shared;
         application.applicationIconBadgeNumber = 0;
         
+#if !TARGET_IPHONE_SIMULATOR
+
         if(application.responds(to: #selector(UIApplication.registerUserNotificationSettings(_:)))) {
             let notificationTypes: UIUserNotificationType = [.badge, .alert, .sound]
             let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
@@ -79,6 +133,7 @@ extension AppDelegate {
             let notificationTypes: UIRemoteNotificationType = [.badge, .sound, .alert]
             UIApplication.shared.registerForRemoteNotifications(matching: notificationTypes)
         }
+#endif
 
         /*XCode 8 issue, can not compile
 #if !TARGET_IPHONE_SIMULATOR
