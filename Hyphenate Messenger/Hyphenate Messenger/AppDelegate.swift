@@ -13,10 +13,11 @@ import HyphenateFullSDK
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /** Hyphenate configuration constants **/
-    static let kHyphenateAppKey = "hyphenatedemo#hyphenatedemo"
+    static let kHyphenateAppKey = "hyphenate#hyphenatedemo"
     static let kHyphenatePushServiceDevelopment = "DevelopmentCertificate"
     static let kHyphenatePushServiceProduction = "ProductionCertificate"
-    
+    static let kSDKConfigEnableConsoleLogger = "SDKConfigEnableConsoleLogger"
+
     /** Google Analytics configuration constants **/
     static let kGaPropertyId = "updateKey"
     static let kTrackingPreferenceKey = "allowTracking"
@@ -36,6 +37,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
         
         
+        
+        let pushSettings = UIUserNotificationSettings(types:[.badge ,.sound ,.alert], categories: nil)
+        application.registerUserNotificationSettings(pushSettings)
+        application.registerForRemoteNotifications()
+
+        hyphenateApplication(application, didFinishLaunchingWithOptions: launchOptions, appKey: AppDelegate.kHyphenateAppKey, apnsCertname: apnsCertName!, otherConfig:[AppDelegate.kSDKConfigEnableConsoleLogger: NSNumber(booleanLiteral: true)])
+        
         return true
     }
 
@@ -47,10 +55,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationDidEnterBackground(_ application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+        EMClient.shared().applicationDidEnterBackground(application)
     }
 
     func applicationWillEnterForeground(_ application: UIApplication) {
         // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        EMClient.shared().applicationWillEnterForeground(application)
     }
 
     func applicationDidBecomeActive(_ application: UIApplication) {
@@ -60,11 +70,29 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func applicationWillTerminate(_ application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
     }
+    
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+    }
+    
+    func application(_ application: UIApplication, didReceive notification: UILocalNotification) {
+        
+    }
+    // Push Notification Delegate
+    
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        EMClient.shared().registerForRemoteNotifications(withDeviceToken: deviceToken) { (error : EMError?) in
+            if ((error) != nil) {
+                print("Error!!! Failed to register remote notification - \(error?.description)")
+            }
+        }
+    }
+
 }
 
 extension AppDelegate {
     
-    func hyphenateApplication(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?, appKey: String, apnsCertname: String, otherConfig: String)
+    func hyphenateApplication(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?, appKey: String, apnsCertname: String, otherConfig: Dictionary<String, AnyObject>)
     {
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.proceedLogin), name: NSNotification.Name(rawValue: "KNotification_login"), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.proceedLogout), name: NSNotification.Name(rawValue: "KNotification_logout"), object: nil)
@@ -72,9 +100,21 @@ extension AppDelegate {
         let options: EMOptions = EMOptions(appkey: appKey)
         options.apnsCertName = apnsCertname
         options.enableDnsConfig = true
-        EMClient.shared().initializeSDK(with: options)
+        let error:EMError? = EMClient.shared().initializeSDK(with: options)
         
+        if ((error) != nil) {
+            print("womg")
+        }
         
+        registerMessagingNotification()
+        
+//        let isAutoLogin = EMClient.shared().isAutoLogin
+//        if isAutoLogin {
+//            proceedLogin()
+//        } else {
+//            proceedLogout()
+//            EMClient.shared().options.isAutoLogin = true
+//        }
     }
     
     // login
@@ -91,21 +131,12 @@ extension AppDelegate {
         }
     }
   
-    // Push Notification Delegate
-    
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        EMClient.shared().registerForRemoteNotifications(withDeviceToken: deviceToken) { (error : EMError?) in
-            if ((error) != nil) {
-                print("Error!!! Failed to register remote notification - \(error?.description)")
-            }
-        }
-    }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
         print("Error!!! Failed to register remote notification - \(error.localizedDescription)")
     }
     
-    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+    func didReceiveRemoteNotification(userInfo : [AnyHashable : Any]) {
     
         do {
             let jsonData : Data = try JSONSerialization.data(withJSONObject: userInfo, options: .prettyPrinted) as Data
@@ -120,20 +151,28 @@ extension AppDelegate {
     }
     
     func registerMessagingNotification() {
-        let application : UIApplication = UIApplication.shared;
-        application.applicationIconBadgeNumber = 0;
         
-#if !TARGET_IPHONE_SIMULATOR
+//        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+//        UIApplication.shared.registerUserNotificationSettings(settings)
+//        UIApplication.shared.registerForRemoteNotifications()
 
-        if(application.responds(to: #selector(UIApplication.registerUserNotificationSettings(_:)))) {
-            let notificationTypes: UIUserNotificationType = [.badge, .alert, .sound]
-            let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
-            application.registerUserNotificationSettings(settings)
-        } else {
-            let notificationTypes: UIRemoteNotificationType = [.badge, .sound, .alert]
-            UIApplication.shared.registerForRemoteNotifications(matching: notificationTypes)
-        }
-#endif
+        
+        
+        
+//        let application : UIApplication = UIApplication.shared;
+//        application.applicationIconBadgeNumber = 0;
+//        
+//#if !TARGET_IPHONE_SIMULATOR
+//
+//        if(application.responds(to: #selector(UIApplication.registerUserNotificationSettings(_:)))) {
+//            let notificationTypes: UIUserNotificationType = [.badge, .alert, .sound]
+//            let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
+//            application.registerUserNotificationSettings(settings)
+//        } else {
+//            let notificationTypes: UIRemoteNotificationType = [.badge, .sound, .alert]
+//            UIApplication.shared.registerForRemoteNotifications(matching: notificationTypes)
+//        }
+//#endif
 
         /*XCode 8 issue, can not compile
 #if !TARGET_IPHONE_SIMULATOR

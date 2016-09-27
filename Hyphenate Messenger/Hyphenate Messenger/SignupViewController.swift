@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import HyphenateFullSDK
 
 class SignUpViewController: UIViewController {
 
@@ -22,8 +23,8 @@ class SignUpViewController: UIViewController {
     }
     
 
-    @IBAction func loginAction(_ sender: AnyObject) {
-        _ = navigationController?.popViewController(animated: true)
+    @IBAction func signupAction(_ sender: AnyObject) {
+        EMClient.shared().register(withUsername: "peng", password: "password") 
     }
     /*
     // MARK: - Navigation

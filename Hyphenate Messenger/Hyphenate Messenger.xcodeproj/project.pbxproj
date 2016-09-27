@@ -15,9 +15,13 @@
 		9A0CFD021D84F95E009F4E83 /* Hyphenate_MessengerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFD011D84F95E009F4E83 /* Hyphenate_MessengerUITests.swift */; };
 		9A0CFD141D8515C1009F4E83 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFD131D8515C1009F4E83 /* LoginViewController.swift */; };
 		9A0CFD161D851EAC009F4E83 /* HyphenateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFD151D851EAC009F4E83 /* HyphenateTextField.swift */; };
-		9A0CFD181D868A9A009F4E83 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFD171D868A9A009F4E83 /* SignUpViewController.swift */; };
+		9A0CFD181D868A9A009F4E83 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFD171D868A9A009F4E83 /* SignupViewController.swift */; };
 		9A31A4B21D8A86790056D943 /* HyphenateFullSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A31A4B11D8A86790056D943 /* HyphenateFullSDK.framework */; };
 		9A31A4B31D8A86790056D943 /* HyphenateFullSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A31A4B11D8A86790056D943 /* HyphenateFullSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9AF4079E1D9B214100E49E2E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4079D1D9B214100E49E2E /* MainViewController.swift */; };
+		9AF407A21D9B26E400E49E2E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A11D9B26E400E49E2E /* SettingsTableViewController.swift */; };
+		9AF407A41D9B270200E49E2E /* ConversationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A31D9B270200E49E2E /* ConversationsTableViewController.swift */; };
+		9AF407A61D9B27C200E49E2E /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A51D9B27C200E49E2E /* ContactsTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -66,8 +70,12 @@
 		9A0CFD031D84F95E009F4E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9A0CFD131D8515C1009F4E83 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		9A0CFD151D851EAC009F4E83 /* HyphenateTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyphenateTextField.swift; sourceTree = "<group>"; };
-		9A0CFD171D868A9A009F4E83 /* SignUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
+		9A0CFD171D868A9A009F4E83 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
 		9A31A4B11D8A86790056D943 /* HyphenateFullSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HyphenateFullSDK.framework; sourceTree = "<group>"; };
+		9AF4079D1D9B214100E49E2E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9AF407A11D9B26E400E49E2E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		9AF407A31D9B270200E49E2E /* ConversationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsTableViewController.swift; sourceTree = "<group>"; };
+		9AF407A51D9B27C200E49E2E /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactsTableViewController.swift; path = ../ContactsTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -155,7 +163,11 @@
 			isa = PBXGroup;
 			children = (
 				9A0CFD131D8515C1009F4E83 /* LoginViewController.swift */,
-				9A0CFD171D868A9A009F4E83 /* SignUpViewController.swift */,
+				9AF4079D1D9B214100E49E2E /* MainViewController.swift */,
+				9A0CFD171D868A9A009F4E83 /* SignupViewController.swift */,
+				9AF407A51D9B27C200E49E2E /* ContactsTableViewController.swift */,
+				9AF407A11D9B26E400E49E2E /* SettingsTableViewController.swift */,
+				9AF407A31D9B270200E49E2E /* ConversationsTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -323,7 +335,11 @@
 				9A0CFD141D8515C1009F4E83 /* LoginViewController.swift in Sources */,
 				9A0CFD161D851EAC009F4E83 /* HyphenateTextField.swift in Sources */,
 				9A0CFCE21D84F95E009F4E83 /* AppDelegate.swift in Sources */,
-				9A0CFD181D868A9A009F4E83 /* SignUpViewController.swift in Sources */,
+				9A0CFD181D868A9A009F4E83 /* SignupViewController.swift in Sources */,
+				9AF4079E1D9B214100E49E2E /* MainViewController.swift in Sources */,
+				9AF407A41D9B270200E49E2E /* ConversationsTableViewController.swift in Sources */,
+				9AF407A61D9B27C200E49E2E /* ContactsTableViewController.swift in Sources */,
+				9AF407A21D9B26E400E49E2E /* SettingsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
