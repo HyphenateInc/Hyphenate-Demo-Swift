@@ -22,6 +22,7 @@
 		9AF407A21D9B26E400E49E2E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A11D9B26E400E49E2E /* SettingsTableViewController.swift */; };
 		9AF407A41D9B270200E49E2E /* ConversationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A31D9B270200E49E2E /* ConversationsTableViewController.swift */; };
 		9AF407A61D9B27C200E49E2E /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A51D9B27C200E49E2E /* ContactsTableViewController.swift */; };
+		9AF407A81D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A71D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +77,7 @@
 		9AF407A11D9B26E400E49E2E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
 		9AF407A31D9B270200E49E2E /* ConversationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsTableViewController.swift; sourceTree = "<group>"; };
 		9AF407A51D9B27C200E49E2E /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactsTableViewController.swift; path = ../ContactsTableViewController.swift; sourceTree = "<group>"; };
+		9AF407A71D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyphenateMessengerHelper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -168,6 +170,7 @@
 				9AF407A51D9B27C200E49E2E /* ContactsTableViewController.swift */,
 				9AF407A11D9B26E400E49E2E /* SettingsTableViewController.swift */,
 				9AF407A31D9B270200E49E2E /* ConversationsTableViewController.swift */,
+				9AF407A71D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -332,6 +335,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9AF407A81D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift in Sources */,
 				9A0CFD141D8515C1009F4E83 /* LoginViewController.swift in Sources */,
 				9A0CFD161D851EAC009F4E83 /* HyphenateTextField.swift in Sources */,
 				9A0CFCE21D84F95E009F4E83 /* AppDelegate.swift in Sources */,
