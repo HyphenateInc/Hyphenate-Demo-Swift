@@ -23,6 +23,7 @@
 		9AF407A41D9B270200E49E2E /* ConversationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A31D9B270200E49E2E /* ConversationsTableViewController.swift */; };
 		9AF407A61D9B27C200E49E2E /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A51D9B27C200E49E2E /* ContactsTableViewController.swift */; };
 		9AF407A81D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A71D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift */; };
+		9AF407AA1D9CE6A900E49E2E /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A91D9CE6A900E49E2E /* ChatTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -78,6 +79,7 @@
 		9AF407A31D9B270200E49E2E /* ConversationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsTableViewController.swift; sourceTree = "<group>"; };
 		9AF407A51D9B27C200E49E2E /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactsTableViewController.swift; path = ../ContactsTableViewController.swift; sourceTree = "<group>"; };
 		9AF407A71D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyphenateMessengerHelper.swift; sourceTree = "<group>"; };
+		9AF407A91D9CE6A900E49E2E /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -171,6 +173,7 @@
 				9AF407A11D9B26E400E49E2E /* SettingsTableViewController.swift */,
 				9AF407A31D9B270200E49E2E /* ConversationsTableViewController.swift */,
 				9AF407A71D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift */,
+				9AF407A91D9CE6A900E49E2E /* ChatTableViewController.swift */,
 			);
 			name = Controllers;
 			sourceTree = "<group>";
@@ -344,6 +347,7 @@
 				9AF407A41D9B270200E49E2E /* ConversationsTableViewController.swift in Sources */,
 				9AF407A61D9B27C200E49E2E /* ContactsTableViewController.swift in Sources */,
 				9AF407A21D9B26E400E49E2E /* SettingsTableViewController.swift in Sources */,
+				9AF407AA1D9CE6A900E49E2E /* ChatTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
