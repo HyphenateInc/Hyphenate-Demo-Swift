@@ -7,6 +7,22 @@
 //
 
 import Foundation
-class BaseTableViewCell{
+import UIKit
 
+
+
+class BaseTableViewCell:UITableViewCell{
+
+    
+    @IBOutlet weak var profileImageView: UIImageView!
+    @IBOutlet weak var displayNameLabel: UILabel!
+    
+    override func awakeFromNib() {
+        super.awakeFromNib()
+        // Initialization code
+    }
+    
+    class func reuseIdentifier() -> String {
+        return "ContactCell"
+    }
 }

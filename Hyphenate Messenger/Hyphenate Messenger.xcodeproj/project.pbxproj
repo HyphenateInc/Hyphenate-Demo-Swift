@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		39062AE81D9F0D4400EE8412 /* BaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39062AE71D9F0D4400EE8412 /* BaseTableViewCell.xib */; };
 		5C226CB1BB2ACE14FE2BC796 /* Pods_Hyphenate_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5A965B5FB0DF694BB4C542 /* Pods_Hyphenate_Messenger.framework */; };
 		9A17BDF11D9E1FB70075EF9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */; };
 		9A17BDF31D9E1FB70075EF9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF21D9E1FB70075EF9F /* ViewController.swift */; };
@@ -195,6 +196,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		39062AE71D9F0D4400EE8412 /* BaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BaseTableViewCell.xib; path = Views/BaseTableViewCell.xib; sourceTree = "<group>"; };
 		46CB1D5CA6E51EFA21BD9A5F /* Pods-Hyphenate Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyphenate Messenger.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyphenate Messenger/Pods-Hyphenate Messenger.release.xcconfig"; sourceTree = "<group>"; };
 		71E15A43B314CB255A946243 /* Pods-Hyphenate Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyphenate Messenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyphenate Messenger/Pods-Hyphenate Messenger.debug.xcconfig"; sourceTree = "<group>"; };
 		8F5A965B5FB0DF694BB4C542 /* Pods_Hyphenate_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyphenate_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -615,6 +617,7 @@
 		9A17BE361D9E20C50075EF9F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				39062AE71D9F0D4400EE8412 /* BaseTableViewCell.xib */,
 				9A17BE371D9E20CB0075EF9F /* HyphenateTextField.swift */,
 				B6346B7C1D9E6EA500CBEAE2 /* EMSearchBar.swift */,
 				B6346B811D9E74CE00CBEAE2 /* BaseTableViewCell.swift */,
@@ -1362,6 +1365,7 @@
 				B6346B671D9E6C5D00CBEAE2 /* EaseUIResource.bundle in Resources */,
 				9A23CBF31D9E256100FACFD7 /* LaunchScreen.storyboard in Resources */,
 				B6346B0A1D9E6C5100CBEAE2 /* MJRefresh.bundle in Resources */,
+				39062AE81D9F0D4400EE8412 /* BaseTableViewCell.xib in Resources */,
 				9A17BDFB1D9E1FB70075EF9F /* Assets.xcassets in Resources */,
 				B6346B501D9E6C5100CBEAE2 /* EMContactDetailedTableViewCell.xib in Resources */,
 				B6346B351D9E6C5100CBEAE2 /* MWPhotoBrowser.bundle in Resources */,

@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-class EMSearchDisplayController:UISearchDisplayController, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate{
-    
+class EMSearchDisplayController/*:UISearchDisplayController, UITableViewDataSource, UITableViewDelegate, UISearchDisplayDelegate*/{
+    /*
     var resultsSource = [AnyObject]()
     var editingStyle:UITableViewCellEditingStyle
     var cellForRowAtIndexPathCompletion: (UITableView, NSIndexPath)->UITableViewCell?
@@ -66,7 +66,7 @@ class EMSearchDisplayController:UISearchDisplayController, UITableViewDataSource
     }
     // Override to support conditional editing of the table view.
     
-    override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
+    func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
         // Return NO if you do not want the specified item to be editable.
         if canEditRowAtIndexPath {
             return canEditRowAtIndexPath(tableView, indexPath)
@@ -77,26 +77,27 @@ class EMSearchDisplayController:UISearchDisplayController, UITableViewDataSource
     }
     // MARK: - Table view delegate
     
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
         if heightForRowAtIndexPathCompletion {
             return heightForRowAtIndexPathCompletion(tableView, indexPath)
         }
         return 50
     }
     
-    override func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
+    func tableView(tableView: UITableView, editingStyleForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCellEditingStyle {
         return self.editingStyle
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if didSelectRowAtIndexPathCompletion {
             return didSelectRowAtIndexPathCompletion(tableView, indexPath)
         }
     }
     
-    override func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
+    func tableView(tableView: UITableView, didDeselectRowAtIndexPath indexPath: NSIndexPath) {
         if didDeselectRowAtIndexPathCompletion {
             didDeselectRowAtIndexPathCompletion(tableView, indexPath)
         }
     }
+ */
 }
