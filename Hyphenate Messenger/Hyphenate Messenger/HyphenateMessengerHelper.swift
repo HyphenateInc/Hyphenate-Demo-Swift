@@ -237,7 +237,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
             reasonString = NSLocalizedString("group.joinRequestWithName", comment: "\(aUsername) requested to join the group \'\(aGroup.subject)\': \(aReason)")
         }
         
-        let requestDict : Dictionary = ["title": aGroup.subject, "groupId": aGroup.groupId, "username":aUsername, "groupname":aGroup.subject, "applyMessage":reasonString, "requestType":]
+        let requestDict : [String:AnyObject] = ["title": aGroup.subject, "groupId": aGroup.groupId, "username":aUsername, "groupname":aGroup.subject, "applyMessage":reasonString, "requestType":HIRequestType.HIRequestTypeJoinGroup.rawValue]
         
 //        [[FriendRequestViewController shareController] addNewRequest:requestDict];
 //        

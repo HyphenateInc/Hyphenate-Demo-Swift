@@ -27,16 +27,16 @@ class MainViewController: UITabBarController {
         self.setViewControllers([contactsRootViewController, conversationRootViewController, settingsRootViewController], animated: true)
         
         let contactsTabItem:UITabBarItem = self.tabBar.items![0]
-        contactsTabItem.image = #imageLiteral(resourceName: "contactsTab");
-        contactsTabItem.selectedImage = #imageLiteral(resourceName: "contactsTab_selected")
+        contactsTabItem.image = UIImage(named:  "contactsTab")
+        contactsTabItem.selectedImage = UIImage(named:  "contactsTab_selected")
         
         let conversationsTabItem:UITabBarItem = self.tabBar.items![1]
-        conversationsTabItem.image = #imageLiteral(resourceName: "chatsTab");
-        conversationsTabItem.selectedImage = #imageLiteral(resourceName: "chatsTab_selected")
+        conversationsTabItem.image = UIImage(named:  "chatsTab")
+        conversationsTabItem.selectedImage = UIImage(named:  "chatsTab_selected")
 
         let settingsTabItem:UITabBarItem = self.tabBar.items![2]
-        settingsTabItem.image = #imageLiteral(resourceName: "settingsTab");
-        settingsTabItem.selectedImage = #imageLiteral(resourceName: "settingsTab_selected")
+        settingsTabItem.image = UIImage(named:  "settingsTab")
+        settingsTabItem.selectedImage = UIImage(named:  "settingsTab_selected")
         
     }
 

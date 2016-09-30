@@ -12,7 +12,7 @@ class SettingsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-view.backgroundColor = UIColor.blue
+        view.backgroundColor = UIColor.blueColor()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 

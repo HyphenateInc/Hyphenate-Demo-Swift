@@ -26,12 +26,12 @@ class LoginViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func loginAction(_ sender: AnyObject) {
-        EMClient.shared().login(withUsername: userNameTextField.text, password: passwordTextField.text) { (userName : String?, error : EMError?) in
+    @IBAction func loginAction(sender: AnyObject) {
+        EMClient.sharedClient().loginWithUsername(userNameTextField.text, password: passwordTextField.text) { (userName : String?, error : EMError?) in
             if ((error) != nil) {
                 print("error is \(error?.description)")
             }
-            print("is login \(EMClient.shared().isLoggedIn)")
+            print("is login \(EMClient.sharedClient().isLoggedIn)")
             self.navigationController?.pushViewController(MainViewController(), animated: true)
         }
     }

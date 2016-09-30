@@ -12,7 +12,7 @@ class ConversationsTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-view.backgroundColor = UIColor.black
+view.backgroundColor = UIColor.blackColor()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -27,7 +27,7 @@ view.backgroundColor = UIColor.black
 
     // MARK: - Table view data source
 
-    override func numberOfSections(in tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 0
     }
