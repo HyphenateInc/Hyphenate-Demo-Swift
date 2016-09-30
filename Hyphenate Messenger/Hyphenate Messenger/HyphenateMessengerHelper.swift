@@ -250,6 +250,67 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         NSNotificationCenter.defaultCenter().postNotificationName("kNotification_didReceiveRequest", object: requestDict)
     }
     
+    func didJoinGroup(aGroup: EMGroup!, inviter aInviter: String!, message aMessage: String!) {
+        
+        let alert = UIAlertController(title:NSLocalizedString("prompt", comment: "prompt"), message: "\(aInviter) invite you to group: \(aGroup.subject) [\(aGroup.groupId)]", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
+            UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func joinGroupRequestDidDecline(aGroupId: String!, reason aReason: String!) {
+        
+        var reasonString = aReason
+        
+        if (reasonString != nil || reasonString.characters.count == 0) {
+            reasonString = NSLocalizedString("group.joinRequestDeclined", comment: "be declined to join group \'\(aGroupId)\'")
+        }
+        
+        let alert = UIAlertController(title:NSLocalizedString("prompt", comment: "prompt"), message: reasonString, preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func joinGroupRequestDidApprove(aGroup: EMGroup!) {
+        let alert = UIAlertController(title:NSLocalizedString("prompt", comment: "prompt"), message: NSLocalizedString("group.agreedAndJoined", comment: "agreed to join the group of \'\(aGroup.subject)\'"), preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func groupInvitationDidReceive(aGroupId: String!, inviter aInviter: String!, message aMessage: String!) {
+        if (aGroupId == nil || aInviter == nil) {
+            return;
+        }
+        
+        let requestDict : [String:AnyObject] = ["title": "", "groupId": aGroupId, "username":aInviter, "groupname":"", "applyMessage":aMessage, "requestType":HIRequestType.HIRequestTypeReceivedGroupInvitation.rawValue]
+        
+//        [[FriendRequestViewController shareController] addNewRequest:requestDict];
+//        
+//        if ((mainVC) != nil) {
+//            
+//            #if !TARGET_IPHONE_SIMULATOR
+//                [self.mainVC playSoundAndVibration];
+//            #endif
+//        }
+        
+        NSNotificationCenter.defaultCenter().postNotificationName("kNotification_didReceiveRequest", object: requestDict)
+    }
+
+    //EMContactManagerDelegate
+    
+    func friendRequestDidApproveByUser(aUsername: String!) {
+        
+        let alert = UIAlertController(title:nil, message: "\(aUsername) accepted friend request", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+    }
+    
+    func friendRequestDidDeclineByUser(aUsername: String!) {
+        
+        let alert = UIAlertController(title:nil, message: "\(aUsername) declined friend request", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+    }
+    
     func stopCallTimer() {
         if (callTimer==nil) {
             return
