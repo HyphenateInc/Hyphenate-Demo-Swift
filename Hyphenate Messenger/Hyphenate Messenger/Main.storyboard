@@ -214,7 +214,7 @@
             <objects>
                 <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vyd-z9-jwz" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="too-Ml-Gkz">
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="too-Ml-Gkz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
@@ -232,6 +232,6 @@
         <image name="logoGreen" width="200" height="71"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aSn-GT-UAj"/>
+        <segue reference="Khw-bJ-H49"/>
     </inferredMetricsTieBreakers>
 </document>
