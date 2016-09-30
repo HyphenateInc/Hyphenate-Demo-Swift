@@ -124,7 +124,7 @@ extension AppDelegate {
     
     //logout
     func proceedLogout() {
-        if EMClient.shared().isLoggedIn {
+        if EMClient.sharedClient().isLoggedIn {
             
         } else {
             
@@ -139,7 +139,7 @@ extension AppDelegate {
     func didReceiveRemoteNotification(userInfo : [AnyHashable : Any]) {
     
         do {
-            let jsonData : Data = try JSONSerialization.data(withJSONObject: userInfo, options: .prettyPrinted) as Data
+            let jsonData : NSData = try JSONSerialization.data(withJSONObject: userInfo, options: .prettyPrinted) as Data
             let str : String = String(data: jsonData, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
             let alert = UIAlertController(title: NSLocalizedString("apns.content", comment: ""), message: str, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
