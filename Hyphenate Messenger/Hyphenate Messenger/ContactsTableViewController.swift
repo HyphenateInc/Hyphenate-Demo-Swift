@@ -31,8 +31,12 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate{
     func reloadDataSource(){
         self.dataSource.removeAll()
 //        self.dataSource = EMClient.sharedClient().groupManager.getJoinedGroups()
-        self.dataSource = EMClient.sharedClient().contactManager.getContacts()
-        self.tableView.reloadData()
+        EMClient.sharedClient().contactManager.getContactsFromServerWithCompletion({ (array, error) in
+            self.dataSource = array
+            dispatch_async(dispatch_get_main_queue(), { 
+                self.tableView.reloadData()
+            })
+        })
     }
 
     override func didReceiveMemoryWarning() {
