@@ -9,6 +9,7 @@
 #ifndef Hyphenate_Bridging_Header_h
 #define Hyphenate_Bridging_Header_h
 
-#import "EaseUI.h"
+
 
 #endif /* Hyphenate_Bridging_Header_h */
+

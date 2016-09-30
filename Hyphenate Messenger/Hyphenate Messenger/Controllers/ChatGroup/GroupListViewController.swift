@@ -1,0 +1,20 @@
+//
+//  GroupListViewController.swift
+//  Hyphenate Messenger
+//
+//  Created by Kelvin Lam on 9/29/16.
+//  Copyright © 2016 Hyphenate Inc. All rights reserved.
+//
+
+import Foundation
+import HyphenateFullSDK
+import SlimeRefresh
+
+class GroupListViewController:UITableViewController,UISearchBarDelegate, UISearchDisplayDelegate, EMGroupManagerDelegate, SRRefreshDelegate{
+ 
+    var dataSource:[AnyObject]!
+    var slimeView:SRRefreshView!
+    var searchBar:EMSearchBar!
+    var searchController:EMSearchDisplayController!
+    
+}

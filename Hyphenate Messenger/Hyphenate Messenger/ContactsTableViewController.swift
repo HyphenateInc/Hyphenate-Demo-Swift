@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ContactsTableViewController:EaseUsersListViewController,EMChatManagerDelegate {
+class ContactsTableViewController:UITableViewController{
 
-    var groupController:GroupListViewController!
+//    var groupController:GroupListViewController!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,7 +35,7 @@ class ContactsTableViewController:EaseUsersListViewController,EMChatManagerDeleg
         return 0
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
