@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Scheme
-   LastUpgradeVersion = "0800"
+   LastUpgradeVersion = "0730"
    version = "1.3">
    <BuildAction
       parallelizeBuildables = "YES"
@@ -14,7 +14,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9A0CFCDD1D84F95D009F4E83"
+               BlueprintIdentifier = "9A17BDEC1D9E1FB70075EF9F"
                BuildableName = "Hyphenate Messenger.app"
                BlueprintName = "Hyphenate Messenger"
                ReferencedContainer = "container:Hyphenate Messenger.xcodeproj">
@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9A0CFCF11D84F95E009F4E83"
+               BlueprintIdentifier = "9A17BE031D9E1FB70075EF9F"
                BuildableName = "Hyphenate MessengerTests.xctest"
                BlueprintName = "Hyphenate MessengerTests"
                ReferencedContainer = "container:Hyphenate Messenger.xcodeproj">
@@ -42,7 +42,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "9A0CFCFC1D84F95E009F4E83"
+               BlueprintIdentifier = "9A17BE0E1D9E1FB70075EF9F"
                BuildableName = "Hyphenate MessengerUITests.xctest"
                BlueprintName = "Hyphenate MessengerUITests"
                ReferencedContainer = "container:Hyphenate Messenger.xcodeproj">
@@ -52,7 +52,7 @@
       <MacroExpansion>
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9A0CFCDD1D84F95D009F4E83"
+            BlueprintIdentifier = "9A17BDEC1D9E1FB70075EF9F"
             BuildableName = "Hyphenate Messenger.app"
             BlueprintName = "Hyphenate Messenger"
             ReferencedContainer = "container:Hyphenate Messenger.xcodeproj">
@@ -75,7 +75,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9A0CFCDD1D84F95D009F4E83"
+            BlueprintIdentifier = "9A17BDEC1D9E1FB70075EF9F"
             BuildableName = "Hyphenate Messenger.app"
             BlueprintName = "Hyphenate Messenger"
             ReferencedContainer = "container:Hyphenate Messenger.xcodeproj">
@@ -94,7 +94,7 @@
          runnableDebuggingMode = "0">
          <BuildableReference
             BuildableIdentifier = "primary"
-            BlueprintIdentifier = "9A0CFCDD1D84F95D009F4E83"
+            BlueprintIdentifier = "9A17BDEC1D9E1FB70075EF9F"
             BuildableName = "Hyphenate Messenger.app"
             BlueprintName = "Hyphenate Messenger"
             ReferencedContainer = "container:Hyphenate Messenger.xcodeproj">

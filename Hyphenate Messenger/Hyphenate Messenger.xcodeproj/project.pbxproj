@@ -7,50 +7,52 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9A0CFCE21D84F95E009F4E83 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFCE11D84F95E009F4E83 /* AppDelegate.swift */; };
-		9A0CFCE71D84F95E009F4E83 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CFCE51D84F95E009F4E83 /* Main.storyboard */; };
-		9A0CFCE91D84F95E009F4E83 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CFCE81D84F95E009F4E83 /* Assets.xcassets */; };
-		9A0CFCEC1D84F95E009F4E83 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A0CFCEA1D84F95E009F4E83 /* LaunchScreen.storyboard */; };
-		9A0CFCF71D84F95E009F4E83 /* Hyphenate_MessengerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFCF61D84F95E009F4E83 /* Hyphenate_MessengerTests.swift */; };
-		9A0CFD021D84F95E009F4E83 /* Hyphenate_MessengerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFD011D84F95E009F4E83 /* Hyphenate_MessengerUITests.swift */; };
-		9A0CFD141D8515C1009F4E83 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFD131D8515C1009F4E83 /* LoginViewController.swift */; };
-		9A0CFD161D851EAC009F4E83 /* HyphenateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFD151D851EAC009F4E83 /* HyphenateTextField.swift */; };
-		9A0CFD181D868A9A009F4E83 /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A0CFD171D868A9A009F4E83 /* SignupViewController.swift */; };
-		9A31A4B21D8A86790056D943 /* HyphenateFullSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A31A4B11D8A86790056D943 /* HyphenateFullSDK.framework */; };
-		9A31A4B31D8A86790056D943 /* HyphenateFullSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A31A4B11D8A86790056D943 /* HyphenateFullSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		9AF4079E1D9B214100E49E2E /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF4079D1D9B214100E49E2E /* MainViewController.swift */; };
-		9AF407A21D9B26E400E49E2E /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A11D9B26E400E49E2E /* SettingsTableViewController.swift */; };
-		9AF407A41D9B270200E49E2E /* ConversationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A31D9B270200E49E2E /* ConversationsTableViewController.swift */; };
-		9AF407A61D9B27C200E49E2E /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A51D9B27C200E49E2E /* ContactsTableViewController.swift */; };
-		9AF407A81D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A71D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift */; };
-		9AF407AA1D9CE6A900E49E2E /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AF407A91D9CE6A900E49E2E /* ChatTableViewController.swift */; };
+		9A17BDF11D9E1FB70075EF9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */; };
+		9A17BDF31D9E1FB70075EF9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF21D9E1FB70075EF9F /* ViewController.swift */; };
+		9A17BDF91D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF71D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld */; };
+		9A17BDFB1D9E1FB70075EF9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A17BDFA1D9E1FB70075EF9F /* Assets.xcassets */; };
+		9A17BE091D9E1FB70075EF9F /* Hyphenate_MessengerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE081D9E1FB70075EF9F /* Hyphenate_MessengerTests.swift */; };
+		9A17BE141D9E1FB70075EF9F /* Hyphenate_MessengerUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE131D9E1FB70075EF9F /* Hyphenate_MessengerUITests.swift */; };
+		9A17BE2A1D9E20190075EF9F /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE221D9E20190075EF9F /* LoginViewController.swift */; };
+		9A17BE2B1D9E20190075EF9F /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE231D9E20190075EF9F /* MainViewController.swift */; };
+		9A17BE2C1D9E20190075EF9F /* SignupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE241D9E20190075EF9F /* SignupViewController.swift */; };
+		9A17BE2D1D9E20190075EF9F /* ContactsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE251D9E20190075EF9F /* ContactsTableViewController.swift */; };
+		9A17BE2E1D9E20190075EF9F /* SettingsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE261D9E20190075EF9F /* SettingsTableViewController.swift */; };
+		9A17BE2F1D9E20190075EF9F /* ConversationsTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE271D9E20190075EF9F /* ConversationsTableViewController.swift */; };
+		9A17BE301D9E20190075EF9F /* HyphenateMessengerHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE281D9E20190075EF9F /* HyphenateMessengerHelper.swift */; };
+		9A17BE311D9E20190075EF9F /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE291D9E20190075EF9F /* ChatTableViewController.swift */; };
+		9A17BE331D9E20B30075EF9F /* HyphenateFullSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A17BE321D9E20B30075EF9F /* HyphenateFullSDK.framework */; };
+		9A17BE341D9E20B30075EF9F /* HyphenateFullSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A17BE321D9E20B30075EF9F /* HyphenateFullSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		9A17BE381D9E20CB0075EF9F /* HyphenateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE371D9E20CB0075EF9F /* HyphenateTextField.swift */; };
+		9A23CBF31D9E256100FACFD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A23CBF21D9E256100FACFD7 /* LaunchScreen.storyboard */; };
+		9AFE4D721D9E2731007862CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AFE4D711D9E2731007862CA /* Main.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		9A0CFCF31D84F95E009F4E83 /* PBXContainerItemProxy */ = {
+		9A17BE051D9E1FB70075EF9F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9A0CFCD61D84F95D009F4E83 /* Project object */;
+			containerPortal = 9A17BDE51D9E1FB70075EF9F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9A0CFCDD1D84F95D009F4E83;
+			remoteGlobalIDString = 9A17BDEC1D9E1FB70075EF9F;
 			remoteInfo = "Hyphenate Messenger";
 		};
-		9A0CFCFE1D84F95E009F4E83 /* PBXContainerItemProxy */ = {
+		9A17BE101D9E1FB70075EF9F /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
-			containerPortal = 9A0CFCD61D84F95D009F4E83 /* Project object */;
+			containerPortal = 9A17BDE51D9E1FB70075EF9F /* Project object */;
 			proxyType = 1;
-			remoteGlobalIDString = 9A0CFCDD1D84F95D009F4E83;
+			remoteGlobalIDString = 9A17BDEC1D9E1FB70075EF9F;
 			remoteInfo = "Hyphenate Messenger";
 		};
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		9A31A4B41D8A86790056D943 /* Embed Frameworks */ = {
+		9A17BE351D9E20B30075EF9F /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9A31A4B31D8A86790056D943 /* HyphenateFullSDK.framework in Embed Frameworks */,
+				9A17BE341D9E20B30075EF9F /* HyphenateFullSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -58,47 +60,49 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		9A0CFCDE1D84F95D009F4E83 /* Hyphenate Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyphenate Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A0CFCE11D84F95E009F4E83 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9A0CFCE61D84F95E009F4E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9A0CFCE81D84F95E009F4E83 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
-		9A0CFCEB1D84F95E009F4E83 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		9A0CFCED1D84F95E009F4E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9A0CFCF21D84F95E009F4E83 /* Hyphenate MessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyphenate MessengerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A0CFCF61D84F95E009F4E83 /* Hyphenate_MessengerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hyphenate_MessengerTests.swift; sourceTree = "<group>"; };
-		9A0CFCF81D84F95E009F4E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9A0CFCFD1D84F95E009F4E83 /* Hyphenate MessengerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyphenate MessengerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A0CFD011D84F95E009F4E83 /* Hyphenate_MessengerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hyphenate_MessengerUITests.swift; sourceTree = "<group>"; };
-		9A0CFD031D84F95E009F4E83 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		9A0CFD131D8515C1009F4E83 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
-		9A0CFD151D851EAC009F4E83 /* HyphenateTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyphenateTextField.swift; sourceTree = "<group>"; };
-		9A0CFD171D868A9A009F4E83 /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
-		9A31A4B11D8A86790056D943 /* HyphenateFullSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HyphenateFullSDK.framework; sourceTree = "<group>"; };
-		9AF4079D1D9B214100E49E2E /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
-		9AF407A11D9B26E400E49E2E /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
-		9AF407A31D9B270200E49E2E /* ConversationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsTableViewController.swift; sourceTree = "<group>"; };
-		9AF407A51D9B27C200E49E2E /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactsTableViewController.swift; path = ../ContactsTableViewController.swift; sourceTree = "<group>"; };
-		9AF407A71D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyphenateMessengerHelper.swift; sourceTree = "<group>"; };
-		9AF407A91D9CE6A900E49E2E /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
+		9A17BDED1D9E1FB70075EF9F /* Hyphenate Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyphenate Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		9A17BDF21D9E1FB70075EF9F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		9A17BDF81D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hyphenate_Messenger.xcdatamodel; sourceTree = "<group>"; };
+		9A17BDFA1D9E1FB70075EF9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9A17BDFF1D9E1FB70075EF9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A17BE041D9E1FB70075EF9F /* Hyphenate MessengerTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyphenate MessengerTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A17BE081D9E1FB70075EF9F /* Hyphenate_MessengerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hyphenate_MessengerTests.swift; sourceTree = "<group>"; };
+		9A17BE0A1D9E1FB70075EF9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A17BE0F1D9E1FB70075EF9F /* Hyphenate MessengerUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Hyphenate MessengerUITests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A17BE131D9E1FB70075EF9F /* Hyphenate_MessengerUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Hyphenate_MessengerUITests.swift; sourceTree = "<group>"; };
+		9A17BE151D9E1FB70075EF9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		9A17BE221D9E20190075EF9F /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		9A17BE231D9E20190075EF9F /* MainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		9A17BE241D9E20190075EF9F /* SignupViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignupViewController.swift; sourceTree = "<group>"; };
+		9A17BE251D9E20190075EF9F /* ContactsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContactsTableViewController.swift; sourceTree = "<group>"; };
+		9A17BE261D9E20190075EF9F /* SettingsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsTableViewController.swift; sourceTree = "<group>"; };
+		9A17BE271D9E20190075EF9F /* ConversationsTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationsTableViewController.swift; sourceTree = "<group>"; };
+		9A17BE281D9E20190075EF9F /* HyphenateMessengerHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyphenateMessengerHelper.swift; sourceTree = "<group>"; };
+		9A17BE291D9E20190075EF9F /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
+		9A17BE321D9E20B30075EF9F /* HyphenateFullSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HyphenateFullSDK.framework; sourceTree = "<group>"; };
+		9A17BE371D9E20CB0075EF9F /* HyphenateTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyphenateTextField.swift; sourceTree = "<group>"; };
+		9A23CBF21D9E256100FACFD7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9AFE4D711D9E2731007862CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		9A0CFCDB1D84F95D009F4E83 /* Frameworks */ = {
+		9A17BDEA1D9E1FB70075EF9F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A31A4B21D8A86790056D943 /* HyphenateFullSDK.framework in Frameworks */,
+				9A17BE331D9E20B30075EF9F /* HyphenateFullSDK.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A0CFCEF1D84F95E009F4E83 /* Frameworks */ = {
+		9A17BE011D9E1FB70075EF9F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A0CFCFA1D84F95E009F4E83 /* Frameworks */ = {
+		9A17BE0C1D9E1FB70075EF9F /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -108,109 +112,95 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9A0CFCD51D84F95D009F4E83 = {
+		9A17BDE41D9E1FB70075EF9F = {
 			isa = PBXGroup;
 			children = (
-				9A31A4B11D8A86790056D943 /* HyphenateFullSDK.framework */,
-				9A0CFCE01D84F95D009F4E83 /* Hyphenate Messenger */,
-				9A0CFCF51D84F95E009F4E83 /* Hyphenate MessengerTests */,
-				9A0CFD001D84F95E009F4E83 /* Hyphenate MessengerUITests */,
-				9A0CFCDF1D84F95D009F4E83 /* Products */,
+				9A17BE321D9E20B30075EF9F /* HyphenateFullSDK.framework */,
+				9A17BDEF1D9E1FB70075EF9F /* Hyphenate Messenger */,
+				9A17BE071D9E1FB70075EF9F /* Hyphenate MessengerTests */,
+				9A17BE121D9E1FB70075EF9F /* Hyphenate MessengerUITests */,
+				9A17BDEE1D9E1FB70075EF9F /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		9A0CFCDF1D84F95D009F4E83 /* Products */ = {
+		9A17BDEE1D9E1FB70075EF9F /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				9A0CFCDE1D84F95D009F4E83 /* Hyphenate Messenger.app */,
-				9A0CFCF21D84F95E009F4E83 /* Hyphenate MessengerTests.xctest */,
-				9A0CFCFD1D84F95E009F4E83 /* Hyphenate MessengerUITests.xctest */,
+				9A17BDED1D9E1FB70075EF9F /* Hyphenate Messenger.app */,
+				9A17BE041D9E1FB70075EF9F /* Hyphenate MessengerTests.xctest */,
+				9A17BE0F1D9E1FB70075EF9F /* Hyphenate MessengerUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		9A0CFCE01D84F95D009F4E83 /* Hyphenate Messenger */ = {
+		9A17BDEF1D9E1FB70075EF9F /* Hyphenate Messenger */ = {
 			isa = PBXGroup;
 			children = (
-				9A0CFD121D851585009F4E83 /* Views */,
-				9A0CFD111D85157D009F4E83 /* Utilities */,
-				9A0CFD101D851570009F4E83 /* Protocols */,
-				9A0CFD0F1D851560009F4E83 /* Controllers */,
-				9A0CFCE11D84F95E009F4E83 /* AppDelegate.swift */,
-				9A0CFCE51D84F95E009F4E83 /* Main.storyboard */,
-				9A0CFCE81D84F95E009F4E83 /* Assets.xcassets */,
-				9A0CFCEA1D84F95E009F4E83 /* LaunchScreen.storyboard */,
-				9A0CFCED1D84F95E009F4E83 /* Info.plist */,
+				9A17BE361D9E20C50075EF9F /* View */,
+				9A17BE211D9E200B0075EF9F /* View Controllers */,
+				9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */,
+				9A17BDF21D9E1FB70075EF9F /* ViewController.swift */,
+				9A17BDFA1D9E1FB70075EF9F /* Assets.xcassets */,
+				9A23CBF21D9E256100FACFD7 /* LaunchScreen.storyboard */,
+				9AFE4D711D9E2731007862CA /* Main.storyboard */,
+				9A17BDFF1D9E1FB70075EF9F /* Info.plist */,
+				9A17BDF71D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld */,
 			);
 			path = "Hyphenate Messenger";
 			sourceTree = "<group>";
 		};
-		9A0CFCF51D84F95E009F4E83 /* Hyphenate MessengerTests */ = {
+		9A17BE071D9E1FB70075EF9F /* Hyphenate MessengerTests */ = {
 			isa = PBXGroup;
 			children = (
-				9A0CFCF61D84F95E009F4E83 /* Hyphenate_MessengerTests.swift */,
-				9A0CFCF81D84F95E009F4E83 /* Info.plist */,
+				9A17BE081D9E1FB70075EF9F /* Hyphenate_MessengerTests.swift */,
+				9A17BE0A1D9E1FB70075EF9F /* Info.plist */,
 			);
 			path = "Hyphenate MessengerTests";
 			sourceTree = "<group>";
 		};
-		9A0CFD001D84F95E009F4E83 /* Hyphenate MessengerUITests */ = {
+		9A17BE121D9E1FB70075EF9F /* Hyphenate MessengerUITests */ = {
 			isa = PBXGroup;
 			children = (
-				9A0CFD011D84F95E009F4E83 /* Hyphenate_MessengerUITests.swift */,
-				9A0CFD031D84F95E009F4E83 /* Info.plist */,
+				9A17BE131D9E1FB70075EF9F /* Hyphenate_MessengerUITests.swift */,
+				9A17BE151D9E1FB70075EF9F /* Info.plist */,
 			);
 			path = "Hyphenate MessengerUITests";
 			sourceTree = "<group>";
 		};
-		9A0CFD0F1D851560009F4E83 /* Controllers */ = {
+		9A17BE211D9E200B0075EF9F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9A0CFD131D8515C1009F4E83 /* LoginViewController.swift */,
-				9AF4079D1D9B214100E49E2E /* MainViewController.swift */,
-				9A0CFD171D868A9A009F4E83 /* SignupViewController.swift */,
-				9AF407A51D9B27C200E49E2E /* ContactsTableViewController.swift */,
-				9AF407A11D9B26E400E49E2E /* SettingsTableViewController.swift */,
-				9AF407A31D9B270200E49E2E /* ConversationsTableViewController.swift */,
-				9AF407A71D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift */,
-				9AF407A91D9CE6A900E49E2E /* ChatTableViewController.swift */,
+				9A17BE221D9E20190075EF9F /* LoginViewController.swift */,
+				9A17BE231D9E20190075EF9F /* MainViewController.swift */,
+				9A17BE241D9E20190075EF9F /* SignupViewController.swift */,
+				9A17BE251D9E20190075EF9F /* ContactsTableViewController.swift */,
+				9A17BE261D9E20190075EF9F /* SettingsTableViewController.swift */,
+				9A17BE271D9E20190075EF9F /* ConversationsTableViewController.swift */,
+				9A17BE281D9E20190075EF9F /* HyphenateMessengerHelper.swift */,
+				9A17BE291D9E20190075EF9F /* ChatTableViewController.swift */,
 			);
-			name = Controllers;
+			name = "View Controllers";
 			sourceTree = "<group>";
 		};
-		9A0CFD101D851570009F4E83 /* Protocols */ = {
+		9A17BE361D9E20C50075EF9F /* View */ = {
 			isa = PBXGroup;
 			children = (
+				9A17BE371D9E20CB0075EF9F /* HyphenateTextField.swift */,
 			);
-			name = Protocols;
-			sourceTree = "<group>";
-		};
-		9A0CFD111D85157D009F4E83 /* Utilities */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = Utilities;
-			sourceTree = "<group>";
-		};
-		9A0CFD121D851585009F4E83 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9A0CFD151D851EAC009F4E83 /* HyphenateTextField.swift */,
-			);
-			name = Views;
+			name = View;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		9A0CFCDD1D84F95D009F4E83 /* Hyphenate Messenger */ = {
+		9A17BDEC1D9E1FB70075EF9F /* Hyphenate Messenger */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A0CFD061D84F95E009F4E83 /* Build configuration list for PBXNativeTarget "Hyphenate Messenger" */;
+			buildConfigurationList = 9A17BE181D9E1FB70075EF9F /* Build configuration list for PBXNativeTarget "Hyphenate Messenger" */;
 			buildPhases = (
-				9A0CFCDA1D84F95D009F4E83 /* Sources */,
-				9A0CFCDB1D84F95D009F4E83 /* Frameworks */,
-				9A0CFCDC1D84F95D009F4E83 /* Resources */,
-				9A31A4B41D8A86790056D943 /* Embed Frameworks */,
+				9A17BDE91D9E1FB70075EF9F /* Sources */,
+				9A17BDEA1D9E1FB70075EF9F /* Frameworks */,
+				9A17BDEB1D9E1FB70075EF9F /* Resources */,
+				9A17BE351D9E20B30075EF9F /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -218,75 +208,69 @@
 			);
 			name = "Hyphenate Messenger";
 			productName = "Hyphenate Messenger";
-			productReference = 9A0CFCDE1D84F95D009F4E83 /* Hyphenate Messenger.app */;
+			productReference = 9A17BDED1D9E1FB70075EF9F /* Hyphenate Messenger.app */;
 			productType = "com.apple.product-type.application";
 		};
-		9A0CFCF11D84F95E009F4E83 /* Hyphenate MessengerTests */ = {
+		9A17BE031D9E1FB70075EF9F /* Hyphenate MessengerTests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A0CFD091D84F95E009F4E83 /* Build configuration list for PBXNativeTarget "Hyphenate MessengerTests" */;
+			buildConfigurationList = 9A17BE1B1D9E1FB70075EF9F /* Build configuration list for PBXNativeTarget "Hyphenate MessengerTests" */;
 			buildPhases = (
-				9A0CFCEE1D84F95E009F4E83 /* Sources */,
-				9A0CFCEF1D84F95E009F4E83 /* Frameworks */,
-				9A0CFCF01D84F95E009F4E83 /* Resources */,
+				9A17BE001D9E1FB70075EF9F /* Sources */,
+				9A17BE011D9E1FB70075EF9F /* Frameworks */,
+				9A17BE021D9E1FB70075EF9F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9A0CFCF41D84F95E009F4E83 /* PBXTargetDependency */,
+				9A17BE061D9E1FB70075EF9F /* PBXTargetDependency */,
 			);
 			name = "Hyphenate MessengerTests";
 			productName = "Hyphenate MessengerTests";
-			productReference = 9A0CFCF21D84F95E009F4E83 /* Hyphenate MessengerTests.xctest */;
+			productReference = 9A17BE041D9E1FB70075EF9F /* Hyphenate MessengerTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
-		9A0CFCFC1D84F95E009F4E83 /* Hyphenate MessengerUITests */ = {
+		9A17BE0E1D9E1FB70075EF9F /* Hyphenate MessengerUITests */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 9A0CFD0C1D84F95E009F4E83 /* Build configuration list for PBXNativeTarget "Hyphenate MessengerUITests" */;
+			buildConfigurationList = 9A17BE1E1D9E1FB70075EF9F /* Build configuration list for PBXNativeTarget "Hyphenate MessengerUITests" */;
 			buildPhases = (
-				9A0CFCF91D84F95E009F4E83 /* Sources */,
-				9A0CFCFA1D84F95E009F4E83 /* Frameworks */,
-				9A0CFCFB1D84F95E009F4E83 /* Resources */,
+				9A17BE0B1D9E1FB70075EF9F /* Sources */,
+				9A17BE0C1D9E1FB70075EF9F /* Frameworks */,
+				9A17BE0D1D9E1FB70075EF9F /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				9A0CFCFF1D84F95E009F4E83 /* PBXTargetDependency */,
+				9A17BE111D9E1FB70075EF9F /* PBXTargetDependency */,
 			);
 			name = "Hyphenate MessengerUITests";
 			productName = "Hyphenate MessengerUITests";
-			productReference = 9A0CFCFD1D84F95E009F4E83 /* Hyphenate MessengerUITests.xctest */;
+			productReference = 9A17BE0F1D9E1FB70075EF9F /* Hyphenate MessengerUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		9A0CFCD61D84F95D009F4E83 /* Project object */ = {
+		9A17BDE51D9E1FB70075EF9F /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 0800;
-				LastUpgradeCheck = 0800;
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Hyphenate Inc";
 				TargetAttributes = {
-					9A0CFCDD1D84F95D009F4E83 = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = TP9T4YLR62;
-						ProvisioningStyle = Automatic;
+					9A17BDEC1D9E1FB70075EF9F = {
+						CreatedOnToolsVersion = 7.3.1;
 					};
-					9A0CFCF11D84F95E009F4E83 = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = ZHZ4TMESQ4;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 9A0CFCDD1D84F95D009F4E83;
+					9A17BE031D9E1FB70075EF9F = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 9A17BDEC1D9E1FB70075EF9F;
 					};
-					9A0CFCFC1D84F95E009F4E83 = {
-						CreatedOnToolsVersion = 8.0;
-						DevelopmentTeam = ZHZ4TMESQ4;
-						ProvisioningStyle = Automatic;
-						TestTargetID = 9A0CFCDD1D84F95D009F4E83;
+					9A17BE0E1D9E1FB70075EF9F = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 9A17BDEC1D9E1FB70075EF9F;
 					};
 				};
 			};
-			buildConfigurationList = 9A0CFCD91D84F95D009F4E83 /* Build configuration list for PBXProject "Hyphenate Messenger" */;
+			buildConfigurationList = 9A17BDE81D9E1FB70075EF9F /* Build configuration list for PBXProject "Hyphenate Messenger" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
@@ -294,37 +278,37 @@
 				en,
 				Base,
 			);
-			mainGroup = 9A0CFCD51D84F95D009F4E83;
-			productRefGroup = 9A0CFCDF1D84F95D009F4E83 /* Products */;
+			mainGroup = 9A17BDE41D9E1FB70075EF9F;
+			productRefGroup = 9A17BDEE1D9E1FB70075EF9F /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				9A0CFCDD1D84F95D009F4E83 /* Hyphenate Messenger */,
-				9A0CFCF11D84F95E009F4E83 /* Hyphenate MessengerTests */,
-				9A0CFCFC1D84F95E009F4E83 /* Hyphenate MessengerUITests */,
+				9A17BDEC1D9E1FB70075EF9F /* Hyphenate Messenger */,
+				9A17BE031D9E1FB70075EF9F /* Hyphenate MessengerTests */,
+				9A17BE0E1D9E1FB70075EF9F /* Hyphenate MessengerUITests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		9A0CFCDC1D84F95D009F4E83 /* Resources */ = {
+		9A17BDEB1D9E1FB70075EF9F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A0CFCEC1D84F95E009F4E83 /* LaunchScreen.storyboard in Resources */,
-				9A0CFCE91D84F95E009F4E83 /* Assets.xcassets in Resources */,
-				9A0CFCE71D84F95E009F4E83 /* Main.storyboard in Resources */,
+				9AFE4D721D9E2731007862CA /* Main.storyboard in Resources */,
+				9A23CBF31D9E256100FACFD7 /* LaunchScreen.storyboard in Resources */,
+				9A17BDFB1D9E1FB70075EF9F /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A0CFCF01D84F95E009F4E83 /* Resources */ = {
+		9A17BE021D9E1FB70075EF9F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A0CFCFB1D84F95E009F4E83 /* Resources */ = {
+		9A17BE0D1D9E1FB70075EF9F /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -334,75 +318,58 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		9A0CFCDA1D84F95D009F4E83 /* Sources */ = {
+		9A17BDE91D9E1FB70075EF9F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9AF407A81D9C2FEB00E49E2E /* HyphenateMessengerHelper.swift in Sources */,
-				9A0CFD141D8515C1009F4E83 /* LoginViewController.swift in Sources */,
-				9A0CFD161D851EAC009F4E83 /* HyphenateTextField.swift in Sources */,
-				9A0CFCE21D84F95E009F4E83 /* AppDelegate.swift in Sources */,
-				9A0CFD181D868A9A009F4E83 /* SignupViewController.swift in Sources */,
-				9AF4079E1D9B214100E49E2E /* MainViewController.swift in Sources */,
-				9AF407A41D9B270200E49E2E /* ConversationsTableViewController.swift in Sources */,
-				9AF407A61D9B27C200E49E2E /* ContactsTableViewController.swift in Sources */,
-				9AF407A21D9B26E400E49E2E /* SettingsTableViewController.swift in Sources */,
-				9AF407AA1D9CE6A900E49E2E /* ChatTableViewController.swift in Sources */,
+				9A17BE2C1D9E20190075EF9F /* SignupViewController.swift in Sources */,
+				9A17BE2A1D9E20190075EF9F /* LoginViewController.swift in Sources */,
+				9A17BDF31D9E1FB70075EF9F /* ViewController.swift in Sources */,
+				9A17BDF11D9E1FB70075EF9F /* AppDelegate.swift in Sources */,
+				9A17BE301D9E20190075EF9F /* HyphenateMessengerHelper.swift in Sources */,
+				9A17BE2E1D9E20190075EF9F /* SettingsTableViewController.swift in Sources */,
+				9A17BE311D9E20190075EF9F /* ChatTableViewController.swift in Sources */,
+				9A17BDF91D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld in Sources */,
+				9A17BE2B1D9E20190075EF9F /* MainViewController.swift in Sources */,
+				9A17BE2D1D9E20190075EF9F /* ContactsTableViewController.swift in Sources */,
+				9A17BE381D9E20CB0075EF9F /* HyphenateTextField.swift in Sources */,
+				9A17BE2F1D9E20190075EF9F /* ConversationsTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A0CFCEE1D84F95E009F4E83 /* Sources */ = {
+		9A17BE001D9E1FB70075EF9F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A0CFCF71D84F95E009F4E83 /* Hyphenate_MessengerTests.swift in Sources */,
+				9A17BE091D9E1FB70075EF9F /* Hyphenate_MessengerTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		9A0CFCF91D84F95E009F4E83 /* Sources */ = {
+		9A17BE0B1D9E1FB70075EF9F /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9A0CFD021D84F95E009F4E83 /* Hyphenate_MessengerUITests.swift in Sources */,
+				9A17BE141D9E1FB70075EF9F /* Hyphenate_MessengerUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		9A0CFCF41D84F95E009F4E83 /* PBXTargetDependency */ = {
+		9A17BE061D9E1FB70075EF9F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9A0CFCDD1D84F95D009F4E83 /* Hyphenate Messenger */;
-			targetProxy = 9A0CFCF31D84F95E009F4E83 /* PBXContainerItemProxy */;
+			target = 9A17BDEC1D9E1FB70075EF9F /* Hyphenate Messenger */;
+			targetProxy = 9A17BE051D9E1FB70075EF9F /* PBXContainerItemProxy */;
 		};
-		9A0CFCFF1D84F95E009F4E83 /* PBXTargetDependency */ = {
+		9A17BE111D9E1FB70075EF9F /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
-			target = 9A0CFCDD1D84F95D009F4E83 /* Hyphenate Messenger */;
-			targetProxy = 9A0CFCFE1D84F95E009F4E83 /* PBXContainerItemProxy */;
+			target = 9A17BDEC1D9E1FB70075EF9F /* Hyphenate Messenger */;
+			targetProxy = 9A17BE101D9E1FB70075EF9F /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
-/* Begin PBXVariantGroup section */
-		9A0CFCE51D84F95E009F4E83 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9A0CFCE61D84F95E009F4E83 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
-		9A0CFCEA1D84F95E009F4E83 /* LaunchScreen.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				9A0CFCEB1D84F95E009F4E83 /* Base */,
-			);
-			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-/* End PBXVariantGroup section */
-
 /* Begin XCBuildConfiguration section */
-		9A0CFD041D84F95E009F4E83 /* Debug */ = {
+		9A17BE161D9E1FB70075EF9F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -414,13 +381,10 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -442,16 +406,15 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
-				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
 		};
-		9A0CFD051D84F95E009F4E83 /* Release */ = {
+		9A17BE171D9E1FB70075EF9F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -463,13 +426,10 @@
 				CLANG_WARN_BOOL_CONVERSION = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
-				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
-				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
-				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
@@ -485,106 +445,85 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
 		};
-		9A0CFD071D84F95E009F4E83 /* Debug */ = {
+		9A17BE191D9E1FB70075EF9F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Hyphenate Messenger/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.hyphenate.messenger.Hyphenate-Messenger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
-		9A0CFD081D84F95E009F4E83 /* Release */ = {
+		9A17BE1A1D9E1FB70075EF9F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
 				);
 				INFOPLIST_FILE = "Hyphenate Messenger/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.hyphenate.messenger.Hyphenate-Messenger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
-		9A0CFD0A1D84F95E009F4E83 /* Debug */ = {
+		9A17BE1C1D9E1FB70075EF9F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
 				INFOPLIST_FILE = "Hyphenate MessengerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.hyphenate.messenger.Hyphenate-MessengerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hyphenate Messenger.app/Hyphenate Messenger";
 			};
 			name = Debug;
 		};
-		9A0CFD0B1D84F95E009F4E83 /* Release */ = {
+		9A17BE1D1D9E1FB70075EF9F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				BUNDLE_LOADER = "$(TEST_HOST)";
-				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
 				INFOPLIST_FILE = "Hyphenate MessengerTests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.hyphenate.messenger.Hyphenate-MessengerTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Hyphenate Messenger.app/Hyphenate Messenger";
 			};
 			name = Release;
 		};
-		9A0CFD0D1D84F95E009F4E83 /* Debug */ = {
+		9A17BE1F1D9E1FB70075EF9F /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
 				INFOPLIST_FILE = "Hyphenate MessengerUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.hyphenate.messenger.Hyphenate-MessengerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Hyphenate Messenger";
 			};
 			name = Debug;
 		};
-		9A0CFD0E1D84F95E009F4E83 /* Release */ = {
+		9A17BE201D9E1FB70075EF9F /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
 				INFOPLIST_FILE = "Hyphenate MessengerUITests/Info.plist";
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "io.hyphenate.messenger.Hyphenate-MessengerUITests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = "Hyphenate Messenger";
 			};
 			name = Release;
@@ -592,43 +531,56 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		9A0CFCD91D84F95D009F4E83 /* Build configuration list for PBXProject "Hyphenate Messenger" */ = {
+		9A17BDE81D9E1FB70075EF9F /* Build configuration list for PBXProject "Hyphenate Messenger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9A0CFD041D84F95E009F4E83 /* Debug */,
-				9A0CFD051D84F95E009F4E83 /* Release */,
+				9A17BE161D9E1FB70075EF9F /* Debug */,
+				9A17BE171D9E1FB70075EF9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A0CFD061D84F95E009F4E83 /* Build configuration list for PBXNativeTarget "Hyphenate Messenger" */ = {
+		9A17BE181D9E1FB70075EF9F /* Build configuration list for PBXNativeTarget "Hyphenate Messenger" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9A0CFD071D84F95E009F4E83 /* Debug */,
-				9A0CFD081D84F95E009F4E83 /* Release */,
+				9A17BE191D9E1FB70075EF9F /* Debug */,
+				9A17BE1A1D9E1FB70075EF9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A0CFD091D84F95E009F4E83 /* Build configuration list for PBXNativeTarget "Hyphenate MessengerTests" */ = {
+		9A17BE1B1D9E1FB70075EF9F /* Build configuration list for PBXNativeTarget "Hyphenate MessengerTests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9A0CFD0A1D84F95E009F4E83 /* Debug */,
-				9A0CFD0B1D84F95E009F4E83 /* Release */,
+				9A17BE1C1D9E1FB70075EF9F /* Debug */,
+				9A17BE1D1D9E1FB70075EF9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		9A0CFD0C1D84F95E009F4E83 /* Build configuration list for PBXNativeTarget "Hyphenate MessengerUITests" */ = {
+		9A17BE1E1D9E1FB70075EF9F /* Build configuration list for PBXNativeTarget "Hyphenate MessengerUITests" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				9A0CFD0D1D84F95E009F4E83 /* Debug */,
-				9A0CFD0E1D84F95E009F4E83 /* Release */,
+				9A17BE1F1D9E1FB70075EF9F /* Debug */,
+				9A17BE201D9E1FB70075EF9F /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		9A17BDF71D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9A17BDF81D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodel */,
+			);
+			currentVersion = 9A17BDF81D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodel */;
+			path = Hyphenate_Messenger.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
-	rootObject = 9A0CFCD61D84F95D009F4E83 /* Project object */;
+	rootObject = 9A17BDE51D9E1FB70075EF9F /* Project object */;
 }

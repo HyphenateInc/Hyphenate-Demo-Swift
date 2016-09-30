@@ -2,7 +2,7 @@
 //  Hyphenate_MessengerUITests.swift
 //  Hyphenate MessengerUITests
 //
-//  Created by peng wan on 9/10/16.
+//  Created by peng wan on 9/29/16.
 //  Copyright © 2016 Hyphenate Inc. All rights reserved.
 //
 

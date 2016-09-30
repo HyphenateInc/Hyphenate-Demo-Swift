@@ -2,13 +2,13 @@
 //  AppDelegate.swift
 //  Hyphenate Messenger
 //
-//  Created by peng wan on 9/10/16.
+//  Created by peng wan on 9/29/16.
 //  Copyright © 2016 Hyphenate Inc. All rights reserved.
 //
 
 import UIKit
+import CoreData
 import HyphenateFullSDK
-import CoreFoundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -18,14 +18,15 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let kHyphenatePushServiceDevelopment = "DevelopmentCertificate"
     static let kHyphenatePushServiceProduction = "ProductionCertificate"
     static let kSDKConfigEnableConsoleLogger = "SDKConfigEnableConsoleLogger"
-
+    
     /** Google Analytics configuration constants **/
     static let kGaPropertyId = "updateKey"
     static let kTrackingPreferenceKey = "allowTracking"
     static let kGaDryRun = false
     static let kGaDispatchPeriod = 30
-    
+
     var window: UIWindow?
+
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         // Override point for customization after application launch.
@@ -36,31 +37,31 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             apnsCertName = AppDelegate.kHyphenatePushServiceProduction
         #endif
         
-        
-        
         let pushSettings = UIUserNotificationSettings(forTypes:[UIUserNotificationType.Badge ,UIUserNotificationType.Sound ,UIUserNotificationType.Alert], categories: nil)
         application.registerUserNotificationSettings(pushSettings)
         application.registerForRemoteNotifications()
-
-        hyphenateApplication(application, didFinishLaunchingWithOptions: launchOptions, appKey: AppDelegate.kHyphenateAppKey, apnsCertname: apnsCertName!, otherConfig:[AppDelegate.kSDKConfigEnableConsoleLogger: NSNumber(booleanLiteral: true)])
         
+        hyphenateApplication(application, didFinishLaunchingWithOptions: launchOptions, appKey: AppDelegate.kHyphenateAppKey, apnsCertname: apnsCertName!, otherConfig:[AppDelegate.kSDKConfigEnableConsoleLogger: NSNumber(booleanLiteral: true)])
+
         return true
     }
 
     func applicationWillResignActive(application: UIApplication) {
         // Sent when the application is about to move from active to inactive state. This can occur for certain types of temporary interruptions (such as an incoming phone call or SMS message) or when the user quits the application and it begins the transition to the background state.
-        // Use this method to pause ongoing tasks, disable timers, and invalidate graphics rendering callbacks. Games should use this method to pause the game.
+        // Use this method to pause ongoing tasks, disable timers, and throttle down OpenGL ES frame rates. Games should use this method to pause the game.
     }
 
     func applicationDidEnterBackground(application: UIApplication) {
         // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
         // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
         EMClient.sharedClient().applicationDidEnterBackground(application)
+
     }
 
     func applicationWillEnterForeground(application: UIApplication) {
-        // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+        // Called as part of the transition from the background to the inactive state; here you can undo many of the changes made on entering the background.
         EMClient.sharedClient().applicationWillEnterForeground(application)
+
     }
 
     func applicationDidBecomeActive(application: UIApplication) {
@@ -69,40 +70,101 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func applicationWillTerminate(application: UIApplication) {
         // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+        // Saves changes in the application's managed object context before the application terminates.
+        self.saveContext()
     }
-    
-    func application(
+
+    // MARK: - Core Data stack
+
+    lazy var applicationDocumentsDirectory: NSURL = {
+        // The directory the application uses to store the Core Data store file. This code uses a directory named "io.hyphenate.messenger.Hyphenate_Messenger" in the application's documents Application Support directory.
+        let urls = NSFileManager.defaultManager().URLsForDirectory(.DocumentDirectory, inDomains: .UserDomainMask)
+        return urls[urls.count-1]
+    }()
+
+    lazy var managedObjectModel: NSManagedObjectModel = {
+        // The managed object model for the application. This property is not optional. It is a fatal error for the application not to be able to find and load its model.
+        let modelURL = NSBundle.mainBundle().URLForResource("Hyphenate_Messenger", withExtension: "momd")!
+        return NSManagedObjectModel(contentsOfURL: modelURL)!
+    }()
+
+    lazy var persistentStoreCoordinator: NSPersistentStoreCoordinator = {
+        // The persistent store coordinator for the application. This implementation creates and returns a coordinator, having added the store for the application to it. This property is optional since there are legitimate error conditions that could cause the creation of the store to fail.
+        // Create the coordinator and store
+        let coordinator = NSPersistentStoreCoordinator(managedObjectModel: self.managedObjectModel)
+        let url = self.applicationDocumentsDirectory.URLByAppendingPathComponent("SingleViewCoreData.sqlite")
+        var failureReason = "There was an error creating or loading the application's saved data."
+        do {
+            try coordinator.addPersistentStoreWithType(NSSQLiteStoreType, configuration: nil, URL: url, options: nil)
+        } catch {
+            // Report any error we got.
+            var dict = [String: AnyObject]()
+            dict[NSLocalizedDescriptionKey] = "Failed to initialize the application's saved data"
+            dict[NSLocalizedFailureReasonErrorKey] = failureReason
+
+            dict[NSUnderlyingErrorKey] = error as NSError
+            let wrappedError = NSError(domain: "YOUR_ERROR_DOMAIN", code: 9999, userInfo: dict)
+            // Replace this with code to handle the error appropriately.
+            // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+            NSLog("Unresolved error \(wrappedError), \(wrappedError.userInfo)")
+            abort()
+        }
         
-        application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable : Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        return coordinator
+    }()
+
+    lazy var managedObjectContext: NSManagedObjectContext = {
+        // Returns the managed object context for the application (which is already bound to the persistent store coordinator for the application.) This property is optional since there are legitimate error conditions that could cause the creation of the context to fail.
+        let coordinator = self.persistentStoreCoordinator
+        var managedObjectContext = NSManagedObjectContext(concurrencyType: .MainQueueConcurrencyType)
+        managedObjectContext.persistentStoreCoordinator = coordinator
+        return managedObjectContext
+    }()
+
+    // MARK: - Core Data Saving support
+
+    func saveContext () {
+        if managedObjectContext.hasChanges {
+            do {
+                try managedObjectContext.save()
+            } catch {
+                // Replace this implementation with code to handle the error appropriately.
+                // abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
+                let nserror = error as NSError
+                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
+                abort()
+            }
+        }
+    }
+   
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject]) {
         
     }
     
     func application(application: UIApplication, didReceive notification: UILocalNotification) {
         
     }
-    // Push Notification Delegate
-    
-    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
-        EMClient.shared().registerForRemoteNotifications(withDeviceToken: deviceToken) { (error : EMError?) in
+
+    func application(application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: NSData) {
+        EMClient.sharedClient().registerForRemoteNotificationsWithDeviceToken(deviceToken) { (error) in
             if ((error) != nil) {
                 print("Error!!! Failed to register remote notification - \(error?.description)")
             }
         }
     }
-
 }
 
 extension AppDelegate {
     
-    func hyphenateApplication(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?, appKey: String, apnsCertname: String, otherConfig: Dictionary<String, AnyObject>)
+    func hyphenateApplication(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?, appKey: String, apnsCertname: String, otherConfig: Dictionary<String, AnyObject>)
     {
-        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.proceedLogin), name: NSNotification.Name(rawValue: "KNotification_login"), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(AppDelegate.proceedLogout), name: NSNotification.Name(rawValue: "KNotification_logout"), object: nil)
-
+        NSNotificationCenter.defaultCenter().postNotificationName("KNotification_login", object: nil)
+        NSNotificationCenter.defaultCenter().postNotificationName("KNotification_logout", object: nil)
+        
         let options: EMOptions = EMOptions(appkey: appKey)
         options.apnsCertName = apnsCertname
         options.enableDnsConfig = true
-        let error:EMError? = EMClient.shared().initializeSDK(with: options)
+        let error:EMError? = EMClient.sharedClient().initializeSDKWithOptions(options)
         
         if ((error) != nil) {
             print("womg")
@@ -110,13 +172,13 @@ extension AppDelegate {
         
         registerMessagingNotification()
         
-//        let isAutoLogin = EMClient.shared().isAutoLogin
-//        if isAutoLogin {
-//            proceedLogin()
-//        } else {
-//            proceedLogout()
-//            EMClient.shared().options.isAutoLogin = true
-//        }
+        //        let isAutoLogin = EMClient.shared().isAutoLogin
+        //        if isAutoLogin {
+        //            proceedLogin()
+        //        } else {
+        //            proceedLogout()
+        //            EMClient.shared().options.isAutoLogin = true
+        //        }
     }
     
     // login
@@ -132,63 +194,63 @@ extension AppDelegate {
             
         }
     }
-  
     
-    func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {
+    func application(application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: NSError) {
         print("Error!!! Failed to register remote notification - \(error.localizedDescription)")
     }
     
-    func didReceiveRemoteNotification(userInfo : [AnyHashable : Any]) {
-    
+    func application(application: UIApplication, didReceiveRemoteNotification userInfo: [NSObject : AnyObject], fetchCompletionHandler completionHandler: (UIBackgroundFetchResult) -> Void) {
         do {
-            let jsonData : NSData = try JSONSerialization.data(withJSONObject: userInfo, options: .prettyPrinted) as Data
-            let str : String = String(data: jsonData, encoding: String.Encoding(rawValue: String.Encoding.utf8.rawValue))!
-            let alert = UIAlertController(title: NSLocalizedString("apns.content", comment: ""), message: str, preferredStyle: .alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
-            alert.show((window?.rootViewController)!, sender: self)
+            
+            let jsonData : NSData = try NSJSONSerialization.dataWithJSONObject(userInfo, options: .PrettyPrinted)
+            let str : String = String(data: jsonData, encoding: NSUTF8StringEncoding)!
+            let alert = UIAlertController(title: NSLocalizedString("apns.content", comment: ""), message: str, preferredStyle: .Alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
+            alert.showViewController((window?.rootViewController)!, sender: self)
             
         } catch let parseError as NSError {
             print(parseError.localizedDescription)
         }
+        
     }
     
     func registerMessagingNotification() {
         
-//        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-//        UIApplication.shared.registerUserNotificationSettings(settings)
-//        UIApplication.shared.registerForRemoteNotifications()
-
+        //        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
+        //        UIApplication.shared.registerUserNotificationSettings(settings)
+        //        UIApplication.shared.registerForRemoteNotifications()
         
         
         
-//        let application : UIApplication = UIApplication.shared;
-//        application.applicationIconBadgeNumber = 0;
-//        
-//#if !TARGET_IPHONE_SIMULATOR
-//
-//        if(application.responds(to: #selector(UIApplication.registerUserNotificationSettings(_:)))) {
-//            let notificationTypes: UIUserNotificationType = [.badge, .alert, .sound]
-//            let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
-//            application.registerUserNotificationSettings(settings)
-//        } else {
-//            let notificationTypes: UIRemoteNotificationType = [.badge, .sound, .alert]
-//            UIApplication.shared.registerForRemoteNotifications(matching: notificationTypes)
-//        }
-//#endif
-
+        
+        //        let application : UIApplication = UIApplication.shared;
+        //        application.applicationIconBadgeNumber = 0;
+        //
+        //#if !TARGET_IPHONE_SIMULATOR
+        //
+        //        if(application.responds(to: #selector(UIApplication.registerUserNotificationSettings(_:)))) {
+        //            let notificationTypes: UIUserNotificationType = [.badge, .alert, .sound]
+        //            let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
+        //            application.registerUserNotificationSettings(settings)
+        //        } else {
+        //            let notificationTypes: UIRemoteNotificationType = [.badge, .sound, .alert]
+        //            UIApplication.shared.registerForRemoteNotifications(matching: notificationTypes)
+        //        }
+        //#endif
+        
         /*XCode 8 issue, can not compile
-#if !TARGET_IPHONE_SIMULATOR
-            
-            if(application.responds(to: #selector(self.registerForRemoteNotifications))) {
-                application.registerForRemoteNotifications()
-            } else {
-                let notificationTypes: UIRemoteNotificationType = [.badge, .sound, .alert]
-                UIApplication.shared.registerForRemoteNotifications(matching: notificationTypes)
-            }
-#endif
- 
- */
+         #if !TARGET_IPHONE_SIMULATOR
+         
+         if(application.responds(to: #selector(self.registerForRemoteNotifications))) {
+         application.registerForRemoteNotifications()
+         } else {
+         let notificationTypes: UIRemoteNotificationType = [.badge, .sound, .alert]
+         UIApplication.shared.registerForRemoteNotifications(matching: notificationTypes)
+         }
+         #endif
+         
+         */
     }
-
+    
 }
 
