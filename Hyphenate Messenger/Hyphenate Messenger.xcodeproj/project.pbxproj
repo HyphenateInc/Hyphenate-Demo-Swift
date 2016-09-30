@@ -136,6 +136,7 @@
 		9A17BDEF1D9E1FB70075EF9F /* Hyphenate Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				9A9976EC1D9E3C6300F43A63 /* Utility */,
 				9A17BE361D9E20C50075EF9F /* View */,
 				9A17BE211D9E200B0075EF9F /* View Controllers */,
 				9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */,
@@ -176,7 +177,6 @@
 				9A17BE251D9E20190075EF9F /* ContactsTableViewController.swift */,
 				9A17BE261D9E20190075EF9F /* SettingsTableViewController.swift */,
 				9A17BE271D9E20190075EF9F /* ConversationsTableViewController.swift */,
-				9A17BE281D9E20190075EF9F /* HyphenateMessengerHelper.swift */,
 				9A17BE291D9E20190075EF9F /* ChatTableViewController.swift */,
 			);
 			name = "View Controllers";
@@ -188,6 +188,14 @@
 				9A17BE371D9E20CB0075EF9F /* HyphenateTextField.swift */,
 			);
 			name = View;
+			sourceTree = "<group>";
+		};
+		9A9976EC1D9E3C6300F43A63 /* Utility */ = {
+			isa = PBXGroup;
+			children = (
+				9A17BE281D9E20190075EF9F /* HyphenateMessengerHelper.swift */,
+			);
+			name = Utility;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
