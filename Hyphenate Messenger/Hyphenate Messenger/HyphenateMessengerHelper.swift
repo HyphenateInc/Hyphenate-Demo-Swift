@@ -9,6 +9,12 @@
 import UIKit
 import HyphenateFullSDK
 
+public enum HIRequestType: Int {
+    case HIRequestTypeFriend
+    case HIRequestTypeReceivedGroupInvitation
+    case HIRequestTypeJoinGroup
+}
+
 class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegate, EMContactManagerDelegate, EMGroupManagerDelegate, EMChatroomManagerDelegate, EMCallManagerDelegate {
 
     static let sharedInstance = HyphenateMessengerHelper()
@@ -116,6 +122,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     }
     
     // EMChatManagerDelegate
+    
     func conversationListDidUpdate(_ aConversationList: [Any]!) {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "kNotification_unreadMessageCountUpdated"), object: aConversationList)
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "kNotification_conversationUpdated"), object: aConversationList)
@@ -128,7 +135,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     func messagesDidReceive(_ aMessages: [Any]!) {
         var isRefreshCons = true
         
-        for(index, value) in aMessages.enumerated() {
+        for(_, value) in aMessages.enumerated() {
             let message : EMMessage = value as! EMMessage
             let needShowNotif = (message.chatType != EMChatTypeChat) ? needShowNotification(fromChatter: message.conversationId) : true
             if (needShowNotif) {
@@ -162,6 +169,75 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         }
     }
     
+    // EMGroupManagerDelegate
+    
+    func didLeave(_ aGroup: EMGroup!, reason aReason: EMGroupLeaveReason) {
+        
+        var str : String? = nil
+        
+        if aReason == EMGroupLeaveReasonBeRemoved {
+            str = "You are kicked out from group: \(aGroup.subject) [\(aGroup.groupId)]"
+        } else if aReason == EMGroupLeaveReasonDestroyed {
+            str = "Group: \(aGroup.subject) [\(aGroup.groupId)] is destroyed"
+        }
+        
+        if (str?.characters.count)! > 0 {
+            let alert = UIAlertController(title: nil, message: str, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true)
+        }
+        
+        var viewControllers = self.mainVC?.navigationController?.viewControllers
+        var chatViewController : ChatTableViewController? = nil
+        for(_, value) in (viewControllers?.enumerated())! {
+            if value is ChatTableViewController {
+                let viewController = value as! ChatTableViewController
+                if aGroup.groupId == viewController.conversation.conversationId {
+                    chatViewController = viewController
+                    break
+                }
+            }
+        }
+        
+        if chatViewController != nil {
+            for (index, value) in (viewControllers?.enumerated())! {
+                if value == chatViewController {
+                    viewControllers?.remove(at: index)
+                }
+            }
+        }
+        
+        if (viewControllers?.count)! > 0 {
+            mainVC?.navigationController?.setViewControllers([(viewControllers?[0])!], animated: true)
+        } else {
+            mainVC?.navigationController?.setViewControllers(viewControllers!, animated: true)
+        }
+    }
+    
+    func joinGroupRequestDidReceive(_ aGroup: EMGroup!, user aUsername: String!, reason aReason: String!) {
+        if !(aGroup != nil) || !(aUsername != nil) {
+            return
+        }
+        var reasonString = aReason
+        
+        if !(reasonString != nil) || reasonString?.characters.count == 0 {
+            reasonString = NSLocalizedString("group.joinRequest", comment: "\(aUsername) requested to join the group \'\(aGroup.subject)\'")
+        } else {
+            reasonString = NSLocalizedString("group.joinRequestWithName", comment: "\(aUsername) requested to join the group \'\(aGroup.subject)\': \(aReason)")
+        }
+        
+        let requestDict : Dictionary = ["title": aGroup.subject, "groupId": aGroup.groupId, "username":aUsername, "groupname":aGroup.subject, "applyMessage":reasonString, "requestType":HIRequestType.self] as [String : Any]
+        
+//        [[FriendRequestViewController shareController] addNewRequest:requestDict];
+//        
+//        if (self.mainVC) {
+//            
+//            #if !TARGET_IPHONE_SIMULATOR
+//                [self.mainVC playSoundAndVibration];
+//            #endif
+//        }
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "kNotification_didReceiveRequest"), object: requestDict)
+    }
     
     func stopCallTimer() {
         if (callTimer==nil) {
