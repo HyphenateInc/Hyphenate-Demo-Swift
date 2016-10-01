@@ -20,6 +20,9 @@ class BaseTableViewCell:UITableViewCell{
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
+        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        profileImageView.clipsToBounds = true
+
     }
     
     class func reuseIdentifier() -> String {

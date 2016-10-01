@@ -10,10 +10,11 @@ import UIKit
 import HyphenateFullSDK
 
 
-class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate{
+class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
 
     var dataSource = [AnyObject]()
-    
+    var searchController : UISearchController!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,8 +25,37 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate{
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        
         self.tableView.registerNib(UINib(nibName: "BaseTableViewCell", bundle: nil), forCellReuseIdentifier: BaseTableViewCell.reuseIdentifier())
+        
+        searchController = UISearchController(searchResultsController:  nil)
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
+        
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = true
+        navigationItem.titleView = searchController.searchBar
+        definesPresentationContext = true
+        
+        let image = UIImage(named: "iconAdd")
+        let imageFrame = CGRectMake(0, 0, (image?.size.width)!, (image?.size.height)!)
+        let addButton = UIButton(frame: imageFrame)
+        addButton.setBackgroundImage(image, forState: .Normal)
+        addButton.addTarget(self, action: Selector(addContactAction()), forControlEvents: .TouchUpInside)
+        addButton.showsTouchWhenHighlighted = true
+        let rightButtonItem = UIBarButtonItem(customView: addButton)
+        navigationItem.rightBarButtonItem = rightButtonItem
+        
         self.reloadDataSource()
+    }
+    
+    func addContactAction() {
+        
+    }
+    
+    func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
     }
     
     func reloadDataSource(){
@@ -60,7 +90,7 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate{
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier(BaseTableViewCell.reuseIdentifier()) as! BaseTableViewCell
-        cell.displayNameLabel.text = self.dataSource[indexPath.row] as! String
+        cell.displayNameLabel.text = self.dataSource[indexPath.row] as? String
         return cell
     }
  
