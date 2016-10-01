@@ -7,20 +7,65 @@
 //
 
 import UIKit
+import HyphenateFullSDK
 
-class ConversationsTableViewController: UITableViewController {
+public enum DeleteConvesationType: Int {
+    case DeleteConvesationOnly
+    case DeleteConvesationWithMessages
+}
 
-    override func viewDidLoad() {
+public protocol ConversationListViewControllerDelegate: class {
+    
+    func conversationListViewController(conversationListViewController:ConversationsTableViewController, didSelectConversationModel conversationModel: AnyObject)
+}
+
+@objc public protocol ConversationListViewControllerDataSource: class {
+    
+    func conversationListViewController(conversationListViewController: ConversationsTableViewController, modelForConversation conversation: EMConversation) -> AnyObject
+    
+    optional func conversationListViewController(conversationListViewController:ConversationsTableViewController, latestMessageTitleForConversationModel conversationModel: AnyObject) -> String
+    
+    optional func conversationListViewController(conversationListViewController: ConversationsTableViewController, latestMessageTimeForConversationModel conversationModel: AnyObject) -> String
+}
+
+public class ConversationsTableViewController: UITableViewController, ConversationListViewControllerDelegate, ConversationListViewControllerDataSource, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+
+    var dataSource = [AnyObject]()
+    var searchController : UISearchController!
+
+    override public func viewDidLoad() {
         super.viewDidLoad()
-view.backgroundColor = UIColor.blackColor()
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
+        
+        searchController = UISearchController(searchResultsController:  nil)
+        searchController.searchResultsUpdater = self
+        searchController.delegate = self
+        searchController.searchBar.delegate = self
+        
+        searchController.hidesNavigationBarDuringPresentation = false
+        searchController.dimsBackgroundDuringPresentation = true
+        navigationItem.titleView = searchController.searchBar
+        definesPresentationContext = true
+        
+        let image = UIImage(named: "iconNewConversation")
+        let imageFrame = CGRectMake(0, 0, (image?.size.width)!, (image?.size.height)!)
+        let newConversationButton = UIButton(frame: imageFrame)
+        newConversationButton.setBackgroundImage(image, forState: .Normal)
+        newConversationButton.addTarget(self, action: Selector(composeConversationAction()), forControlEvents: .TouchUpInside)
+        newConversationButton.showsTouchWhenHighlighted = true
+        let rightButtonItem = UIBarButtonItem(customView: newConversationButton)
+        navigationItem.rightBarButtonItem = rightButtonItem
 
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
     }
 
-    override func didReceiveMemoryWarning() {
+    func composeConversationAction() {
+        
+    }
+    
+    public func updateSearchResultsForSearchController(searchController: UISearchController) {
+        
+    }
+
+    override public func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
@@ -32,10 +77,31 @@ view.backgroundColor = UIColor.blackColor()
         return 0
     }
 
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         return 0
     }
+    
+    public func conversationListViewController(conversationListViewController:ConversationsTableViewController, didSelectConversationModel conversationModel: AnyObject)
+    {
+        
+    }
+    
+    public func conversationListViewController(conversationListViewController: ConversationsTableViewController, modelForConversation conversation: EMConversation) -> AnyObject
+    {
+        return String()
+    }
+    
+    public func conversationListViewController(conversationListViewController:ConversationsTableViewController, latestMessageTitleForConversationModel conversationModel: AnyObject) -> String
+    {
+        return String()
+    }
+    
+    public func conversationListViewController(conversationListViewController: ConversationsTableViewController, latestMessageTimeForConversationModel conversationModel: AnyObject) -> String
+    {
+        return String()
+    }
+
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
