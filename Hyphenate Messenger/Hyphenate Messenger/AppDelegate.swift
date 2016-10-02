@@ -11,7 +11,7 @@ import CoreData
 import HyphenateFullSDK
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate,EMChatManagerDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /** Hyphenate configuration constants **/
     static let kHyphenateAppKey = "hyphenate#hyphenatedemo"
@@ -43,6 +43,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate,EMChatManagerDelegate {
         
         hyphenateApplication(application, didFinishLaunchingWithOptions: launchOptions, appKey: AppDelegate.kHyphenateAppKey, apnsCertname: apnsCertName!, otherConfig:[AppDelegate.kSDKConfigEnableConsoleLogger: NSNumber(booleanLiteral: true)])
 
+        
+        HyphenateMessengerHelper.sharedInstance.loadConversationFromDB()
         return true
     }
 

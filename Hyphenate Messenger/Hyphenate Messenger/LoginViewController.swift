@@ -24,7 +24,10 @@ class LoginViewController: UIViewController {
                 print("error is \(error?.description)")
             }
             print("is login \(EMClient.sharedClient().isLoggedIn)")
-            self.navigationController?.pushViewController(MainViewController(), animated: true)
+            
+            let mainVC = MainViewController()
+            HyphenateMessengerHelper.sharedInstance.mainVC = mainVC
+            self.navigationController?.pushViewController(mainVC, animated: true)
         }
     }
 }

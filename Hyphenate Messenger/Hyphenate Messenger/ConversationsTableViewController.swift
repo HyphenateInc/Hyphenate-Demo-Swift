@@ -57,11 +57,10 @@ public class ConversationsTableViewController: UITableViewController, EMChatMana
         
         self.tableView.registerNib(UINib(nibName: "ConversationTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
-
-        
+  
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.refreshDataSource), name: kNotification_conversationUpdated, object: nil)
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.refresh), name: kNotification_didReceiveMessages, object: nil)
-
+        
         reloadDataSource()
     }
     
@@ -73,10 +72,12 @@ public class ConversationsTableViewController: UITableViewController, EMChatMana
     
     func refresh() {
 //        self.refreshAndSortView()
+        reloadDataSource()
     }
     
     func refreshDataSource() {
 //        self.tableViewDidTriggerHeaderRefresh()
+        reloadDataSource()
     }
     
     
@@ -164,6 +165,14 @@ public class ConversationsTableViewController: UITableViewController, EMChatMana
     public func conversationListViewController(conversationListViewController: ConversationsTableViewController, latestMessageTimeForConversationModel conversationModel: AnyObject) -> String
     {
         return String()
+    }
+ 
+    public func messagesDidReceive(aMessages: [AnyObject]!) {
+        HyphenateMessengerHelper.sharedInstance.messagesDidReceive(aMessages)
+    }
+    
+    public func didReceiveMessages(aMessages: [AnyObject]!) {
+        HyphenateMessengerHelper.sharedInstance.messagesDidReceive(aMessages)
     }
     
 }

@@ -43,7 +43,10 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     func initHelper() {
         EMClient.sharedClient().addDelegate(self)
         EMClient.sharedClient().groupManager.addDelegate(self)
-        
+        EMClient.sharedClient().chatManager.addDelegate(self)
+        EMClient.sharedClient().contactManager.addDelegate(self)
+        EMClient.sharedClient().roomManager.addDelegate(self)
+    
     }
  
     //Syncing data
@@ -330,18 +333,18 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         }
     }
     
-    func getCurrentChatView() -> ChatTableViewController {
+    func getCurrentChatView() -> ChatTableViewController? {
         
         let viewControllers = mainVC?.navigationController?.viewControllers
         var chatViewController : ChatTableViewController? = nil
         
-        for(_, value) in (viewControllers?.enumerate())! {
-            if value is ChatTableViewController {
-                chatViewController = value as? ChatTableViewController
+        for viewcontroller in viewControllers!{
+            if viewcontroller is ChatTableViewController {
+                chatViewController = viewcontroller as? ChatTableViewController
                 break
             }
         }
-        return chatViewController!
+        return chatViewController
     }
     
     func needShowNotification(fromChatter:String) -> Bool {
