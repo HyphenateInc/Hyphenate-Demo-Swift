@@ -20,13 +20,8 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         
 //        EMClient.sharedClient().groupManager.removeDelegate(self)
 //        EMClient.sharedClient().groupManager.addDelegate(self)
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
         
-        self.tableView.registerNib(UINib(nibName: "BaseTableViewCell", bundle: nil), forCellReuseIdentifier: BaseTableViewCell.reuseIdentifier())
+        self.tableView.registerNib(UINib(nibName: "ContactTableViewCell", bundle: nil), forCellReuseIdentifier: ContactTableViewCell.reuseIdentifier())
         
         searchController = UISearchController(searchResultsController:  nil)
         searchController.searchResultsUpdater = self
@@ -69,27 +64,19 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         })
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
         return 1
     }
 
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        print("self.dataSource.count:",self.dataSource.count)
         return self.dataSource.count
     }
 
     
     override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCellWithIdentifier(BaseTableViewCell.reuseIdentifier()) as! BaseTableViewCell
+        let cell = tableView.dequeueReusableCellWithIdentifier(ContactTableViewCell.reuseIdentifier()) as! ContactTableViewCell
         cell.displayNameLabel.text = self.dataSource[indexPath.row] as? String
         return cell
     }

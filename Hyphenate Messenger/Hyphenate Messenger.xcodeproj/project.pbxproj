@@ -7,10 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		39062AE81D9F0D4400EE8412 /* BaseTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39062AE71D9F0D4400EE8412 /* BaseTableViewCell.xib */; };
+		39062AE81D9F0D4400EE8412 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39062AE71D9F0D4400EE8412 /* ContactTableViewCell.xib */; };
 		5C226CB1BB2ACE14FE2BC796 /* Pods_Hyphenate_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5A965B5FB0DF694BB4C542 /* Pods_Hyphenate_Messenger.framework */; };
 		9A17BDF11D9E1FB70075EF9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */; };
-		9A17BDF31D9E1FB70075EF9F /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF21D9E1FB70075EF9F /* ViewController.swift */; };
 		9A17BDF91D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF71D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld */; };
 		9A17BDFB1D9E1FB70075EF9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A17BDFA1D9E1FB70075EF9F /* Assets.xcassets */; };
 		9A17BE091D9E1FB70075EF9F /* Hyphenate_MessengerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE081D9E1FB70075EF9F /* Hyphenate_MessengerTests.swift */; };
@@ -165,7 +164,7 @@
 		B6346B7B1D9E6D3F00CBEAE2 /* libsqlite3.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = B6346B7A1D9E6D3F00CBEAE2 /* libsqlite3.tbd */; };
 		B6346B7D1D9E6EA500CBEAE2 /* EMSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6346B7C1D9E6EA500CBEAE2 /* EMSearchBar.swift */; };
 		B6346B801D9E709000CBEAE2 /* EMSearchDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6346B7F1D9E709000CBEAE2 /* EMSearchDisplayController.swift */; };
-		B6346B821D9E74CE00CBEAE2 /* BaseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6346B811D9E74CE00CBEAE2 /* BaseTableViewCell.swift */; };
+		B6346B821D9E74CE00CBEAE2 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6346B811D9E74CE00CBEAE2 /* ContactTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -200,13 +199,12 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		39062AE71D9F0D4400EE8412 /* BaseTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = BaseTableViewCell.xib; path = Views/BaseTableViewCell.xib; sourceTree = "<group>"; };
+		39062AE71D9F0D4400EE8412 /* ContactTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = ContactTableViewCell.xib; path = Views/ContactTableViewCell.xib; sourceTree = "<group>"; };
 		46CB1D5CA6E51EFA21BD9A5F /* Pods-Hyphenate Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyphenate Messenger.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyphenate Messenger/Pods-Hyphenate Messenger.release.xcconfig"; sourceTree = "<group>"; };
 		71E15A43B314CB255A946243 /* Pods-Hyphenate Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyphenate Messenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyphenate Messenger/Pods-Hyphenate Messenger.debug.xcconfig"; sourceTree = "<group>"; };
 		8F5A965B5FB0DF694BB4C542 /* Pods_Hyphenate_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyphenate_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A17BDED1D9E1FB70075EF9F /* Hyphenate Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyphenate Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		9A17BDF21D9E1FB70075EF9F /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9A17BDF81D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hyphenate_Messenger.xcdatamodel; sourceTree = "<group>"; };
 		9A17BDFA1D9E1FB70075EF9F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9A17BDFF1D9E1FB70075EF9F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -504,7 +502,7 @@
 		B6346B7A1D9E6D3F00CBEAE2 /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 		B6346B7C1D9E6EA500CBEAE2 /* EMSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EMSearchBar.swift; path = Views/EMSearchBar.swift; sourceTree = "<group>"; };
 		B6346B7F1D9E709000CBEAE2 /* EMSearchDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EMSearchDisplayController.swift; path = Controllers/Custom/EMSearchDisplayController.swift; sourceTree = "<group>"; };
-		B6346B811D9E74CE00CBEAE2 /* BaseTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BaseTableViewCell.swift; path = Views/BaseTableViewCell.swift; sourceTree = "<group>"; };
+		B6346B811D9E74CE00CBEAE2 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactTableViewCell.swift; path = Views/ContactTableViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -573,14 +571,12 @@
 		9A17BDEF1D9E1FB70075EF9F /* Hyphenate Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				9AC132411DA0EDD800A2BD05 /* Storyboard */,
 				9A9976EC1D9E3C6300F43A63 /* Utility */,
 				9A17BE361D9E20C50075EF9F /* View */,
 				9A17BE211D9E200B0075EF9F /* View Controllers */,
 				9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */,
-				9A17BDF21D9E1FB70075EF9F /* ViewController.swift */,
 				9A17BDFA1D9E1FB70075EF9F /* Assets.xcassets */,
-				9A23CBF21D9E256100FACFD7 /* LaunchScreen.storyboard */,
-				9AFE4D711D9E2731007862CA /* Main.storyboard */,
 				9A17BDFF1D9E1FB70075EF9F /* Info.plist */,
 				9A17BDF71D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld */,
 				B634674A1D9E4AD500CBEAE2 /* Hyphenate-Bridging-Header.h */,
@@ -609,15 +605,14 @@
 		9A17BE211D9E200B0075EF9F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9A17BE231D9E20190075EF9F /* MainViewController.swift */,
+				9AC132401DA0EDC300A2BD05 /* Settings */,
+				9AC1323F1DA0EDBC00A2BD05 /* Chat */,
+				9AC1323E1DA0EDAC00A2BD05 /* Conversation */,
+				9AC1323D1DA0ED9E00A2BD05 /* Contact */,
+				9AC1323C1DA0ED8900A2BD05 /* Authentication */,
 				B6346B7E1D9E707800CBEAE2 /* Custom */,
 				B634674F1D9E51F200CBEAE2 /* ChatGroup */,
-				9A17BE221D9E20190075EF9F /* LoginViewController.swift */,
-				9A17BE231D9E20190075EF9F /* MainViewController.swift */,
-				9A17BE241D9E20190075EF9F /* SignupViewController.swift */,
-				9A17BE251D9E20190075EF9F /* ContactsTableViewController.swift */,
-				9A17BE261D9E20190075EF9F /* SettingsTableViewController.swift */,
-				9A17BE271D9E20190075EF9F /* ConversationsTableViewController.swift */,
-				9A17BE291D9E20190075EF9F /* ChatTableViewController.swift */,
 			);
 			name = "View Controllers";
 			sourceTree = "<group>";
@@ -625,14 +620,8 @@
 		9A17BE361D9E20C50075EF9F /* View */ = {
 			isa = PBXGroup;
 			children = (
-				39062AE71D9F0D4400EE8412 /* BaseTableViewCell.xib */,
-				B6346B811D9E74CE00CBEAE2 /* BaseTableViewCell.swift */,
-				9A17BE371D9E20CB0075EF9F /* HyphenateTextField.swift */,
-				B6346B7C1D9E6EA500CBEAE2 /* EMSearchBar.swift */,
-				9A545C871DA0CB2200DEFBC7 /* ConversationTableViewCell.swift */,
-				9A545C881DA0CB2200DEFBC7 /* ConversationTableViewCell.xib */,
-				9AC132361DA0DFE500A2BD05 /* SwitchTableViewCell.swift */,
-				9AC132371DA0DFE500A2BD05 /* SwitchTableViewCell.xib */,
+				9AC1323B1DA0EC9C00A2BD05 /* Subclass */,
+				9AC1323A1DA0EC7C00A2BD05 /* Cell */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -643,6 +632,78 @@
 				9A17BE281D9E20190075EF9F /* HyphenateMessengerHelper.swift */,
 			);
 			name = Utility;
+			sourceTree = "<group>";
+		};
+		9AC1323A1DA0EC7C00A2BD05 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				39062AE71D9F0D4400EE8412 /* ContactTableViewCell.xib */,
+				B6346B811D9E74CE00CBEAE2 /* ContactTableViewCell.swift */,
+				9A545C871DA0CB2200DEFBC7 /* ConversationTableViewCell.swift */,
+				9A545C881DA0CB2200DEFBC7 /* ConversationTableViewCell.xib */,
+				9AC132361DA0DFE500A2BD05 /* SwitchTableViewCell.swift */,
+				9AC132371DA0DFE500A2BD05 /* SwitchTableViewCell.xib */,
+			);
+			name = Cell;
+			sourceTree = "<group>";
+		};
+		9AC1323B1DA0EC9C00A2BD05 /* Subclass */ = {
+			isa = PBXGroup;
+			children = (
+				9A17BE371D9E20CB0075EF9F /* HyphenateTextField.swift */,
+				B6346B7C1D9E6EA500CBEAE2 /* EMSearchBar.swift */,
+			);
+			name = Subclass;
+			sourceTree = "<group>";
+		};
+		9AC1323C1DA0ED8900A2BD05 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				9A17BE221D9E20190075EF9F /* LoginViewController.swift */,
+				9A17BE241D9E20190075EF9F /* SignupViewController.swift */,
+			);
+			name = Authentication;
+			sourceTree = "<group>";
+		};
+		9AC1323D1DA0ED9E00A2BD05 /* Contact */ = {
+			isa = PBXGroup;
+			children = (
+				9A17BE251D9E20190075EF9F /* ContactsTableViewController.swift */,
+			);
+			name = Contact;
+			sourceTree = "<group>";
+		};
+		9AC1323E1DA0EDAC00A2BD05 /* Conversation */ = {
+			isa = PBXGroup;
+			children = (
+				9A17BE271D9E20190075EF9F /* ConversationsTableViewController.swift */,
+			);
+			name = Conversation;
+			sourceTree = "<group>";
+		};
+		9AC1323F1DA0EDBC00A2BD05 /* Chat */ = {
+			isa = PBXGroup;
+			children = (
+				9A17BE291D9E20190075EF9F /* ChatTableViewController.swift */,
+			);
+			name = Chat;
+			sourceTree = "<group>";
+		};
+		9AC132401DA0EDC300A2BD05 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9A17BE261D9E20190075EF9F /* SettingsTableViewController.swift */,
+			);
+			name = Settings;
+			sourceTree = "<group>";
+		};
+		9AC132411DA0EDD800A2BD05 /* Storyboard */ = {
+			isa = PBXGroup;
+			children = (
+				9A23CBF21D9E256100FACFD7 /* LaunchScreen.storyboard */,
+				9AFE4D711D9E2731007862CA /* Main.storyboard */,
+			);
+			name = Storyboard;
 			sourceTree = "<group>";
 		};
 		B634674F1D9E51F200CBEAE2 /* ChatGroup */ = {
@@ -1384,7 +1445,7 @@
 				9A23CBF31D9E256100FACFD7 /* LaunchScreen.storyboard in Resources */,
 				9A545C8A1DA0CB2200DEFBC7 /* ConversationTableViewCell.xib in Resources */,
 				B6346B0A1D9E6C5100CBEAE2 /* MJRefresh.bundle in Resources */,
-				39062AE81D9F0D4400EE8412 /* BaseTableViewCell.xib in Resources */,
+				39062AE81D9F0D4400EE8412 /* ContactTableViewCell.xib in Resources */,
 				9A17BDFB1D9E1FB70075EF9F /* Assets.xcassets in Resources */,
 				B6346B501D9E6C5100CBEAE2 /* EMContactDetailedTableViewCell.xib in Resources */,
 				B6346B351D9E6C5100CBEAE2 /* MWPhotoBrowser.bundle in Resources */,
@@ -1478,7 +1539,6 @@
 				B6346B521D9E6C5100CBEAE2 /* EaseCustomMessageCell.m in Sources */,
 				B6346AFE1D9E6C5100CBEAE2 /* MJRefreshComponent.m in Sources */,
 				B6346B311D9E6C5100CBEAE2 /* PSTGridLayoutInfo.m in Sources */,
-				9A17BDF31D9E1FB70075EF9F /* ViewController.swift in Sources */,
 				B6346B531D9E6C5100CBEAE2 /* EaseMessageCell.m in Sources */,
 				B6346B321D9E6C5100CBEAE2 /* PSTGridLayoutItem.m in Sources */,
 				B6346AF01D9E6C5100CBEAE2 /* EMCDDeviceManager+Media.m in Sources */,
@@ -1554,7 +1614,7 @@
 				9A17BDF91D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld in Sources */,
 				B6346B261D9E6C5100CBEAE2 /* UIImageView+EMWebCache.m in Sources */,
 				B6346B5D1D9E6C5100CBEAE2 /* EaseChatToolbar.m in Sources */,
-				B6346B821D9E74CE00CBEAE2 /* BaseTableViewCell.swift in Sources */,
+				B6346B821D9E74CE00CBEAE2 /* ContactTableViewCell.swift in Sources */,
 				B6346B551D9E6C5100CBEAE2 /* EaseBubbleView+File.m in Sources */,
 				B6346B251D9E6C5100CBEAE2 /* UIImageView+EMHighlightedWebCache.m in Sources */,
 				B6346B2A1D9E6C5100CBEAE2 /* PSTCollectionViewCell.m in Sources */,

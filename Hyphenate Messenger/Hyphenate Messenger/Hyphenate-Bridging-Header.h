@@ -2,7 +2,7 @@
 //  Hyphenate-Bridging-Header.h
 //  Hyphenate Messenger
 //
-//  Created by Kelvin Lam on 9/29/16.
+//  Created by Peng Wan on 9/29/16.
 //  Copyright © 2016 Hyphenate Inc. All rights reserved.
 //
 
