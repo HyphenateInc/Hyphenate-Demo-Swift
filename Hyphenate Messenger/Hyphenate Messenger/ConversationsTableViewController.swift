@@ -137,7 +137,7 @@ public class ConversationsTableViewController: UITableViewController, EMChatMana
     }
     
     override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let conversation:EMConversation = dataSource[indexPath.row] as? EMConversation{
+        if let conversation:EMConversation = dataSource[indexPath.row] as? EMConversation {
             let chatController = ChatTableViewController(conversationID: conversation.conversationId, conversationType: conversation.type)
             chatController.title = conversation.latestMessage.from
             chatController.hidesBottomBarWhenPushed = true

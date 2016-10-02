@@ -49,7 +49,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     
     }
  
-    //Syncing data
+    // MARK: Syncing data
     
     func loadConversationFromDB() {
         
@@ -85,7 +85,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         EMClient.sharedClient().getPushNotificationOptionsFromServerWithCompletion(nil)
     }
     
-    //EMClientDelegate
+   // MARK: EMClientDelegate
     
     func connectionStateDidChange(aConnectionState: EMConnectionState) {
         
@@ -182,7 +182,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         }
     }
     
-    // EMGroupManagerDelegate
+    // MARK: EMGroupManagerDelegate
     
     func didLeaveGroup(aGroup: EMGroup!, reason aReason: EMGroupLeaveReason) {
         
@@ -298,7 +298,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         NSNotificationCenter.defaultCenter().postNotificationName("kNotification_didReceiveRequest", object: requestDict)
     }
 
-    //EMContactManagerDelegate
+    // MARK: EMContactManagerDelegate
     
     func friendRequestDidApproveByUser(aUsername: String!) {
         
@@ -313,6 +313,89 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
         UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
     }
+    
+    func friendshipDidRemoveByUser(aUsername: String!) {
+        
+        var viewControllers = mainVC?.navigationController?.viewControllers
+        var chatViewController: ChatTableViewController? = nil
+        
+        
+        for viewController in viewControllers! {
+            
+            let chatVC = viewController as! ChatTableViewController
+            if viewController is ChatTableViewController && aUsername == chatVC.conversation.conversationId {
+                chatViewController = chatVC
+                break
+            }
+        }
+        
+        if chatViewController != nil {
+            viewControllers?.removeAtIndex((viewControllers?.indexOf(chatViewController!))!)
+            
+            if viewControllers?.count > 0 {
+                mainVC?.navigationController?.setViewControllers([viewControllers![0]], animated: true)
+            } else {
+                mainVC?.navigationController?.setViewControllers(viewControllers!, animated: true)
+            }
+        
+        }
+        
+        let alert = UIAlertController(title:nil, message: "\(NSLocalizedString("delete", comment: "delete")) \(aUsername)", preferredStyle: .Alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
+        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        
+        contactVC?.reloadDataSource()
+    }
+    
+    func friendshipDidAddByUser(aUsername: String!) {
+        contactVC?.reloadDataSource()
+    }
+    
+    func friendRequestDidReceiveFromUser(aUsername: String!, message aMessage: String!) {
+        if (aUsername == nil) {
+            return;
+        }
+        
+        var message:String? = aMessage
+        
+        
+        if (message == nil) {
+            message = "\(NSLocalizedString("friend.somebodyAddWithName", comment: "\(aUsername) added you as a friend"))"
+        }
+        
+        let requestDict: [String : AnyObject] = ["title": aUsername, "username": aUsername, "applyMessage": message!, "requestType":HIRequestType.HIRequestTypeFriend.rawValue]
+        
+        if (mainVC != nil) {
+            
+            #if !TARGET_IPHONE_SIMULATOR
+//                [self.mainVC playSoundAndVibration];
+                
+                let isAppActive = UIApplication.sharedApplication().applicationState == .Active
+                
+                if (isAppActive == false) {
+                    
+                    let notification: UILocalNotification = UILocalNotification()
+                    notification.fireDate = NSDate()
+                    notification.alertBody = "\(NSLocalizedString("friend.somebodyAddWithName", comment: "\(aUsername) added you as a friend"))"
+                    notification.alertAction = "\(NSLocalizedString("open", comment: "Open"))"
+                    notification.timeZone = NSTimeZone.defaultTimeZone()
+                }
+            #endif
+        }
+        NSNotificationCenter.defaultCenter().postNotificationName("kNotification_didReceiveRequest", object: requestDict)
+    }
+    
+    // MARK: EMChatroomManagerDelegate
+    
+    func userDidJoinChatroom(aChatroom: EMChatroom!, user aUsername: String!) {
+        
+    }
+    
+    func userDidLeaveChatroom(aChatroom: EMChatroom!, user aUsername: String!) {
+        
+    }
+    
+    // MARK: EMCallManagerDelegate
     
     func stopCallTimer() {
         if (callTimer==nil) {
