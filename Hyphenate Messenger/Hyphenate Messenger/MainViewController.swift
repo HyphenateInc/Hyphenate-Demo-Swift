@@ -29,15 +29,19 @@ class MainViewController: UITabBarController {
         let contactsTabItem:UITabBarItem = self.tabBar.items![0]
         contactsTabItem.image = UIImage(named:  "contactsTab")
         contactsTabItem.selectedImage = UIImage(named:  "contactsTab_selected")
+        contactsTabItem.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0);
         
         let conversationsTabItem:UITabBarItem = self.tabBar.items![1]
         conversationsTabItem.image = UIImage(named:  "chatsTab")
         conversationsTabItem.selectedImage = UIImage(named:  "chatsTab_selected")
+        conversationsTabItem.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0);
 
         let settingsTabItem:UITabBarItem = self.tabBar.items![2]
         settingsTabItem.image = UIImage(named:  "settingsTab")
         settingsTabItem.selectedImage = UIImage(named:  "settingsTab_selected")
+        settingsTabItem.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0);
         
+        UITabBar.appearance().tintColor = UIColor(red: 77.0/255.0, green: 195.0/255.0, blue: 0, alpha: 1.0)
     }
 
     override func didReceiveMemoryWarning() {

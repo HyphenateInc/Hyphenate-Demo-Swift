@@ -21,9 +21,11 @@ class HyphenateTextField: UITextField {
         return CGRect(x: 15, y: 0, width: bounds.size.width, height: bounds.size.height)
     }
     
-    
     override func editingRectForBounds(bounds: CGRect) -> CGRect {
         return CGRect(x: 15, y: 0, width: bounds.size.width, height: bounds.size.height)
     }
     
+    override func textRectForBounds(bounds: CGRect) -> CGRect {
+        return CGRect(x: 15, y: 0, width: bounds.size.width, height: bounds.size.height)
+    }
 }
