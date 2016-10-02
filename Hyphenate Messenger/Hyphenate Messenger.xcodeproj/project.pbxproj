@@ -27,6 +27,8 @@
 		9A17BE341D9E20B30075EF9F /* HyphenateFullSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A17BE321D9E20B30075EF9F /* HyphenateFullSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A17BE381D9E20CB0075EF9F /* HyphenateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE371D9E20CB0075EF9F /* HyphenateTextField.swift */; };
 		9A23CBF31D9E256100FACFD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A23CBF21D9E256100FACFD7 /* LaunchScreen.storyboard */; };
+		9A545C891DA0CB2200DEFBC7 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A545C871DA0CB2200DEFBC7 /* ConversationTableViewCell.swift */; };
+		9A545C8A1DA0CB2200DEFBC7 /* ConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A545C881DA0CB2200DEFBC7 /* ConversationTableViewCell.xib */; };
 		9AFE4D721D9E2731007862CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AFE4D711D9E2731007862CA /* Main.storyboard */; };
 		B63467511D9E526300CBEAE2 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63467501D9E526300CBEAE2 /* GroupListViewController.swift */; };
 		B6346AEE1D9E6C5100CBEAE2 /* EMAudioPlayerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B63469D11D9E6C5100CBEAE2 /* EMAudioPlayerUtil.m */; };
@@ -223,6 +225,8 @@
 		9A17BE321D9E20B30075EF9F /* HyphenateFullSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HyphenateFullSDK.framework; sourceTree = "<group>"; };
 		9A17BE371D9E20CB0075EF9F /* HyphenateTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyphenateTextField.swift; sourceTree = "<group>"; };
 		9A23CBF21D9E256100FACFD7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9A545C871DA0CB2200DEFBC7 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
+		9A545C881DA0CB2200DEFBC7 /* ConversationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConversationTableViewCell.xib; sourceTree = "<group>"; };
 		9AFE4D711D9E2731007862CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B634674A1D9E4AD500CBEAE2 /* Hyphenate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hyphenate-Bridging-Header.h"; sourceTree = "<group>"; };
 		B63467501D9E526300CBEAE2 /* GroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupListViewController.swift; path = Controllers/ChatGroup/GroupListViewController.swift; sourceTree = "<group>"; };
@@ -618,9 +622,11 @@
 			isa = PBXGroup;
 			children = (
 				39062AE71D9F0D4400EE8412 /* BaseTableViewCell.xib */,
+				B6346B811D9E74CE00CBEAE2 /* BaseTableViewCell.swift */,
 				9A17BE371D9E20CB0075EF9F /* HyphenateTextField.swift */,
 				B6346B7C1D9E6EA500CBEAE2 /* EMSearchBar.swift */,
-				B6346B811D9E74CE00CBEAE2 /* BaseTableViewCell.swift */,
+				9A545C871DA0CB2200DEFBC7 /* ConversationTableViewCell.swift */,
+				9A545C881DA0CB2200DEFBC7 /* ConversationTableViewCell.xib */,
 			);
 			name = View;
 			sourceTree = "<group>";
@@ -1369,6 +1375,7 @@
 				9AFE4D721D9E2731007862CA /* Main.storyboard in Resources */,
 				B6346B671D9E6C5D00CBEAE2 /* EaseUIResource.bundle in Resources */,
 				9A23CBF31D9E256100FACFD7 /* LaunchScreen.storyboard in Resources */,
+				9A545C8A1DA0CB2200DEFBC7 /* ConversationTableViewCell.xib in Resources */,
 				B6346B0A1D9E6C5100CBEAE2 /* MJRefresh.bundle in Resources */,
 				39062AE81D9F0D4400EE8412 /* BaseTableViewCell.xib in Resources */,
 				9A17BDFB1D9E1FB70075EF9F /* Assets.xcassets in Resources */,
@@ -1550,6 +1557,7 @@
 				B6346AF61D9E6C5100CBEAE2 /* wav.mm in Sources */,
 				B6346B181D9E6C5100CBEAE2 /* EMSDImageCache.m in Sources */,
 				B6346B451D9E6C5100CBEAE2 /* EaseEmotionEscape.m in Sources */,
+				9A545C891DA0CB2200DEFBC7 /* ConversationTableViewCell.swift in Sources */,
 				B6346AFF1D9E6C5100CBEAE2 /* MJRefreshFooter.m in Sources */,
 				B6346B0D1D9E6C5100CBEAE2 /* UIScrollView+MJRefresh.m in Sources */,
 				9A17BE2B1D9E20190075EF9F /* MainViewController.swift in Sources */,

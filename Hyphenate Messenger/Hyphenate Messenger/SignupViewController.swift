@@ -24,7 +24,9 @@ class SignUpViewController: UIViewController {
     
 
     @IBAction func signupAction(sender: AnyObject) {
-        EMClient.sharedClient().registerWithUsername("peng", password: "password")
+        EMClient.sharedClient().registerWithUsername("pengpeng5", password: "password") { (userID, error) in
+            
+        }
     }
     /*
     // MARK: - Navigation

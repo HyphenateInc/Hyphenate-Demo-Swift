@@ -54,7 +54,22 @@ public class ConversationsTableViewController: UITableViewController, Conversati
         newConversationButton.showsTouchWhenHighlighted = true
         let rightButtonItem = UIBarButtonItem(customView: newConversationButton)
         navigationItem.rightBarButtonItem = rightButtonItem
+        
+        self.tableView.registerNib(UINib(nibName: "ConversationTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
 
+        reloadDataSource()
+    }
+    
+    func reloadDataSource(){
+        self.dataSource.removeAll()
+        
+        
+        dataSource =  EMClient.sharedClient().chatManager.getAllConversations()
+        
+        dispatch_async(dispatch_get_main_queue(), {
+            self.tableView.reloadData()
+        })
     }
 
     func composeConversationAction() {
@@ -79,7 +94,33 @@ public class ConversationsTableViewController: UITableViewController, Conversati
 
     override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return dataSource.count
+    }
+    
+    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+        
+        let cell:ConversationTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ConversationTableViewCell
+        let conversation:EMConversation = dataSource[indexPath.row] as! EMConversation
+        cell.senderLabel.text = conversation.latestMessage.from
+
+        let timeInterval: Double = Double(conversation.latestMessage.timestamp)
+        let date = NSDate(timeIntervalSince1970:timeInterval)
+        let formatter = NSDateFormatter()
+        formatter.timeStyle = .ShortStyle
+        let dateString = formatter.stringFromDate(date)
+        cell.timeLabel.text = dateString
+        
+        let textMessageBody: EMTextMessageBody = conversation.latestMessage.body as! EMTextMessageBody
+        cell.lastMessageLabel.text = textMessageBody.text
+        
+        print("message ext\(conversation.latestMessage.ext)")
+        
+        return cell
+        
+    }
+    
+    override public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+        return 90.0
     }
     
     public func conversationListViewController(conversationListViewController:ConversationsTableViewController, didSelectConversationModel conversationModel: AnyObject)
@@ -101,17 +142,6 @@ public class ConversationsTableViewController: UITableViewController, Conversati
     {
         return String()
     }
-
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
 
     /*
     // Override to support conditional editing of the table view.
