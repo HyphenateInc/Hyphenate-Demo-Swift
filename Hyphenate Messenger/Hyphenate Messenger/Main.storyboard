@@ -72,6 +72,10 @@
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="8dE-jV-AZ7">
+                                <rect key="frame" x="282" y="281" width="37" height="37"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -81,6 +85,7 @@
                             <constraint firstItem="3HR-jZ-Wr0" firstAttribute="leading" secondItem="doj-T5-RBt" secondAttribute="leading" id="Cn4-Tc-hBf"/>
                             <constraint firstItem="yQw-CV-GOo" firstAttribute="top" secondItem="KxP-KA-288" secondAttribute="bottom" constant="15" id="K1g-E0-x8X"/>
                             <constraint firstItem="OBd-gq-Jcw" firstAttribute="top" secondItem="7Nx-aa-8iP" secondAttribute="bottom" constant="80" id="L2u-CZ-U4n"/>
+                            <constraint firstItem="8dE-jV-AZ7" firstAttribute="centerX" secondItem="doj-T5-RBt" secondAttribute="centerX" id="R2C-fK-exy"/>
                             <constraint firstItem="KxP-KA-288" firstAttribute="trailing" secondItem="yQw-CV-GOo" secondAttribute="trailing" id="RXS-e1-6lg"/>
                             <constraint firstItem="P5C-sF-bXV" firstAttribute="leading" secondItem="Wel-pG-1gv" secondAttribute="trailing" constant="2" id="TAD-cU-UsQ"/>
                             <constraint firstAttribute="trailing" secondItem="3HR-jZ-Wr0" secondAttribute="trailing" id="TzU-aO-EFw"/>
@@ -89,12 +94,14 @@
                             <constraint firstItem="Wel-pG-1gv" firstAttribute="bottom" secondItem="P5C-sF-bXV" secondAttribute="bottom" id="kHi-ak-Vzp"/>
                             <constraint firstItem="KxP-KA-288" firstAttribute="leading" secondItem="yQw-CV-GOo" secondAttribute="leading" id="kV3-NY-S83"/>
                             <constraint firstItem="Wel-pG-1gv" firstAttribute="top" secondItem="yQw-CV-GOo" secondAttribute="bottom" constant="30" id="lhV-0d-6dQ"/>
+                            <constraint firstItem="8dE-jV-AZ7" firstAttribute="centerY" secondItem="doj-T5-RBt" secondAttribute="centerY" id="nYU-sF-ggO"/>
                             <constraint firstItem="3HR-jZ-Wr0" firstAttribute="bottom" secondItem="xdd-9D-Ec7" secondAttribute="top" id="rbt-ck-3s1"/>
                             <constraint firstItem="Wel-pG-1gv" firstAttribute="top" secondItem="P5C-sF-bXV" secondAttribute="top" id="xBP-KO-B2w"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="OPD-G5-fwP"/>
                     <connections>
+                        <outlet property="activityIndicator" destination="8dE-jV-AZ7" id="sE4-UK-ifk"/>
                         <outlet property="passwordTextField" destination="yQw-CV-GOo" id="ICe-Gf-Ddd"/>
                         <outlet property="userNameTextField" destination="KxP-KA-288" id="qhR-Rr-Z6U"/>
                     </connections>
@@ -166,6 +173,10 @@
                                     <segue destination="aq0-8E-OHS" kind="show" id="aSn-GT-UAj"/>
                                 </connections>
                             </button>
+                            <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="gvd-p1-5OB">
+                                <rect key="frame" x="282" y="282" width="37" height="37"/>
+                                <color key="color" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            </activityIndicatorView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
@@ -180,6 +191,8 @@
                             <constraint firstItem="SzE-SC-6eS" firstAttribute="top" secondItem="yKG-qb-vwD" secondAttribute="bottom" constant="80" id="Nqp-7i-gBX"/>
                             <constraint firstItem="Tfh-Pw-uYX" firstAttribute="top" secondItem="BxR-Ko-YdK" secondAttribute="top" id="Pht-UC-7LC"/>
                             <constraint firstItem="BxR-Ko-YdK" firstAttribute="top" secondItem="hFP-1W-1Td" secondAttribute="bottom" constant="23" id="Q2g-Bl-pcA"/>
+                            <constraint firstItem="gvd-p1-5OB" firstAttribute="centerX" secondItem="ahN-Qs-PZT" secondAttribute="centerX" id="WAP-sq-nZD"/>
+                            <constraint firstItem="gvd-p1-5OB" firstAttribute="centerY" secondItem="ahN-Qs-PZT" secondAttribute="centerY" id="bJl-jR-lcr"/>
                             <constraint firstItem="eye-iE-8T6" firstAttribute="leading" secondItem="ahN-Qs-PZT" secondAttribute="leadingMargin" constant="29" id="cek-4a-cih"/>
                             <constraint firstItem="eye-iE-8T6" firstAttribute="trailing" secondItem="hFP-1W-1Td" secondAttribute="trailing" id="d9e-mG-6ad"/>
                             <constraint firstItem="Tfh-Pw-uYX" firstAttribute="leading" secondItem="ahN-Qs-PZT" secondAttribute="leadingMargin" constant="50" id="e3r-8p-nb5"/>
@@ -197,6 +210,11 @@
                             </mask>
                         </variation>
                     </view>
+                    <connections>
+                        <outlet property="activityIndicator" destination="gvd-p1-5OB" id="9eU-UJ-DAE"/>
+                        <outlet property="passwordTextfield" destination="hFP-1W-1Td" id="Wy3-Hc-6PK"/>
+                        <outlet property="usernameTextfield" destination="eye-iE-8T6" id="NqS-g5-h17"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="3nf-jl-zCh" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
