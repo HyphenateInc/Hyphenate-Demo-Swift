@@ -30,6 +30,7 @@
 		9A545C8A1DA0CB2200DEFBC7 /* ConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A545C881DA0CB2200DEFBC7 /* ConversationTableViewCell.xib */; };
 		9AC132381DA0DFE500A2BD05 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC132361DA0DFE500A2BD05 /* SwitchTableViewCell.swift */; };
 		9AC132391DA0DFE500A2BD05 /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC132371DA0DFE500A2BD05 /* SwitchTableViewCell.xib */; };
+		9AC132431DA17B8200A2BD05 /* ProfileTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC132421DA17B8200A2BD05 /* ProfileTableViewController.swift */; };
 		9AFE4D721D9E2731007862CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AFE4D711D9E2731007862CA /* Main.storyboard */; };
 		B63467511D9E526300CBEAE2 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63467501D9E526300CBEAE2 /* GroupListViewController.swift */; };
 		B6346AEE1D9E6C5100CBEAE2 /* EMAudioPlayerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B63469D11D9E6C5100CBEAE2 /* EMAudioPlayerUtil.m */; };
@@ -229,6 +230,7 @@
 		9A545C881DA0CB2200DEFBC7 /* ConversationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConversationTableViewCell.xib; sourceTree = "<group>"; };
 		9AC132361DA0DFE500A2BD05 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		9AC132371DA0DFE500A2BD05 /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
+		9AC132421DA17B8200A2BD05 /* ProfileTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileTableViewController.swift; sourceTree = "<group>"; };
 		9AFE4D711D9E2731007862CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B634674A1D9E4AD500CBEAE2 /* Hyphenate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hyphenate-Bridging-Header.h"; sourceTree = "<group>"; };
 		B63467501D9E526300CBEAE2 /* GroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupListViewController.swift; path = Controllers/ChatGroup/GroupListViewController.swift; sourceTree = "<group>"; };
@@ -669,6 +671,7 @@
 			isa = PBXGroup;
 			children = (
 				9A17BE251D9E20190075EF9F /* ContactsTableViewController.swift */,
+				9AC132421DA17B8200A2BD05 /* ProfileTableViewController.swift */,
 			);
 			name = Contact;
 			sourceTree = "<group>";
@@ -1626,6 +1629,7 @@
 				B6346B181D9E6C5100CBEAE2 /* EMSDImageCache.m in Sources */,
 				B6346B451D9E6C5100CBEAE2 /* EaseEmotionEscape.m in Sources */,
 				9A545C891DA0CB2200DEFBC7 /* ConversationTableViewCell.swift in Sources */,
+				9AC132431DA17B8200A2BD05 /* ProfileTableViewController.swift in Sources */,
 				B6346AFF1D9E6C5100CBEAE2 /* MJRefreshFooter.m in Sources */,
 				B6346B0D1D9E6C5100CBEAE2 /* UIScrollView+MJRefresh.m in Sources */,
 				9A17BE2B1D9E20190075EF9F /* MainViewController.swift in Sources */,
