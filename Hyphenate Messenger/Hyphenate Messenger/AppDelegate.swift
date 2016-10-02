@@ -11,7 +11,7 @@ import CoreData
 import HyphenateFullSDK
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate,EMChatManagerDelegate {
 
     /** Hyphenate configuration constants **/
     static let kHyphenateAppKey = "hyphenate#hyphenatedemo"

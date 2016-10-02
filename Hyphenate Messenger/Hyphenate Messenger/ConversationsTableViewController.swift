@@ -28,7 +28,7 @@ public protocol ConversationListViewControllerDelegate: class {
     optional func conversationListViewController(conversationListViewController: ConversationsTableViewController, latestMessageTimeForConversationModel conversationModel: AnyObject) -> String
 }
 
-public class ConversationsTableViewController: UITableViewController, ConversationListViewControllerDelegate, ConversationListViewControllerDataSource, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+public class ConversationsTableViewController: UITableViewController, EMChatManagerDelegate,ConversationListViewControllerDelegate, ConversationListViewControllerDataSource, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
 
     var dataSource = [AnyObject]()
     var searchController : UISearchController!
@@ -58,8 +58,27 @@ public class ConversationsTableViewController: UITableViewController, Conversati
         self.tableView.registerNib(UINib(nibName: "ConversationTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
 
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.refreshDataSource), name: kNotification_conversationUpdated, object: nil)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.refresh), name: kNotification_didReceiveMessages, object: nil)
+
         reloadDataSource()
     }
+    
+    public override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        self.tabBarController?.tabBar.hidden = false
+    }
+    
+    
+    func refresh() {
+//        self.refreshAndSortView()
+    }
+    
+    func refreshDataSource() {
+//        self.tableViewDidTriggerHeaderRefresh()
+    }
+    
     
     func reloadDataSource(){
         self.dataSource.removeAll()
@@ -116,8 +135,19 @@ public class ConversationsTableViewController: UITableViewController, Conversati
         return 90.0
     }
     
-    public func conversationListViewController(conversationListViewController:ConversationsTableViewController, didSelectConversationModel conversationModel: AnyObject)
-    {
+    override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        if let conversation:EMConversation = dataSource[indexPath.row] as? EMConversation{
+            let chatController = ChatTableViewController(conversationID: conversation.conversationId, conversationType: conversation.type)
+            chatController.title = conversation.latestMessage.from
+            chatController.hidesBottomBarWhenPushed = true
+            self.navigationController!.pushViewController(chatController, animated: true)
+        }
+        NSNotificationCenter.defaultCenter().postNotificationName("setupUnreadMessageCount", object: nil)
+        self.tableView.reloadData()
+    }
+    
+    public func conversationListViewController(conversationListViewController:ConversationsTableViewController, didSelectConversationModel conversationModel: AnyObject){
+        
         
     }
     
@@ -135,4 +165,5 @@ public class ConversationsTableViewController: UITableViewController, Conversati
     {
         return String()
     }
+    
 }
