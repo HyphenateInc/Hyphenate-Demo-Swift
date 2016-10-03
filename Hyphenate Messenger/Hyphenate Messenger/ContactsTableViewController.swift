@@ -85,4 +85,14 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         return 50
     }
     
+    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        
+        if let contact = dataSource[indexPath.row] as? String {
+            
+            let profileController = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as! ProfileViewController
+            profileController.username = contact
+            self.navigationController!.pushViewController(profileController, animated: true)
+        }
+    }
+    
 }
