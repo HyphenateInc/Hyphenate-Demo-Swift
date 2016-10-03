@@ -42,6 +42,10 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         addButton.showsTouchWhenHighlighted = true
         let rightButtonItem = UIBarButtonItem(customView: addButton)
         navigationItem.rightBarButtonItem = rightButtonItem
+        
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.refreshFriendRequests), name: kNotification_conversationUpdated, object: nil)
+
+        
         self.reloadDataSource()
     }
     
@@ -62,14 +66,29 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
                 self.tableView.reloadData()
             })
         })
+        
+        let reuqests:[RequestEntity]? = InvitationManager.sharedInstance.getSavedFriendRequests(EMClient.sharedClient().currentUsername)
+        print(reuqests?.count)
     }
 
+    func refreshFriendRequests(){
+        self.tableView.reloadData()
+    }
+    
     // MARK: - Table view data source
 
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
+    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if section == 0{
+            return "Contact requests"
+        }else{
+            return ""
+        }
+    }
+    
     override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.dataSource.count
     }

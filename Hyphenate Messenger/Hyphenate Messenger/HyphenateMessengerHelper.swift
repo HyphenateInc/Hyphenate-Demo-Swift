@@ -365,6 +365,8 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         
         let requestDict: [String : AnyObject] = ["title": aUsername, "username": aUsername, "applyMessage": message!, "requestType":HIRequestType.HIRequestTypeFriend.rawValue]
         
+        self.addNewRequest(requestDict)
+        
         if (mainVC != nil) {
             
             #if !TARGET_IPHONE_SIMULATOR
@@ -383,6 +385,56 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
             #endif
         }
         NSNotificationCenter.defaultCenter().postNotificationName("kNotification_didReceiveRequest", object: requestDict)
+    }
+    
+    
+    func addNewRequest(dictionary: [String : AnyObject]) {
+        var dataSource = InvitationManager.sharedInstance.getSavedFriendRequests(EMClient.sharedClient().currentUsername)
+        if let applyUsername = dictionary["username"] as? String{
+            if let style = dictionary["requestType"]  as? Int{
+                if dataSource?.count > 0 {
+                    var i = dataSource!.count - 1
+                    while i >= 0 {
+                        let oldEntity = dataSource![i]
+                        let oldStyle = oldEntity.style
+                        if oldStyle == style && (applyUsername == oldEntity.applicantUsername) {
+                            if style != HIRequestType.HIRequestTypeFriend.rawValue {
+                                let newGroupid = dictionary["groupname"] as? String
+                                if newGroupid != nil{
+                                    break
+                                }
+                                if newGroupid?.characters.count > 0 || (newGroupid == oldEntity.groupId) {
+                                    break
+                                }
+                            }
+                            oldEntity.reason = (dictionary["applyMessage"] as! String)
+                            
+                            if let index = dataSource!.indexOf({$0 == oldEntity}){
+                                dataSource!.removeAtIndex(index)
+                            }
+                            
+                            dataSource!.insert(oldEntity, atIndex: 0)
+                            return
+                        }
+                        i -= 1
+                    }
+                }
+                
+                //new apply
+                let newEntity = RequestEntity()
+                newEntity.applicantUsername = (dictionary["username"] as! String)
+                newEntity.style = (dictionary["requestType"] as! Int)
+                newEntity.reason = (dictionary["applyMessage"] as! String)
+                let loginName = EMClient.sharedClient().currentUsername
+                newEntity.receiverUsername = loginName
+                let groupId = (dictionary["groupId"] as? String)
+                newEntity.groupId = groupId?.characters.count > 0 ? groupId! : ""
+                let groupSubject = (dictionary["groupname"] as? String)
+                newEntity.groupSubject = groupSubject?.characters.count > 0 ? groupSubject! : ""
+                let loginUsername = EMClient.sharedClient().currentUsername
+                InvitationManager.sharedInstance.addInvitation(newEntity, loginUser: loginUsername)
+            }
+        }
     }
     
     // MARK: EMChatroomManagerDelegate

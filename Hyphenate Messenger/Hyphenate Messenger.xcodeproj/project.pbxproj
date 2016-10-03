@@ -171,6 +171,8 @@
 		B6346B7D1D9E6EA500CBEAE2 /* EMSearchBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6346B7C1D9E6EA500CBEAE2 /* EMSearchBar.swift */; };
 		B6346B801D9E709000CBEAE2 /* EMSearchDisplayController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6346B7F1D9E709000CBEAE2 /* EMSearchDisplayController.swift */; };
 		B6346B821D9E74CE00CBEAE2 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6346B811D9E74CE00CBEAE2 /* ContactTableViewCell.swift */; };
+		B6346B851DA24F5C00CBEAE2 /* RequestEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6346B841DA24F5C00CBEAE2 /* RequestEntity.swift */; };
+		B6346B871DA24F8700CBEAE2 /* InvitationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6346B861DA24F8700CBEAE2 /* InvitationManager.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -515,6 +517,8 @@
 		B6346B7C1D9E6EA500CBEAE2 /* EMSearchBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EMSearchBar.swift; path = Views/EMSearchBar.swift; sourceTree = "<group>"; };
 		B6346B7F1D9E709000CBEAE2 /* EMSearchDisplayController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EMSearchDisplayController.swift; path = Controllers/Custom/EMSearchDisplayController.swift; sourceTree = "<group>"; };
 		B6346B811D9E74CE00CBEAE2 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactTableViewCell.swift; path = Views/ContactTableViewCell.swift; sourceTree = "<group>"; };
+		B6346B841DA24F5C00CBEAE2 /* RequestEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestEntity.swift; path = "Data Model/RequestEntity.swift"; sourceTree = "<group>"; };
+		B6346B861DA24F8700CBEAE2 /* InvitationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvitationManager.swift; path = "Data Model/InvitationManager.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -583,6 +587,7 @@
 		9A17BDEF1D9E1FB70075EF9F /* Hyphenate Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				B6346B831DA24F3F00CBEAE2 /* Data Model */,
 				9AC132411DA0EDD800A2BD05 /* Storyboard */,
 				9A9976EC1D9E3C6300F43A63 /* Utility */,
 				9A17BE361D9E20C50075EF9F /* View */,
@@ -1316,6 +1321,15 @@
 			name = Custom;
 			sourceTree = "<group>";
 		};
+		B6346B831DA24F3F00CBEAE2 /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				B6346B841DA24F5C00CBEAE2 /* RequestEntity.swift */,
+				B6346B861DA24F8700CBEAE2 /* InvitationManager.swift */,
+			);
+			name = "Data Model";
+			sourceTree = "<group>";
+		};
 		E4A9D6CF3A68620E18397F65 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
@@ -1622,10 +1636,12 @@
 				B6346B231D9E6C5100CBEAE2 /* UIImage+EMMultiFormat.m in Sources */,
 				9A17BE311D9E20190075EF9F /* ChatTableViewController.swift in Sources */,
 				B6346AFB1D9E6C5100CBEAE2 /* MBProgressHUD.m in Sources */,
+				B6346B871DA24F8700CBEAE2 /* InvitationManager.swift in Sources */,
 				B6346B361D9E6C5100CBEAE2 /* EaseSDKHelper.m in Sources */,
 				B6346B5C1D9E6C5100CBEAE2 /* EaseBubbleView.m in Sources */,
 				B6346B161D9E6C5100CBEAE2 /* MWZoomingScrollView.m in Sources */,
 				B6346B3B1D9E6C5100CBEAE2 /* NSDate+Category.m in Sources */,
+				B6346B851DA24F5C00CBEAE2 /* RequestEntity.swift in Sources */,
 				B6346B1B1D9E6C5100CBEAE2 /* EMSDWebImageDownloader.m in Sources */,
 				B6346B511D9E6C5100CBEAE2 /* EaseBaseMessageCell.m in Sources */,
 				B6346B3F1D9E6C5100CBEAE2 /* UIViewController+HUD.m in Sources */,
