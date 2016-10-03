@@ -40,6 +40,7 @@ public class ConversationsTableViewController: UITableViewController, EMChatMana
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         searchController.searchBar.delegate = self
+        tableView.tableFooterView = UIView()
         
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = true

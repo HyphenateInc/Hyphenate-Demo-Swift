@@ -21,12 +21,13 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
 //        EMClient.sharedClient().groupManager.removeDelegate(self)
 //        EMClient.sharedClient().groupManager.addDelegate(self)
         
-        self.tableView.registerNib(UINib(nibName: "ContactTableViewCell", bundle: nil), forCellReuseIdentifier: ContactTableViewCell.reuseIdentifier())
+        tableView.registerNib(UINib(nibName: "ContactTableViewCell", bundle: nil), forCellReuseIdentifier: ContactTableViewCell.reuseIdentifier())
         
         searchController = UISearchController(searchResultsController:  nil)
         searchController.searchResultsUpdater = self
         searchController.delegate = self
         searchController.searchBar.delegate = self
+        tableView.tableFooterView = UIView()
         
         searchController.hidesNavigationBarDuringPresentation = false
         searchController.dimsBackgroundDuringPresentation = true
@@ -41,7 +42,6 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         addButton.showsTouchWhenHighlighted = true
         let rightButtonItem = UIBarButtonItem(customView: addButton)
         navigationItem.rightBarButtonItem = rightButtonItem
-        
         self.reloadDataSource()
     }
     

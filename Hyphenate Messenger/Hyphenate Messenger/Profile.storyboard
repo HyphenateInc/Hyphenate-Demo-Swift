@@ -82,7 +82,6 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="45" sectionHeaderHeight="1" sectionFooterHeight="1" translatesAutoresizingMaskIntoConstraints="NO" id="HMo-7n-ubR">
                                 <rect key="frame" x="0.0" y="225" width="328" height="343"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="sectionIndexBackgroundColor" red="0.89411764705882346" green="0.9137254901960784" blue="0.92549019607843142" alpha="1" colorSpace="calibratedRGB"/>
                                 <connections>
                                     <outlet property="dataSource" destination="8hz-fC-fsN" id="LHF-6n-3Vf"/>
                                     <outlet property="delegate" destination="8hz-fC-fsN" id="mtG-Gu-WlR"/>

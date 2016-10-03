@@ -21,7 +21,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        navigationController?.navigationBar.hidden = true
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
         profileImageView.clipsToBounds = true
         usernameLabel.text = username
@@ -29,6 +28,17 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         self.tableView.registerNib(UINib(nibName: "ProfileSwitchTableViewCell", bundle: nil), forCellReuseIdentifier: ProfileSwitchTableViewCell.reuseIdentifier())
         self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         tableView.tableFooterView = UIView()
+        tableView.backgroundColor = UIColor(red: 228.0/255.0, green: 233.0/255.0, blue: 236.0/255.0, alpha: 1.0)
+    }
+    
+    override func viewWillDisappear(animated: Bool) {
+        navigationController?.navigationBar.hidden = false
+        super.viewWillDisappear(animated)
+    }
+    
+    override func viewWillAppear(animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.navigationBar.hidden = true
     }
     
     @IBAction func back(sender: AnyObject) {
