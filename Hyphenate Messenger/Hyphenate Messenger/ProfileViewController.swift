@@ -123,6 +123,15 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 0;
     }
 
+    @IBAction func chatButtonAction(sender: AnyObject) {
+        
+        let chatController = ChatTableViewController(conversationID: self.username, conversationType: EMConversationTypeChat)
+        chatController.title = self.username
+        chatController.hidesBottomBarWhenPushed = true
+        self.navigationController!.pushViewController(chatController, animated: true)
+    }
+    
+    
     /*
     // Override to support conditional editing of the table view.
     override func tableView(tableView: UITableView, canEditRowAtIndexPath indexPath: NSIndexPath) -> Bool {
