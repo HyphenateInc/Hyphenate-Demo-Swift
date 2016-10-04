@@ -38,13 +38,9 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         definesPresentationContext = true
         
         let image = UIImage(named: "iconAdd")
-        let imageFrame = CGRectMake(0, 0, (image?.size.width)!, (image?.size.height)!)
-        let addButton = UIButton(frame: imageFrame)
-        addButton.setBackgroundImage(image, forState: .Normal)
-        addButton.addTarget(self, action: Selector(addContactAction()), forControlEvents: .TouchUpInside)
-        addButton.showsTouchWhenHighlighted = true
-        let rightButtonItem = UIBarButtonItem(customView: addButton)
+        let rightButtonItem:UIBarButtonItem = UIBarButtonItem(image: image, landscapeImagePhone: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ContactsTableViewController.addContactAction))
         navigationItem.rightBarButtonItem = rightButtonItem
+    
         
         NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.refreshFriendRequests), name: kNotification_conversationUpdated, object: nil)
 
@@ -53,6 +49,10 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
     
     func addContactAction() {
         
+        EMClient.sharedClient().contactManager.addContact("pengpeng1", message: "hey") { (userName, error) in
+            print("add friend error \(error)")
+        }
+
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
@@ -116,21 +116,21 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         if requestSource.count > 0 {
             switch section {
             case 0:
-                let views: [AnyObject] = NSBundle.mainBundle().loadNibNamed("requestHeadeView", owner: self, options: nil)
-                let headerView = views.first as! requestHeaderView
+                let viewName = "requestHeaderView"
+                let view: UIView = NSBundle.mainBundle().loadNibNamed(viewName,
+                                                                      owner: self, options: nil)[0] as! UIView
+                let headerView: requestHeaderView = view as! requestHeaderView
                 headerView.requestCount.text = "(\(requestSource.count))"
                 return headerView
                 
-            case 0:
+            case 1:
                 let frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 20)
                 let headerView:UIView = UIView(frame: frame)
-                headerView.backgroundColor = UIColor(red: 228.0/255, green: 233.0/255, blue: 236.0/255, alpha: 1)
+                headerView.backgroundColor = UIColor(red: 228.0/255, green: 233.0/255, blue: 236.0/255, alpha: 1.0)
                 return headerView
             default:
                 break
             }
-
-            
         }
         
         return UIView()

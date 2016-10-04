@@ -14,7 +14,7 @@
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Requests" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6yB-uG-EIC">
                     <rect key="frame" x="41" y="10" width="78" height="21"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="78" id="hzH-pH-V5s"/>
+                        <constraint firstAttribute="width" constant="78" id="zvC-hs-TqU"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -22,13 +22,12 @@
                 </label>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="requestsIcon" translatesAutoresizingMaskIntoConstraints="NO" id="LVx-YA-1yE">
                     <rect key="frame" x="15" y="13" width="15" height="15"/>
-                    <constraints>
-                        <constraint firstAttribute="height" constant="15" id="AGc-K3-01k"/>
-                        <constraint firstAttribute="width" constant="15" id="c3x-sC-THM"/>
-                    </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zXT-tg-XGe">
-                    <rect key="frame" x="477" y="10" width="105" height="21"/>
+                    <rect key="frame" x="521" y="10" width="60" height="21"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="60" id="sbf-9q-tPI"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
@@ -36,16 +35,21 @@
             </subviews>
             <color key="backgroundColor" red="0.25098039220000001" green="0.36862745099999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
-                <constraint firstItem="LVx-YA-1yE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="Nnh-jV-Ble"/>
-                <constraint firstItem="6yB-uG-EIC" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="O7D-cH-sD1"/>
-                <constraint firstItem="6yB-uG-EIC" firstAttribute="leading" secondItem="LVx-YA-1yE" secondAttribute="trailing" constant="11" id="OgO-Nx-MiN"/>
-                <constraint firstItem="LVx-YA-1yE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="VFn-Py-pta"/>
+                <constraint firstItem="LVx-YA-1yE" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="5ZK-Ai-8eI"/>
+                <constraint firstItem="LVx-YA-1yE" firstAttribute="centerY" secondItem="6yB-uG-EIC" secondAttribute="centerY" id="Fdg-RF-ZNS"/>
+                <constraint firstItem="6yB-uG-EIC" firstAttribute="leading" secondItem="LVx-YA-1yE" secondAttribute="trailing" constant="11" id="HQ6-ar-9UU"/>
                 <constraint firstItem="zXT-tg-XGe" firstAttribute="leading" secondItem="6yB-uG-EIC" secondAttribute="trailing" constant="358" id="Z2j-Pp-BMG"/>
-                <constraint firstAttribute="trailing" secondItem="zXT-tg-XGe" secondAttribute="trailing" constant="18" id="hJj-EW-2xw"/>
-                <constraint firstItem="zXT-tg-XGe" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="iau-Y7-dLF"/>
+                <constraint firstItem="6yB-uG-EIC" firstAttribute="baseline" secondItem="zXT-tg-XGe" secondAttribute="baseline" id="key-YO-rVU"/>
+                <constraint firstAttribute="trailing" secondItem="zXT-tg-XGe" secondAttribute="trailing" constant="19" id="kyz-0E-hzo"/>
+                <constraint firstItem="LVx-YA-1yE" firstAttribute="centerY" secondItem="iN0-l3-epB" secondAttribute="centerY" id="oz2-qd-kSW"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <variation key="default">
+                <mask key="constraints">
+                    <exclude reference="Z2j-Pp-BMG"/>
+                </mask>
+            </variation>
             <connections>
                 <outlet property="requestCount" destination="zXT-tg-XGe" id="8Hq-KO-yt7"/>
             </connections>
