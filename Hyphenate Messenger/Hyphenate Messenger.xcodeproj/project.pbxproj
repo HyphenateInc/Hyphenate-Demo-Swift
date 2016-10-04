@@ -32,6 +32,10 @@
 		9A2E70B31DA2250D00D3EE94 /* ProfileSwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A2E70B11DA2250D00D3EE94 /* ProfileSwitchTableViewCell.xib */; };
 		9A545C891DA0CB2200DEFBC7 /* ConversationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A545C871DA0CB2200DEFBC7 /* ConversationTableViewCell.swift */; };
 		9A545C8A1DA0CB2200DEFBC7 /* ConversationTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A545C881DA0CB2200DEFBC7 /* ConversationTableViewCell.xib */; };
+		9A702B9D1DA3401F005ED10C /* FriendRequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A702B9B1DA3401F005ED10C /* FriendRequestTableViewCell.swift */; };
+		9A702B9E1DA3401F005ED10C /* FriendRequestTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A702B9C1DA3401F005ED10C /* FriendRequestTableViewCell.xib */; };
+		9A702BA01DA370FC005ED10C /* requestHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A702B9F1DA370FC005ED10C /* requestHeaderView.xib */; };
+		9A702BA21DA371E4005ED10C /* requestHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A702BA11DA371E4005ED10C /* requestHeaderView.swift */; };
 		9A7FB3801DA1EDA7005CC8C3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A7FB37F1DA1EDA7005CC8C3 /* Profile.storyboard */; };
 		9AC132381DA0DFE500A2BD05 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC132361DA0DFE500A2BD05 /* SwitchTableViewCell.swift */; };
 		9AC132391DA0DFE500A2BD05 /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC132371DA0DFE500A2BD05 /* SwitchTableViewCell.xib */; };
@@ -239,6 +243,10 @@
 		9A2E70B11DA2250D00D3EE94 /* ProfileSwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSwitchTableViewCell.xib; sourceTree = "<group>"; };
 		9A545C871DA0CB2200DEFBC7 /* ConversationTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ConversationTableViewCell.swift; sourceTree = "<group>"; };
 		9A545C881DA0CB2200DEFBC7 /* ConversationTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConversationTableViewCell.xib; sourceTree = "<group>"; };
+		9A702B9B1DA3401F005ED10C /* FriendRequestTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRequestTableViewCell.swift; sourceTree = "<group>"; };
+		9A702B9C1DA3401F005ED10C /* FriendRequestTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = FriendRequestTableViewCell.xib; sourceTree = "<group>"; };
+		9A702B9F1DA370FC005ED10C /* requestHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = requestHeaderView.xib; sourceTree = "<group>"; };
+		9A702BA11DA371E4005ED10C /* requestHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = requestHeaderView.swift; sourceTree = "<group>"; };
 		9A7FB37F1DA1EDA7005CC8C3 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
 		9AC132361DA0DFE500A2BD05 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		9AC132371DA0DFE500A2BD05 /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
@@ -664,6 +672,10 @@
 				9A2E70AD1DA224FA00D3EE94 /* ProfileNameTableViewCell.xib */,
 				9A2E70B01DA2250D00D3EE94 /* ProfileSwitchTableViewCell.swift */,
 				9A2E70B11DA2250D00D3EE94 /* ProfileSwitchTableViewCell.xib */,
+				9A702B9B1DA3401F005ED10C /* FriendRequestTableViewCell.swift */,
+				9A702B9C1DA3401F005ED10C /* FriendRequestTableViewCell.xib */,
+				9A702B9F1DA370FC005ED10C /* requestHeaderView.xib */,
+				9A702BA11DA371E4005ED10C /* requestHeaderView.swift */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -1473,7 +1485,9 @@
 			files = (
 				9AFE4D721D9E2731007862CA /* Main.storyboard in Resources */,
 				9A2E70B31DA2250D00D3EE94 /* ProfileSwitchTableViewCell.xib in Resources */,
+				9A702BA01DA370FC005ED10C /* requestHeaderView.xib in Resources */,
 				9AC132391DA0DFE500A2BD05 /* SwitchTableViewCell.xib in Resources */,
+				9A702B9E1DA3401F005ED10C /* FriendRequestTableViewCell.xib in Resources */,
 				9A2E70AF1DA224FA00D3EE94 /* ProfileNameTableViewCell.xib in Resources */,
 				B6346B671D9E6C5D00CBEAE2 /* EaseUIResource.bundle in Resources */,
 				9A23CBF31D9E256100FACFD7 /* LaunchScreen.storyboard in Resources */,
@@ -1577,6 +1591,7 @@
 				B6346B531D9E6C5100CBEAE2 /* EaseMessageCell.m in Sources */,
 				B6346B321D9E6C5100CBEAE2 /* PSTGridLayoutItem.m in Sources */,
 				B6346AF01D9E6C5100CBEAE2 /* EMCDDeviceManager+Media.m in Sources */,
+				9A702BA21DA371E4005ED10C /* requestHeaderView.swift in Sources */,
 				B6346B7D1D9E6EA500CBEAE2 /* EMSearchBar.swift in Sources */,
 				B6346B591D9E6C5100CBEAE2 /* EaseBubbleView+Text.m in Sources */,
 				B6346B2B1D9E6C5100CBEAE2 /* PSTCollectionViewController.m in Sources */,
@@ -1664,6 +1679,7 @@
 				B6346B181D9E6C5100CBEAE2 /* EMSDImageCache.m in Sources */,
 				B6346B451D9E6C5100CBEAE2 /* EaseEmotionEscape.m in Sources */,
 				9A545C891DA0CB2200DEFBC7 /* ConversationTableViewCell.swift in Sources */,
+				9A702B9D1DA3401F005ED10C /* FriendRequestTableViewCell.swift in Sources */,
 				9AC132431DA17B8200A2BD05 /* ProfileViewController.swift in Sources */,
 				B6346AFF1D9E6C5100CBEAE2 /* MJRefreshFooter.m in Sources */,
 				B6346B0D1D9E6C5100CBEAE2 /* UIScrollView+MJRefresh.m in Sources */,
