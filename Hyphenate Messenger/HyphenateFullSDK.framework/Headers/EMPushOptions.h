@@ -75,8 +75,7 @@ typedef enum{
  *  \~english 
  *  User's nickname to be displayed in apple push notification service messages
  */
-@property (nonatomic, copy) NSString *nickname __deprecated_msg("Use - displayName");
-@property (nonatomic, copy) NSString *displayName;
+@property (nonatomic, copy) NSString *nickname;
 
 /*!
  *  \~chinese 

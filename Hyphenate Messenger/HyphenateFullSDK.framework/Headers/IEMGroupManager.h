@@ -103,8 +103,6 @@
  */
 - (NSArray *)getGroupsWithoutPushNotification:(EMError **)pError;
 
-#pragma mark - Sync method
-
 /**
  *  \~chinese
  *  从服务器获取用户所有的群组，成功后更新DB和内存中的群组列表
@@ -637,7 +635,11 @@
  */
 - (EMError *)declineJoinApplication:(NSString *)aGroupId
                           applicant:(NSString *)aUsername
-                             reason:(NSString *)aReason;
+                            reason:(NSString *)aReason __deprecated_msg("Use -declineGroupRequest:sender:reason:");;
+
+- (EMError *)declineGroupRequest:(NSString *)aGroupId
+                          sender:(NSString *)aUsername
+                          reason:(NSString *)aReason;
 
 /*!
  *  \~chinese

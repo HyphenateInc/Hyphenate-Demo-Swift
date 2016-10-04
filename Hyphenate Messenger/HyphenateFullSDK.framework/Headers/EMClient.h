@@ -308,7 +308,9 @@
  *
  *  @result Error
  */
-- (EMError *)setApnsNickname:(NSString *)aNickname;
+- (EMError *)setApnsNickname:(NSString *)aNickname __deprecated_msg("Use -setApnsDisplayname:");
+
+- (EMError *)setApnsDisplayname:(NSString *)aDisplayName;
 
 /*!
  *  \~chinese 
@@ -327,7 +329,9 @@
  *
  *  @result Apple Push Notification Service options
  */
-- (EMPushOptions *)getPushOptionsFromServerWithError:(EMError **)pError;
+- (EMPushOptions *)getPushOptionsFromServerWithError:(EMError **)pError  __deprecated_msg("Use -getPushNotificationOptionsFromServerWithError:");
+
+- (EMPushOptions *)getPushNotificationOptionsFromServerWithError:(EMError **)pError;
 
 /*!
  *  \~chinese 
@@ -342,7 +346,8 @@
  *
  *  @result Error
  */
-- (EMError *)updatePushOptionsToServer;
+- (EMError *)updatePushOptionsToServer __deprecated_msg("Use -updatePushNotificationOptionsToServer");
+- (EMError *)updatePushNotificationOptionsToServer;
 
 /*!
  *  \~chinese
@@ -454,7 +459,7 @@
  *
  */
 - (void)updatePushNotifiationDisplayName:(NSString *)aDisplayName
-                              completion:(void (^)(NSString *aDisplayName, EMError *aError))aCompletionBlock;
+                              completion:(void (^)(NSString *aNickname, EMError *aError))aCompletionBlock;
 /*!
  *  \~chinese
  *  从服务器获取推送属性

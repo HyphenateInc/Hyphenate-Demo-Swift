@@ -85,6 +85,7 @@ typedef enum{
  *  \~english
  *  Delegate method will be invoked when current IM account is removed from server
  */
+
 - (void)userAccountDidRemoveFromServer;
 
 #pragma mark - Deprecated methods

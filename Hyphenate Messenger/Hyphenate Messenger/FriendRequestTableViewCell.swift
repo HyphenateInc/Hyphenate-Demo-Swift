@@ -22,7 +22,7 @@ class FriendRequestTableViewCell: UITableViewCell {
     var request: RequestEntity!
     
     
-    override func setSelected(selected: Bool, animated: Bool) {
+    override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
 
         // Configure the view for the selected state
@@ -32,26 +32,26 @@ class FriendRequestTableViewCell: UITableViewCell {
         return "FriendRequestCell"
     }
     
-    @IBAction func declineAction(sender: AnyObject) {
-        EMClient.sharedClient().contactManager.declineFriendRequestFromUser(usernameLabel.text) { (userName, error) in
+    @IBAction func declineAction(_ sender: AnyObject) {
+        EMClient.shared().contactManager.declineFriendRequest(fromUser: usernameLabel.text) { (userName, error) in
             if error != nil {
-                let alert = UIAlertController(title:"Error", message: "Fail declining a friend request, please try again", preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-                UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title:"Error", message: "Fail declining a friend request, please try again", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
             } else {
-                InvitationManager.sharedInstance.removeInvitation(self.request, loginUser: EMClient.sharedClient().currentUsername)
+                InvitationManager.sharedInstance.removeInvitation(self.request, loginUser: EMClient.shared().currentUsername)
             }
         }
     }
     
-    @IBAction func acceptAction(sender: AnyObject) {
-        EMClient.sharedClient().contactManager.approveFriendRequestFromUser(usernameLabel.text) { (userName, error) in
+    @IBAction func acceptAction(_ sender: AnyObject) {
+        EMClient.shared().contactManager.approveFriendRequest(fromUser: usernameLabel.text) { (userName, error) in
             if error != nil {
-                let alert = UIAlertController(title:"Error", message: "Fail accepting a friend request, please try again", preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-                UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title:"Error", message: "Fail accepting a friend request, please try again", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
             } else {
-                InvitationManager.sharedInstance.removeInvitation(self.request, loginUser: EMClient.sharedClient().currentUsername)
+                InvitationManager.sharedInstance.removeInvitation(self.request, loginUser: EMClient.shared().currentUsername)
             }
         }
     }

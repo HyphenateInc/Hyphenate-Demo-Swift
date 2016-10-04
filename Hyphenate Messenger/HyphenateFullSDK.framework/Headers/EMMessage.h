@@ -24,9 +24,9 @@
  *  Chat type
  */
 typedef enum{
-    EMChatTypeChat   = 0,   /*! \~chinese 单聊消息 \~english one to one chat type */
-    EMChatTypeGroupChat,    /*! \~chinese 群聊消息 \~english Group chat type */
-    EMChatTypeChatRoom,     /*! \~chinese 聊天室消息 \~english Chatroom chat type */
+    EMChatTypeChat   = 0,   /*! \~chinese 单聊消息 \~english one to one ChatRoom type */
+    EMChatTypeGroupChat,    /*! \~chinese 群聊消息 \~english Group ChatRoom type */
+    EMChatTypeChatRoom,     /*! \~chinese 聊天室消息 \~english Chatroom ChatRoom type */
 }EMChatType;
 
 /*!

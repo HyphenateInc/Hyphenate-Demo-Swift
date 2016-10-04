@@ -14,17 +14,17 @@ class EMSearchBar:UISearchBar{
     override init(frame: CGRect) {
         super.init(frame: frame)
         for subView: UIView in self.subviews {
-            if (subView.isKindOfClass(NSClassFromString("UISearchBarBackground")!)) {
+            if (subView.isKind(of: NSClassFromString("UISearchBarBackground")!)) {
                 subView.removeFromSuperview()
             }
-            if (subView.isKindOfClass(NSClassFromString("UISearchBarTextField")!)) {
+            if (subView.isKind(of: NSClassFromString("UISearchBarTextField")!)) {
                 let textField = (subView as! UITextField)
-                textField.borderStyle = .None
+                textField.borderStyle = .none
 //                textField.background! = nil
-                textField.frame = CGRectMake(8, 8, self.bounds.size.width - 2 * 8, self.bounds.size.height - 2 * 8)
+                textField.frame = CGRect(x: 8, y: 8, width: self.bounds.size.width - 2 * 8, height: self.bounds.size.height - 2 * 8)
                 textField.layer.cornerRadius = 6
                 textField.clipsToBounds = true
-                textField.backgroundColor = UIColor.whiteColor()
+                textField.backgroundColor = UIColor.white
             }
         }
     }
@@ -32,26 +32,26 @@ class EMSearchBar:UISearchBar{
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         for subView: UIView in self.subviews {
-            if (subView.isKindOfClass(NSClassFromString("UISearchBarBackground")!)) {
+            if (subView.isKind(of: NSClassFromString("UISearchBarBackground")!)) {
                 subView.removeFromSuperview()
             }
-            if (subView.isKindOfClass(NSClassFromString("UISearchBarTextField")!)) {
+            if (subView.isKind(of: NSClassFromString("UISearchBarTextField")!)) {
                 let textField = (subView as! UITextField)
-                textField.borderStyle = .None
+                textField.borderStyle = .none
                 //                textField.background! = nil
-                textField.frame = CGRectMake(8, 8, self.bounds.size.width - 2 * 8, self.bounds.size.height - 2 * 8)
+                textField.frame = CGRect(x: 8, y: 8, width: self.bounds.size.width - 2 * 8, height: self.bounds.size.height - 2 * 8)
                 textField.layer.cornerRadius = 6
                 textField.clipsToBounds = true
-                textField.backgroundColor = UIColor.whiteColor()
+                textField.backgroundColor = UIColor.white
             }
         }
     }
     
-    func setCancelButtonTitle(title: String) {
+    func setCancelButtonTitle(_ title: String) {
         for searchbuttons: UIView in self.subviews {
             if (searchbuttons is UIButton) {
                 let cancelButton = (searchbuttons as! UIButton)
-                cancelButton.setTitle(title, forState: .Normal)
+                cancelButton.setTitle(title, for: UIControlState())
             }
         }
     }

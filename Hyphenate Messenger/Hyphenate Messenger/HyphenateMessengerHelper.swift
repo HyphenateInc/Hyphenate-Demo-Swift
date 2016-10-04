@@ -8,18 +8,38 @@
 
 import UIKit
 import HyphenateFullSDK
+fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l < r
+  case (nil, _?):
+    return true
+  default:
+    return false
+  }
+}
+
+fileprivate func > <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
+  switch (lhs, rhs) {
+  case let (l?, r?):
+    return l > r
+  default:
+    return rhs < lhs
+  }
+}
+
 
 public enum HIRequestType: Int {
-    case HIRequestTypeFriend
-    case HIRequestTypeReceivedGroupInvitation
-    case HIRequestTypeJoinGroup
+    case hiRequestTypeFriend
+    case hiRequestTypeReceivedGroupInvitation
+    case hiRequestTypeJoinGroup
 }
 
 class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegate, EMContactManagerDelegate, EMGroupManagerDelegate, EMChatroomManagerDelegate, EMCallManagerDelegate {
 
     static let sharedInstance = HyphenateMessengerHelper()
     
-    var callTimer : NSTimer?
+    var callTimer : Timer?
     
     var mainVC : MainViewController?
     var conversationVC : ConversationsTableViewController?
@@ -27,12 +47,12 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     var chatVC : ChatTableViewController?
     
     deinit {
-        EMClient.sharedClient().removeDelegate(self)
-        EMClient.sharedClient().groupManager.removeDelegate(self)
-        EMClient.sharedClient().contactManager.removeDelegate(self)
-        EMClient.sharedClient().roomManager.removeDelegate(self)
-        EMClient.sharedClient().chatManager.removeDelegate(self)
-        EMClient.sharedClient().callManager.removeDelegate!(self)
+        EMClient.shared().removeDelegate(self)
+        EMClient.shared().groupManager.removeDelegate(self)
+        EMClient.shared().contactManager.removeDelegate(self)
+        EMClient.shared().roomManager.remove(self)
+        EMClient.shared().chatManager.remove(self)
+        EMClient.shared().callManager.remove!(self)
     }
     
     override init() {
@@ -41,11 +61,11 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     }
     
     func initHelper() {
-        EMClient.sharedClient().addDelegate(self)
-        EMClient.sharedClient().groupManager.addDelegate(self)
-        EMClient.sharedClient().chatManager.addDelegate(self)
-        EMClient.sharedClient().contactManager.addDelegate(self)
-        EMClient.sharedClient().roomManager.addDelegate(self)
+        EMClient.shared().add(self)
+        EMClient.shared().groupManager.add(self)
+        EMClient.shared().chatManager.add(self)
+        EMClient.shared().contactManager.add(self)
+        EMClient.shared().roomManager.add(self)
     
     }
  
@@ -53,28 +73,28 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     
     func loadConversationFromDB() {
         
-        dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0)) { 
+        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { 
             var conversations = [EMConversation]()
             
-            for (_, value) in EMClient.sharedClient().chatManager.getAllConversations().enumerate() {
+            for (_, value) in EMClient.shared().chatManager.getAllConversations().enumerated() {
                 let conversation : EMConversation = value as! EMConversation
                 if (conversation.latestMessage == nil) {
-                    EMClient.sharedClient().chatManager.deleteConversation(conversation.conversationId, isDeleteMessages: false, completion: nil)
+                    EMClient.shared().chatManager.deleteConversation(conversation.conversationId, isDeleteMessages: false, completion: nil)
                 } else {
                     conversations.append(conversation)
                 }
             }
             
-            dispatch_async(dispatch_get_main_queue(), {
-                NSNotificationCenter.defaultCenter().postNotificationName("kNotification_conversationUpdated", object: conversations)
-                NSNotificationCenter.defaultCenter().postNotificationName("kNotification_unreadMessageCountUpdated", object: conversations)
+            DispatchQueue.main.async(execute: {
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_conversationUpdated"), object: conversations)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_unreadMessageCountUpdated"), object: conversations)
             })
         }
     }
     
     func loadGroupFromServer() {
-        EMClient.sharedClient().groupManager.getJoinedGroups();
-        EMClient.sharedClient().groupManager.getJoinedGroupsFromServerWithCompletion { (groupList, error) in
+        EMClient.shared().groupManager.getJoinedGroups();
+        EMClient.shared().groupManager.getJoinedGroupsFromServer { (groupList, error) in
             if (error==nil) {
                 //reload group from contactVC
             }
@@ -82,24 +102,24 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     }
     
     func loadPushOptions() {
-        EMClient.sharedClient().getPushNotificationOptionsFromServerWithCompletion(nil)
+        EMClient.shared().getPushNotificationOptionsFromServer(completion: nil)
     }
     
    // MARK: EMClientDelegate
     
-    func connectionStateDidChange(aConnectionState: EMConnectionState) {
+    func connectionStateDidChange(_ aConnectionState: EMConnectionState) {
         
     }
     
-    func autoLoginDidCompleteWithError(aError: EMError!) {
+    func autoLoginDidCompleteWithError(_ aError: EMError!) {
         if aError != nil {
-            let alert = UIAlertController(title: nil, message: NSLocalizedString("login.errorAutoLogin", comment: ""), preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-            UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
-        } else if (EMClient.sharedClient().isConnected) {
+            let alert = UIAlertController(title: nil, message: NSLocalizedString("login.errorAutoLogin", comment: ""), preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+        } else if (EMClient.shared().isConnected) {
             
-            dispatch_async(dispatch_get_global_queue(DISPATCH_QUEUE_PRIORITY_DEFAULT, 0), { 
-                let flag: Bool = EMClient.sharedClient().migrateDatabaseToLatestSDK()
+            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { 
+                let flag: Bool = EMClient.shared().migrateDatabaseToLatestSDK()
                 if (flag==true) {
                     self.loadGroupFromServer()
                     self.loadConversationFromDB()
@@ -110,46 +130,46 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     
     func userAccountDidLoginFromOtherDevice() {
         logout()
-        let alert = UIAlertController(title: NSLocalizedString("prompt", comment: "Prompt"), message: NSLocalizedString("loggedIntoAnotherDevice", comment: "your login account has been in other places"), preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: NSLocalizedString("prompt", comment: "Prompt"), message: NSLocalizedString("loggedIntoAnotherDevice", comment: "your login account has been in other places"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
     func userAccountDidRemoveFromServer() {
         logout()
-        let alert = UIAlertController(title: NSLocalizedString("prompt", comment: "Prompt"), message: NSLocalizedString("loginUserRemoveFromServer", comment: "your account has been removed from the server side"), preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title: NSLocalizedString("prompt", comment: "Prompt"), message: NSLocalizedString("loginUserRemoveFromServer", comment: "your account has been removed from the server side"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
-    func hangupCallWithReason(reason: EMCallEndReason) {
+    func hangupCallWithReason(_ reason: EMCallEndReason) {
         
     }
     
     // EMChatManagerDelegate
     
-    func conversationListDidUpdate(aConversationList: [AnyObject]!) {
-        NSNotificationCenter.defaultCenter().postNotificationName("kNotification_unreadMessageCountUpdated", object: aConversationList)
+    func conversationListDidUpdate(_ aConversationList: [AnyObject]!) {
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_unreadMessageCountUpdated"), object: aConversationList)
         
-        NSNotificationCenter.defaultCenter().postNotificationName("kNotification_conversationUpdated", object: aConversationList)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_conversationUpdated"), object: aConversationList)
 
     }
     
-    func cmdMessagesDidReceive(aCmdMessages: [AnyObject]!) {
+    func cmdMessagesDidReceive(_ aCmdMessages: [AnyObject]!) {
        
-        NSNotificationCenter.defaultCenter().postNotificationName("kNotification_didReceiveCmdMessages", object: aCmdMessages)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_didReceiveCmdMessages"), object: aCmdMessages)
 
     }
     
-    func messagesDidReceive(aMessages: [AnyObject]!) {
+    func messagesDidReceive(_ aMessages: [AnyObject]!) {
         
         var isRefreshCons = true
         
-        for(_, value) in aMessages.enumerate() {
+        for(_, value) in aMessages.enumerated() {
             let message : EMMessage = value as! EMMessage
             let needShowNotif = (message.chatType != EMChatTypeChat) ? needShowNotification(message.conversationId) : true
             if (needShowNotif) {
-                NSNotificationCenter.defaultCenter().postNotificationName("didReceiveMessages", object: message)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "didReceiveMessages"), object: message)
             }
             
             if (chatVC == nil) {
@@ -163,8 +183,8 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
             
             if (chatVC==nil || isSameConversation==false) {
                 
-                NSNotificationCenter.defaultCenter().postNotificationName("didReceiveMessages", object: message)
-            NSNotificationCenter.defaultCenter().postNotificationName("kNotification_unreadMessageCountUpdated", object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "didReceiveMessages"), object: message)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_unreadMessageCountUpdated"), object: nil)
                 return
             }
             
@@ -175,16 +195,16 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         
         if isRefreshCons {
             
-            NSNotificationCenter.defaultCenter().postNotificationName("didReceiveMessages", object: aMessages[0])
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "didReceiveMessages"), object: aMessages[0])
 
-            NSNotificationCenter.defaultCenter().postNotificationName("kNotification_unreadMessageCountUpdated", object: nil)
+            NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_unreadMessageCountUpdated"), object: nil)
 
         }
     }
     
     // MARK: EMGroupManagerDelegate
     
-    func didLeaveGroup(aGroup: EMGroup!, reason aReason: EMGroupLeaveReason) {
+    func didLeave(_ aGroup: EMGroup!, reason aReason: EMGroupLeaveReason) {
         
         var str : String? = nil
         
@@ -195,14 +215,14 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         }
         
         if (str?.characters.count)! > 0 {
-            let alert = UIAlertController(title: nil, message: str, preferredStyle: .Alert)
-            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-            UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+            let alert = UIAlertController(title: nil, message: str, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
         }
         
         var viewControllers = self.mainVC?.navigationController?.viewControllers
         var chatViewController : ChatTableViewController? = nil
-        for(_, value) in (viewControllers?.enumerate())! {
+        for(_, value) in (viewControllers?.enumerated())! {
             if value is ChatTableViewController {
                 let viewController = value as! ChatTableViewController
                 if aGroup.groupId == viewController.conversation.conversationId {
@@ -213,9 +233,9 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         }
         
         if chatViewController != nil {
-            for (index, value) in (viewControllers?.enumerate())! {
+            for (index, value) in (viewControllers?.enumerated())! {
                 if value == chatViewController {
-                    viewControllers?.removeAtIndex(index)
+                    viewControllers?.remove(at: index)
                 }
             }
         }
@@ -227,7 +247,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         }
     }
     
-    func joinGroupRequestDidReceive(aGroup: EMGroup!, user aUsername: String!, reason aReason: String!) {
+    func joinGroupRequestDidReceive(_ aGroup: EMGroup!, user aUsername: String!, reason aReason: String!) {
         
         if !(aGroup != nil) || !(aUsername != nil) {
             return
@@ -240,7 +260,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
             reasonString = NSLocalizedString("group.joinRequestWithName", comment: "\(aUsername) requested to join the group \'\(aGroup.subject)\': \(aReason)")
         }
         
-        let requestDict : [String:AnyObject] = ["title": aGroup.subject, "groupId": aGroup.groupId, "username":aUsername, "groupname":aGroup.subject, "applyMessage":reasonString, "requestType":HIRequestType.HIRequestTypeJoinGroup.rawValue]
+        let requestDict : [String:AnyObject] = ["title": aGroup.subject as AnyObject, "groupId": aGroup.groupId as AnyObject, "username":aUsername as AnyObject, "groupname":aGroup.subject as AnyObject, "applyMessage":reasonString as AnyObject, "requestType":HIRequestType.hiRequestTypeJoinGroup.rawValue as AnyObject]
         
 //        [[FriendRequestViewController shareController] addNewRequest:requestDict];
 //        
@@ -250,41 +270,41 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
 //                [self.mainVC playSoundAndVibration];
 //            #endif
 //        }
-        NSNotificationCenter.defaultCenter().postNotificationName("kNotification_didReceiveRequest", object: requestDict)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_didReceiveRequest"), object: requestDict)
     }
     
-    func didJoinGroup(aGroup: EMGroup!, inviter aInviter: String!, message aMessage: String!) {
+    func didJoin(_ aGroup: EMGroup!, inviter aInviter: String!, message aMessage: String!) {
         
-        let alert = UIAlertController(title:NSLocalizedString("prompt", comment: "prompt"), message: "\(aInviter) invite you to group: \(aGroup.subject) [\(aGroup.groupId)]", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-            UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title:NSLocalizedString("prompt", comment: "prompt"), message: "\(aInviter) invite you to group: \(aGroup.subject) [\(aGroup.groupId)]", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+            UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
-    func joinGroupRequestDidDecline(aGroupId: String!, reason aReason: String!) {
+    func joinGroupRequestDidDecline(_ aGroupId: String!, reason aReason: String!) {
         
         var reasonString = aReason
         
-        if (reasonString != nil || reasonString.characters.count == 0) {
+        if (reasonString != nil || reasonString?.characters.count == 0) {
             reasonString = NSLocalizedString("group.joinRequestDeclined", comment: "be declined to join group \'\(aGroupId)\'")
         }
         
-        let alert = UIAlertController(title:NSLocalizedString("prompt", comment: "prompt"), message: reasonString, preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title:NSLocalizedString("prompt", comment: "prompt"), message: reasonString, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
-    func joinGroupRequestDidApprove(aGroup: EMGroup!) {
-        let alert = UIAlertController(title:NSLocalizedString("prompt", comment: "prompt"), message: NSLocalizedString("group.agreedAndJoined", comment: "agreed to join the group of \'\(aGroup.subject)\'"), preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+    func joinGroupRequestDidApprove(_ aGroup: EMGroup!) {
+        let alert = UIAlertController(title:NSLocalizedString("prompt", comment: "prompt"), message: NSLocalizedString("group.agreedAndJoined", comment: "agreed to join the group of \'\(aGroup.subject)\'"), preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
-    func groupInvitationDidReceive(aGroupId: String!, inviter aInviter: String!, message aMessage: String!) {
+    func groupInvitationDidReceive(_ aGroupId: String!, inviter aInviter: String!, message aMessage: String!) {
         if (aGroupId == nil || aInviter == nil) {
             return;
         }
         
-        let requestDict : [String:AnyObject] = ["title": "", "groupId": aGroupId, "username":aInviter, "groupname":"", "applyMessage":aMessage, "requestType":HIRequestType.HIRequestTypeReceivedGroupInvitation.rawValue]
+        let requestDict : [String:AnyObject] = ["title": "" as AnyObject, "groupId": aGroupId as AnyObject, "username":aInviter as AnyObject, "groupname":"" as AnyObject, "applyMessage":aMessage as AnyObject, "requestType":HIRequestType.hiRequestTypeReceivedGroupInvitation.rawValue as AnyObject]
         
 //        [[FriendRequestViewController shareController] addNewRequest:requestDict];
 //        
@@ -295,26 +315,26 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
 //            #endif
 //        }
         
-        NSNotificationCenter.defaultCenter().postNotificationName("kNotification_didReceiveRequest", object: requestDict)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_didReceiveRequest"), object: requestDict)
     }
 
     // MARK: EMContactManagerDelegate
     
-    func friendRequestDidApproveByUser(aUsername: String!) {
+    func friendRequestDidApprove(byUser aUsername: String!) {
         
-        let alert = UIAlertController(title:nil, message: "\(aUsername) accepted friend request", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title:nil, message: "\(aUsername) accepted friend request", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
-    func friendRequestDidDeclineByUser(aUsername: String!) {
+    func friendRequestDidDecline(byUser aUsername: String!) {
         
-        let alert = UIAlertController(title:nil, message: "\(aUsername) declined friend request", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title:nil, message: "\(aUsername) declined friend request", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
     }
     
-    func friendshipDidRemoveByUser(aUsername: String!) {
+    func friendshipDidRemove(byUser aUsername: String!) {
         
         var viewControllers = mainVC?.navigationController?.viewControllers
         var chatViewController: ChatTableViewController? = nil
@@ -330,7 +350,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         }
         
         if chatViewController != nil {
-            viewControllers?.removeAtIndex((viewControllers?.indexOf(chatViewController!))!)
+            viewControllers?.remove(at: (viewControllers?.index(of: chatViewController!))!)
             
             if viewControllers?.count > 0 {
                 mainVC?.navigationController?.setViewControllers([viewControllers![0]], animated: true)
@@ -340,18 +360,18 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         
         }
         
-        let alert = UIAlertController(title:nil, message: "\(NSLocalizedString("delete", comment: "delete")) \(aUsername)", preferredStyle: .Alert)
-        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+        let alert = UIAlertController(title:nil, message: "\(NSLocalizedString("delete", comment: "delete")) \(aUsername)", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
         
         contactVC?.reloadDataSource()
     }
     
-    func friendshipDidAddByUser(aUsername: String!) {
+    func friendshipDidAdd(byUser aUsername: String!) {
         contactVC?.reloadDataSource()
     }
     
-    func friendRequestDidReceiveFromUser(aUsername: String!, message aMessage: String!) {
+    func friendRequestDidReceive(fromUser aUsername: String!, message aMessage: String!) {
         if (aUsername == nil) {
             return;
         }
@@ -363,7 +383,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
             message = "\(NSLocalizedString("friend.somebodyAddWithName", comment: "\(aUsername) added you as a friend"))"
         }
         
-        let requestDict: [String : AnyObject] = ["title": aUsername, "username": aUsername, "applyMessage": message!, "requestType":HIRequestType.HIRequestTypeFriend.rawValue]
+        let requestDict: [String : AnyObject] = ["title": aUsername as AnyObject, "username": aUsername as AnyObject, "applyMessage": message! as AnyObject, "requestType":HIRequestType.hiRequestTypeFriend.rawValue as AnyObject]
         
         self.addNewRequest(requestDict)
         
@@ -372,24 +392,24 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
             #if !TARGET_IPHONE_SIMULATOR
 //                [self.mainVC playSoundAndVibration];
                 
-                let isAppActive = UIApplication.sharedApplication().applicationState == .Active
+                let isAppActive = UIApplication.shared.applicationState == .active
                 
                 if (isAppActive == false) {
                     
                     let notification: UILocalNotification = UILocalNotification()
-                    notification.fireDate = NSDate()
+                    notification.fireDate = Date()
                     notification.alertBody = "\(NSLocalizedString("friend.somebodyAddWithName", comment: "\(aUsername) added you as a friend"))"
                     notification.alertAction = "\(NSLocalizedString("open", comment: "Open"))"
-                    notification.timeZone = NSTimeZone.defaultTimeZone()
+                    notification.timeZone = TimeZone.current
                 }
             #endif
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("kNotification_didReceiveRequest", object: requestDict)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_didReceiveRequest"), object: requestDict)
     }
     
     
-    func addNewRequest(dictionary: [String : AnyObject]) {
-        var dataSource = InvitationManager.sharedInstance.getSavedFriendRequests(EMClient.sharedClient().currentUsername)
+    func addNewRequest(_ dictionary: [String : AnyObject]) {
+        var dataSource = InvitationManager.sharedInstance.getSavedFriendRequests(EMClient.shared().currentUsername)
         if let applyUsername = dictionary["username"] as? String{
             if let style = dictionary["requestType"]  as? Int{
                 if dataSource?.count > 0 {
@@ -398,7 +418,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
                         let oldEntity = dataSource![i]
                         let oldStyle = oldEntity.style
                         if oldStyle == style && (applyUsername == oldEntity.applicantUsername) {
-                            if style != HIRequestType.HIRequestTypeFriend.rawValue {
+                            if style != HIRequestType.hiRequestTypeFriend.rawValue {
                                 let newGroupid = dictionary["groupname"] as? String
                                 if newGroupid != nil{
                                     break
@@ -409,11 +429,11 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
                             }
                             oldEntity.reason = (dictionary["applyMessage"] as! String)
                             
-                            if let index = dataSource!.indexOf({$0 == oldEntity}){
-                                dataSource!.removeAtIndex(index)
+                            if let index = dataSource!.index(where: {$0 == oldEntity}){
+                                dataSource!.remove(at: index)
                             }
                             
-                            dataSource!.insert(oldEntity, atIndex: 0)
+                            dataSource!.insert(oldEntity, at: 0)
                             return
                         }
                         i -= 1
@@ -425,25 +445,25 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
                 newEntity.applicantUsername = (dictionary["username"] as! String)
                 newEntity.style = (dictionary["requestType"] as! Int)
                 newEntity.reason = (dictionary["applyMessage"] as! String)
-                let loginName = EMClient.sharedClient().currentUsername
-                newEntity.receiverUsername = loginName
+                let loginName = EMClient.shared().currentUsername
+                newEntity.receiverUsername = loginName!
                 let groupId = (dictionary["groupId"] as? String)
                 newEntity.groupId = groupId?.characters.count > 0 ? groupId! : ""
                 let groupSubject = (dictionary["groupname"] as? String)
                 newEntity.groupSubject = groupSubject?.characters.count > 0 ? groupSubject! : ""
-                let loginUsername = EMClient.sharedClient().currentUsername
-                InvitationManager.sharedInstance.addInvitation(newEntity, loginUser: loginUsername)
+                let loginUsername = EMClient.shared().currentUsername
+                InvitationManager.sharedInstance.addInvitation(newEntity, loginUser: loginUsername!)
             }
         }
     }
     
     // MARK: EMChatroomManagerDelegate
     
-    func userDidJoinChatroom(aChatroom: EMChatroom!, user aUsername: String!) {
+    func userDidJoin(_ aChatroom: EMChatroom!, user aUsername: String!) {
         
     }
     
-    func userDidLeaveChatroom(aChatroom: EMChatroom!, user aUsername: String!) {
+    func userDidLeave(_ aChatroom: EMChatroom!, user aUsername: String!) {
         
     }
     
@@ -458,12 +478,12 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     }
 
     func logout() {
-        EMClient.sharedClient().logout(false) { (error) in
+        EMClient.shared().logout(false) { (error) in
             if (error == nil) {
-                NSNotificationCenter.defaultCenter().postNotificationName("KNotification_logout", object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "KNotification_logout"), object: nil)
             } else {
                 print("Error!!! Failed to logout properly!")
-                NSNotificationCenter.defaultCenter().postNotificationName("KNotification_logout", object: nil)
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "KNotification_logout"), object: nil)
             }
         }
     }
@@ -482,11 +502,11 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         return chatViewController
     }
     
-    func needShowNotification(fromChatter:String) -> Bool {
+    func needShowNotification(_ fromChatter:String) -> Bool {
         var ret = true
-        let igGroupIds : Array = EMClient.sharedClient().groupManager.getGroupsWithoutPushNotification(nil)
+        let igGroupIds : Array = EMClient.shared().groupManager.getGroupsWithoutPushNotification(nil)
         
-        for (_, value) in igGroupIds.enumerate() {
+        for (_, value) in igGroupIds.enumerated() {
             let str:String = value as! String
             if str == fromChatter {
                 ret = false

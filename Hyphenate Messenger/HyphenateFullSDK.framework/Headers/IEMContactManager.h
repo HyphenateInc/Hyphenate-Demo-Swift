@@ -75,7 +75,7 @@
 
 /*!
  *  \~chinese
- *  获取本地存储的所有好友
+ *  从内存中获取所有好友
  *
  *  @result 好友列表<NSString>
  *
@@ -88,7 +88,7 @@
 
 /*!
  *  \~chinese
- *  从本地获取黑名单列表
+ *  从内存中获取黑名单列表
  *
  *  @result 黑名单列表<NSString>
  *
@@ -240,7 +240,7 @@
  *
  *  @return Error
  */
-- (EMError *)acceptInvitationForUsername:(NSString *)aUsername;
+- (EMError *)acceptInvitationForUsername:(NSString *)aUsername __deprecated_msg("Use -approveFriendRequestFromUser:completion:");
 
 /*!
  *  \~chinese
@@ -263,9 +263,37 @@
  * - (void)declineFriendRequestFromUser:(NSString *)aUsername
  *                           completion:(void (^)(NSString *aUsername, EMError *aError))aCompletionBlock;
  */
-- (EMError *)declineInvitationForUsername:(NSString *)aUsername;
+- (EMError *)declineInvitationForUsername:(NSString *)aUsername __deprecated_msg("Use -declineFriendRequestFromUser:completion:");
 
 #pragma mark - Async method
+
+/*!
+ *  \~chinese
+ *  获取本地所有好友，内存中没有会读取DB
+ *
+ *  @param aCompletionBlock 完成的回调
+ *
+ *  \~english
+ *  Get all contacts
+ *
+ *  @param aCompletionBlock The callback block of completion
+ *
+ */
+- (void)getContactsWithCompletion:(void (^)(NSArray *aContacts, EMError *aError))aCompletionBlock;
+
+/*!
+ *  \~chinese
+ *  从本地获取黑名单列表，内存中不存在则读取DB
+ *
+ *  @param aCompletionBlock 完成的回调
+ *
+ *  \~english
+ *  Get the blacklist
+ *
+ *  @param aCompletionBlock The callback block of completion
+ *
+ */
+- (void)getBlackListWithCompletion:(void (^)(NSArray *aList, EMError *aError))aCompletionBlock;
 
 /*!
  *  \~chinese

@@ -78,7 +78,7 @@
  *  \~english
  *  The capacity of the chat room
  */
-@property (nonatomic, readonly) NSInteger maxOccupantsCount __deprecated_msg("Use - maxMembersCount");
+@property (nonatomic, readonly) NSInteger maxOccupantsCount __deprecated_msg("Use - membersCount");
 @property (nonatomic, readonly) NSInteger maxMembersCount;
 
 /*!

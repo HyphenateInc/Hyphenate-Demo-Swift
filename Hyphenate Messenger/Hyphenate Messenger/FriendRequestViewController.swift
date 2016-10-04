@@ -19,7 +19,7 @@ class FriendRequestViewController: UIViewController, UITextFieldDelegate {
 
         self.title = "Add Contact"
         statusLabel.text = ""
-        let rightButtonItem:UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .Plain, target: self, action: #selector(FriendRequestViewController.cancelAction))
+        let rightButtonItem:UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(FriendRequestViewController.cancelAction))
         navigationItem.rightBarButtonItem = rightButtonItem
         navigationItem.hidesBackButton = true
     }
@@ -30,21 +30,21 @@ class FriendRequestViewController: UIViewController, UITextFieldDelegate {
     }
     
     func cancelAction() {
-        navigationController?.popViewControllerAnimated(true)
+        navigationController?.popViewController(animated: true)
     }
 
 
-    func textFieldShouldReturn(textField: UITextField) -> Bool {
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
         if inputTextfield.text != "" {
             spinner.startAnimating()
-            EMClient.sharedClient().contactManager.addContact(inputTextfield.text, message: "\(EMClient.sharedClient().currentUsername) sent you a friend request") { (userName, error) in
+            EMClient.shared().contactManager.addContact(inputTextfield.text, message: "\(EMClient.shared().currentUsername) sent you a friend request") { (userName, error) in
                 self.spinner.stopAnimating()
                 if error != nil {
-                    let alert = UIAlertController(title:"Error", message: "Fail sending a friend request, please try again", preferredStyle: .Alert)
-                    alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-                    UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+                    let alert = UIAlertController(title:"Error", message: "Fail sending a friend request, please try again", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
                 } else {
-                    self.navigationController?.popViewControllerAnimated(true)
+                    self.navigationController?.popViewController(animated: true)
                 }
             }
         }

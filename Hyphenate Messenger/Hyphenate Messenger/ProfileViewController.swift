@@ -24,35 +24,35 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
         profileImageView.clipsToBounds = true
         usernameLabel.text = username
-        self.tableView.registerNib(UINib(nibName: "ProfileNameTableViewCell", bundle: nil), forCellReuseIdentifier: ProfileNameTableViewCell.reuseIdentifier())
-        self.tableView.registerNib(UINib(nibName: "ProfileSwitchTableViewCell", bundle: nil), forCellReuseIdentifier: ProfileSwitchTableViewCell.reuseIdentifier())
-        self.tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
+        self.tableView.register(UINib(nibName: "ProfileNameTableViewCell", bundle: nil), forCellReuseIdentifier: ProfileNameTableViewCell.reuseIdentifier())
+        self.tableView.register(UINib(nibName: "ProfileSwitchTableViewCell", bundle: nil), forCellReuseIdentifier: ProfileSwitchTableViewCell.reuseIdentifier())
+        self.tableView.register(UITableViewCell.self, forCellReuseIdentifier: "reuseIdentifier")
         tableView.tableFooterView = UIView()
         tableView.backgroundColor = UIColor(red: 228.0/255.0, green: 233.0/255.0, blue: 236.0/255.0, alpha: 1.0)
     }
     
-    override func viewWillDisappear(animated: Bool) {
-        navigationController?.navigationBar.hidden = false
+    override func viewWillDisappear(_ animated: Bool) {
+        navigationController?.navigationBar.isHidden = false
         super.viewWillDisappear(animated)
     }
     
-    override func viewWillAppear(animated: Bool) {
+    override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        navigationController?.navigationBar.hidden = true
+        navigationController?.navigationBar.isHidden = true
     }
     
-    @IBAction func back(sender: AnyObject) {
-        navigationController?.popViewControllerAnimated(true)
+    @IBAction func back(_ sender: AnyObject) {
+        navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Table view data source
 
-    func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 2
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
         switch section {
         case 0:
@@ -65,13 +65,13 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     }
 
     
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
 
-        switch indexPath.section {
+        switch (indexPath as NSIndexPath).section {
     
         case 0:
-                let nameCell: ProfileNameTableViewCell = tableView.dequeueReusableCellWithIdentifier("profileNameCell", forIndexPath: indexPath) as! ProfileNameTableViewCell
-                switch indexPath.row {
+                let nameCell: ProfileNameTableViewCell = tableView.dequeueReusableCell(withIdentifier: "profileNameCell", for: indexPath) as! ProfileNameTableViewCell
+                switch (indexPath as NSIndexPath).row {
                 
                 case 0:
                     nameCell.title.text = "Hyphenate ID"
@@ -86,16 +86,16 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             return nameCell
             
         case 1:
-            let switchCell: ProfileSwitchTableViewCell = tableView.dequeueReusableCellWithIdentifier("profileSwitchCell", forIndexPath: indexPath) as! ProfileSwitchTableViewCell
+            let switchCell: ProfileSwitchTableViewCell = tableView.dequeueReusableCell(withIdentifier: "profileSwitchCell", for: indexPath) as! ProfileSwitchTableViewCell
 
-            switch indexPath.row {
+            switch (indexPath as NSIndexPath).row {
             case 0:
                 switchCell.title.text = "Block Contact"
                 switchCell.switchControl.setOn(false, animated: true)
             case 1:
                 switchCell.title.text = "Delete Contact"
-                switchCell.title.textColor = UIColor.redColor()
-                switchCell.switchControl.hidden = true
+                switchCell.title.textColor = UIColor.red
+                switchCell.switchControl.isHidden = true
             default:
                 break
             }
@@ -106,10 +106,10 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
             break
         }
 
-        return tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
     }
     
-    func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         switch section {
         case 0:
             return 0
@@ -123,12 +123,12 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
         return 0;
     }
 
-    @IBAction func chatButtonAction(sender: AnyObject) {
+    @IBAction func chatButtonAction(_ sender: AnyObject) {
         
         let chatController = ChatTableViewController(conversationID: self.username, conversationType: EMConversationTypeChat)
-        chatController.title = self.username
-        chatController.hidesBottomBarWhenPushed = true
-        self.navigationController!.pushViewController(chatController, animated: true)
+        chatController?.title = self.username
+        chatController?.hidesBottomBarWhenPushed = true
+        self.navigationController!.pushViewController(chatController!, animated: true)
     }
     
     

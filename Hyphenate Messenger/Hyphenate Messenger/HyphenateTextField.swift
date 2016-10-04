@@ -13,19 +13,19 @@ class HyphenateTextField: UITextField {
 
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
-        layer.borderColor = UIColor(red: 214.0/255.0, green: 214.0/255.0, blue: 217.0/255.0, alpha: 1.0).CGColor
+        layer.borderColor = UIColor(red: 214.0/255.0, green: 214.0/255.0, blue: 217.0/255.0, alpha: 1.0).cgColor
         layer.borderWidth = 1.0
     }
     
-    override func placeholderRectForBounds(bounds: CGRect) -> CGRect {
+    override func placeholderRect(forBounds bounds: CGRect) -> CGRect {
         return CGRect(x: 15, y: 0, width: bounds.size.width, height: bounds.size.height)
     }
     
-    override func editingRectForBounds(bounds: CGRect) -> CGRect {
+    override func editingRect(forBounds bounds: CGRect) -> CGRect {
         return CGRect(x: 15, y: 0, width: bounds.size.width, height: bounds.size.height)
     }
     
-    override func textRectForBounds(bounds: CGRect) -> CGRect {
+    override func textRect(forBounds bounds: CGRect) -> CGRect {
         return CGRect(x: 15, y: 0, width: bounds.size.width, height: bounds.size.height)
     }
 }

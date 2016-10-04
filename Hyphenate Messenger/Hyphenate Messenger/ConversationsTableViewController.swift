@@ -10,30 +10,30 @@ import UIKit
 import HyphenateFullSDK
 
 public enum DeleteConvesationType: Int {
-    case DeleteConvesationOnly
-    case DeleteConvesationWithMessages
+    case deleteConvesationOnly
+    case deleteConvesationWithMessages
 }
 
 public protocol ConversationListViewControllerDelegate: class {
     
-    func conversationListViewController(conversationListViewController:ConversationsTableViewController, didSelectConversationModel conversationModel: AnyObject)
+    func conversationListViewController(_ conversationListViewController:ConversationsTableViewController, didSelectConversationModel conversationModel: AnyObject)
 }
 
 @objc public protocol ConversationListViewControllerDataSource: class {
     
-    func conversationListViewController(conversationListViewController: ConversationsTableViewController, modelForConversation conversation: EMConversation) -> AnyObject
+    func conversationListViewController(_ conversationListViewController: ConversationsTableViewController, modelForConversation conversation: EMConversation) -> AnyObject
     
-    optional func conversationListViewController(conversationListViewController:ConversationsTableViewController, latestMessageTitleForConversationModel conversationModel: AnyObject) -> String
+    @objc optional func conversationListViewController(_ conversationListViewController:ConversationsTableViewController, latestMessageTitleForConversationModel conversationModel: AnyObject) -> String
     
-    optional func conversationListViewController(conversationListViewController: ConversationsTableViewController, latestMessageTimeForConversationModel conversationModel: AnyObject) -> String
+    @objc optional func conversationListViewController(_ conversationListViewController: ConversationsTableViewController, latestMessageTimeForConversationModel conversationModel: AnyObject) -> String
 }
 
-public class ConversationsTableViewController: UITableViewController, EMChatManagerDelegate,ConversationListViewControllerDelegate, ConversationListViewControllerDataSource, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
+open class ConversationsTableViewController: UITableViewController, EMChatManagerDelegate,ConversationListViewControllerDelegate, ConversationListViewControllerDataSource, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
 
     var dataSource = [AnyObject]()
     var searchController : UISearchController!
 
-    override public func viewDidLoad() {
+    override open func viewDidLoad() {
         super.viewDidLoad()
         
         searchController = UISearchController(searchResultsController:  nil)
@@ -48,26 +48,26 @@ public class ConversationsTableViewController: UITableViewController, EMChatMana
         definesPresentationContext = true
         
         let image = UIImage(named: "iconNewConversation")
-        let imageFrame = CGRectMake(0, 0, (image?.size.width)!, (image?.size.height)!)
+        let imageFrame = CGRect(x: 0, y: 0, width: (image?.size.width)!, height: (image?.size.height)!)
         let newConversationButton = UIButton(frame: imageFrame)
-        newConversationButton.setBackgroundImage(image, forState: .Normal)
-        newConversationButton.addTarget(self, action: Selector(composeConversationAction()), forControlEvents: .TouchUpInside)
+        newConversationButton.setBackgroundImage(image, for: UIControlState())
+        newConversationButton.addTarget(self, action: #selector(ConversationsTableViewController.composeConversationAction), for: .touchUpInside)
         newConversationButton.showsTouchWhenHighlighted = true
         let rightButtonItem = UIBarButtonItem(customView: newConversationButton)
         navigationItem.rightBarButtonItem = rightButtonItem
         
-        self.tableView.registerNib(UINib(nibName: "ConversationTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
-        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.SingleLine
+        self.tableView.register(UINib(nibName: "ConversationTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
+        self.tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
   
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.refreshDataSource), name: kNotification_conversationUpdated, object: nil)
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.refresh), name: kNotification_didReceiveMessages, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshDataSource), name: NSNotification.Name(rawValue: kNotification_conversationUpdated), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: kNotification_didReceiveMessages), object: nil)
         
         reloadDataSource()
     }
     
-    public override func viewWillAppear(animated: Bool) {
+    open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        self.tabBarController?.tabBar.hidden = false
+        self.tabBarController?.tabBar.isHidden = false
     }
     
     
@@ -86,9 +86,9 @@ public class ConversationsTableViewController: UITableViewController, EMChatMana
         self.dataSource.removeAll()
         
         
-        dataSource =  EMClient.sharedClient().chatManager.getAllConversations()
+        dataSource =  EMClient.shared().chatManager.getAllConversations() as [AnyObject]
         
-        dispatch_async(dispatch_get_main_queue(), {
+        DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
         })
     }
@@ -97,31 +97,31 @@ public class ConversationsTableViewController: UITableViewController, EMChatMana
         
     }
     
-    public func updateSearchResultsForSearchController(searchController: UISearchController) {
+    open func updateSearchResults(for searchController: UISearchController) {
         
     }
 
     // MARK: - Table view data source
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    open override func numberOfSections(in tableView: UITableView) -> Int {
         return 0
     }
 
-    override public func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return dataSource.count
     }
     
-    override public func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
-        let cell:ConversationTableViewCell = tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath) as! ConversationTableViewCell
-        let conversation:EMConversation = dataSource[indexPath.row] as! EMConversation
+        let cell:ConversationTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ConversationTableViewCell
+        let conversation:EMConversation = dataSource[(indexPath as NSIndexPath).row] as! EMConversation
         cell.senderLabel.text = conversation.latestMessage.from
 
         let timeInterval: Double = Double(conversation.latestMessage.timestamp)
-        let date = NSDate(timeIntervalSince1970:timeInterval)
-        let formatter = NSDateFormatter()
-        formatter.timeStyle = .ShortStyle
-        let dateString = formatter.stringFromDate(date)
+        let date = Date(timeIntervalSince1970:timeInterval)
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        let dateString = formatter.string(from: date)
         cell.timeLabel.text = dateString
         
         let textMessageBody: EMTextMessageBody = conversation.latestMessage.body as! EMTextMessageBody
@@ -133,46 +133,46 @@ public class ConversationsTableViewController: UITableViewController, EMChatMana
         
     }
     
-    override public func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 90.0
     }
     
-    override public func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
-        if let conversation:EMConversation = dataSource[indexPath.row] as? EMConversation {
+    override open func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        if let conversation:EMConversation = dataSource[(indexPath as NSIndexPath).row] as? EMConversation {
             let chatController = ChatTableViewController(conversationID: conversation.conversationId, conversationType: conversation.type)
-            chatController.title = conversation.latestMessage.from
-            chatController.hidesBottomBarWhenPushed = true
-            self.navigationController!.pushViewController(chatController, animated: true)
+            chatController?.title = conversation.latestMessage.from
+            chatController?.hidesBottomBarWhenPushed = true
+            self.navigationController!.pushViewController(chatController!, animated: true)
         }
-        NSNotificationCenter.defaultCenter().postNotificationName("setupUnreadMessageCount", object: nil)
+        NotificationCenter.default.post(name: Notification.Name(rawValue: "setupUnreadMessageCount"), object: nil)
         self.tableView.reloadData()
     }
     
-    public func conversationListViewController(conversationListViewController:ConversationsTableViewController, didSelectConversationModel conversationModel: AnyObject){
+    open func conversationListViewController(_ conversationListViewController:ConversationsTableViewController, didSelectConversationModel conversationModel: AnyObject){
         
         
     }
     
-    public func conversationListViewController(conversationListViewController: ConversationsTableViewController, modelForConversation conversation: EMConversation) -> AnyObject
+    open func conversationListViewController(_ conversationListViewController: ConversationsTableViewController, modelForConversation conversation: EMConversation) -> AnyObject
+    {
+        return String() as AnyObject
+    }
+    
+    open func conversationListViewController(_ conversationListViewController:ConversationsTableViewController, latestMessageTitleForConversationModel conversationModel: AnyObject) -> String
     {
         return String()
     }
     
-    public func conversationListViewController(conversationListViewController:ConversationsTableViewController, latestMessageTitleForConversationModel conversationModel: AnyObject) -> String
-    {
-        return String()
-    }
-    
-    public func conversationListViewController(conversationListViewController: ConversationsTableViewController, latestMessageTimeForConversationModel conversationModel: AnyObject) -> String
+    open func conversationListViewController(_ conversationListViewController: ConversationsTableViewController, latestMessageTimeForConversationModel conversationModel: AnyObject) -> String
     {
         return String()
     }
  
-    public func messagesDidReceive(aMessages: [AnyObject]!) {
+    @nonobjc open func messagesDidReceive(_ aMessages: [AnyObject]!) {
         HyphenateMessengerHelper.sharedInstance.messagesDidReceive(aMessages)
     }
     
-    public func didReceiveMessages(aMessages: [AnyObject]!) {
+    @nonobjc open func didReceiveMessages(_ aMessages: [AnyObject]!) {
         HyphenateMessengerHelper.sharedInstance.messagesDidReceive(aMessages)
     }
     

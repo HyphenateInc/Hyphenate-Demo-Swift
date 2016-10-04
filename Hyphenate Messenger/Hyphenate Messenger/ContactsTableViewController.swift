@@ -22,9 +22,9 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
 //        EMClient.sharedClient().groupManager.removeDelegate(self)
 //        EMClient.sharedClient().groupManager.addDelegate(self)
         
-        tableView.registerNib(UINib(nibName: "ContactTableViewCell", bundle: nil), forCellReuseIdentifier: ContactTableViewCell.reuseIdentifier())
-        tableView.registerNib(UINib(nibName: "FriendRequestTableViewCell", bundle: nil), forCellReuseIdentifier: FriendRequestTableViewCell.reuseIdentifier())
-        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "Cell")
+        tableView.register(UINib(nibName: "ContactTableViewCell", bundle: nil), forCellReuseIdentifier: ContactTableViewCell.reuseIdentifier())
+        tableView.register(UINib(nibName: "FriendRequestTableViewCell", bundle: nil), forCellReuseIdentifier: FriendRequestTableViewCell.reuseIdentifier())
+        tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         
         searchController = UISearchController(searchResultsController:  nil)
         searchController.searchResultsUpdater = self
@@ -38,11 +38,11 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         definesPresentationContext = true
         
         let image = UIImage(named: "iconAdd")
-        let rightButtonItem:UIBarButtonItem = UIBarButtonItem(image: image, landscapeImagePhone: image, style: UIBarButtonItemStyle.Plain, target: self, action: #selector(ContactsTableViewController.addContactAction))
+        let rightButtonItem:UIBarButtonItem = UIBarButtonItem(image: image, landscapeImagePhone: image, style: UIBarButtonItemStyle.plain, target: self, action: #selector(ContactsTableViewController.addContactAction))
         navigationItem.rightBarButtonItem = rightButtonItem
     
         
-        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(self.refreshFriendRequests), name: kNotification_conversationUpdated, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshFriendRequests), name: NSNotification.Name(rawValue: kNotification_conversationUpdated), object: nil)
 
         self.reloadDataSource()
     }
@@ -52,7 +52,7 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         self.navigationController!.pushViewController(requestController, animated: true)
     }
     
-    func updateSearchResultsForSearchController(searchController: UISearchController) {
+    func updateSearchResults(for searchController: UISearchController) {
         
     }
     
@@ -60,13 +60,13 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         self.dataSource.removeAll()
         self.requestSource.removeAll()
 //        self.dataSource = EMClient.sharedClient().groupManager.getJoinedGroups()
-        if let requestArray =  InvitationManager.sharedInstance.getSavedFriendRequests(EMClient.sharedClient().currentUsername) {
+        if let requestArray =  InvitationManager.sharedInstance.getSavedFriendRequests(EMClient.shared().currentUsername) {
             requestSource = requestArray
         }
         
-        EMClient.sharedClient().contactManager.getContactsFromServerWithCompletion({ (array, error) in
-            self.dataSource = array
-            dispatch_async(dispatch_get_main_queue(), { 
+        EMClient.shared().contactManager.getContactsFromServer(completion: { (array, error) in
+            self.dataSource = array as! [AnyObject]
+            DispatchQueue.main.async(execute: { 
                 self.tableView.reloadData()
             })
         })
@@ -78,7 +78,7 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
     
     // MARK: - Table view data source
 
-    override func numberOfSectionsInTableView(tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         
         if requestSource.count > 0 {
             return 2
@@ -86,7 +86,7 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
             return 1
         }
     }
-    override func tableView(tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         if requestSource.count > 0 {
             switch section {
             case 0:
@@ -103,7 +103,7 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         return 0
     }
 
-    override func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if requestSource.count > 0 && section == 0 {
             return "Requests"
         } else {
@@ -111,19 +111,19 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         }
     }
     
-    override func tableView(tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
+    override func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         if requestSource.count > 0 {
             switch section {
             case 0:
                 let viewName = "requestHeaderView"
-                let view: UIView = NSBundle.mainBundle().loadNibNamed(viewName,
-                                                                      owner: self, options: nil)[0] as! UIView
+                let view: UIView = Bundle.main.loadNibNamed(viewName,
+                                                                      owner: self, options: nil)![0] as! UIView
                 let headerView: requestHeaderView = view as! requestHeaderView
                 headerView.requestCount.text = "(\(requestSource.count))"
                 return headerView
                 
             case 1:
-                let frame = CGRectMake(0, 0, UIScreen.mainScreen().bounds.size.width, 20)
+                let frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 20)
                 let headerView:UIView = UIView(frame: frame)
                 headerView.backgroundColor = UIColor(red: 228.0/255, green: 233.0/255, blue: 236.0/255, alpha: 1.0)
                 return headerView
@@ -136,7 +136,7 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
 
     }
     
-    override func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if requestSource.count > 0 {
             switch section {
@@ -153,21 +153,21 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         return 0
     }
 
-    override func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if requestSource.count > 0 {
             
-            switch indexPath.section {
+            switch (indexPath as NSIndexPath).section {
             case 0:
-                let cell = tableView.dequeueReusableCellWithIdentifier("FriendRequestCell", forIndexPath: indexPath) as! FriendRequestTableViewCell
-                cell.usernameLabel.text = requestSource[indexPath.row].applicantUsername
-                cell.request = requestSource[indexPath.row]
+                let cell = tableView.dequeueReusableCell(withIdentifier: "FriendRequestCell", for: indexPath) as! FriendRequestTableViewCell
+                cell.usernameLabel.text = requestSource[(indexPath as NSIndexPath).row].applicantUsername
+                cell.request = requestSource[(indexPath as NSIndexPath).row]
                 return cell
                 
             case 1:
                 if dataSource.count > 0 {
-                    let cell = tableView.dequeueReusableCellWithIdentifier(ContactTableViewCell.reuseIdentifier()) as! ContactTableViewCell
-                    cell.displayNameLabel.text = self.dataSource[indexPath.row] as? String
+                    let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.reuseIdentifier()) as! ContactTableViewCell
+                    cell.displayNameLabel.text = self.dataSource[(indexPath as NSIndexPath).row] as? String
                     return cell
                 }
                 
@@ -175,19 +175,19 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
                 break
             }
         } else if dataSource.count > 0 {
-            let cell = tableView.dequeueReusableCellWithIdentifier(ContactTableViewCell.reuseIdentifier()) as! ContactTableViewCell
-            cell.displayNameLabel.text = self.dataSource[indexPath.row] as? String
+            let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.reuseIdentifier()) as! ContactTableViewCell
+            cell.displayNameLabel.text = self.dataSource[(indexPath as NSIndexPath).row] as? String
             return cell
         }
         
-        return tableView.dequeueReusableCellWithIdentifier("Cell", forIndexPath: indexPath)
+        return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
     }
         
  
-    override func tableView(tableView: UITableView, heightForRowAtIndexPath indexPath: NSIndexPath) -> CGFloat {
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         
         if requestSource.count > 0 {
-            switch indexPath.section {
+            switch (indexPath as NSIndexPath).section {
             case 0:
                 return 60
             case 1:
@@ -201,10 +201,10 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         return 44
     }
     
-    override func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if requestSource.count == 0 || indexPath.section == 1 {
-            if let contact = dataSource[indexPath.row] as? String {
+        if requestSource.count == 0 || (indexPath as NSIndexPath).section == 1 {
+            if let contact = dataSource[(indexPath as NSIndexPath).row] as? String {
                 let profileController = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as! ProfileViewController
                 profileController.username = contact
                 self.navigationController!.pushViewController(profileController, animated: true)

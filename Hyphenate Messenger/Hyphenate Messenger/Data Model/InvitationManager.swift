@@ -10,33 +10,33 @@ import Foundation
 class InvitationManager:NSObject{
     
     var sharedInstance: InvitationManager? = nil
-    var defaults: NSUserDefaults!
+    var defaults: UserDefaults!
         
     static let sharedInstance = InvitationManager()
     
     override init() {
         super.init()
-        self.defaults = NSUserDefaults.standardUserDefaults()
+        self.defaults = UserDefaults.standard
         
     }
         // MARK: - Data
         
-        func addInvitation(requestEntity: RequestEntity, loginUser username: String) {
-            if let defalutData = self.defaults.objectForKey(username) as? NSData {
-                if var requests = NSKeyedUnarchiver.unarchiveObjectWithData(defalutData) as? [RequestEntity]{
+        func addInvitation(_ requestEntity: RequestEntity, loginUser username: String) {
+            if let defalutData = self.defaults.object(forKey: username) as? Data {
+                if var requests = NSKeyedUnarchiver.unarchiveObject(with: defalutData) as? [RequestEntity]{
                     requests.append(requestEntity)
-                    let data = NSKeyedArchiver.archivedDataWithRootObject(requests)
-                    self.defaults.setObject(data, forKey: username)
+                    let data = NSKeyedArchiver.archivedData(withRootObject: requests)
+                    self.defaults.set(data, forKey: username)
                 }
             } else {
-                let data = NSKeyedArchiver.archivedDataWithRootObject([requestEntity])
-                self.defaults.setObject(data, forKey: username)
+                let data = NSKeyedArchiver.archivedData(withRootObject: [requestEntity])
+                self.defaults.set(data, forKey: username)
             }
         }
         
-        func removeInvitation(requestEntity: RequestEntity, loginUser username: String) {
-            if let defalutData = self.defaults.objectForKey(username) as? NSData{
-                if var requests = NSKeyedUnarchiver.unarchiveObjectWithData(defalutData) as? [RequestEntity]{
+        func removeInvitation(_ requestEntity: RequestEntity, loginUser username: String) {
+            if let defalutData = self.defaults.object(forKey: username) as? Data{
+                if var requests = NSKeyedUnarchiver.unarchiveObject(with: defalutData) as? [RequestEntity]{
                     var needDelete: RequestEntity?
                     for request: RequestEntity in requests {
                         if (request.groupId == requestEntity.groupId) && (request.receiverUsername == requestEntity.receiverUsername) {
@@ -44,19 +44,19 @@ class InvitationManager:NSObject{
                         }
                     }
                     if let _ = needDelete{
-                        if let index = requests.indexOf({$0 == needDelete!}){
-                            requests.removeAtIndex(index)
-                            let data = NSKeyedArchiver.archivedDataWithRootObject(requests)
-                            self.defaults.setObject(data, forKey: username)
+                        if let index = requests.index(where: {$0 == needDelete!}){
+                            requests.remove(at: index)
+                            let data = NSKeyedArchiver.archivedData(withRootObject: requests)
+                            self.defaults.set(data, forKey: username)
                         }
                     }
                 }
             }
         }
         
-        func getSavedFriendRequests(username: String) -> [RequestEntity]? {
-            if let defalutData = self.defaults.objectForKey(username) as? NSData {
-                return NSKeyedUnarchiver.unarchiveObjectWithData(defalutData) as? [RequestEntity]
+        func getSavedFriendRequests(_ username: String) -> [RequestEntity]? {
+            if let defalutData = self.defaults.object(forKey: username) as? Data {
+                return NSKeyedUnarchiver.unarchiveObject(with: defalutData) as? [RequestEntity]
             }
             return nil
         }

@@ -21,22 +21,22 @@ class SignUpViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
     }
 
-    @IBAction func signupAction(sender: AnyObject) {
+    @IBAction func signupAction(_ sender: AnyObject) {
         activityIndicator.startAnimating()
-        EMClient.sharedClient().registerWithUsername(usernameTextfield.text, password: passwordTextfield.text) { (userID, error) in
+        EMClient.shared().register(withUsername: usernameTextfield.text, password: passwordTextfield.text) { (userID, error) in
             
             if ((error) != nil) {
                 self.activityIndicator.stopAnimating()
-                let alert = UIAlertController(title:"Registration Failure", message: error?.errorDescription, preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-                UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
+                let alert = UIAlertController(title:"Registration Failure", message: error?.errorDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
             } else {
-                EMClient.sharedClient().loginWithUsername(self.usernameTextfield.text, password: self.passwordTextfield.text, completion: { (userID, error) in
+                EMClient.shared().login(withUsername: self.usernameTextfield.text, password: self.passwordTextfield.text, completion: { (userID, error) in
                     if ((error) != nil) {
-                        let alert = UIAlertController(title:"Login Failure", message: error?.errorDescription, preferredStyle: .Alert)
-                        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-                        UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
-                    } else if EMClient.sharedClient().isLoggedIn {
+                        let alert = UIAlertController(title:"Login Failure", message: error?.errorDescription, preferredStyle: .alert)
+                        alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+                        UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+                    } else if EMClient.shared().isLoggedIn {
                         let mainVC = MainViewController()
                         HyphenateMessengerHelper.sharedInstance.mainVC = mainVC
                         self.navigationController?.pushViewController(mainVC, animated: true)

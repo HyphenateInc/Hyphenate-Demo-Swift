@@ -20,19 +20,19 @@ class LoginViewController: UIViewController {
         activityIndicator.hidesWhenStopped = true
     }
     
-    @IBAction func loginAction(sender: AnyObject) {
+    @IBAction func loginAction(_ sender: AnyObject) {
         
         activityIndicator.startAnimating()
         
-        EMClient.sharedClient().loginWithUsername(userNameTextField.text, password: passwordTextField.text) { (userName : String?, error : EMError?) in
+        EMClient.shared().login(withUsername: userNameTextField.text, password: passwordTextField.text) { (userName : String?, error : EMError?) in
             
             self.activityIndicator.stopAnimating()
             
             if ((error) != nil) {
-                let alert = UIAlertController(title:"Login Failure", message: error?.errorDescription, preferredStyle: .Alert)
-                alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .Cancel, handler: nil))
-                UIApplication.sharedApplication().keyWindow?.rootViewController?.presentViewController(alert, animated: true, completion: nil)
-            } else if EMClient.sharedClient().isLoggedIn {
+                let alert = UIAlertController(title:"Login Failure", message: error?.errorDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+            } else if EMClient.shared().isLoggedIn {
                 let mainVC = MainViewController()
                 HyphenateMessengerHelper.sharedInstance.mainVC = mainVC
                 self.navigationController?.pushViewController(mainVC, animated: true)

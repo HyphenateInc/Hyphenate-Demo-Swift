@@ -76,6 +76,9 @@ typedef enum{
  *  @param aGroup    User joined group
  *  @param aInvitee  Invitee
  */
+- (void)groupInvitationDidApprove:(EMGroup *)aGroup
+                          invitee:(NSString *)aInvitee __deprecated_msg("Use -groupInvitationDidAccept:invitee:");
+
 - (void)groupInvitationDidAccept:(EMGroup *)aGroup
                          invitee:(NSString *)aInvitee;
 

@@ -18,15 +18,15 @@ class RequestEntity: NSObject,NSCoding {
     var groupId = ""
     var groupSubject = ""
     
-    func encodeWithCoder(aCoder: NSCoder) {
-        aCoder.encodeObject(applicantUsername, forKey: "applicantUsername")
-        aCoder.encodeObject(applicantNick, forKey: "applicantNick")
-        aCoder.encodeObject(reason, forKey: "reason")
-        aCoder.encodeObject(receiverUsername, forKey: "receiverUsername")
-        aCoder.encodeObject(receiverNick, forKey: "receiverNick")
-        aCoder.encodeObject(style, forKey: "style")
-        aCoder.encodeObject(groupId, forKey: "groupId")
-        aCoder.encodeObject(groupSubject, forKey: "subject")
+    func encode(with aCoder: NSCoder) {
+        aCoder.encode(applicantUsername, forKey: "applicantUsername")
+        aCoder.encode(applicantNick, forKey: "applicantNick")
+        aCoder.encode(reason, forKey: "reason")
+        aCoder.encode(receiverUsername, forKey: "receiverUsername")
+        aCoder.encode(receiverNick, forKey: "receiverNick")
+        aCoder.encode(style, forKey: "style")
+        aCoder.encode(groupId, forKey: "groupId")
+        aCoder.encode(groupSubject, forKey: "subject")
     }
     
     override init(){
@@ -35,14 +35,14 @@ class RequestEntity: NSObject,NSCoding {
     
     required init?(coder aDecoder: NSCoder) {
         super.init()
-        self.applicantUsername = aDecoder.decodeObjectForKey("applicantUsername") as! String
-        self.applicantNick = aDecoder.decodeObjectForKey("applicantNick") as! String
-        self.reason = aDecoder.decodeObjectForKey("reason") as! String
-        self.receiverUsername = aDecoder.decodeObjectForKey("receiverUsername") as! String
-        self.receiverNick = aDecoder.decodeObjectForKey("receiverNick") as! String
-        self.style = aDecoder.decodeObjectForKey("style") as! Int
-        self.groupId = aDecoder.decodeObjectForKey("groupId") as! String
-        self.groupSubject = aDecoder.decodeObjectForKey("subject") as! String
+        self.applicantUsername = aDecoder.decodeObject(forKey: "applicantUsername") as! String
+        self.applicantNick = aDecoder.decodeObject(forKey: "applicantNick") as! String
+        self.reason = aDecoder.decodeObject(forKey: "reason") as! String
+        self.receiverUsername = aDecoder.decodeObject(forKey: "receiverUsername") as! String
+        self.receiverNick = aDecoder.decodeObject(forKey: "receiverNick") as! String
+        self.style = aDecoder.decodeObject(forKey: "style") as! Int
+        self.groupId = aDecoder.decodeObject(forKey: "groupId") as! String
+        self.groupSubject = aDecoder.decodeObject(forKey: "subject") as! String
         
     }
 }
