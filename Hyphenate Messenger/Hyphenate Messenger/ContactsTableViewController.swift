@@ -48,11 +48,8 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
     }
     
     func addContactAction() {
-        
-        EMClient.sharedClient().contactManager.addContact("pengpeng1", message: "hey") { (userName, error) in
-            print("add friend error \(error)")
-        }
-
+        let requestController = UIStoryboard(name: "FriendRequest", bundle: nil).instantiateInitialViewController() as! FriendRequestViewController
+        self.navigationController!.pushViewController(requestController, animated: true)
     }
     
     func updateSearchResultsForSearchController(searchController: UISearchController) {
@@ -61,10 +58,12 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
     
     func reloadDataSource(){
         self.dataSource.removeAll()
+        self.requestSource.removeAll()
 //        self.dataSource = EMClient.sharedClient().groupManager.getJoinedGroups()
         if let requestArray =  InvitationManager.sharedInstance.getSavedFriendRequests(EMClient.sharedClient().currentUsername) {
             requestSource = requestArray
         }
+        
         EMClient.sharedClient().contactManager.getContactsFromServerWithCompletion({ (array, error) in
             self.dataSource = array
             dispatch_async(dispatch_get_main_queue(), { 
@@ -162,6 +161,7 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
             case 0:
                 let cell = tableView.dequeueReusableCellWithIdentifier("FriendRequestCell", forIndexPath: indexPath) as! FriendRequestTableViewCell
                 cell.usernameLabel.text = requestSource[indexPath.row].applicantUsername
+                cell.request = requestSource[indexPath.row]
                 return cell
                 
             case 1:

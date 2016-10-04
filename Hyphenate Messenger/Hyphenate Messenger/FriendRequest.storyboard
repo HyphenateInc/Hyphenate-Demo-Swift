@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="10117" systemVersion="15G1004" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="cRa-iU-gme">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="10085"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
+    </dependencies>
+    <scenes>
+        <!--Friend Request View Controller-->
+        <scene sceneID="YMw-c7-c3p">
+            <objects>
+                <viewController id="cRa-iU-gme" customClass="FriendRequestViewController" customModule="Hyphenate_Messenger" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="oA8-7f-YL0"/>
+                        <viewControllerLayoutGuide type="bottom" id="bNl-Ch-c17"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Hv4-4g-vwv">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="MJ0-54-E1V" customClass="HyphenateTextField" customModule="Hyphenate_Messenger" customModuleProvider="target">
+                                <rect key="frame" x="59" y="275" width="483" height="50"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="CHQ-wf-d1v"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" returnKeyType="done"/>
+                                <connections>
+                                    <outlet property="delegate" destination="cRa-iU-gme" id="kup-6g-JmM"/>
+                                </connections>
+                            </textField>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="sHd-ae-TA4">
+                                <rect key="frame" x="240" y="247" width="120" height="15"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="120" id="au2-8Q-c5i"/>
+                                    <constraint firstAttribute="height" constant="15" id="zUe-Pw-qlo"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <activityIndicatorView hidden="YES" opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" hidesWhenStopped="YES" style="whiteLarge" translatesAutoresizingMaskIntoConstraints="NO" id="6TL-w5-3jp">
+                                <rect key="frame" x="282" y="282" width="37" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="37" id="s1x-G7-etw"/>
+                                    <constraint firstAttribute="height" constant="37" id="wyY-If-lwf"/>
+                                </constraints>
+                            </activityIndicatorView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="6TL-w5-3jp" firstAttribute="centerX" secondItem="Hv4-4g-vwv" secondAttribute="centerX" id="58z-eg-Rbb"/>
+                            <constraint firstItem="MJ0-54-E1V" firstAttribute="centerY" secondItem="Hv4-4g-vwv" secondAttribute="centerY" id="Ery-QQ-OoH"/>
+                            <constraint firstAttribute="trailingMargin" secondItem="MJ0-54-E1V" secondAttribute="trailing" constant="38" id="FTL-pg-ifk"/>
+                            <constraint firstItem="6TL-w5-3jp" firstAttribute="centerY" secondItem="Hv4-4g-vwv" secondAttribute="centerY" id="GbU-qz-XeP"/>
+                            <constraint firstItem="sHd-ae-TA4" firstAttribute="centerX" secondItem="Hv4-4g-vwv" secondAttribute="centerX" id="N1A-jJ-PKD"/>
+                            <constraint firstItem="MJ0-54-E1V" firstAttribute="leading" secondItem="Hv4-4g-vwv" secondAttribute="leadingMargin" constant="39" id="TFw-xW-Xjg"/>
+                            <constraint firstItem="MJ0-54-E1V" firstAttribute="top" secondItem="sHd-ae-TA4" secondAttribute="bottom" constant="13" id="fhv-JV-7GR"/>
+                            <constraint firstItem="MJ0-54-E1V" firstAttribute="centerX" secondItem="Hv4-4g-vwv" secondAttribute="centerX" id="yti-qH-5lb"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="inputTextfield" destination="MJ0-54-E1V" id="NjR-Ah-Uxy"/>
+                        <outlet property="spinner" destination="6TL-w5-3jp" id="QY8-ep-9aS"/>
+                        <outlet property="statusLabel" destination="sHd-ae-TA4" id="7ef-pJ-lDx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="OCt-NC-h2D" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="637" y="11"/>
+        </scene>
+    </scenes>
+</document>
