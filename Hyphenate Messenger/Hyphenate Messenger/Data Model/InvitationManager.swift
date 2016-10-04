@@ -28,6 +28,9 @@ class InvitationManager:NSObject{
                     let data = NSKeyedArchiver.archivedDataWithRootObject(requests)
                     self.defaults.setObject(data, forKey: username)
                 }
+            } else {
+                let data = NSKeyedArchiver.archivedDataWithRootObject([requestEntity])
+                self.defaults.setObject(data, forKey: username)
             }
         }
         
