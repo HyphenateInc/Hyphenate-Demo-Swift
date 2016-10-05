@@ -30,7 +30,7 @@ class FriendRequestViewController: UIViewController, UITextFieldDelegate {
     }
     
     func cancelAction() {
-        navigationController?.popViewController(animated: true)
+        _ = navigationController?.popViewController(animated: true)
     }
 
 
@@ -44,7 +44,7 @@ class FriendRequestViewController: UIViewController, UITextFieldDelegate {
                     alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
                     UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
                 } else {
-                    self.navigationController?.popViewController(animated: true)
+                    _ = self.navigationController?.popViewController(animated: true)
                 }
             }
         }

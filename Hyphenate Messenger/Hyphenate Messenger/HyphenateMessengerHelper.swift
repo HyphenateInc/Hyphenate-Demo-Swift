@@ -73,23 +73,23 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     
     func loadConversationFromDB() {
         
-        DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async { 
-            var conversations = [EMConversation]()
-            
-            for (_, value) in EMClient.shared().chatManager.getAllConversations().enumerated() {
-                let conversation : EMConversation = value as! EMConversation
-                if (conversation.latestMessage == nil) {
-                    EMClient.shared().chatManager.deleteConversation(conversation.conversationId, isDeleteMessages: false, completion: nil)
-                } else {
-                    conversations.append(conversation)
+            DispatchQueue.global().async {
+                var conversations = [EMConversation]()
+                
+                for (_, value) in EMClient.shared().chatManager.getAllConversations().enumerated() {
+                    let conversation : EMConversation = value as! EMConversation
+                    if (conversation.latestMessage == nil) {
+                        EMClient.shared().chatManager.deleteConversation(conversation.conversationId, isDeleteMessages: false, completion: nil)
+                    } else {
+                        conversations.append(conversation)
+                    }
                 }
+                
+                DispatchQueue.main.async(execute: {
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_conversationUpdated"), object: conversations)
+                    NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_unreadMessageCountUpdated"), object: conversations)
+                })
             }
-            
-            DispatchQueue.main.async(execute: {
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_conversationUpdated"), object: conversations)
-                NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_unreadMessageCountUpdated"), object: conversations)
-            })
-        }
     }
     
     func loadGroupFromServer() {
@@ -118,13 +118,13 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
             UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
         } else if (EMClient.shared().isConnected) {
             
-            DispatchQueue.global(priority: DispatchQueue.GlobalQueuePriority.default).async(execute: { 
+            DispatchQueue.global().async {
                 let flag: Bool = EMClient.shared().migrateDatabaseToLatestSDK()
                 if (flag==true) {
                     self.loadGroupFromServer()
                     self.loadConversationFromDB()
                 }
-            })
+            }
         }
     }
     
@@ -148,21 +148,16 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     
     // EMChatManagerDelegate
     
-    func conversationListDidUpdate(_ aConversationList: [AnyObject]!) {
+    func conversationListDidUpdate(_ aConversationList: [Any]!) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_unreadMessageCountUpdated"), object: aConversationList)
-        
         NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_conversationUpdated"), object: aConversationList)
-
     }
     
-    func cmdMessagesDidReceive(_ aCmdMessages: [AnyObject]!) {
-       
+    func cmdMessagesDidReceive(_ aCmdMessages: [Any]!) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_didReceiveCmdMessages"), object: aCmdMessages)
-
     }
     
-    func messagesDidReceive(_ aMessages: [AnyObject]!) {
-        
+    func messagesDidReceive(_ aMessages: [Any]!) {
         var isRefreshCons = true
         
         for(_, value) in aMessages.enumerated() {

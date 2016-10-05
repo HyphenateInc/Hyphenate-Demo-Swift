@@ -42,7 +42,7 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         navigationItem.rightBarButtonItem = rightButtonItem
     
         
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshFriendRequests), name: NSNotification.Name(rawValue: kNotification_conversationUpdated), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(ContactsTableViewController.reloadDataSource), name: NSNotification.Name(rawValue: "kNotification_requestUpdated"), object: nil)
 
         self.reloadDataSource()
     }
