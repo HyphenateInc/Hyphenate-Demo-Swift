@@ -9,7 +9,7 @@
 import UIKit
 import HyphenateFullSDK
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var usernameTextfield: HyphenateTextField!
     @IBOutlet weak var passwordTextfield: HyphenateTextField!
@@ -19,6 +19,15 @@ class SignUpViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
+        
+        let loginButton:UIButton = UIButton(type: .custom)
+        loginButton.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 50)
+        loginButton.backgroundColor = UIColor(red: 71.0/255, green: 201/255.0, blue: 5.0/255, alpha: 1)
+        loginButton.setTitle("Sign Up", for: .normal)
+        
+        loginButton.addTarget(self, action: #selector(SignUpViewController.signupAction(_:)), for: .touchUpInside)
+        usernameTextfield.inputAccessoryView = loginButton
+        passwordTextfield.inputAccessoryView = loginButton
     }
 
     @IBAction func signupAction(_ sender: AnyObject) {
@@ -44,5 +53,15 @@ class SignUpViewController: UIViewController {
                 })
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == usernameTextfield {
+            usernameTextfield.resignFirstResponder()
+            passwordTextfield.becomeFirstResponder()
+        } else {
+            signupAction(self)
+        }
+        return true
     }
 }

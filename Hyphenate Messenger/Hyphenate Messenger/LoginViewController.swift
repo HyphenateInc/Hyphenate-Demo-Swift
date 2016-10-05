@@ -9,15 +9,34 @@
 import UIKit
 import HyphenateFullSDK
 
-class LoginViewController: UIViewController {
+class LoginViewController: UIViewController, UITextFieldDelegate {
 
     @IBOutlet weak var activityIndicator: UIActivityIndicatorView!
     @IBOutlet weak var userNameTextField: HyphenateTextField!
     @IBOutlet weak var passwordTextField: HyphenateTextField!
-
+    @IBOutlet weak var loginButton: UIButton!
+    @IBOutlet weak var loginButtonBottomConstraint: NSLayoutConstraint!
+    var kbHeight: CGFloat!
+    var animated = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         activityIndicator.hidesWhenStopped = true
+        
+        let loginButton:UIButton = UIButton(type: .custom)
+            loginButton.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 50)
+            loginButton.backgroundColor = UIColor(red: 71.0/255, green: 201/255.0, blue: 5.0/255, alpha: 1)
+            loginButton.setTitle("Log In", for: .normal)
+       
+        loginButton.addTarget(self, action: #selector(LoginViewController.loginAction(_:)), for: .touchUpInside)
+        userNameTextField.inputAccessoryView = loginButton
+        passwordTextField.inputAccessoryView = loginButton
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self)
     }
     
     @IBAction func loginAction(_ sender: AnyObject) {
@@ -38,5 +57,15 @@ class LoginViewController: UIViewController {
                 self.navigationController?.pushViewController(mainVC, animated: true)
             }
         }
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == userNameTextField {
+            userNameTextField.resignFirstResponder()
+            passwordTextField.becomeFirstResponder()
+        } else {
+            loginAction(self)
+        }
+        return true
     }
 }
