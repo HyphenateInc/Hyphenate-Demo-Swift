@@ -17,6 +17,7 @@ class FriendRequestTableViewCell: UITableViewCell {
         profileImageView.clipsToBounds = true
     }
 
+    @IBOutlet weak var spinner: UIActivityIndicatorView!
     @IBOutlet weak var usernameLabel: UILabel!
     @IBOutlet weak var profileImageView: UIImageView!
     var request: RequestEntity!
@@ -33,7 +34,9 @@ class FriendRequestTableViewCell: UITableViewCell {
     }
     
     @IBAction func declineAction(_ sender: AnyObject) {
+        spinner.startAnimating()
         EMClient.shared().contactManager.declineFriendRequest(fromUser: usernameLabel.text) { (userName, error) in
+            self.spinner.stopAnimating()
             if error != nil {
                 let alert = UIAlertController(title:"Error", message: "Fail declining a friend request, please try again", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
@@ -45,7 +48,9 @@ class FriendRequestTableViewCell: UITableViewCell {
     }
     
     @IBAction func acceptAction(_ sender: AnyObject) {
+        spinner.startAnimating()
         EMClient.shared().contactManager.approveFriendRequest(fromUser: usernameLabel.text) { (userName, error) in
+            self.spinner.stopAnimating()
             if error != nil {
                 let alert = UIAlertController(title:"Error", message: "Fail accepting a friend request, please try again", preferredStyle: .alert)
                 alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))

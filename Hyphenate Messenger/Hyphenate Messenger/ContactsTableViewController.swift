@@ -18,10 +18,7 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-//        EMClient.sharedClient().groupManager.removeDelegate(self)
-//        EMClient.sharedClient().groupManager.addDelegate(self)
-        
+
         tableView.register(UINib(nibName: "ContactTableViewCell", bundle: nil), forCellReuseIdentifier: ContactTableViewCell.reuseIdentifier())
         tableView.register(UINib(nibName: "FriendRequestTableViewCell", bundle: nil), forCellReuseIdentifier: FriendRequestTableViewCell.reuseIdentifier())
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
@@ -59,7 +56,6 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
     func reloadDataSource(){
         self.dataSource.removeAll()
         self.requestSource.removeAll()
-//        self.dataSource = EMClient.sharedClient().groupManager.getJoinedGroups()
         if let requestArray =  InvitationManager.sharedInstance.getSavedFriendRequests(EMClient.shared().currentUsername) {
             requestSource = requestArray
         }
@@ -70,10 +66,6 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
                 self.tableView.reloadData()
             })
         })
-    }
-
-    func refreshFriendRequests(){
-        self.tableView.reloadData()
     }
     
     // MARK: - Table view data source

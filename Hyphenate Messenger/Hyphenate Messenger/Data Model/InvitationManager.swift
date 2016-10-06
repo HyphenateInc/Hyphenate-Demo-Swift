@@ -32,7 +32,9 @@ class InvitationManager:NSObject{
                 let data = NSKeyedArchiver.archivedData(withRootObject: [requestEntity])
                 self.defaults.set(data, forKey: username)
             }
-            NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_requestUpdated"), object: nil)
+            DispatchQueue.main.async {
+                NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_requestUpdated"), object: nil)
+            }
         }
     
         func removeInvitation(_ requestEntity: RequestEntity, loginUser username: String) {
@@ -49,7 +51,9 @@ class InvitationManager:NSObject{
                             requests.remove(at: index)
                             let data = NSKeyedArchiver.archivedData(withRootObject: requests)
                             self.defaults.set(data, forKey: username)
-                            NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_requestUpdated"), object: nil)
+                            DispatchQueue.main.async {
+                                NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_requestUpdated"), object: nil)
+                            }
                         }
                     }
                 }

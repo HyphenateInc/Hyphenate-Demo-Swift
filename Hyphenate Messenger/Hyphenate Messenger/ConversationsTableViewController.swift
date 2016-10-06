@@ -104,7 +104,7 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
     // MARK: - Table view data source
 
     open override func numberOfSections(in tableView: UITableView) -> Int {
-        return 1
+        return 1 
     }
 
     override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
