@@ -32,9 +32,11 @@ class FriendRequestViewController: UIViewController, UITextFieldDelegate {
     func cancelAction() {
         _ = navigationController?.popViewController(animated: true)
     }
+    @IBAction func addAction(_ sender: AnyObject) {
+        addFriendActions()
+    }
 
-
-    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+    func addFriendActions() {
         if inputTextfield.text != "" {
             spinner.startAnimating()
             EMClient.shared().contactManager.addContact(inputTextfield.text, message: "\(EMClient.shared().currentUsername) sent you a friend request") { (userName, error) in
@@ -48,6 +50,10 @@ class FriendRequestViewController: UIViewController, UITextFieldDelegate {
                 }
             }
         }
+    }
+
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        addFriendActions()
         return true
     }
 }
