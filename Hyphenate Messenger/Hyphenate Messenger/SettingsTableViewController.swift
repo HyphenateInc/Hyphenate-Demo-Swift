@@ -17,7 +17,7 @@ class SettingsTableViewController: UITableViewController {
         title.text = "Settings"
         navigationItem.titleView = title
         self.tableView.backgroundColor = UIColor(red: 228.0/255.0, green: 233.0/255.0, blue: 236.0/255.0, alpha: 1.0)
-        tableView.tableFooterView = UIView()
+//        tableView.tableFooterView = UIView()
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         self.tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: nil), forCellReuseIdentifier: "switchCell")
 
@@ -33,6 +33,21 @@ class SettingsTableViewController: UITableViewController {
         return 5
     }
 
+    override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let logoutButton = UIButton(type: .custom)
+        logoutButton.backgroundColor = UIColor(red: 255.0/255, green: 59.0/255, blue: 48.0/255, alpha: 1)
+        logoutButton.setTitle("Sign Out", for: .normal)
+        logoutButton.addTarget(self, action: #selector(SettingsTableViewController.logoutAction), for: .touchUpInside)
+        logoutButton.frame = CGRect(x: 0, y: UIScreen.main.bounds.size.height - 265, width: UIScreen.main.bounds.size.width, height: 45)
+        
+        let footerView = UIView(frame: CGRect(x: 0, y: 220, width: UIScreen.main.bounds.size.width, height: UIScreen.main.bounds.size.height - 220))
+            footerView.addSubview(logoutButton)
+        return footerView
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        return UIScreen.main.bounds.size.height - 220
+    }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
        
@@ -71,5 +86,19 @@ class SettingsTableViewController: UITableViewController {
             
         }
      return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    }
+    
+    func logoutAction() {
+        EMClient.shared().logout(false) { (error) in
+            if let _ = error {
+                let alert = UIAlertController(title:"Sign Out error", message: "Please try again later", preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+                UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+            } else {
+                let loginController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginScene")
+                UIApplication.shared.keyWindow?.rootViewController = loginController               
+
+            }
+        }
     }
 }

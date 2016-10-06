@@ -222,7 +222,7 @@
         <!--Navigation Controller-->
         <scene sceneID="SdA-za-2Gu">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="Vyd-z9-jwz" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="loginScene" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vyd-z9-jwz" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" id="too-Ml-Gkz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -242,6 +242,6 @@
         <image name="logoGreen" width="200" height="71"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="aSn-GT-UAj"/>
+        <segue reference="Khw-bJ-H49"/>
     </inferredMetricsTieBreakers>
 </document>
