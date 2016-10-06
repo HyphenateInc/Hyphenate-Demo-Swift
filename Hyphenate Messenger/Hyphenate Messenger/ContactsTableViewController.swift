@@ -44,6 +44,11 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         self.reloadDataSource()
     }
     
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        NotificationCenter.default.removeObserver(self)
+    }
+    
     func addContactAction() {
         let requestController = UIStoryboard(name: "FriendRequest", bundle: nil).instantiateInitialViewController() as! FriendRequestViewController
         self.navigationController!.pushViewController(requestController, animated: true)
