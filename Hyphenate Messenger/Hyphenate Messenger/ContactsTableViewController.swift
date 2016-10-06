@@ -66,11 +66,16 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         }
         
         EMClient.shared().contactManager.getContactsFromServer(completion: { (array, error) in
-            self.dataSource = array as! [AnyObject]
-            DispatchQueue.main.async(execute: { 
-                self.tableView.reloadData()
-            })
+            if let array = array {
+                self.dataSource = array as [AnyObject]
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
+            }
         })
+        if self.dataSource.count == 0 {
+            self.dataSource = EMClient.shared().contactManager.getContacts() as [AnyObject]
+        }
     }
     
     // MARK: - Table view data source

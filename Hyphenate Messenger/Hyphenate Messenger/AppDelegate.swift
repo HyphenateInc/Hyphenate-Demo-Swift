@@ -26,7 +26,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     static let kGaDispatchPeriod = 30
 
     var window: UIWindow?
-
+    var mainViewController: MainViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
         // Override point for customization after application launch.
@@ -43,6 +43,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         hyphenateApplication(application, didFinishLaunchingWithOptions: launchOptions, appKey: AppDelegate.kHyphenateAppKey, apnsCertname: apnsCertName!, otherConfig:[AppDelegate.kSDKConfigEnableConsoleLogger: NSNumber(booleanLiteral: true)])
 
+        if EMClient.shared().isAutoLogin {
+            proceedLogin()
+        } else {
+            proceedLogout()
+            EMClient.shared().options.isAutoLogin = true
+        }
         
         HyphenateMessengerHelper.sharedInstance.loadConversationFromDB()
         return true
@@ -186,15 +192,42 @@ extension AppDelegate {
     // login
     func proceedLogin() {
         
+        let navigationController:UINavigationController
+        
+        if (self.mainViewController == nil) {
+            self.mainViewController = MainViewController()
+            navigationController = UINavigationController(rootViewController: mainViewController!)
+        }
+        else {
+            navigationController  = (mainViewController?.navigationController!)!;
+        }
+        
+        HyphenateMessengerHelper.sharedInstance.mainVC = mainViewController
+        HyphenateMessengerHelper.sharedInstance.loadConversationFromDB()
+        HyphenateMessengerHelper.sharedInstance.loadPushOptions()
+        HyphenateMessengerHelper.sharedInstance.loadGroupFromServer()
+        window?.rootViewController = navigationController
     }
     
     //logout
     func proceedLogout() {
         if EMClient.shared().isLoggedIn {
-            
+            HyphenateMessengerHelper.sharedInstance.logout()
         } else {
-            
+            proceedLoginViewController()
         }
+    }
+    
+    func proceedLoginViewController() {
+        if ((mainViewController) != nil) {
+            let _ = mainViewController?.navigationController?.popToRootViewController(animated: false)
+        }
+        
+        self.mainViewController = nil;
+        
+        HyphenateMessengerHelper.sharedInstance.mainVC = nil
+        let loginController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginScene")
+        window?.rootViewController = loginController
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

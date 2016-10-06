@@ -52,6 +52,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
                 alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
                 UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
             } else if EMClient.shared().isLoggedIn {
+                EMClient.shared().options.isAutoLogin = true
                 let mainVC = MainViewController()
                 HyphenateMessengerHelper.sharedInstance.mainVC = mainVC
                 self.navigationController?.pushViewController(mainVC, animated: true)
