@@ -43,7 +43,7 @@
                                     <constraint firstAttribute="width" constant="54" id="yZy-Mu-L9I"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="SIgn up">
+                                <state key="normal" title="Sign up">
                                     <color key="titleColor" red="0.27803102135658264" green="0.80563414096832275" blue="0.018333645537495613" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
@@ -224,7 +224,7 @@
             <objects>
                 <navigationController storyboardIdentifier="loginScene" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Vyd-z9-jwz" sceneMemberID="viewController">
                     <toolbarItems/>
-                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" misplaced="YES" backIndicatorImage="back" id="too-Ml-Gkz">
+                    <navigationBar key="navigationBar" hidden="YES" contentMode="scaleToFill" backIndicatorImage="back" id="too-Ml-Gkz">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
