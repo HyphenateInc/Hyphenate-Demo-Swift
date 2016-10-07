@@ -20,8 +20,8 @@ class ContactTableViewCell:UITableViewCell{
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        photoView.layer.cornerRadius = (photoView?.frame.size.width)! / 2
-//        photoView.clipsToBounds = true
+        photoView.layer.cornerRadius = 15
+        photoView.clipsToBounds = true
     }
     
     class func reuseIdentifier() -> String {

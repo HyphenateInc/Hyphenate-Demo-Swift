@@ -37,6 +37,7 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         let image = UIImage(named: "iconAdd")
         let rightButtonItem:UIBarButtonItem = UIBarButtonItem(image: image, landscapeImagePhone: image, style: UIBarButtonItemStyle.plain, target: self, action: #selector(ContactsTableViewController.addContactAction))
         navigationItem.rightBarButtonItem = rightButtonItem
+        navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
 
         NotificationCenter.default.addObserver(self, selector: #selector(ContactsTableViewController.reloadDataSource), name: NSNotification.Name(rawValue: "kNotification_requestUpdated"), object: nil)
 
