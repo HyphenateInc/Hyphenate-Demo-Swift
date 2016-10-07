@@ -239,7 +239,7 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredDataSource = dataSource.filter { (username) -> Bool in
-            return username.contains(searchText)
+            return username.lowercased.contains(searchText.lowercased())
         }
         self.tableView.reloadData()
     }
