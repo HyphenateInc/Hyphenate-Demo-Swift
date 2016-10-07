@@ -63,6 +63,17 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         self.requestSource.removeAll()
         if let requestArray =  InvitationManager.sharedInstance.getSavedFriendRequests(EMClient.shared().currentUsername) {
             requestSource = requestArray
+            if requestArray.count > 0 {
+                DispatchQueue.main.async(execute: {
+                    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.mainViewController?.tabBar.items?[1].badgeValue = "\(requestArray.count)"
+                })
+            } else {
+                DispatchQueue.main.async(execute: {
+                    let appDelegate: AppDelegate = UIApplication.shared.delegate as! AppDelegate
+                    appDelegate.mainViewController?.tabBar.items?[1].badgeValue = nil
+                })
+            }
         }
         
         EMClient.shared().contactManager.getContactsFromServer(completion: { (array, error) in

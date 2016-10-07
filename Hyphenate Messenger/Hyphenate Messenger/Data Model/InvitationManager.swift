@@ -42,8 +42,9 @@ class InvitationManager:NSObject{
                 if var requests = NSKeyedUnarchiver.unarchiveObject(with: defalutData) as? [RequestEntity]{
                     var needDelete: RequestEntity?
                     for request: RequestEntity in requests {
-                        if (request.groupId == requestEntity.groupId) && (request.receiverUsername == requestEntity.receiverUsername) {
+                        if (request.groupId == requestEntity.groupId) && (request.applicantUsername == requestEntity.applicantUsername) {
                             needDelete = request
+                            break
                         }
                     }
                     if let _ = needDelete{

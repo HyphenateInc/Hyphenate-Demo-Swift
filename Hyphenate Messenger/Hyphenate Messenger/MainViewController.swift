@@ -38,7 +38,36 @@ class MainViewController: UITabBarController {
         settingsTabItem.image = UIImage(named:  "settingsTab")
         settingsTabItem.selectedImage = UIImage(named:  "settingsTab_selected")
         settingsTabItem.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0);
-        
+
         UITabBar.appearance().tintColor = UIColor(red: 77.0/255.0, green: 195.0/255.0, blue: 0, alpha: 1.0)
     }
+    
+//    override func viewWillAppear(_ animated: Bool) {
+//        updateUnreadMessageCount
+//    }
+//    
+//    - (void)updateUnreadMessageCount:(NSNotification *)notification
+//    {
+//    NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
+//    
+//    NSInteger unreadCount = 0;
+//    for (EMConversation *conversation in conversations) {
+//    unreadCount += conversation.unreadMessagesCount;
+//    }
+//    
+//    if (self.chatListVC) {
+//    
+//    if (unreadCount > 0) {
+//    self.chatListVC.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i", (int)unreadCount];
+//    }
+//    else {
+//    self.chatListVC.tabBarItem.badgeValue = nil;
+//    }
+//    }
+//    
+//    UIApplication *application = [UIApplication sharedApplication];
+//    [application setApplicationIconBadgeNumber:unreadCount];
+//    }
+
+    
 }

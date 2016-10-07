@@ -59,8 +59,8 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
         self.tableView.register(UINib(nibName: "ConversationTableViewCell", bundle: nil), forCellReuseIdentifier: "Cell")
         self.tableView.separatorStyle = UITableViewCellSeparatorStyle.singleLine
   
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refreshDataSource), name: NSNotification.Name(rawValue: kNotification_conversationUpdated), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(self.refresh), name: NSNotification.Name(rawValue: kNotification_didReceiveMessages), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadDataSource), name: NSNotification.Name(rawValue: kNotification_conversationUpdated), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(self.reloadDataSource), name: NSNotification.Name(rawValue: kNotification_didReceiveMessages), object: nil)
         
         reloadDataSource()
     }
@@ -70,17 +70,6 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
         self.tabBarController?.tabBar.isHidden = false
 
     }
-    
-    func refresh() {
-//        self.refreshAndSortView()
-        reloadDataSource()
-    }
-    
-    func refreshDataSource() {
-//        self.tableViewDidTriggerHeaderRefresh()
-        reloadDataSource()
-    }
-    
     
     func reloadDataSource(){
         self.dataSource.removeAll()

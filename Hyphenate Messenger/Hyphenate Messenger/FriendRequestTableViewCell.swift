@@ -13,7 +13,7 @@ class FriendRequestTableViewCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        profileImageView.layer.cornerRadius = 15
         profileImageView.clipsToBounds = true
     }
 
