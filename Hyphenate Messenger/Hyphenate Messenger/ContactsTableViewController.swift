@@ -13,6 +13,7 @@ import HyphenateFullSDK
 class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
 
     var dataSource = [AnyObject]()
+    var filteredDataSource = [AnyObject]()
     var requestSource = [RequestEntity]()
     var searchController : UISearchController!
 
@@ -42,6 +43,11 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         NotificationCenter.default.addObserver(self, selector: #selector(ContactsTableViewController.reloadDataSource), name: NSNotification.Name(rawValue: "kNotification_requestUpdated"), object: nil)
 
         self.reloadDataSource()
+    }
+    
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -156,12 +162,12 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
             case 0:
                 return requestSource.count
             case 1:
-                return dataSource.count
+                return searchController.isActive && searchController.searchBar.text != "" ? filteredDataSource.count : dataSource.count
             default:
                 break
             }
         } else {
-            return dataSource.count
+            return searchController.isActive && searchController.searchBar.text != "" ? filteredDataSource.count : dataSource.count
         }
         return 0
     }
@@ -180,7 +186,8 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
             case 1:
                 if dataSource.count > 0 {
                     let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.reuseIdentifier()) as! ContactTableViewCell
-                    cell.displayNameLabel.text = self.dataSource[(indexPath as NSIndexPath).row] as? String
+                    let text = searchController.isActive && searchController.searchBar.text != "" ? filteredDataSource[indexPath.row] : dataSource[indexPath.row]
+                    cell.displayNameLabel.text = text as? String
                     return cell
                 }
                 
@@ -189,7 +196,8 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
             }
         } else if dataSource.count > 0 {
             let cell = tableView.dequeueReusableCell(withIdentifier: ContactTableViewCell.reuseIdentifier()) as! ContactTableViewCell
-            cell.displayNameLabel.text = self.dataSource[(indexPath as NSIndexPath).row] as? String
+            let text = searchController.isActive && searchController.searchBar.text != "" ? filteredDataSource[indexPath.row] : dataSource[indexPath.row]
+            cell.displayNameLabel.text = text as? String
             return cell
         }
         
@@ -217,12 +225,33 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         if requestSource.count == 0 || (indexPath as NSIndexPath).section == 1 {
-            if let contact = dataSource[(indexPath as NSIndexPath).row] as? String {
+            let row = filteredDataSource.count>0 ? filteredDataSource[indexPath.row] : dataSource[indexPath.row]
+            if let contact = row as? String {
                 let profileController = UIStoryboard(name: "Profile", bundle: nil).instantiateInitialViewController() as! ProfileViewController
                 profileController.username = contact
                 self.navigationController!.pushViewController(profileController, animated: true)
             }
         }
+    }
+    
+    
+    // MARK: - UISearchBarDelegate
+
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredDataSource = dataSource.filter { (username) -> Bool in
+            return username.contains(searchText)
+        }
+        self.tableView.reloadData()
+    }
+    
+    func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
+    }
+
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchController.searchBar.resignFirstResponder()
+        self.tableView.reloadData()
     }
     
 }
