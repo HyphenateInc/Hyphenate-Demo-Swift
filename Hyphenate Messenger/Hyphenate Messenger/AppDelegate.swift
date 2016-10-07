@@ -40,7 +40,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pushSettings = UIUserNotificationSettings(types:[UIUserNotificationType.badge ,UIUserNotificationType.sound ,UIUserNotificationType.alert], categories: nil)
         application.registerUserNotificationSettings(pushSettings)
         application.registerForRemoteNotifications()
-        
+        UINavigationBar.appearance().tintColor = UIColor(red: 71.0/255, green: 201/255.0, blue: 5.0/255, alpha: 1)
+        UINavigationBar.appearance().backgroundColor = UIColor(red: 250.0/255, green: 251.0/255, blue: 252.0/255, alpha: 1)
+        UINavigationBar.appearance().clipsToBounds = false
+        UINavigationBar.appearance().isTranslucent = true
+
         hyphenateApplication(application, didFinishLaunchingWithOptions: launchOptions, appKey: AppDelegate.kHyphenateAppKey, apnsCertname: apnsCertName!, otherConfig:[AppDelegate.kSDKConfigEnableConsoleLogger: NSNumber(booleanLiteral: true)])
 
         if EMClient.shared().isAutoLogin {
@@ -192,21 +196,15 @@ extension AppDelegate {
     // login
     func proceedLogin() {
         
-        let navigationController:UINavigationController
-        
         if (self.mainViewController == nil) {
             self.mainViewController = MainViewController()
-            navigationController = UINavigationController(rootViewController: mainViewController!)
-        }
-        else {
-            navigationController  = (mainViewController?.navigationController!)!;
         }
         
         HyphenateMessengerHelper.sharedInstance.mainVC = mainViewController
         HyphenateMessengerHelper.sharedInstance.loadConversationFromDB()
         HyphenateMessengerHelper.sharedInstance.loadPushOptions()
         HyphenateMessengerHelper.sharedInstance.loadGroupFromServer()
-        window?.rootViewController = navigationController
+        window?.rootViewController = self.mainViewController
     }
     
     //logout

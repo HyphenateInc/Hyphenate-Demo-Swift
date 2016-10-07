@@ -16,11 +16,10 @@ class ChatTableViewController: EaseMessageViewController,EaseMessageViewControll
         self.showRefreshHeader = true
         self.delegate = self
         self.dataSource = self
-        navigationController?.navigationBar.tintColor = UIColor(red: 71.0/255, green: 201/255.0, blue: 5.0/255, alpha: 1)
-        navigationController?.navigationBar.isTranslucent = false
-        navigationController?.navigationBar.backgroundColor = UIColor(red: 250.0/255, green: 251.0/255, blue: 252.0/255, alpha: 1)
+        navigationController?.view.backgroundColor = UIColor.white
+
     }
-    
+        
     // Mark: EaseMessageViewControllerDelegate
     
     func messageViewController(_ viewController: EaseMessageViewController!, canLongPressRowAt indexPath: IndexPath!) -> Bool {
