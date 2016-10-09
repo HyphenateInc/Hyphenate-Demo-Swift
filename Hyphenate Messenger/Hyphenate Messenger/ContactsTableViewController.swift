@@ -31,7 +31,7 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         tableView.tableFooterView = UIView()
         
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
         navigationItem.titleView = searchController.searchBar
         definesPresentationContext = true
         
@@ -62,6 +62,13 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
     
     func updateSearchResults(for searchController: UISearchController) {
         
+    }
+    
+    func filterContentForSearchText(searchText: String, scope: String = "All") {
+        filteredDataSource = dataSource.filter { (username) -> Bool in
+            return username.lowercased.contains(searchText.lowercased())
+        }
+        self.tableView.reloadData()
     }
     
     func reloadDataSource(){
@@ -235,7 +242,7 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
     }
     
     
-    // MARK: - UISearchBarDelegate
+    //     MARK: - UISearchBarDelegate
 
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         filteredDataSource = dataSource.filter { (username) -> Bool in

@@ -31,6 +31,7 @@ public protocol ConversationListViewControllerDelegate: class {
 open class ConversationsTableViewController: UITableViewController, EMChatManagerDelegate,ConversationListViewControllerDelegate, ConversationListViewControllerDataSource, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
 
     var dataSource = [AnyObject]()
+    var filteredDataSource = [AnyObject]()
     var searchController : UISearchController!
 
     override open func viewDidLoad() {
@@ -43,7 +44,7 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
         tableView.tableFooterView = UIView()
         
         searchController.hidesNavigationBarDuringPresentation = false
-        searchController.dimsBackgroundDuringPresentation = true
+        searchController.dimsBackgroundDuringPresentation = false
         navigationItem.titleView = searchController.searchBar
         definesPresentationContext = true
         
@@ -97,13 +98,15 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
     }
 
     override open func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return dataSource.count
+        return searchController.isActive && searchController.searchBar.text != "" ? filteredDataSource.count : dataSource.count
     }
     
     override open func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell:ConversationTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ConversationTableViewCell
-        let conversation:EMConversation = dataSource[(indexPath as NSIndexPath).row] as! EMConversation
+        
+        let conversation = (searchController.isActive && searchController.searchBar.text != "" ?filteredDataSource[indexPath.row] : dataSource[indexPath.row]) as! EMConversation
+
         cell.senderLabel.text = conversation.latestMessage.from
 
         let timeInterval: Double = Double(conversation.latestMessage.timestamp)
@@ -136,6 +139,31 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
             
         }
         NotificationCenter.default.post(name: Notification.Name(rawValue: "setupUnreadMessageCount"), object: nil)
+        self.tableView.reloadData()
+    }
+    
+    
+    //     MARK: - UISearchBarDelegate
+    
+    public func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        filteredDataSource = dataSource.filter { (conversation) -> Bool in
+            if let conversation = conversation as? EMConversation{
+                if let sender = conversation.latestMessage.from{
+                    return sender.lowercased().contains(searchText.lowercased())
+                }
+            }
+            return false
+        }
+        self.tableView.reloadData()
+    }
+    
+    public func searchBarShouldEndEditing(_ searchBar: UISearchBar) -> Bool {
+        return true
+    }
+    
+    public func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.text = ""
+        searchController.searchBar.resignFirstResponder()
         self.tableView.reloadData()
     }
     
