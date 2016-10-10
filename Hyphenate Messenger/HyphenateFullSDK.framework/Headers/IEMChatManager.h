@@ -244,7 +244,6 @@
  *  \~english
  *  Send read acknowledgement for message
  *
- *  Asynchronous methods
  *
  *  @param aMessage  Message instance
  *  @param aCompletionBlock    The callback block of completion
@@ -264,7 +263,6 @@
  *  \~english
  *  Send a message
  *
- *  Asynchronous methods
  *
  *  @param aMessage            Message instance
  *  @param aProgressBlock      The block of attachment upload progress
@@ -325,7 +323,6 @@
  *  \~english
  *  Download message attachment(voice, video, image or file), SDK downloads attachment automatically, no need to download attachment manually unless automatic download failed
  *
- *  Asynchronous methods
  *
  *  @param aMessage            Message instance
  *  @param aProgressBlock      The callback block of attachment download progress

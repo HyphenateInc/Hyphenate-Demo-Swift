@@ -9,8 +9,6 @@
 /* Begin PBXBuildFile section */
 		39062AE81D9F0D4400EE8412 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39062AE71D9F0D4400EE8412 /* ContactTableViewCell.xib */; };
 		5C226CB1BB2ACE14FE2BC796 /* Pods_Hyphenate_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5A965B5FB0DF694BB4C542 /* Pods_Hyphenate_Messenger.framework */; };
-		9A1060CA1DA45D7A00C48EDD /* HyphenateFullSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1060C91DA45D7A00C48EDD /* HyphenateFullSDK.framework */; };
-		9A1060CB1DA45D7A00C48EDD /* HyphenateFullSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A1060C91DA45D7A00C48EDD /* HyphenateFullSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9A17BDF11D9E1FB70075EF9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */; };
 		9A17BDF91D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF71D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld */; };
 		9A17BDFB1D9E1FB70075EF9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A17BDFA1D9E1FB70075EF9F /* Assets.xcassets */; };
@@ -39,6 +37,8 @@
 		9A702BA01DA370FC005ED10C /* requestHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A702B9F1DA370FC005ED10C /* requestHeaderView.xib */; };
 		9A702BA21DA371E4005ED10C /* requestHeaderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A702BA11DA371E4005ED10C /* requestHeaderView.swift */; };
 		9A7FB3801DA1EDA7005CC8C3 /* Profile.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A7FB37F1DA1EDA7005CC8C3 /* Profile.storyboard */; };
+		9A930F781DAB4499000095FC /* HyphenateFullSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9A930F771DAB4499000095FC /* HyphenateFullSDK.framework */; };
+		9A930F791DAB4499000095FC /* HyphenateFullSDK.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9A930F771DAB4499000095FC /* HyphenateFullSDK.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9AC132381DA0DFE500A2BD05 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC132361DA0DFE500A2BD05 /* SwitchTableViewCell.swift */; };
 		9AC132391DA0DFE500A2BD05 /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC132371DA0DFE500A2BD05 /* SwitchTableViewCell.xib */; };
 		9AC132431DA17B8200A2BD05 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC132421DA17B8200A2BD05 /* ProfileViewController.swift */; };
@@ -205,7 +205,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9A1060CB1DA45D7A00C48EDD /* HyphenateFullSDK.framework in Embed Frameworks */,
+				9A930F791DAB4499000095FC /* HyphenateFullSDK.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -217,7 +217,6 @@
 		46CB1D5CA6E51EFA21BD9A5F /* Pods-Hyphenate Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyphenate Messenger.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyphenate Messenger/Pods-Hyphenate Messenger.release.xcconfig"; sourceTree = "<group>"; };
 		71E15A43B314CB255A946243 /* Pods-Hyphenate Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyphenate Messenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyphenate Messenger/Pods-Hyphenate Messenger.debug.xcconfig"; sourceTree = "<group>"; };
 		8F5A965B5FB0DF694BB4C542 /* Pods_Hyphenate_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyphenate_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		9A1060C91DA45D7A00C48EDD /* HyphenateFullSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HyphenateFullSDK.framework; sourceTree = "<group>"; };
 		9A17BDED1D9E1FB70075EF9F /* Hyphenate Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyphenate Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A17BDF81D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hyphenate_Messenger.xcdatamodel; sourceTree = "<group>"; };
@@ -252,6 +251,7 @@
 		9A702B9F1DA370FC005ED10C /* requestHeaderView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = requestHeaderView.xib; sourceTree = "<group>"; };
 		9A702BA11DA371E4005ED10C /* requestHeaderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = requestHeaderView.swift; sourceTree = "<group>"; };
 		9A7FB37F1DA1EDA7005CC8C3 /* Profile.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Profile.storyboard; sourceTree = "<group>"; };
+		9A930F771DAB4499000095FC /* HyphenateFullSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = HyphenateFullSDK.framework; sourceTree = "<group>"; };
 		9AC132361DA0DFE500A2BD05 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		9AC132371DA0DFE500A2BD05 /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		9AC132421DA17B8200A2BD05 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -545,7 +545,7 @@
 				B6346B711D9E6CEF00CBEAE2 /* MobileCoreServices.framework in Frameworks */,
 				B6346B6F1D9E6CE200CBEAE2 /* ImageIO.framework in Frameworks */,
 				B6346B6D1D9E6CD100CBEAE2 /* AVFoundation.framework in Frameworks */,
-				9A1060CA1DA45D7A00C48EDD /* HyphenateFullSDK.framework in Frameworks */,
+				9A930F781DAB4499000095FC /* HyphenateFullSDK.framework in Frameworks */,
 				B6346B6B1D9E6CCB00CBEAE2 /* AudioToolbox.framework in Frameworks */,
 				B6346B691D9E6CBE00CBEAE2 /* CoreMedia.framework in Frameworks */,
 				B6346AF81D9E6C5100CBEAE2 /* libopencore-amrnb.a in Frameworks */,
@@ -574,7 +574,7 @@
 		9A17BDE41D9E1FB70075EF9F = {
 			isa = PBXGroup;
 			children = (
-				9A1060C91DA45D7A00C48EDD /* HyphenateFullSDK.framework */,
+				9A930F771DAB4499000095FC /* HyphenateFullSDK.framework */,
 				B6346B661D9E6C5D00CBEAE2 /* EaseUIResource.bundle */,
 				B63469C51D9E6C5100CBEAE2 /* EaseUI */,
 				9A17BDEF1D9E1FB70075EF9F /* Hyphenate Messenger */,
@@ -1447,6 +1447,7 @@
 				TargetAttributes = {
 					9A17BDEC1D9E1FB70075EF9F = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = ZHZ4TMESQ4;
 						LastSwiftMigration = 0800;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
@@ -1456,11 +1457,13 @@
 					};
 					9A17BE031D9E1FB70075EF9F = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = ZHZ4TMESQ4;
 						LastSwiftMigration = 0800;
 						TestTargetID = 9A17BDEC1D9E1FB70075EF9F;
 					};
 					9A17BE0E1D9E1FB70075EF9F = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = ZHZ4TMESQ4;
 						LastSwiftMigration = 0800;
 						TestTargetID = 9A17BDEC1D9E1FB70075EF9F;
 					};
@@ -1776,9 +1779,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
+				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
+				ENABLE_BITCODE = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1798,6 +1804,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1824,9 +1831,12 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
+				ENABLE_BITCODE = NO;
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
@@ -1839,6 +1849,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -1850,6 +1861,9 @@
 			baseConfigurationReference = 71E15A43B314CB255A946243 /* Pods-Hyphenate Messenger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1867,6 +1881,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.hyphenate.messenger.Hyphenate-Messenger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hyphenate Messenger/Hyphenate-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -1877,6 +1892,10 @@
 			baseConfigurationReference = 46CB1D5CA6E51EFA21BD9A5F /* Pods-Hyphenate Messenger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
+				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)",
@@ -1894,6 +1913,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.hyphenate.messenger.Hyphenate-Messenger";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hyphenate Messenger/Hyphenate-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
