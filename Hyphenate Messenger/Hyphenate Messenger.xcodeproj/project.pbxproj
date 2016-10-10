@@ -1389,6 +1389,7 @@
 				9A17BE351D9E20B30075EF9F /* Embed Frameworks */,
 				B35AA3D2921E33920032D21B /* [CP] Embed Pods Frameworks */,
 				0FA83C62195ACB7E39D88779 /* [CP] Copy Pods Resources */,
+				C412106B1DAC538C00CA7D76 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -1560,6 +1561,19 @@
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Hyphenate Messenger/Pods-Hyphenate Messenger-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		C412106B1DAC538C00CA7D76 /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${PODS_ROOT}/Fabric/run\" 33bb2bc04d2ed7f91da02025c362279e3406ed81 304f46ac0fe00b79b828480c3b23c6e0e44f35508cac25a01a191755ecb2f40b";
 		};
 		CB0511B8828596D70DF7FB14 /* [CP] Check Pods Manifest.lock */ = {
 			isa = PBXShellScriptBuildPhase;
