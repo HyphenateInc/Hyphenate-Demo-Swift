@@ -11,15 +11,23 @@ import HyphenateFullSDK
 
 class ChatTableViewController: EaseMessageViewController,EaseMessageViewControllerDelegate, EaseMessageViewControllerDataSource,EMClientDelegate {
     
+    var dismissable = false
     override func viewDidLoad() {
         super.viewDidLoad()
         self.showRefreshHeader = true
         self.delegate = self
         self.dataSource = self
         navigationController?.view.backgroundColor = UIColor.white
-
+        if dismissable == true {
+            let rightButtonItem:UIBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(ChatTableViewController.cancelAction))
+            navigationItem.leftBarButtonItem = rightButtonItem
+        }
     }
-        
+    
+    func cancelAction() {
+        self.dismiss(animated: true, completion: nil)
+    }
+    
     // Mark: EaseMessageViewControllerDelegate
     
     func messageViewController(_ viewController: EaseMessageViewController!, canLongPressRowAt indexPath: IndexPath!) -> Bool {

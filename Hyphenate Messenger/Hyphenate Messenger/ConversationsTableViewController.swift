@@ -84,7 +84,10 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
     }
 
     func composeConversationAction() {
+        let contactViewController = ComposeMessageTableViewController()
+        let navigationController = UINavigationController(rootViewController: contactViewController)
         
+        present(navigationController, animated: true, completion: nil)
     }
     
     open func updateSearchResults(for searchController: UISearchController) {
@@ -106,8 +109,10 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
         let cell:ConversationTableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath) as! ConversationTableViewCell
         
         let conversation = (searchController.isActive && searchController.searchBar.text != "" ?filteredDataSource[indexPath.row] : dataSource[indexPath.row]) as! EMConversation
-
-        cell.senderLabel.text = conversation.latestMessage.from
+        
+        if let sender = conversation.latestMessage.from {
+            cell.senderLabel.text = sender
+        }
 
         let timeInterval: Double = Double(conversation.latestMessage.timestamp)
         let date = Date(timeIntervalSince1970:timeInterval)

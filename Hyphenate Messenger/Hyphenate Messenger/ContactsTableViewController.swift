@@ -45,7 +45,6 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         self.reloadDataSource()
     }
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
     }
@@ -95,11 +94,13 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
                 DispatchQueue.main.async(execute: {
                     self.tableView.reloadData()
                 })
+            } else if let array = EMClient.shared().contactManager.getContacts() {
+                self.dataSource = array as [AnyObject]
+                DispatchQueue.main.async(execute: {
+                    self.tableView.reloadData()
+                })
             }
         })
-        if self.dataSource.count == 0 {
-            self.dataSource = EMClient.shared().contactManager.getContacts() as [AnyObject]
-        }
     }
     
     // MARK: - Table view data source

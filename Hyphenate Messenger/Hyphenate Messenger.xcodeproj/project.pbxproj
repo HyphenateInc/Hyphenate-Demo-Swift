@@ -24,6 +24,7 @@
 		9A17BE311D9E20190075EF9F /* ChatTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE291D9E20190075EF9F /* ChatTableViewController.swift */; };
 		9A17BE381D9E20CB0075EF9F /* HyphenateTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BE371D9E20CB0075EF9F /* HyphenateTextField.swift */; };
 		9A23CBF31D9E256100FACFD7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9A23CBF21D9E256100FACFD7 /* LaunchScreen.storyboard */; };
+		9A26F41A1DACB8ED003A8EA9 /* ComposeMessageTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A26F4191DACB8ED003A8EA9 /* ComposeMessageTableViewController.swift */; };
 		9A2E70AE1DA224FA00D3EE94 /* ProfileNameTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E70AC1DA224FA00D3EE94 /* ProfileNameTableViewCell.swift */; };
 		9A2E70AF1DA224FA00D3EE94 /* ProfileNameTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A2E70AD1DA224FA00D3EE94 /* ProfileNameTableViewCell.xib */; };
 		9A2E70B21DA2250D00D3EE94 /* ProfileSwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A2E70B01DA2250D00D3EE94 /* ProfileSwitchTableViewCell.swift */; };
@@ -238,6 +239,7 @@
 		9A17BE291D9E20190075EF9F /* ChatTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChatTableViewController.swift; sourceTree = "<group>"; };
 		9A17BE371D9E20CB0075EF9F /* HyphenateTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HyphenateTextField.swift; sourceTree = "<group>"; };
 		9A23CBF21D9E256100FACFD7 /* LaunchScreen.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; name = LaunchScreen.storyboard; path = ../LaunchScreen.storyboard; sourceTree = "<group>"; };
+		9A26F4191DACB8ED003A8EA9 /* ComposeMessageTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ComposeMessageTableViewController.swift; sourceTree = "<group>"; };
 		9A2E70AC1DA224FA00D3EE94 /* ProfileNameTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileNameTableViewCell.swift; sourceTree = "<group>"; };
 		9A2E70AD1DA224FA00D3EE94 /* ProfileNameTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileNameTableViewCell.xib; sourceTree = "<group>"; };
 		9A2E70B01DA2250D00D3EE94 /* ProfileSwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSwitchTableViewCell.swift; sourceTree = "<group>"; };
@@ -716,6 +718,7 @@
 			isa = PBXGroup;
 			children = (
 				9A17BE271D9E20190075EF9F /* ConversationsTableViewController.swift */,
+				9A26F4191DACB8ED003A8EA9 /* ComposeMessageTableViewController.swift */,
 			);
 			name = Conversation;
 			sourceTree = "<group>";
@@ -1711,6 +1714,7 @@
 				9A17BE381D9E20CB0075EF9F /* HyphenateTextField.swift in Sources */,
 				B6346B011D9E6C5100CBEAE2 /* MJRefreshAutoGifFooter.m in Sources */,
 				B6346B151D9E6C5100CBEAE2 /* MWTapDetectingView.m in Sources */,
+				9A26F41A1DACB8ED003A8EA9 /* ComposeMessageTableViewController.swift in Sources */,
 				B6346B211D9E6C5100CBEAE2 /* UIButton+EMWebCache.m in Sources */,
 				B6346B131D9E6C5100CBEAE2 /* MWPhotoBrowser.m in Sources */,
 				B6346B2C1D9E6C5100CBEAE2 /* PSTCollectionViewData.m in Sources */,
