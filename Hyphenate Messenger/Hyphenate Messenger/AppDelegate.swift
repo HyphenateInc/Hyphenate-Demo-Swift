@@ -14,7 +14,7 @@ import HyphenateFullSDK
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /** Hyphenate configuration constants **/
-    static let kHyphenateAppKey = "hyphenate#hyphenatedemo"
+    static let kHyphenateAppKey = "hyphenatedemo#hyphenateswift"
     static let kHyphenatePushServiceDevelopment = "DevelopmentCertificate"
     static let kHyphenatePushServiceProduction = "ProductionCertificate"
     static let kSDKConfigEnableConsoleLogger = "SDKConfigEnableConsoleLogger"
