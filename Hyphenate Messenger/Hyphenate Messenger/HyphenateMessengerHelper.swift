@@ -167,9 +167,9 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "didReceiveMessages"), object: message)
             }
             
-            if (chatVC == nil) {
-                chatVC = getCurrentChatView()
-            }
+//            if (chatVC == nil) {
+//                chatVC = getCurrentChatView()
+//            }
             
             var isSameConversation = false
             if (chatVC != nil) {

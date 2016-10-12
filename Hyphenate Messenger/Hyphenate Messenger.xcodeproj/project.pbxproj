@@ -1883,7 +1883,7 @@
 					"$(PROJECT_DIR)/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.hyphenate.messenger.Hyphenate-Messenger";
+				PRODUCT_BUNDLE_IDENTIFIER = io.hyphenate.demo.im;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hyphenate Messenger/Hyphenate-Bridging-Header.h";
@@ -1915,7 +1915,7 @@
 					"$(PROJECT_DIR)/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/EaseUI/EMUIKit/3rdparty/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "io.hyphenate.messenger.Hyphenate-Messenger";
+				PRODUCT_BUNDLE_IDENTIFIER = io.hyphenate.demo.im;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hyphenate Messenger/Hyphenate-Bridging-Header.h";

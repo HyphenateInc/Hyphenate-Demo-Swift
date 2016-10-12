@@ -40,34 +40,26 @@ class MainViewController: UITabBarController {
         settingsTabItem.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0);
 
         UITabBar.appearance().tintColor = UIColor(red: 77.0/255.0, green: 195.0/255.0, blue: 0, alpha: 1.0)
+        NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.updateUnreadMessageCount), name: NSNotification.Name(rawValue: "kNotification_unreadMessageCountUpdated"), object: nil)
     }
     
-//    override func viewWillAppear(_ animated: Bool) {
-//        updateUnreadMessageCount
-//    }
-//    
-//    - (void)updateUnreadMessageCount:(NSNotification *)notification
-//    {
-//    NSArray *conversations = [[EMClient sharedClient].chatManager getAllConversations];
-//    
-//    NSInteger unreadCount = 0;
-//    for (EMConversation *conversation in conversations) {
-//    unreadCount += conversation.unreadMessagesCount;
-//    }
-//    
-//    if (self.chatListVC) {
-//    
-//    if (unreadCount > 0) {
-//    self.chatListVC.tabBarItem.badgeValue = [NSString stringWithFormat:@"%i", (int)unreadCount];
-//    }
-//    else {
-//    self.chatListVC.tabBarItem.badgeValue = nil;
-//    }
-//    }
-//    
-//    UIApplication *application = [UIApplication sharedApplication];
-//    [application setApplicationIconBadgeNumber:unreadCount];
-//    }
+    override func viewWillAppear(_ animated: Bool) {
+        updateUnreadMessageCount()
+    }
 
-    
+    func updateUnreadMessageCount() {
+        let conversations: [EMConversation] = EMClient.shared().chatManager.getAllConversations() as! [EMConversation]
+        var unreadCount: Int = 0
+        conversations.forEach { (conversation) in
+            unreadCount = unreadCount + Int(conversation.unreadMessagesCount)
+        }
+        
+        if unreadCount > 0 {
+            self.tabBar.items![1].badgeValue = "\(unreadCount)"
+        } else {
+            self.tabBar.items![1].badgeValue = nil
+        }
+        
+        UIApplication.shared.applicationIconBadgeNumber = unreadCount
+    }
 }
