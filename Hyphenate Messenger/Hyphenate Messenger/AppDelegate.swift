@@ -8,6 +8,8 @@
 
 import UIKit
 import CoreData
+import Fabric
+import Crashlytics
 import HyphenateFullSDK
 
 @UIApplicationMain
@@ -191,6 +193,8 @@ extension AppDelegate {
         //            proceedLogout()
         //            EMClient.shared().options.isAutoLogin = true
         //        }
+        
+        Fabric.with([Crashlytics.self])
     }
     
     // login
