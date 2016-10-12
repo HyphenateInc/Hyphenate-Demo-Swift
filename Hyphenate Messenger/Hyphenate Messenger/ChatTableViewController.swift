@@ -19,7 +19,7 @@ class ChatTableViewController: EaseMessageViewController,EaseMessageViewControll
         self.dataSource = self
         navigationController?.view.backgroundColor = UIColor.white
         if dismissable == true {
-            let rightButtonItem:UIBarButtonItem = UIBarButtonItem(title: "Back", style: .plain, target: self, action: #selector(ChatTableViewController.cancelAction))
+            let rightButtonItem:UIBarButtonItem = UIBarButtonItem(title: "Done", style: .plain, target: self, action: #selector(ChatTableViewController.cancelAction))
             navigationItem.leftBarButtonItem = rightButtonItem
         }
     }

@@ -110,7 +110,7 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
         
         let conversation = (searchController.isActive && searchController.searchBar.text != "" ?filteredDataSource[indexPath.row] : dataSource[indexPath.row]) as! EMConversation
         
-        if let sender = conversation.latestMessage.from {
+        if let sender = conversation.latestMessage?.from {
             cell.senderLabel.text = sender
         }
 

@@ -32,7 +32,9 @@ class ComposeMessageTableViewController: UITableViewController,EMGroupManagerDel
         
         title = "New Message"
 
-        navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
+        let rightButtonItem:UIBarButtonItem = UIBarButtonItem(title: "Cancel", style: .plain, target: self, action: #selector(ComposeMessageTableViewController.cancelAction))
+        navigationItem.leftBarButtonItem = rightButtonItem
+        
         self.reloadDataSource()
     }
     
