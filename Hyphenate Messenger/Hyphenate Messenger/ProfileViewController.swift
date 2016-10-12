@@ -21,7 +21,7 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        profileImageView.layer.cornerRadius = profileImageView.frame.size.width / 2
+        profileImageView.layer.cornerRadius = 30.0
         profileImageView.clipsToBounds = true
         usernameLabel.text = username
         self.tableView.register(UINib(nibName: "ProfileNameTableViewCell", bundle: nil), forCellReuseIdentifier: ProfileNameTableViewCell.reuseIdentifier())
