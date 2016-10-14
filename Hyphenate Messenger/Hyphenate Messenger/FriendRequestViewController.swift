@@ -39,6 +39,7 @@ class FriendRequestViewController: UIViewController, UITextFieldDelegate {
     func addFriendActions() {
         if inputTextfield.text != "" {
             spinner.startAnimating()
+            
             EMClient.shared().contactManager.addContact(inputTextfield.text, message: "\(EMClient.shared().currentUsername) sent you a friend request") { (userName, error) in
                 self.spinner.stopAnimating()
                 if error != nil {

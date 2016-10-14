@@ -125,8 +125,8 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
 
     @IBAction func chatButtonAction(_ sender: AnyObject) {
         
-        let chatController = ChatTableViewController(conversationID: self.username, conversationType: EMConversationTypeChat)
-        chatController?.title = self.username
+        let chatController = ChatTableViewController(conversationID: username, conversationType: EMConversationTypeChat)
+        chatController?.title = username
         chatController?.hidesBottomBarWhenPushed = true
         self.navigationController!.pushViewController(chatController!, animated: true)
     }

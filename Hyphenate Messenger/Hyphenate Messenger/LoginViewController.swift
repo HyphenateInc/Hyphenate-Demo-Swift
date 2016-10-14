@@ -43,6 +43,7 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         
         activityIndicator.startAnimating()
         
+        
         EMClient.shared().login(withUsername: userNameTextField.text, password: passwordTextField.text) { (userName : String?, error : EMError?) in
             
             self.activityIndicator.stopAnimating()

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		39062AE81D9F0D4400EE8412 /* ContactTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 39062AE71D9F0D4400EE8412 /* ContactTableViewCell.xib */; };
 		5C226CB1BB2ACE14FE2BC796 /* Pods_Hyphenate_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5A965B5FB0DF694BB4C542 /* Pods_Hyphenate_Messenger.framework */; };
+		9A06AB141DB09CBC003A5B2E /* CallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AB131DB09CBC003A5B2E /* CallViewController.m */; };
+		9A06AB171DB0A49D003A5B2E /* UIColor+Hyphenate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AB161DB0A49D003A5B2E /* UIColor+Hyphenate.m */; };
 		9A17BDF11D9E1FB70075EF9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */; };
 		9A17BDF91D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF71D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld */; };
 		9A17BDFB1D9E1FB70075EF9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A17BDFA1D9E1FB70075EF9F /* Assets.xcassets */; };
@@ -218,6 +220,10 @@
 		46CB1D5CA6E51EFA21BD9A5F /* Pods-Hyphenate Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyphenate Messenger.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyphenate Messenger/Pods-Hyphenate Messenger.release.xcconfig"; sourceTree = "<group>"; };
 		71E15A43B314CB255A946243 /* Pods-Hyphenate Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyphenate Messenger.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Hyphenate Messenger/Pods-Hyphenate Messenger.debug.xcconfig"; sourceTree = "<group>"; };
 		8F5A965B5FB0DF694BB4C542 /* Pods_Hyphenate_Messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Hyphenate_Messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		9A06AB121DB09CBC003A5B2E /* CallViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CallViewController.h; sourceTree = "<group>"; };
+		9A06AB131DB09CBC003A5B2E /* CallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallViewController.m; sourceTree = "<group>"; };
+		9A06AB151DB0A49D003A5B2E /* UIColor+Hyphenate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hyphenate.h"; sourceTree = "<group>"; };
+		9A06AB161DB0A49D003A5B2E /* UIColor+Hyphenate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hyphenate.m"; sourceTree = "<group>"; };
 		9A17BDED1D9E1FB70075EF9F /* Hyphenate Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyphenate Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A17BDF81D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hyphenate_Messenger.xcdatamodel; sourceTree = "<group>"; };
@@ -573,6 +579,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9A06AB111DB09CB5003A5B2E /* Call */ = {
+			isa = PBXGroup;
+			children = (
+				9A06AB151DB0A49D003A5B2E /* UIColor+Hyphenate.h */,
+				9A06AB161DB0A49D003A5B2E /* UIColor+Hyphenate.m */,
+				9A06AB121DB09CBC003A5B2E /* CallViewController.h */,
+				9A06AB131DB09CBC003A5B2E /* CallViewController.m */,
+			);
+			name = Call;
+			sourceTree = "<group>";
+		};
 		9A17BDE41D9E1FB70075EF9F = {
 			isa = PBXGroup;
 			children = (
@@ -636,6 +653,7 @@
 		9A17BE211D9E200B0075EF9F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9A06AB111DB09CB5003A5B2E /* Call */,
 				9A17BE231D9E20190075EF9F /* MainViewController.swift */,
 				9AC132401DA0EDC300A2BD05 /* Settings */,
 				9AC1323F1DA0EDBC00A2BD05 /* Chat */,
@@ -1624,6 +1642,7 @@
 				9A702BA21DA371E4005ED10C /* requestHeaderView.swift in Sources */,
 				B6346B7D1D9E6EA500CBEAE2 /* EMSearchBar.swift in Sources */,
 				B6346B591D9E6C5100CBEAE2 /* EaseBubbleView+Text.m in Sources */,
+				9A06AB141DB09CBC003A5B2E /* CallViewController.m in Sources */,
 				B6346B2B1D9E6C5100CBEAE2 /* PSTCollectionViewController.m in Sources */,
 				B6346B4D1D9E6C5100CBEAE2 /* EaseViewController.m in Sources */,
 				B6346B061D9E6C5100CBEAE2 /* MJRefreshBackStateFooter.m in Sources */,
@@ -1670,6 +1689,7 @@
 				B6346B241D9E6C5100CBEAE2 /* UIImage+EMWebP.m in Sources */,
 				B6346B071D9E6C5100CBEAE2 /* MJRefreshGifHeader.m in Sources */,
 				B6346B5E1D9E6C5100CBEAE2 /* EaseChatToolbarItem.m in Sources */,
+				9A06AB171DB0A49D003A5B2E /* UIColor+Hyphenate.m in Sources */,
 				B6346B5F1D9E6C5100CBEAE2 /* EaseImageView.m in Sources */,
 				B6346B271D9E6C5100CBEAE2 /* UIView+EMWebCacheOperation.m in Sources */,
 				B6346AF11D9E6C5100CBEAE2 /* EMCDDeviceManager+Microphone.m in Sources */,

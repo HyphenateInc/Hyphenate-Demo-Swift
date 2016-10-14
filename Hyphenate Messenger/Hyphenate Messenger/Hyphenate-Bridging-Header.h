@@ -10,6 +10,7 @@
 #define Hyphenate_Bridging_Header_h
 
 #import "EaseUI.h"
+#import "CallViewController.h"
 
 #endif /* Hyphenate_Bridging_Header_h */
 
