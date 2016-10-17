@@ -11,6 +11,9 @@
 		5C226CB1BB2ACE14FE2BC796 /* Pods_Hyphenate_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 8F5A965B5FB0DF694BB4C542 /* Pods_Hyphenate_Messenger.framework */; };
 		9A06AB141DB09CBC003A5B2E /* CallViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AB131DB09CBC003A5B2E /* CallViewController.m */; };
 		9A06AB171DB0A49D003A5B2E /* UIColor+Hyphenate.m in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AB161DB0A49D003A5B2E /* UIColor+Hyphenate.m */; };
+		9A06AB191DB584BA003A5B2E /* SettingsAboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AB181DB584BA003A5B2E /* SettingsAboutTableViewController.swift */; };
+		9A06AB1C1DB58606003A5B2E /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AB1A1DB58606003A5B2E /* LabelTableViewCell.swift */; };
+		9A06AB1D1DB58606003A5B2E /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A06AB1B1DB58606003A5B2E /* LabelTableViewCell.xib */; };
 		9A17BDF11D9E1FB70075EF9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */; };
 		9A17BDF91D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF71D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld */; };
 		9A17BDFB1D9E1FB70075EF9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A17BDFA1D9E1FB70075EF9F /* Assets.xcassets */; };
@@ -224,6 +227,9 @@
 		9A06AB131DB09CBC003A5B2E /* CallViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CallViewController.m; sourceTree = "<group>"; };
 		9A06AB151DB0A49D003A5B2E /* UIColor+Hyphenate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+Hyphenate.h"; sourceTree = "<group>"; };
 		9A06AB161DB0A49D003A5B2E /* UIColor+Hyphenate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+Hyphenate.m"; sourceTree = "<group>"; };
+		9A06AB181DB584BA003A5B2E /* SettingsAboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAboutTableViewController.swift; sourceTree = "<group>"; };
+		9A06AB1A1DB58606003A5B2E /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
+		9A06AB1B1DB58606003A5B2E /* LabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelTableViewCell.xib; sourceTree = "<group>"; };
 		9A17BDED1D9E1FB70075EF9F /* Hyphenate Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyphenate Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A17BDF81D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hyphenate_Messenger.xcdatamodel; sourceTree = "<group>"; };
@@ -700,6 +706,8 @@
 				9A702B9C1DA3401F005ED10C /* FriendRequestTableViewCell.xib */,
 				9A702B9F1DA370FC005ED10C /* requestHeaderView.xib */,
 				9A702BA11DA371E4005ED10C /* requestHeaderView.swift */,
+				9A06AB1A1DB58606003A5B2E /* LabelTableViewCell.swift */,
+				9A06AB1B1DB58606003A5B2E /* LabelTableViewCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -753,6 +761,7 @@
 			isa = PBXGroup;
 			children = (
 				9A17BE261D9E20190075EF9F /* SettingsTableViewController.swift */,
+				9A06AB181DB584BA003A5B2E /* SettingsAboutTableViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1526,6 +1535,7 @@
 				9A2E70AF1DA224FA00D3EE94 /* ProfileNameTableViewCell.xib in Resources */,
 				B6346B671D9E6C5D00CBEAE2 /* EaseUIResource.bundle in Resources */,
 				9A23CBF31D9E256100FACFD7 /* LaunchScreen.storyboard in Resources */,
+				9A06AB1D1DB58606003A5B2E /* LabelTableViewCell.xib in Resources */,
 				9A545C8A1DA0CB2200DEFBC7 /* ConversationTableViewCell.xib in Resources */,
 				B6346B0A1D9E6C5100CBEAE2 /* MJRefresh.bundle in Resources */,
 				9A7FB3801DA1EDA7005CC8C3 /* Profile.storyboard in Resources */,
@@ -1654,6 +1664,7 @@
 				B6346B541D9E6C5100CBEAE2 /* EaseMessageTimeCell.m in Sources */,
 				B6346B391D9E6C5100CBEAE2 /* EaseMessageModel.m in Sources */,
 				B6346AF41D9E6C5100CBEAE2 /* EMCDDeviceManagerBase.m in Sources */,
+				9A06AB191DB584BA003A5B2E /* SettingsAboutTableViewController.swift in Sources */,
 				B6346B371D9E6C5100CBEAE2 /* UIColor+EaseUI.m in Sources */,
 				B6346AFA1D9E6C5100CBEAE2 /* MBProgressHUD+Add.m in Sources */,
 				B6346B4B1D9E6C5100CBEAE2 /* EaseRefreshTableViewController.m in Sources */,
@@ -1713,6 +1724,7 @@
 				B6346B3F1D9E6C5100CBEAE2 /* UIViewController+HUD.m in Sources */,
 				B6346B431D9E6C5100CBEAE2 /* EaseEmoji.m in Sources */,
 				B6346B581D9E6C5100CBEAE2 /* EaseBubbleView+Location.m in Sources */,
+				9A06AB1C1DB58606003A5B2E /* LabelTableViewCell.swift in Sources */,
 				B6346B1C1D9E6C5100CBEAE2 /* EMSDWebImageDownloaderOperation.m in Sources */,
 				B6346B411D9E6C5100CBEAE2 /* EaseConvertToCommonEmoticonsHelper.m in Sources */,
 				9A17BDF91D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld in Sources */,

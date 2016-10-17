@@ -18,7 +18,7 @@ class SettingsTableViewController: UITableViewController {
         navigationItem.titleView = title
         self.tableView.backgroundColor = UIColor(red: 228.0/255.0, green: 233.0/255.0, blue: 236.0/255.0, alpha: 1.0)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
-        self.tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: nil), forCellReuseIdentifier: "switchCell")
+        tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: nil), forCellReuseIdentifier: "switchCell")
 
     }
 
@@ -85,6 +85,16 @@ class SettingsTableViewController: UITableViewController {
             
         }
      return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 0:
+            let settingsAboutVC = SettingsAboutTableViewController()
+            navigationController?.pushViewController(settingsAboutVC, animated: true)
+        default:break
+            
+        }
     }
     
     func logoutAction() {
