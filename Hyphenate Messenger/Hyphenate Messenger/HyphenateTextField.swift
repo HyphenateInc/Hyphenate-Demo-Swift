@@ -15,6 +15,7 @@ class HyphenateTextField: UITextField {
         super.init(coder: aDecoder)
         layer.borderColor = UIColor(red: 214.0/255.0, green: 214.0/255.0, blue: 217.0/255.0, alpha: 1.0).cgColor
         layer.borderWidth = 1.0
+        backgroundColor = UIColor.white
     }
     
     override func placeholderRect(forBounds bounds: CGRect) -> CGRect {

@@ -34,17 +34,17 @@
                                 <constraints>
                                     <constraint firstAttribute="width" constant="159" id="JOY-Mf-LKQ"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="P5C-sF-bXV">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="yZy-Mu-L9I"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
                                 <state key="normal" title="Sign up">
-                                    <color key="titleColor" red="0.27803102135658264" green="0.80563414096832275" blue="0.018333645537495613" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="9cT-Qu-4Vn" kind="show" id="vRn-kj-GCg"/>
@@ -76,7 +76,7 @@
                                 <color key="color" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.36862745099999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="KxP-KA-288" firstAttribute="top" secondItem="OBd-gq-Jcw" secondAttribute="bottom" constant="53" id="1MZ-8S-qj4"/>
                             <constraint firstItem="yQw-CV-GOo" firstAttribute="centerX" secondItem="3HR-jZ-Wr0" secondAttribute="centerX" id="A4E-IG-igv"/>
@@ -156,18 +156,18 @@
                                 </connections>
                             </textField>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logoGreen" translatesAutoresizingMaskIntoConstraints="NO" id="SzE-SC-6eS"/>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have an account?" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tfh-Pw-uYX">
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Have an account?" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Tfh-Pw-uYX">
+                                <fontDescription key="fontDescription" name="HelveticaNeue" family="Helvetica Neue" pointSize="14"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BxR-Ko-YdK">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="54" id="5Bu-od-zQa"/>
                                 </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <state key="normal" title="Log In">
-                                    <color key="titleColor" red="0.27803102135658264" green="0.80563414096832275" blue="0.018333645537495613" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <fontDescription key="fontDescription" name="HelveticaNeue-Bold" family="Helvetica Neue" pointSize="15"/>
+                                <state key="normal" title="Sign In">
+                                    <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
                                     <segue destination="aq0-8E-OHS" kind="show" id="aSn-GT-UAj"/>
@@ -177,13 +177,13 @@
                                 <color key="color" red="0.66666666666666663" green="0.66666666666666663" blue="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </activityIndicatorView>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.25098039220000001" green="0.36862745099999999" blue="0.47843137250000001" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="BxR-Ko-YdK" firstAttribute="leading" secondItem="Tfh-Pw-uYX" secondAttribute="trailing" constant="8" id="0HZ-qX-ryv"/>
                             <constraint firstItem="SzE-SC-6eS" firstAttribute="centerX" secondItem="eye-iE-8T6" secondAttribute="centerX" id="7Nf-Vk-Z3m"/>
                             <constraint firstItem="Tfh-Pw-uYX" firstAttribute="bottom" secondItem="BxR-Ko-YdK" secondAttribute="bottom" id="7bt-3v-5fo"/>
-                            <constraint firstItem="BxR-Ko-YdK" firstAttribute="leading" secondItem="Tfh-Pw-uYX" secondAttribute="trailing" constant="8" symbolic="YES" id="85a-EF-m4s"/>
-                            <constraint firstItem="Tfh-Pw-uYX" firstAttribute="top" secondItem="hFP-1W-1Td" secondAttribute="bottom" constant="23" id="8iI-jg-AC6"/>
+                            <constraint firstItem="BxR-Ko-YdK" firstAttribute="leading" secondItem="Tfh-Pw-uYX" secondAttribute="trailing" id="85a-EF-m4s"/>
+                            <constraint firstItem="Tfh-Pw-uYX" firstAttribute="top" secondItem="hFP-1W-1Td" secondAttribute="bottom" constant="31" id="8iI-jg-AC6"/>
                             <constraint firstAttribute="trailing" secondItem="jeG-he-9Ab" secondAttribute="trailing" id="9e1-Ue-ldK"/>
                             <constraint firstItem="BxR-Ko-YdK" firstAttribute="leading" secondItem="Tfh-Pw-uYX" secondAttribute="trailing" constant="4" id="GjZ-xf-ipx"/>
                             <constraint firstItem="jeG-he-9Ab" firstAttribute="leading" secondItem="ahN-Qs-PZT" secondAttribute="leading" id="JMZ-Uh-yrW"/>
@@ -194,7 +194,7 @@
                             <constraint firstItem="gvd-p1-5OB" firstAttribute="centerY" secondItem="ahN-Qs-PZT" secondAttribute="centerY" id="bJl-jR-lcr"/>
                             <constraint firstItem="eye-iE-8T6" firstAttribute="leading" secondItem="ahN-Qs-PZT" secondAttribute="leadingMargin" constant="29" id="cek-4a-cih"/>
                             <constraint firstItem="eye-iE-8T6" firstAttribute="trailing" secondItem="hFP-1W-1Td" secondAttribute="trailing" id="d9e-mG-6ad"/>
-                            <constraint firstItem="Tfh-Pw-uYX" firstAttribute="leading" secondItem="ahN-Qs-PZT" secondAttribute="leadingMargin" constant="50" id="e3r-8p-nb5"/>
+                            <constraint firstItem="Tfh-Pw-uYX" firstAttribute="leading" secondItem="ahN-Qs-PZT" secondAttribute="leadingMargin" constant="52" id="e3r-8p-nb5"/>
                             <constraint firstItem="hFP-1W-1Td" firstAttribute="top" secondItem="eye-iE-8T6" secondAttribute="bottom" constant="14" id="ffw-UF-l6H"/>
                             <constraint firstItem="eye-iE-8T6" firstAttribute="top" secondItem="SzE-SC-6eS" secondAttribute="bottom" constant="53" id="oTe-aM-HCE"/>
                             <constraint firstItem="eye-iE-8T6" firstAttribute="leading" secondItem="hFP-1W-1Td" secondAttribute="leading" id="qRX-rC-Dir"/>
@@ -243,6 +243,6 @@
         <image name="logoGreen" width="200" height="71"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="Khw-bJ-H49"/>
+        <segue reference="aSn-GT-UAj"/>
     </inferredMetricsTieBreakers>
 </document>
