@@ -15,6 +15,9 @@
 		9A06AB1C1DB58606003A5B2E /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AB1A1DB58606003A5B2E /* LabelTableViewCell.swift */; };
 		9A06AB1D1DB58606003A5B2E /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A06AB1B1DB58606003A5B2E /* LabelTableViewCell.xib */; };
 		9A06AB1F1DB67BBC003A5B2E /* SettingsNotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AB1E1DB67BBC003A5B2E /* SettingsNotificationTableViewController.swift */; };
+		9A06AB211DB68E9B003A5B2E /* DisplayNameTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AB201DB68E9B003A5B2E /* DisplayNameTableViewController.swift */; };
+		9A06AB241DB68FB5003A5B2E /* TextfieldTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AB221DB68FB5003A5B2E /* TextfieldTableViewCell.swift */; };
+		9A06AB251DB68FB5003A5B2E /* TextfieldTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A06AB231DB68FB5003A5B2E /* TextfieldTableViewCell.xib */; };
 		9A17BDF11D9E1FB70075EF9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */; };
 		9A17BDF91D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF71D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld */; };
 		9A17BDFB1D9E1FB70075EF9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A17BDFA1D9E1FB70075EF9F /* Assets.xcassets */; };
@@ -232,6 +235,9 @@
 		9A06AB1A1DB58606003A5B2E /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		9A06AB1B1DB58606003A5B2E /* LabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelTableViewCell.xib; sourceTree = "<group>"; };
 		9A06AB1E1DB67BBC003A5B2E /* SettingsNotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsNotificationTableViewController.swift; sourceTree = "<group>"; };
+		9A06AB201DB68E9B003A5B2E /* DisplayNameTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DisplayNameTableViewController.swift; sourceTree = "<group>"; };
+		9A06AB221DB68FB5003A5B2E /* TextfieldTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextfieldTableViewCell.swift; sourceTree = "<group>"; };
+		9A06AB231DB68FB5003A5B2E /* TextfieldTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TextfieldTableViewCell.xib; sourceTree = "<group>"; };
 		9A17BDED1D9E1FB70075EF9F /* Hyphenate Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyphenate Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A17BDF81D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hyphenate_Messenger.xcdatamodel; sourceTree = "<group>"; };
@@ -710,6 +716,8 @@
 				9A702BA11DA371E4005ED10C /* requestHeaderView.swift */,
 				9A06AB1A1DB58606003A5B2E /* LabelTableViewCell.swift */,
 				9A06AB1B1DB58606003A5B2E /* LabelTableViewCell.xib */,
+				9A06AB221DB68FB5003A5B2E /* TextfieldTableViewCell.swift */,
+				9A06AB231DB68FB5003A5B2E /* TextfieldTableViewCell.xib */,
 			);
 			name = Cell;
 			sourceTree = "<group>";
@@ -765,6 +773,7 @@
 				9A17BE261D9E20190075EF9F /* SettingsTableViewController.swift */,
 				9A06AB181DB584BA003A5B2E /* SettingsAboutTableViewController.swift */,
 				9A06AB1E1DB67BBC003A5B2E /* SettingsNotificationTableViewController.swift */,
+				9A06AB201DB68E9B003A5B2E /* DisplayNameTableViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1536,6 +1545,7 @@
 				9AC132391DA0DFE500A2BD05 /* SwitchTableViewCell.xib in Resources */,
 				9A702B9E1DA3401F005ED10C /* FriendRequestTableViewCell.xib in Resources */,
 				9A2E70AF1DA224FA00D3EE94 /* ProfileNameTableViewCell.xib in Resources */,
+				9A06AB251DB68FB5003A5B2E /* TextfieldTableViewCell.xib in Resources */,
 				B6346B671D9E6C5D00CBEAE2 /* EaseUIResource.bundle in Resources */,
 				9A23CBF31D9E256100FACFD7 /* LaunchScreen.storyboard in Resources */,
 				9A06AB1D1DB58606003A5B2E /* LabelTableViewCell.xib in Resources */,
@@ -1696,6 +1706,7 @@
 				9A3149901DA429E80081DB04 /* FriendRequestViewController.swift in Sources */,
 				B6346B4A1D9E6C5100CBEAE2 /* EaseMessageViewController.m in Sources */,
 				B6346B141D9E6C5100CBEAE2 /* MWTapDetectingImageView.m in Sources */,
+				9A06AB211DB68E9B003A5B2E /* DisplayNameTableViewController.swift in Sources */,
 				B6346B101D9E6C5100CBEAE2 /* MWGridCell.m in Sources */,
 				B6346B081D9E6C5100CBEAE2 /* MJRefreshNormalHeader.m in Sources */,
 				9A2E70B21DA2250D00D3EE94 /* ProfileSwitchTableViewCell.swift in Sources */,
@@ -1733,6 +1744,7 @@
 				9A17BDF91D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld in Sources */,
 				B6346B261D9E6C5100CBEAE2 /* UIImageView+EMWebCache.m in Sources */,
 				B6346B5D1D9E6C5100CBEAE2 /* EaseChatToolbar.m in Sources */,
+				9A06AB241DB68FB5003A5B2E /* TextfieldTableViewCell.swift in Sources */,
 				B6346B821D9E74CE00CBEAE2 /* ContactTableViewCell.swift in Sources */,
 				B6346B551D9E6C5100CBEAE2 /* EaseBubbleView+File.m in Sources */,
 				B6346B251D9E6C5100CBEAE2 /* UIImageView+EMHighlightedWebCache.m in Sources */,

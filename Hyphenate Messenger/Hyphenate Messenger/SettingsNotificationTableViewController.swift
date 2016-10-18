@@ -10,6 +10,8 @@ import UIKit
 
 class SettingsNotificationTableViewController: UITableViewController {
 
+    var displayName = ""
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -47,9 +49,14 @@ class SettingsNotificationTableViewController: UITableViewController {
         case 2:
             let cell: LabelTableViewCell = tableView.dequeueReusableCell(withIdentifier: "labelCell", for: indexPath) as! LabelTableViewCell
             cell.titleLabel.text = "Notification display name"
-            if let hyphenateID = EMClient.shared().currentUsername {
-                cell.detailLabel.text = "\(hyphenateID)"
+            if let displayName = UserDefaults.standard.object(forKey: "displayName") {
+                cell.detailLabel.text = "\(displayName)"
+            } else {
+                if let HyphenateID = EMClient.shared().currentUsername {
+                    cell.detailLabel.text = "\(HyphenateID)"
+                }
             }
+            displayName = cell.detailLabel.text!
             cell.accessoryType = .disclosureIndicator
             return cell
             
@@ -57,5 +64,17 @@ class SettingsNotificationTableViewController: UITableViewController {
             
         }
         return tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        switch indexPath.row {
+        case 2:
+            let settingsDisplayNameVC = DisplayNameTableViewController()
+            settingsDisplayNameVC.displayName = displayName
+            navigationController?.pushViewController(settingsDisplayNameVC, animated: true)
+
+        default:
+            break
+        }
     }
 }

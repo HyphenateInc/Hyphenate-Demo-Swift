@@ -67,5 +67,4 @@ class InvitationManager:NSObject{
             }
             return nil
         }
-    
 }
