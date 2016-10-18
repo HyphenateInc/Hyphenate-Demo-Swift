@@ -14,6 +14,7 @@
 		9A06AB191DB584BA003A5B2E /* SettingsAboutTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AB181DB584BA003A5B2E /* SettingsAboutTableViewController.swift */; };
 		9A06AB1C1DB58606003A5B2E /* LabelTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AB1A1DB58606003A5B2E /* LabelTableViewCell.swift */; };
 		9A06AB1D1DB58606003A5B2E /* LabelTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9A06AB1B1DB58606003A5B2E /* LabelTableViewCell.xib */; };
+		9A06AB1F1DB67BBC003A5B2E /* SettingsNotificationTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A06AB1E1DB67BBC003A5B2E /* SettingsNotificationTableViewController.swift */; };
 		9A17BDF11D9E1FB70075EF9F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */; };
 		9A17BDF91D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9A17BDF71D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld */; };
 		9A17BDFB1D9E1FB70075EF9F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9A17BDFA1D9E1FB70075EF9F /* Assets.xcassets */; };
@@ -230,6 +231,7 @@
 		9A06AB181DB584BA003A5B2E /* SettingsAboutTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsAboutTableViewController.swift; sourceTree = "<group>"; };
 		9A06AB1A1DB58606003A5B2E /* LabelTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LabelTableViewCell.swift; sourceTree = "<group>"; };
 		9A06AB1B1DB58606003A5B2E /* LabelTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LabelTableViewCell.xib; sourceTree = "<group>"; };
+		9A06AB1E1DB67BBC003A5B2E /* SettingsNotificationTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsNotificationTableViewController.swift; sourceTree = "<group>"; };
 		9A17BDED1D9E1FB70075EF9F /* Hyphenate Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Hyphenate Messenger.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		9A17BDF01D9E1FB70075EF9F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		9A17BDF81D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Hyphenate_Messenger.xcdatamodel; sourceTree = "<group>"; };
@@ -762,6 +764,7 @@
 			children = (
 				9A17BE261D9E20190075EF9F /* SettingsTableViewController.swift */,
 				9A06AB181DB584BA003A5B2E /* SettingsAboutTableViewController.swift */,
+				9A06AB1E1DB67BBC003A5B2E /* SettingsNotificationTableViewController.swift */,
 			);
 			name = Settings;
 			sourceTree = "<group>";
@@ -1771,6 +1774,7 @@
 				B6346B1D1D9E6C5100CBEAE2 /* EMSDWebImageManager.m in Sources */,
 				B6346B471D9E6C5100CBEAE2 /* FixFopen.c in Sources */,
 				B6346B801D9E709000CBEAE2 /* EMSearchDisplayController.swift in Sources */,
+				9A06AB1F1DB67BBC003A5B2E /* SettingsNotificationTableViewController.swift in Sources */,
 				9A2E70AE1DA224FA00D3EE94 /* ProfileNameTableViewCell.swift in Sources */,
 				B6346B401D9E6C5100CBEAE2 /* EaseChineseToPinyin.m in Sources */,
 			);

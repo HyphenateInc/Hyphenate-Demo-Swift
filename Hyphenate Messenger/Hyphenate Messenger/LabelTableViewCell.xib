@@ -32,10 +32,10 @@
                     </stackView>
                 </subviews>
                 <constraints>
-                    <constraint firstAttribute="trailingMargin" secondItem="sMI-NO-OaJ" secondAttribute="trailing" constant="15" id="0ZP-gC-cKe"/>
+                    <constraint firstAttribute="trailingMargin" secondItem="sMI-NO-OaJ" secondAttribute="trailing" constant="10" id="0ZP-gC-cKe"/>
                     <constraint firstAttribute="bottomMargin" secondItem="sMI-NO-OaJ" secondAttribute="bottom" id="2tk-i7-DjF"/>
                     <constraint firstItem="sMI-NO-OaJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="topMargin" id="mrp-z6-gQJ"/>
-                    <constraint firstAttribute="leadingMargin" secondItem="sMI-NO-OaJ" secondAttribute="leading" constant="-15" id="s3I-aD-tTh"/>
+                    <constraint firstAttribute="leadingMargin" secondItem="sMI-NO-OaJ" secondAttribute="leading" constant="-13" id="s3I-aD-tTh"/>
                 </constraints>
             </tableViewCellContentView>
             <connections>

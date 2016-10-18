@@ -19,6 +19,8 @@ class SettingsTableViewController: UITableViewController {
         self.tableView.backgroundColor = UIColor(red: 228.0/255.0, green: 233.0/255.0, blue: 236.0/255.0, alpha: 1.0)
         tableView.register(UITableViewCell.self, forCellReuseIdentifier: "Cell")
         tableView.register(UINib(nibName: "SwitchTableViewCell", bundle: nil), forCellReuseIdentifier: "switchCell")
+        self.tableView.register(UINib(nibName: "LabelTableViewCell", bundle: nil), forCellReuseIdentifier: "labelCell")
+
 
     }
 
@@ -29,7 +31,7 @@ class SettingsTableViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 5
+        return 4
     }
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
@@ -64,18 +66,15 @@ class SettingsTableViewController: UITableViewController {
             return cell
 
         case 2:
-            let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = "Account"
-            cell.accessoryType = .disclosureIndicator
+            let cell: LabelTableViewCell = tableView.dequeueReusableCell(withIdentifier: "labelCell", for: indexPath) as! LabelTableViewCell
+            cell.titleLabel.text = "Hyphenate ID"
+            cell.selectionStyle = .none
+            if let hyphenateID = EMClient.shared().currentUsername {
+                cell.detailLabel.text = "\(hyphenateID)"
+            }
             return cell
 
         case 3:
-            let cell: UITableViewCell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-            cell.textLabel?.text = "Chats"
-            cell.accessoryType = .disclosureIndicator
-            return cell
-
-        case 4:
             let switchCell: SwitchTableViewCell = tableView.dequeueReusableCell(withIdentifier: "switchCell", for: indexPath) as! SwitchTableViewCell
             switchCell.uiswitch.setOn(true, animated: true)
             switchCell.title.text = "Adaptive Video Bitrate"
@@ -92,6 +91,10 @@ class SettingsTableViewController: UITableViewController {
         case 0:
             let settingsAboutVC = SettingsAboutTableViewController()
             navigationController?.pushViewController(settingsAboutVC, animated: true)
+            
+        case 1:
+            let settingsNotificationVC = SettingsNotificationTableViewController()
+            navigationController?.pushViewController(settingsNotificationVC, animated: true)
         default:break
             
         }
