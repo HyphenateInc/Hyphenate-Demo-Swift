@@ -17,11 +17,12 @@ class DisplayNameTableViewController: UITableViewController {
 
         title = "Notification Display Name"
         self.tableView.register(UINib(nibName: "TextfieldTableViewCell", bundle: nil), forCellReuseIdentifier: "textfieldCell")
+       
+        NotificationCenter.default.addObserver(self, selector: #selector(DisplayNameTableViewController.reloadData), name: NSNotification.Name(rawValue: "kNotification_displayNameUpdated"), object: nil)
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    func reloadData() {
+        let _ = self.navigationController?.popViewController(animated: true)
     }
 
     // MARK: - Table view data source
@@ -40,5 +41,8 @@ class DisplayNameTableViewController: UITableViewController {
         cell.textfield.text = displayName
         return cell
     }
-
+    
+    deinit {
+        NotificationCenter.default.removeObserver(self)
+    }
 }

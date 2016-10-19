@@ -75,7 +75,6 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
     func reloadDataSource(){
         self.dataSource.removeAll()
         
-        
         dataSource =  EMClient.shared().chatManager.getAllConversations() as [AnyObject]
         
         DispatchQueue.main.async(execute: {

@@ -49,8 +49,8 @@ class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, 
         super.viewWillAppear(animated)
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    deinit
+    {
         NotificationCenter.default.removeObserver(self)
     }
     
