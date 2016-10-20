@@ -39,7 +39,7 @@ class MainViewController: UITabBarController {
         settingsTabItem.selectedImage = UIImage(named:  "settingsTab_selected")
         settingsTabItem.imageInsets = UIEdgeInsetsMake(8, 0, -8, 0);
 
-        UITabBar.appearance().tintColor = UIColor(red: 77.0/255.0, green: 195.0/255.0, blue: 0, alpha: 1.0)
+        UITabBar.appearance().tintColor = UIColor.hiPrimary()
         NotificationCenter.default.addObserver(self, selector: #selector(MainViewController.updateUnreadMessageCount), name: NSNotification.Name(rawValue: "kNotification_unreadMessageCountUpdated"), object: nil)
     }
     

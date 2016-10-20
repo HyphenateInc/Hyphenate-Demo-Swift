@@ -42,7 +42,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         let pushSettings = UIUserNotificationSettings(types:[UIUserNotificationType.badge ,UIUserNotificationType.sound ,UIUserNotificationType.alert], categories: nil)
         application.registerUserNotificationSettings(pushSettings)
         application.registerForRemoteNotifications()
-        UINavigationBar.appearance().tintColor = UIColor(red: 71.0/255, green: 201/255.0, blue: 5.0/255, alpha: 1)
+        UINavigationBar.appearance().tintColor = UIColor.hiPrimary()
         UINavigationBar.appearance().backgroundColor = UIColor(red: 250.0/255, green: 251.0/255, blue: 252.0/255, alpha: 1)
         UINavigationBar.appearance().clipsToBounds = false
         UINavigationBar.appearance().isTranslucent = true

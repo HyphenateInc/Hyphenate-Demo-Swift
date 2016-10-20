@@ -22,7 +22,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         
         let loginButton:UIButton = UIButton(type: .custom)
         loginButton.frame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.size.width, height: 50)
-        loginButton.backgroundColor = UIColor(red: 71.0/255, green: 201/255.0, blue: 5.0/255, alpha: 1)
+        loginButton.backgroundColor = UIColor.hiPrimary()
         loginButton.setTitle("Sign Up", for: .normal)
         
         loginButton.addTarget(self, action: #selector(SignUpViewController.signupAction(_:)), for: .touchUpInside)

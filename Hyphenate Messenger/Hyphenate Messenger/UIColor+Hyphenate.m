@@ -12,7 +12,7 @@
 
 + (UIColor *)HIPrimaryColor
 {
-    return [[self class] colorFromHexString:@"#A0D830"];
+    return [[self class] colorFromHexString:@"#2AB872"];
 }
 
 + (UIColor *)HIPrimaryLightColor
@@ -44,7 +44,6 @@
 {
     return [[self class] colorFromHexString:@"#EFEFEF"];
 }
-
 
 
 + (UIColor *)colorFromHexString:(NSString *)hexString
