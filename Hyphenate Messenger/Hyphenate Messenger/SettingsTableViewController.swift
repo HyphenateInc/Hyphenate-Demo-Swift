@@ -36,7 +36,7 @@ class SettingsTableViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let logoutButton = UIButton(type: .custom)
-        logoutButton.backgroundColor = UIColor(red: 255.0/255, green: 59.0/255, blue: 48.0/255, alpha: 1)
+        logoutButton.backgroundColor = UIColor.hiPrimaryRed()
         logoutButton.setTitle("Sign Out", for: .normal)
         logoutButton.addTarget(self, action: #selector(SettingsTableViewController.logoutAction), for: .touchUpInside)
         logoutButton.frame = CGRect(x: 0, y: UIScreen.main.bounds.size.height - 265, width: UIScreen.main.bounds.size.width, height: 45)

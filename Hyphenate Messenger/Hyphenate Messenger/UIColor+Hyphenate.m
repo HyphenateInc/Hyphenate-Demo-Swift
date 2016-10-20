@@ -14,7 +14,9 @@
 {
     return [[self class] colorFromHexString:@"#2AB872"];
 }
-
++ (UIColor *)HIPrimaryRedColor{
+    return [[self class] colorFromHexString:@"#F93F40"];
+}
 + (UIColor *)HIPrimaryLightColor
 {
     return [[self class] colorFromHexString:@"#9cc13b"];
