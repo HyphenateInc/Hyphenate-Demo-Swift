@@ -69,7 +69,6 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
     open override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         self.tabBarController?.tabBar.isHidden = false
-
     }
     
     func reloadDataSource(){
@@ -140,7 +139,6 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
             chatController?.hidesBottomBarWhenPushed = true
             self.navigationItem.backBarButtonItem = UIBarButtonItem(title:"", style:.plain, target:nil, action:nil)
             self.navigationController!.pushViewController(chatController!, animated: true)
-            
         }
         NotificationCenter.default.post(name: Notification.Name(rawValue: "setupUnreadMessageCount"), object: nil)
         self.tableView.reloadData()

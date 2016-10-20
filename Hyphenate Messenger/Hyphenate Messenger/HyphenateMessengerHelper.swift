@@ -178,9 +178,9 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "didReceiveMessages"), object: message)
             }
             
-//            if (chatVC == nil) {
-//                chatVC = getCurrentChatView()
-//            }
+            if (chatVC == nil) {
+                chatVC = getCurrentChatView()
+            }
             
             var isSameConversation = false
             if (chatVC != nil) {
@@ -207,7 +207,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
 
         }
     }
-    
+        
     // MARK: EMGroupManagerDelegate
     
     func didLeave(_ aGroup: EMGroup!, reason aReason: EMGroupLeaveReason) {
@@ -575,14 +575,24 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     
     func getCurrentChatView() -> ChatTableViewController? {
         
-        let viewControllers = mainVC?.navigationController?.viewControllers
+        let viewControllers = mainVC?.viewControllers
         var chatViewController : ChatTableViewController? = nil
         
         for viewcontroller in viewControllers!{
-            if viewcontroller is ChatTableViewController {
-                chatViewController = viewcontroller as? ChatTableViewController
-                break
+            
+            if viewcontroller is UINavigationController {
+                
+                let navigationController: UINavigationController = viewcontroller as! UINavigationController
+                
+                for vc in navigationController.viewControllers {
+                    if vc is ChatTableViewController {
+                        chatViewController = vc as? ChatTableViewController
+                        break
+                    }
+                }
+                
             }
+            
         }
         return chatViewController
     }
