@@ -74,8 +74,18 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
     func reloadDataSource(){
         self.dataSource.removeAll()
         
+        var needRemoveConversations = [EMConversation]()
+        if let conversations = EMClient.shared().chatManager.getAllConversations() as? [EMConversation]{
+            for conversation: EMConversation in conversations {
+                if conversation.latestMessage == nil {
+                    needRemoveConversations.append(conversation)
+                }
+            }
+        }
+        if needRemoveConversations.count > 0 {
+            EMClient.shared().chatManager.deleteConversations(needRemoveConversations, isDeleteMessages: true, completion: nil)
+        }
         dataSource =  EMClient.shared().chatManager.getAllConversations() as [AnyObject]
-        
         DispatchQueue.main.async(execute: {
             self.tableView.reloadData()
         })
