@@ -563,6 +563,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     }
     
     func logout() {
+        
         EMClient.shared().logout(false) { (error) in
             if (error == nil) {
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "KNotification_logout"), object: nil)
@@ -570,6 +571,8 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
                 print("Error!!! Failed to logout properly!")
                 NotificationCenter.default.post(name: Notification.Name(rawValue: "KNotification_logout"), object: nil)
             }
+            let loginController = UIStoryboard(name: "Main", bundle: nil).instantiateViewController(withIdentifier: "loginScene")
+            UIApplication.shared.keyWindow?.rootViewController = loginController
         }
     }
     
