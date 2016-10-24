@@ -28,6 +28,11 @@ class ChatTableViewController: EaseMessageViewController,EaseMessageViewControll
         super.viewWillAppear(animated)
         NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_unreadMessageCountUpdated"), object: nil)
     }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        HyphenateMessengerHelper.sharedInstance.chatVC = nil
+    }
+    
     func cancelAction() {
         self.dismiss(animated: true, completion: nil)
     }
@@ -55,6 +60,4 @@ class ChatTableViewController: EaseMessageViewController,EaseMessageViewControll
         
         return model;
     }
-    
-    
 }

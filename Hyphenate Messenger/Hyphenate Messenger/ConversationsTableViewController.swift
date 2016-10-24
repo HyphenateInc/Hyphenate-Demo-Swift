@@ -118,8 +118,8 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
         
         let conversation = (searchController.isActive && searchController.searchBar.text != "" ?filteredDataSource[indexPath.row] : dataSource[indexPath.row]) as! EMConversation
         
-        if let sender = conversation.latestMessage?.from {
-            cell.senderLabel.text = sender
+        if let sender = conversation.latestMessage?.from, let recepient = conversation.latestMessage?.to {
+            cell.senderLabel.text = sender != EMClient.shared().currentUsername ? sender : recepient
         }
         
         if let latestMessage: EMMessage = conversation.latestMessage {
