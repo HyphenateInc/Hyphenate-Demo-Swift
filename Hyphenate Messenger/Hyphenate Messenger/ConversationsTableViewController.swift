@@ -111,21 +111,20 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
         if let sender = conversation.latestMessage?.from {
             cell.senderLabel.text = sender
         }
-
-        let timeInterval: Double = Double(conversation.latestMessage.timestamp)
-        let date = Date(timeIntervalSince1970:timeInterval)
-        let formatter = DateFormatter()
-        formatter.timeStyle = .short
-        let dateString = formatter.string(from: date)
-        cell.timeLabel.text = dateString
         
-        let textMessageBody: EMTextMessageBody = conversation.latestMessage.body as! EMTextMessageBody
-        cell.lastMessageLabel.text = textMessageBody.text
-        
-        print("message ext\(conversation.latestMessage.ext)")
+        if let latestMessage: EMMessage = conversation.latestMessage {
+            let timeInterval: Double = Double(latestMessage.timestamp)
+            let date = Date(timeIntervalSince1970:timeInterval)
+            let formatter = DateFormatter()
+            formatter.timeStyle = .short
+            let dateString = formatter.string(from: date)
+            cell.timeLabel.text = dateString
+            
+            let textMessageBody: EMTextMessageBody = latestMessage.body as! EMTextMessageBody
+            cell.lastMessageLabel.text = textMessageBody.text
+        }
         
         return cell
-        
     }
     
     override open func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
