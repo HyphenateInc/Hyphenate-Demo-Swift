@@ -132,6 +132,14 @@ open class ConversationsTableViewController: UITableViewController, EMChatManage
             
             let textMessageBody: EMTextMessageBody = latestMessage.body as! EMTextMessageBody
             cell.lastMessageLabel.text = textMessageBody.text
+            
+            if conversation.unreadMessagesCount > 0 && conversation.unreadMessagesCount < 100 {
+                cell.badgeView.text = "\(conversation.unreadMessagesCount)"
+            } else if conversation.unreadMessagesCount > 0 {
+                cell.badgeView.text = ".."
+            } else {
+                cell.badgeView.isHidden = true
+            }
         }
         
         return cell

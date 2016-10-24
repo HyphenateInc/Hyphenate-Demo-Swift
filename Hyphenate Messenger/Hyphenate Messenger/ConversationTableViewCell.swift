@@ -14,11 +14,13 @@ class ConversationTableViewCell: UITableViewCell {
     @IBOutlet weak var timeLabel: UILabel!
     @IBOutlet weak var lastMessageLabel: UILabel!
     @IBOutlet weak var senderImageView: UIImageView!
+//    @IBOutlet weak var badgeView: M13BadgeView!
     
+    @IBOutlet weak var badgeView: M13BadgeView!
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
-        senderImageView.layer.cornerRadius = senderImageView.frame.size.width / 2
+        senderImageView.layer.cornerRadius = 25.0
         senderImageView.clipsToBounds = true
     }
 

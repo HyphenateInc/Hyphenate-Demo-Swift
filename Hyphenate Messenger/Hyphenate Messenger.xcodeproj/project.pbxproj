@@ -52,6 +52,7 @@
 		9AC132381DA0DFE500A2BD05 /* SwitchTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC132361DA0DFE500A2BD05 /* SwitchTableViewCell.swift */; };
 		9AC132391DA0DFE500A2BD05 /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC132371DA0DFE500A2BD05 /* SwitchTableViewCell.xib */; };
 		9AC132431DA17B8200A2BD05 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC132421DA17B8200A2BD05 /* ProfileViewController.swift */; };
+		9AE1B05C1DBDCB2F00E9E706 /* M13BadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1B05B1DBDCB2E00E9E706 /* M13BadgeView.m */; };
 		9AFE4D721D9E2731007862CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AFE4D711D9E2731007862CA /* Main.storyboard */; };
 		B63467511D9E526300CBEAE2 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63467501D9E526300CBEAE2 /* GroupListViewController.swift */; };
 		B6346AEE1D9E6C5100CBEAE2 /* EMAudioPlayerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B63469D11D9E6C5100CBEAE2 /* EMAudioPlayerUtil.m */; };
@@ -277,6 +278,8 @@
 		9AC132361DA0DFE500A2BD05 /* SwitchTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SwitchTableViewCell.swift; sourceTree = "<group>"; };
 		9AC132371DA0DFE500A2BD05 /* SwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SwitchTableViewCell.xib; sourceTree = "<group>"; };
 		9AC132421DA17B8200A2BD05 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		9AE1B05A1DBDCB2E00E9E706 /* M13BadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13BadgeView.h; sourceTree = "<group>"; };
+		9AE1B05B1DBDCB2E00E9E706 /* M13BadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13BadgeView.m; sourceTree = "<group>"; };
 		9AFE4D711D9E2731007862CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B634674A1D9E4AD500CBEAE2 /* Hyphenate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hyphenate-Bridging-Header.h"; sourceTree = "<group>"; };
 		B63467501D9E526300CBEAE2 /* GroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupListViewController.swift; path = Controllers/ChatGroup/GroupListViewController.swift; sourceTree = "<group>"; };
@@ -615,6 +618,7 @@
 				9A17BE121D9E1FB70075EF9F /* Hyphenate MessengerUITests */,
 				9A17BDEE1D9E1FB70075EF9F /* Products */,
 				F71F513BB4704534E0DB4603 /* Pods */,
+				9AE1B0581DBDCAE400E9E706 /* Third Party */,
 				E4A9D6CF3A68620E18397F65 /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -667,8 +671,8 @@
 		9A17BE211D9E200B0075EF9F /* View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				9A06AB111DB09CB5003A5B2E /* Call */,
 				9A17BE231D9E20190075EF9F /* MainViewController.swift */,
+				9A06AB111DB09CB5003A5B2E /* Call */,
 				9AC132401DA0EDC300A2BD05 /* Settings */,
 				9AC1323F1DA0EDBC00A2BD05 /* Chat */,
 				9AC1323E1DA0EDAC00A2BD05 /* Conversation */,
@@ -787,6 +791,23 @@
 				9A3149911DA42B360081DB04 /* FriendRequest.storyboard */,
 			);
 			name = Storyboard;
+			sourceTree = "<group>";
+		};
+		9AE1B0581DBDCAE400E9E706 /* Third Party */ = {
+			isa = PBXGroup;
+			children = (
+				9AE1B0591DBDCB2900E9E706 /* M13BadgeView */,
+			);
+			name = "Third Party";
+			sourceTree = "<group>";
+		};
+		9AE1B0591DBDCB2900E9E706 /* M13BadgeView */ = {
+			isa = PBXGroup;
+			children = (
+				9AE1B05A1DBDCB2E00E9E706 /* M13BadgeView.h */,
+				9AE1B05B1DBDCB2E00E9E706 /* M13BadgeView.m */,
+			);
+			name = M13BadgeView;
 			sourceTree = "<group>";
 		};
 		B634674F1D9E51F200CBEAE2 /* ChatGroup */ = {
@@ -1647,6 +1668,7 @@
 				B6346AF51D9E6C5100CBEAE2 /* amrFileCodec.mm in Sources */,
 				B6346B041D9E6C5100CBEAE2 /* MJRefreshBackGifFooter.m in Sources */,
 				B6346B3A1D9E6C5100CBEAE2 /* EaseUserModel.m in Sources */,
+				9AE1B05C1DBDCB2F00E9E706 /* M13BadgeView.m in Sources */,
 				9A17BE2C1D9E20190075EF9F /* SignupViewController.swift in Sources */,
 				B6346B561D9E6C5100CBEAE2 /* EaseBubbleView+Gif.m in Sources */,
 				9A17BE2A1D9E20190075EF9F /* LoginViewController.swift in Sources */,

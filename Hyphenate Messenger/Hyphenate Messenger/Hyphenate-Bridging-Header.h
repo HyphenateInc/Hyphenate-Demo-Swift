@@ -12,6 +12,7 @@
 #import "EaseUI.h"
 #import "UIColor+Hyphenate.h"
 #import "CallViewController.h"
+#import "M13BadgeView.h"
 
 #endif /* Hyphenate_Bridging_Header_h */
 
