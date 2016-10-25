@@ -158,7 +158,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     }
     
     // EMChatManagerDelegate
-    
+
     func conversationListDidUpdate(_ aConversationList: [Any]!) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_unreadMessageCountUpdated"), object: aConversationList)
         NotificationCenter.default.post(name: Notification.Name(rawValue: "kNotification_conversationUpdated"), object: aConversationList)

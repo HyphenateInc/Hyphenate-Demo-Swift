@@ -16,7 +16,7 @@ import HyphenateFullSDK
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /** Hyphenate configuration constants **/
-    static let kHyphenateAppKey = "hyphenatedemo#hyphenatedemo"
+    static let kHyphenateAppKey = "hyphenate#hyphenatedemo"
     static let kHyphenatePushServiceDevelopment = "DevelopmentCertificate"
     static let kHyphenatePushServiceProduction = "ProductionCertificate"
     static let kSDKConfigEnableConsoleLogger = "SDKConfigEnableConsoleLogger"
@@ -32,6 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
  
+        showSplashAnimation(withDuration: 1.5)
+
         var apnsCertName : String? = nil
         
         #if DEBUG
@@ -51,8 +53,30 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().isTranslucent = true
 
         hyphenateApplication(application, didFinishLaunchingWithOptions: launchOptions, appKey: AppDelegate.kHyphenateAppKey, apnsCertname: apnsCertName!, otherConfig:[AppDelegate.kSDKConfigEnableConsoleLogger: NSNumber(booleanLiteral: true)])
+       
         
         return true
+    }
+    
+    func showSplashAnimation(withDuration: CGFloat) {
+        let background = UIView(frame: CGRect(x: 0, y: 0, width: (window?.bounds.size.width)!, height: (window?.bounds.size.height)!))
+        background.backgroundColor = UIColor(red: 62/255, green: 92/255, blue: 120/255, alpha: 1)
+        let splash = UIImageView(frame: CGRect(x: 0, y: 0, width: 317, height: 111))
+        splash.center = (window?.center)!
+        let path = Bundle.main.path(forResource: "Splash", ofType: "gif")
+        splash.image = UIImage.animatedImage(withAnimatedGIFURL: URL(fileURLWithPath: path!))
+        background.addSubview(splash)
+        window?.addSubview(background)
+        window?.bringSubview(toFront: background)
+        
+//        background.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
+//        background.frame = CGRect(x: 0, y: 0, width: (self.window?.bounds.size.width)!, height: (self.window?.bounds.size.height)!)
+
+        UIView.animate(withDuration: TimeInterval(withDuration), delay: 0, options: .curveEaseInOut, animations: {
+            background.layer.transform = CATransform3DRotate(CATransform3DIdentity, -(CGFloat)(M_PI_2), 0, 1, 0);
+            }) { (finished) in
+            background.removeFromSuperview()
+        }
     }
 
     func applicationWillResignActive(_ application: UIApplication) {
