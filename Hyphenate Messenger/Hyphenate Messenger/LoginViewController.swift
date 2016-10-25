@@ -31,12 +31,20 @@ class LoginViewController: UIViewController, UITextFieldDelegate {
         loginButton.addTarget(self, action: #selector(LoginViewController.loginAction(_:)), for: .touchUpInside)
         userNameTextField.inputAccessoryView = loginButton
         passwordTextField.inputAccessoryView = loginButton
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(gestureRecognizer)
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
         NotificationCenter.default.removeObserver(self)
+    }
+    
+    func dismissKeyboard(){
+        userNameTextField.resignFirstResponder()
+        passwordTextField.resignFirstResponder()
     }
     
     @IBAction func loginAction(_ sender: AnyObject) {

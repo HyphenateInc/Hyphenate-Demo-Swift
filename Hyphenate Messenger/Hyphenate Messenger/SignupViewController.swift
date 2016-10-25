@@ -28,6 +28,14 @@ class SignUpViewController: UIViewController, UITextFieldDelegate {
         loginButton.addTarget(self, action: #selector(SignUpViewController.signupAction(_:)), for: .touchUpInside)
         usernameTextfield.inputAccessoryView = loginButton
         passwordTextfield.inputAccessoryView = loginButton
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(LoginViewController.dismissKeyboard))
+        view.addGestureRecognizer(gestureRecognizer)
+    }
+
+    func dismissKeyboard(){
+        usernameTextfield.resignFirstResponder()
+        passwordTextfield.resignFirstResponder()
     }
 
     @IBAction func signupAction(_ sender: AnyObject) {
