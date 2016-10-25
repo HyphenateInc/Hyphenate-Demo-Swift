@@ -31,8 +31,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     var mainViewController: MainViewController?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+ 
         var apnsCertName : String? = nil
+        
         #if DEBUG
             apnsCertName = AppDelegate.kHyphenatePushServiceDevelopment
         #else
@@ -40,23 +41,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #endif
         
         let pushSettings = UIUserNotificationSettings(types:[UIUserNotificationType.badge ,UIUserNotificationType.sound ,UIUserNotificationType.alert], categories: nil)
+        
         application.registerUserNotificationSettings(pushSettings)
         application.registerForRemoteNotifications()
+        
         UINavigationBar.appearance().tintColor = UIColor.hiPrimary()
         UINavigationBar.appearance().backgroundColor = UIColor.clear
         UINavigationBar.appearance().clipsToBounds = false
         UINavigationBar.appearance().isTranslucent = true
 
         hyphenateApplication(application, didFinishLaunchingWithOptions: launchOptions, appKey: AppDelegate.kHyphenateAppKey, apnsCertname: apnsCertName!, otherConfig:[AppDelegate.kSDKConfigEnableConsoleLogger: NSNumber(booleanLiteral: true)])
-
-        if EMClient.shared().isAutoLogin {
-            proceedLogin()
-        } else {
-            proceedLogout()
-            EMClient.shared().options.isAutoLogin = true
-        }
         
-        HyphenateMessengerHelper.sharedInstance.loadConversationFromDB()
         return true
     }
 
@@ -181,19 +176,19 @@ extension AppDelegate {
         let error:EMError? = EMClient.shared().initializeSDK(with: options)
         
         if ((error) != nil) {
-            print("womg")
+            print("Failed to initialize SDK")
         }
         
         registerMessagingNotification()
         
-        //        let isAutoLogin = EMClient.shared().isAutoLogin
-        //        if isAutoLogin {
-        //            proceedLogin()
-        //        } else {
-        //            proceedLogout()
-        //            EMClient.shared().options.isAutoLogin = true
-        //        }
+        if EMClient.shared().isAutoLogin {
+            proceedLogin()
+        } else {
+            proceedLogout()
+            EMClient.shared().options.isAutoLogin = true
+        }
         
+        HyphenateMessengerHelper.sharedInstance.loadConversationFromDB()
         Fabric.with([Crashlytics.self])
     }
     
