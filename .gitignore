@@ -1,0 +1,16 @@
+Hyphenate Messenger/Pods/GoogleToolboxForMac/GTMDefines.h
+Hyphenate Messenger/Pods/GoogleToolboxForMac/LICENSE
+Hyphenate Messenger/Pods/GoogleToolboxForMac/README.md
+Hyphenate Messenger/Pods/GoogleToolboxForMac/Foundation/GTMNSData+zlib.h
+Hyphenate Messenger/Pods/GoogleToolboxForMac/Foundation/GTMNSData+zlib.m
+Hyphenate Messenger/Pods/Pods.xcodeproj/xcuserdata/JERRY.xcuserdatad/xcschemes/GoogleToolboxForMac.xcscheme
+Hyphenate Messenger/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-dummy.m
+Hyphenate Messenger/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-prefix.pch
+Hyphenate Messenger/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac-umbrella.h
+Hyphenate Messenger/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.modulemap
+Hyphenate Messenger/Pods/Target Support Files/GoogleToolboxForMac/GoogleToolboxForMac.xcconfig
+Hyphenate Messenger/Pods/Target Support Files/GoogleToolboxForMac/Info.plist
+
+*.xcuserstate
+
+Hyphenate Messenger/Hyphenate Messenger.xcworkspace/xcuserdata/JERRY.xcuserdatad/UserInterfaceState.xcuserstate
