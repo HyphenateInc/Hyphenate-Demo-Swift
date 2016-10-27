@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
  
-        showSplashAnimation(withDuration: 1.5)
+        showSplashAnimation()
 
         var apnsCertName : String? = nil
         
@@ -54,11 +54,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         hyphenateApplication(application, didFinishLaunchingWithOptions: launchOptions, appKey: AppDelegate.kHyphenateAppKey, apnsCertname: apnsCertName!, otherConfig:[AppDelegate.kSDKConfigEnableConsoleLogger: NSNumber(booleanLiteral: true)])
        
-        
         return true
     }
     
-    func showSplashAnimation(withDuration: CGFloat) {
+    func showSplashAnimation() {
         let background = UIView(frame: CGRect(x: 0, y: 0, width: (window?.bounds.size.width)!, height: (window?.bounds.size.height)!))
         background.backgroundColor = UIColor(red: 62/255, green: 92/255, blue: 120/255, alpha: 1)
         let splash = UIImageView(frame: CGRect(x: 0, y: 0, width: 317, height: 111))
@@ -69,10 +68,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.addSubview(background)
         window?.bringSubview(toFront: background)
         
-//        background.layer.anchorPoint = CGPoint(x: 0, y: 0.5)
-//        background.frame = CGRect(x: 0, y: 0, width: (self.window?.bounds.size.width)!, height: (self.window?.bounds.size.height)!)
+        background.layer.anchorPoint = CGPoint(x: -0.5, y: 0.5)
+        background.frame = CGRect(x: 0, y: 0, width: (self.window?.bounds.size.width)!, height: (self.window?.bounds.size.height)!)
 
-        UIView.animate(withDuration: TimeInterval(withDuration), delay: 0, options: .curveEaseInOut, animations: {
+        UIView.animate(withDuration: TimeInterval(0.5), delay: 1.2, options: .curveEaseInOut, animations: {
             background.layer.transform = CATransform3DRotate(CATransform3DIdentity, -(CGFloat)(M_PI_2), 0, 1, 0);
             }) { (finished) in
             background.removeFromSuperview()
