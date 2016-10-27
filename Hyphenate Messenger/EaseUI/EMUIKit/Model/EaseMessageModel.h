@@ -11,9 +11,8 @@
  */
 
 #import <Foundation/Foundation.h>
-
 #import "IMessageModel.h"
-#import <HyphenateFullSDK/HyphenateFullSDK.h>
+#import <Hyphenate/Hyphenate.h>
 
 @interface EaseMessageModel : NSObject<IMessageModel>
 

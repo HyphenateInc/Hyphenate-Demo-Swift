@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import HyphenateFullSDK
+import Hyphenate
 
 public enum DeleteConvesationType: Int {
     case deleteConvesationOnly

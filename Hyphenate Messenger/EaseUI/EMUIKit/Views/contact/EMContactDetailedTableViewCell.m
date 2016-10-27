@@ -10,7 +10,7 @@
 
 #import "EaseImageView.h"
 #import "UIImageView+EMWebCache.h"
-#import <HyphenateFullSDK/HyphenateFullSDK.h>
+#import <Hyphenate/Hyphenate.h>
 #import "UIColor+EaseUI.h"
 
 @implementation EMContactDetailedTableViewCell

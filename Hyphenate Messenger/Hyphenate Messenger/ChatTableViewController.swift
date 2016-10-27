@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import HyphenateFullSDK
+import Hyphenate
 
 class ChatTableViewController: EaseMessageViewController,EaseMessageViewControllerDelegate, EaseMessageViewControllerDataSource,EMClientDelegate {
     

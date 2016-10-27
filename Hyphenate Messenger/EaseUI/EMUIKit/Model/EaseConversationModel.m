@@ -11,8 +11,7 @@
  */
 
 #import "EaseConversationModel.h"
-
-#import <HyphenateFullSDK/HyphenateFullSDK.h>
+#import <Hyphenate/Hyphenate.h>
 
 @implementation EaseConversationModel
 

@@ -7,7 +7,8 @@
 //
 
 import UIKit
-import HyphenateFullSDK
+import Hyphenate
+
 fileprivate func < <T : Comparable>(lhs: T?, rhs: T?) -> Bool {
   switch (lhs, rhs) {
   case let (l?, r?):
@@ -67,8 +68,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         EMClient.shared().chatManager.add(self)
         EMClient.shared().contactManager.add(self)
         EMClient.shared().roomManager.add(self)
-        EMClient.shared().callManager.enableAdaptiveBirateStreaming!(true)
-        EMClient.shared().callManager.add!(self)
+        EMClient.shared().callManager.add!(self, delegateQueue: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(HyphenateMessengerHelper.makeCall(notification:)), name: NSNotification.Name(rawValue: "callOutWithChatter"), object: nil)
     }
  

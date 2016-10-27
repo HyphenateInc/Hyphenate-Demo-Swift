@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import HyphenateFullSDK
+import Hyphenate
 
 class LoginViewController: UIViewController, UITextFieldDelegate {
 

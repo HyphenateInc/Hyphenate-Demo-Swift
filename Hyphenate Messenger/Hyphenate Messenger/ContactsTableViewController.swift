@@ -7,8 +7,7 @@
 //
 
 import UIKit
-import HyphenateFullSDK
-
+import Hyphenate
 
 class ContactsTableViewController:UITableViewController,EMGroupManagerDelegate, UISearchControllerDelegate, UISearchResultsUpdating, UISearchBarDelegate {
 

@@ -10,7 +10,7 @@ import UIKit
 import CoreData
 import Fabric
 import Crashlytics
-import HyphenateFullSDK
+import Hyphenate
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -195,7 +195,6 @@ extension AppDelegate {
         
         let options: EMOptions = EMOptions(appkey: appKey)
         options.apnsCertName = apnsCertname
-        options.enableDnsConfig = true
         let error:EMError? = EMClient.shared().initializeSDK(with: options)
         
         if ((error) != nil) {
