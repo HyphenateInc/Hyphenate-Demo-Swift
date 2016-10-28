@@ -43,6 +43,8 @@
 @property (strong, nonatomic) UILabel *silenceLabel;
 @property (strong, nonatomic) UIButton *speakerOutButton;
 @property (strong, nonatomic) UILabel *speakerOutLabel;
+@property (strong, nonatomic) UIButton *minimizeButton;
+@property (strong, nonatomic) UIButton *switchCameraButton;
 
 
 - (instancetype)initWithSession:(EMCallSession *)session

@@ -132,42 +132,44 @@
         [self setEdgesForExtendedLayout:UIRectEdgeNone];
     }
     self.navigationController.navigationBarHidden = YES;
-    self.view.backgroundColor = [UIColor whiteColor];
+    self.view.backgroundColor = [UIColor HIPrimaryBgColor];
     
-    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
-    bgImageView.contentMode = UIViewContentModeScaleToFill;
-    bgImageView.image = [UIImage imageNamed:@"callBg.png"];
-    [self.view addSubview:bgImageView];
+//    UIImageView *bgImageView = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, self.view.frame.size.height)];
+//    bgImageView.contentMode = UIViewContentModeScaleToFill;
+//    bgImageView.image = [UIImage imageNamed:@"callBg.png"];
+//    [self.view addSubview:bgImageView];
     
-    self.topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 150)];
+    self.topView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 250)];
     self.topView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.topView];
     
-    self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 20, self.topView.frame.size.width - 20, 20)];
-    self.statusLabel.font = [UIFont systemFontOfSize:15.0];
-    self.statusLabel.backgroundColor = [UIColor clearColor];
-    self.statusLabel.textColor = [UIColor whiteColor];
-    self.statusLabel.textAlignment = NSTextAlignmentCenter;
-    [self.topView addSubview:self.statusLabel];
-    
-    _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.statusLabel.frame), self.topView.frame.size.width, 15)];
-    _timeLabel.font = [UIFont systemFontOfSize:12.0];
-    _timeLabel.backgroundColor = [UIColor clearColor];
-    _timeLabel.textColor = [UIColor whiteColor];
-    _timeLabel.textAlignment = NSTextAlignmentCenter;
-    [self.topView addSubview:_timeLabel];
-    
-    _headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.topView.frame.size.width - 50) / 2, CGRectGetMaxY(self.statusLabel.frame) + 20, 50, 50)];
-    _headerImageView.image = [UIImage imageNamed:@"user"];
-    [self.topView addSubview:_headerImageView];
-    
-    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(_headerImageView.frame) + 5, self.topView.frame.size.width, 20)];
-    self.nameLabel.font = [UIFont systemFontOfSize:14.0];
+    self.nameLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 100, self.topView.frame.size.width, 30)];
+    self.nameLabel.font = [UIFont systemFontOfSize:24];
     self.nameLabel.backgroundColor = [UIColor clearColor];
     self.nameLabel.textColor = [UIColor whiteColor];
     self.nameLabel.textAlignment = NSTextAlignmentCenter;
     self.nameLabel.text = _callSession.remoteUsername;
     [self.topView addSubview:self.nameLabel];
+    
+    self.statusLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.nameLabel.frame.origin.y+50, self.topView.frame.size.width, 20)];
+    self.statusLabel.font = [UIFont systemFontOfSize:18];
+    self.statusLabel.backgroundColor = [UIColor clearColor];
+    self.statusLabel.textColor = [UIColor whiteColor];
+    self.statusLabel.textAlignment = NSTextAlignmentCenter;
+    [self.topView addSubview:self.statusLabel];
+    
+    _timeLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, self.nameLabel.frame.origin.y+50, self.topView.frame.size.width, 20)];
+    _timeLabel.font = [UIFont systemFontOfSize:18];
+    _timeLabel.backgroundColor = [UIColor clearColor];
+    _timeLabel.textColor = [UIColor whiteColor];
+    _timeLabel.textAlignment = NSTextAlignmentCenter;
+    [self.topView addSubview:_timeLabel];
+    
+    _headerImageView = [[UIImageView alloc] initWithFrame:CGRectMake((self.topView.frame.size.width - 200) / 2, CGRectGetMaxY(self.statusLabel.frame) + 80, 200, 200)];
+    _headerImageView.layer.cornerRadius = 100;
+    _headerImageView.layer.masksToBounds = YES;
+    _headerImageView.image = [UIImage imageNamed:@"placeholder"];
+    [self.topView addSubview:_headerImageView];
     
     _networkLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, CGRectGetMaxY(self.nameLabel.frame) + 5, self.topView.frame.size.width, 20)];
     _networkLabel.font = [UIFont systemFontOfSize:14.0];
@@ -181,34 +183,47 @@
     self.actionView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:self.actionView];
     
-    // Mute
+    
     CGFloat tmpWidth = [UIScreen mainScreen].bounds.size.width;
+    CGFloat tmpSpan = tmpWidth/7;
+    CGFloat tmpPadding = (tmpSpan - 40)/2;
+    
+    //Speaker
     if (_callSession.type == EMCallTypeVideo) {
-        self.silenceButton = [[UIButton alloc] initWithFrame:CGRectMake((tmpWidth - 160) / 5 * 2 + 40, 80, 40, 40)];
+        self.switchCameraButton = [[UIButton alloc] initWithFrame:CGRectMake(tmpSpan+tmpPadding, 80, 40, 40)];
+        [self.switchCameraButton setImage:[UIImage imageNamed:@"buttonCameraSwitchOff"] forState:UIControlStateNormal];
+        [self.switchCameraButton setImage:[UIImage imageNamed:@"buttonCameraSwitchOn"] forState:UIControlStateSelected];
+        [self.switchCameraButton addTarget:self action:@selector(switchCameraAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.actionView addSubview:self.switchCameraButton];
     } else {
-        self.silenceButton = [[UIButton alloc] initWithFrame:CGRectMake((tmpWidth - 80) / 3, 80, 40, 40)];
+        self.speakerOutButton = [[UIButton alloc] initWithFrame:CGRectMake(tmpSpan+tmpPadding, 80, 40, 40)];
+        [self.speakerOutButton setImage:[UIImage imageNamed:@"buttonSpeakerOff"] forState:UIControlStateNormal];
+        [self.speakerOutButton setImage:[UIImage imageNamed:@"buttonSpeakerOn"] forState:UIControlStateSelected];
+        [self.speakerOutButton addTarget:self action:@selector(speakerOutAction) forControlEvents:UIControlEventTouchUpInside];
+        [self.actionView addSubview:self.speakerOutButton];
     }
-    [self.silenceButton setImage:[UIImage imageNamed:@"call_silence"] forState:UIControlStateNormal];
-    [self.silenceButton setImage:[UIImage imageNamed:@"call_silence_h"] forState:UIControlStateSelected];
+    
+    
+    
+    // Mute
+    self.silenceButton = [[UIButton alloc] initWithFrame:CGRectMake(tmpSpan*3+tmpPadding, self.speakerOutButton.frame.origin.y, 40, 40)];
+    [self.silenceButton setImage:[UIImage imageNamed:@"buttonMuteOff"] forState:UIControlStateNormal];
+    [self.silenceButton setImage:[UIImage imageNamed:@"buttonMuteOn"] forState:UIControlStateSelected];
     [self.silenceButton addTarget:self action:@selector(silenceAction) forControlEvents:UIControlEventTouchUpInside];
     [self.actionView addSubview:self.silenceButton];
     
-    if (_callSession.type == EMCallTypeVideo) {
-        self.speakerOutButton = [[UIButton alloc] initWithFrame:CGRectMake((tmpWidth -160)/5*4+ 120, self.silenceButton.frame.origin.y, 40, 40)];
+    // Minimize
+    self.minimizeButton = [[UIButton alloc] initWithFrame:CGRectMake(tmpSpan*5+tmpPadding, self.speakerOutButton.frame.origin.y, 40, 40)];
+    [self.minimizeButton setImage:[UIImage imageNamed:@"buttonMinimizeOff"] forState:UIControlStateNormal];
+    [self.minimizeButton addTarget:self action:@selector(minimazeAction) forControlEvents:UIControlEventTouchUpInside];
+    [self.actionView addSubview:self.minimizeButton];
 
-    } else {
-        self.speakerOutButton = [[UIButton alloc] initWithFrame:CGRectMake((tmpWidth - 80)/3 * 2 + 40, self.silenceButton.frame.origin.y, 40, 40)];
-    }
-    [self.speakerOutButton setImage:[UIImage imageNamed:@"call_out"] forState:UIControlStateNormal];
-    [self.speakerOutButton setImage:[UIImage imageNamed:@"call_out_h"] forState:UIControlStateSelected];
-    [self.speakerOutButton addTarget:self action:@selector(speakerOutAction) forControlEvents:UIControlEventTouchUpInside];
-    [self.actionView addSubview:self.speakerOutButton];
     
     // Reject Button
     int rejectButtonSize = 60;
-    self.rejectButton = [[UIButton alloc] initWithFrame:CGRectMake((tmpWidth - 120) / 3, CGRectGetMaxY(_speakerOutButton.frame) + 20, rejectButtonSize, rejectButtonSize)];
-    [self.rejectButton setImage:[UIImage imageNamed:@"call_end"] forState:UIControlStateNormal];
-    [self.rejectButton setBackgroundColor:[UIColor HIRedColor]];
+    self.rejectButton = [[UIButton alloc] initWithFrame:CGRectMake((tmpWidth - 120) / 3, CGRectGetMaxY(_speakerOutButton.frame) + 30, rejectButtonSize, rejectButtonSize)];
+    [self.rejectButton setImage:[UIImage imageNamed:@"buttonEnd"] forState:UIControlStateNormal];
+//    [self.rejectButton setBackgroundColor:[UIColor HIRedColor]];
     [self.rejectButton addTarget:self action:@selector(rejectAction) forControlEvents:UIControlEventTouchUpInside];
     self.rejectButton.layer.cornerRadius = rejectButtonSize/2;
     self.rejectButton.layer.masksToBounds = YES;
@@ -217,7 +232,7 @@
     // Answer Button
     int answerButtonSize = 60;
     self.answerButton = [[UIButton alloc] initWithFrame:CGRectMake((tmpWidth - 120) / 3 * 2 + 60, self.rejectButton.frame.origin.y, answerButtonSize, answerButtonSize)];
-    [self.answerButton setImage:[UIImage imageNamed:@"call_pickup"] forState:UIControlStateNormal];
+    [self.answerButton setImage:[UIImage imageNamed:@"buttonAnswer"] forState:UIControlStateNormal];
     [self.answerButton setBackgroundColor:[UIColor HIPrimaryColor]];
     [self.answerButton addTarget:self action:@selector(answerAction) forControlEvents:UIControlEventTouchUpInside];
     self.answerButton.layer.cornerRadius = answerButtonSize/2;
@@ -227,8 +242,8 @@
     // Cancel Button
     int cancelButtonSize = 80;
     self.cancelButton = [[UIButton alloc] initWithFrame:CGRectMake((tmpWidth - cancelButtonSize) / 2, self.rejectButton.frame.origin.y, cancelButtonSize, cancelButtonSize)];
-    [self.cancelButton setImage:[UIImage imageNamed:@"call_end"] forState:UIControlStateNormal];
-    [self.cancelButton setBackgroundColor:[UIColor HIRedColor]];
+    [self.cancelButton setImage:[UIImage imageNamed:@"buttonEnd"] forState:UIControlStateNormal];
+//    [self.cancelButton setBackgroundColor:[UIColor HIRedColor]];
     [self.cancelButton addTarget:self action:@selector(hangupAction) forControlEvents:UIControlEventTouchUpInside];
     self.cancelButton.layer.cornerRadius = cancelButtonSize/2;
     self.cancelButton.layer.masksToBounds = YES;
@@ -443,6 +458,16 @@
     } else {
         [[EMClient sharedClient].callManager resumeVoiceWithSession:_callSession.sessionId error:nil];
     }
+}
+
+- (void)minimazeAction
+{
+    
+}
+
+- (void)switchCameraAction
+{
+    
 }
 
 - (void)speakerOutAction

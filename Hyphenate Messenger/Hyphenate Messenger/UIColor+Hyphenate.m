@@ -26,7 +26,9 @@
 {
     return [[self class] colorFromHexString:@"#7d9b3c"];
 }
-
++ (UIColor *)HIPrimaryBgColor{
+    return [self colorWithRed:62/255 green:92/255 blue:120/255 alpha:1];
+}
 + (UIColor *)HIGreenDarkColor
 {
     return [[self class] colorFromHexString:@"#7d9b3c"];

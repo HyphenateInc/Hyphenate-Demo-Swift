@@ -14,7 +14,7 @@
 + (UIColor *)HIPrimaryRedColor;
 + (UIColor *)HIPrimaryLightColor;
 + (UIColor *)HIPrimaryDarkColor;
-
++ (UIColor *)HIPrimaryBgColor;
 + (UIColor *)HIGreenDarkColor;
 + (UIColor *)HIGreenLightColor;
 + (UIColor *)HIRedColor;
