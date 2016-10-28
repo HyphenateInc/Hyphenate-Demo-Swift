@@ -466,10 +466,12 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     // MARK: EMCallManagerDelegate
     
     func makeCall(notification: Notification) {
-        
-
-        if let dict: [String: AnyObject] = notification.object as! [String : AnyObject]? {
-            makeCallWithUserName(userName: (dict["chatter"]?.stringValue)!, isVideo:(dict["type"]?.boolValue)!)
+        if let dict: [String: AnyObject] = notification.object as? [String : AnyObject] {
+            if let chatter = dict["chatter"] as? String{
+                if let type = dict["type"]{
+                    makeCallWithUserName(userName:chatter, isVideo: type.boolValue)
+                }
+            }
         }
     }
     
