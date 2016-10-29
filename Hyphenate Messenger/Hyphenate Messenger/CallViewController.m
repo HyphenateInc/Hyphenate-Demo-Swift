@@ -14,6 +14,8 @@
 #import <CoreTelephony/CTCall.h>
 #import "CallViewController.h"
 #import "UIColor+Hyphenate.h"
+#import "Hyphenate_Messenger-Swift.h"
+
 
 @interface CallViewController ()
 {
@@ -502,16 +504,13 @@
 
 - (void)hangupAction
 {
-#if DEMO_CALL == 1
-    
     [_timeTimer invalidate];
     [self stopRing];
     AVAudioSession *audioSession = [AVAudioSession sharedInstance];
     [audioSession setCategory:_audioCategory error:nil];
     [audioSession setActive:YES error:nil];
-    
-    [[ChatDemoHelper shareHelper] hangupCallWithReason:EMCallEndReasonHangup];
-#endif
+    [[HyphenateMessengerHelper sharedInstance] hangupCallWithReasonWithAreason: EMCallEndReasonHangup];
+//    [[HyphenateMessengerHelper ] hangupCallWithReason:EMCallEndReasonHangup];
 }
 
 - (void)rejectAction

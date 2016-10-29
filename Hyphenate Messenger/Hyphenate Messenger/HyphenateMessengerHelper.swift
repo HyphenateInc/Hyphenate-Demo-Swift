@@ -36,6 +36,7 @@ public enum HIRequestType: Int {
     case hiRequestTypeJoinGroup
 }
 
+@objc
 class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegate, EMContactManagerDelegate, EMGroupManagerDelegate, EMChatroomManagerDelegate, EMCallManagerDelegate {
 
     static let sharedInstance = HyphenateMessengerHelper()

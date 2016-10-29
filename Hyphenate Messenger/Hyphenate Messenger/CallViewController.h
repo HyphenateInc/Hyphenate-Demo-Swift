@@ -17,6 +17,7 @@
 #define kLocalCallBitrate @"HyphenateLocalCallBitrate"
 
 @class EMCallSession;
+@class HyphenateMessengerHelper;
 
 @interface CallViewController : UIViewController
 
