@@ -524,6 +524,67 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
             UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
         }
     }
+
+    func callDidAccept(_ aSession: EMCallSession!) {
+        if UIApplication.shared.applicationState != .active {
+            EMClient.shared().callManager.endCall!(aSession.sessionId, reason: EMCallEndReasonFailed)
+        }
+        
+        if aSession.sessionId == self.callSession?.sessionId {
+            self.stopCallTimer()
+            
+            let connectStr = aSession.connectType == EMCallConnectTypeRelay ? "Relay connection" : "Direct connection"
+            self.callVC?.statusLabel.text = "\(connectStr)"
+            self.callVC?.timeLabel.isHidden = false
+            self.callVC?.startTimer()
+            self.callVC?.showCallInfo()
+            self.callVC?.cancelButton.isHidden = false
+            self.callVC?.rejectButton.isHidden = true
+            self.callVC?.answerButton.isHidden = true
+        }
+    }
+
+    func callDidEnd(_ aSession: EMCallSession!, reason aReason: EMCallEndReason, error aError: EMError!) {
+        if aSession.sessionId == self.callSession?.sessionId {
+            self.stopCallTimer()
+            self.callSession = nil
+            self.callVC?.close()
+            self.callVC = nil
+            if aReason != EMCallEndReasonHangup {
+                var reasonStr = ""
+                switch aReason {
+                case EMCallEndReasonNoResponse:
+                    reasonStr = NSLocalizedString("call.noResponse", comment: "NO response")
+                    break
+                    
+                case EMCallEndReasonDecline:
+                    reasonStr = NSLocalizedString("call.rejected", comment: "Reject the call")
+                    break
+                    
+                case EMCallEndReasonBusy:
+                    reasonStr = NSLocalizedString("call.inProgress", comment: "In the call...")
+                    break
+
+                case EMCallEndReasonFailed:
+                    reasonStr = NSLocalizedString("call.connectFailed", comment: "Connect failed")
+                    break
+
+                default:
+                    break
+                }
+                
+                if (aError != nil) {
+                    let alert = UIAlertController(title: NSLocalizedString("Error", comment: "Error"), message: aError.errorDescription, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+                } else {
+                    let alert = UIAlertController(title: nil, message: reasonStr, preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: NSLocalizedString("ok", comment: "ok"), style: .cancel, handler: nil))
+                    UIApplication.shared.keyWindow?.rootViewController?.present(alert, animated: true, completion: nil)
+                }
+            }
+        }
+    }
     
     func startCallTimer() {
         self.callTimer = Timer.scheduledTimer(timeInterval: 50, target: self, selector: #selector(HyphenateMessengerHelper.cancelCall), userInfo: nil, repeats: false)
