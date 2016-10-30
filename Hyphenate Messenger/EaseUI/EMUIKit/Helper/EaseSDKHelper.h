@@ -18,7 +18,7 @@
 #define KNOTIFICATION_CALL @"callOutWithChatter"
 #define KNOTIFICATION_CALL_CLOSE @"callControllerClose"
 
-#define kSDKConfigEnableConsoleLogger @"SDKConfigEnableConsoleLogger"
+//#define kSDKConfigEnableConsoleLogger @"SDKConfigEnableConsoleLogger"
 #define kEaseUISDKConfigIsUseLite @"isUselibHyphenateClientSDKLite"
 
 @interface EaseSDKHelper : NSObject<EMClientDelegate>
