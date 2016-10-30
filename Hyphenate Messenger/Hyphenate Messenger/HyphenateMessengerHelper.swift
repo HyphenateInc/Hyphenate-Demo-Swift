@@ -150,7 +150,7 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
         stopCallTimer()
         
         if (callSession != nil) {
-            EMClient.shared().callManager.endCall!(callSession?.sessionId, reason:areason)
+            let _ = EMClient.shared().callManager.endCall!(callSession?.sessionId, reason:areason)
         }
         
         callSession = nil
@@ -463,6 +463,12 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
             }
         }
     }
+    
+    func callNetworkDidChange(_ aSession: EMCallSession!, status aStatus: EMCallNetworkStatus) {
+        if aSession.sessionId == self.callSession?.sessionId {
+            self.callVC?.setNetwork(aStatus)
+        }
+    }
 
     // MARK: EMCallManagerDelegate
     
@@ -520,15 +526,15 @@ class HyphenateMessengerHelper: NSObject, EMClientDelegate, EMChatManagerDelegat
     }
     
     func startCallTimer() {
-        Timer.scheduledTimer(timeInterval: 50, target: self, selector: #selector(HyphenateMessengerHelper.cancelCall), userInfo: nil, repeats: false)
+        self.callTimer = Timer.scheduledTimer(timeInterval: 50, target: self, selector: #selector(HyphenateMessengerHelper.cancelCall), userInfo: nil, repeats: false)
     }
     
     func stopCallTimer() {
-        if (callTimer==nil) {
+        if (self.callTimer==nil) {
             return
         }
-        callTimer?.invalidate()
-        callTimer = nil
+        self.callTimer?.invalidate()
+        self.callTimer = nil
     }
 
     func cancelCall() {

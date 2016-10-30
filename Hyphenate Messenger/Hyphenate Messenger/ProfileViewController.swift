@@ -133,7 +133,6 @@ class ProfileViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     @IBAction func audioCallButtonAction(_ sender: AnyObject) {
         NotificationCenter.default.post(name: Notification.Name(rawValue: KNOTIFICATION_CALL), object: ["chatter": username, "type": Int(0)])
-
     }
     
     /*
