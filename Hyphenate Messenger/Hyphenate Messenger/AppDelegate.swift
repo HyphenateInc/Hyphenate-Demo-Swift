@@ -17,8 +17,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     /** Hyphenate configuration constants **/
     static let kHyphenateAppKey = "hyphenatedemo#hyphenatedemo"
-    static let kHyphenatePushServiceDevelopment = "DevelopmentCertificate"
-    static let kHyphenatePushServiceProduction = "ProductionCertificate"
+    static let kHyphenatePushServiceDevelopment = "CertificateDevelopment"
+    static let kHyphenatePushServiceProduction = "CertificateProduction"
     static let kSDKConfigEnableConsoleLogger = "SDKConfigEnableConsoleLogger"
     
     /** Google Analytics configuration constants **/
