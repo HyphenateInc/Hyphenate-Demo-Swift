@@ -20,8 +20,8 @@
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo" translatesAutoresizingMaskIntoConstraints="NO" id="DgU-2J-Wei">
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="71" id="11c-Ez-q0r"/>
-                                    <constraint firstAttribute="width" constant="62" id="2Hw-OE-T9V"/>
+                                    <constraint firstAttribute="height" constant="118" id="11c-Ez-q0r"/>
+                                    <constraint firstAttribute="width" constant="103" id="2Hw-OE-T9V"/>
                                 </constraints>
                             </imageView>
                         </subviews>
