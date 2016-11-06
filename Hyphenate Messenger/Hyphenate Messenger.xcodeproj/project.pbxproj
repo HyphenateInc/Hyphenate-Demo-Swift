@@ -268,6 +268,7 @@
 		9A2E70B11DA2250D00D3EE94 /* ProfileSwitchTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ProfileSwitchTableViewCell.xib; sourceTree = "<group>"; };
 		9A31498F1DA429E80081DB04 /* FriendRequestViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FriendRequestViewController.swift; sourceTree = "<group>"; };
 		9A3149911DA42B360081DB04 /* FriendRequest.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = FriendRequest.storyboard; sourceTree = "<group>"; };
+		9A37B30B1DCF205A00A781EE /* Hyphenate Messenger.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Hyphenate Messenger.entitlements"; sourceTree = "<group>"; };
 		9A3970A51DBF43E200D68937 /* UIImage+animatedGIF.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIImage+animatedGIF.h"; sourceTree = "<group>"; };
 		9A3970A61DBF43E200D68937 /* UIImage+animatedGIF.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIImage+animatedGIF.m"; sourceTree = "<group>"; };
 		9A3970A81DBF464600D68937 /* Splash.gif */ = {isa = PBXFileReference; lastKnownFileType = image.gif; path = Splash.gif; sourceTree = "<group>"; };
@@ -641,6 +642,7 @@
 		9A17BDEF1D9E1FB70075EF9F /* Hyphenate Messenger */ = {
 			isa = PBXGroup;
 			children = (
+				9A37B30B1DCF205A00A781EE /* Hyphenate Messenger.entitlements */,
 				9A3970A41DBF438F00D68937 /* Third Party */,
 				B6346B831DA24F3F00CBEAE2 /* Data Model */,
 				9AC132411DA0EDD800A2BD05 /* Storyboard */,
@@ -1533,6 +1535,9 @@
 							com.apple.BackgroundModes = {
 								enabled = 1;
 							};
+							com.apple.Push = {
+								enabled = 1;
+							};
 						};
 					};
 					9A17BE031D9E1FB70075EF9F = {
@@ -1967,6 +1972,7 @@
 			baseConfigurationReference = 71E15A43B314CB255A946243 /* Pods-Hyphenate Messenger.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Hyphenate Messenger/Hyphenate Messenger.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
 				ENABLE_BITCODE = NO;
@@ -1998,6 +2004,7 @@
 			baseConfigurationReference = 46CB1D5CA6E51EFA21BD9A5F /* Pods-Hyphenate Messenger.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = "Hyphenate Messenger/Hyphenate Messenger.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
