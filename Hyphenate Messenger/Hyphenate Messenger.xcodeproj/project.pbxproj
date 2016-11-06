@@ -1531,6 +1531,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = ZHZ4TMESQ4;
 						LastSwiftMigration = 0800;
+						ProvisioningStyle = Manual;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1890,8 +1891,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hyphenate Inc. (ZHZ4TMESQ4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hyphenate Inc. (ZHZ4TMESQ4)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
@@ -1915,7 +1916,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a5d22d37-da9c-4e90-84ee-7fbe1eedc499";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
@@ -1942,8 +1943,8 @@
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hyphenate Inc. (ZHZ4TMESQ4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hyphenate Inc. (ZHZ4TMESQ4)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
@@ -1960,7 +1961,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 9.3;
 				MTL_ENABLE_DEBUG_INFO = NO;
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a5d22d37-da9c-4e90-84ee-7fbe1eedc499";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
 				VALIDATE_PRODUCT = YES;
@@ -1973,7 +1974,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Hyphenate Messenger/Hyphenate Messenger.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hyphenate Inc. (ZHZ4TMESQ4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hyphenate Inc. (ZHZ4TMESQ4)";
 				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1993,7 +1995,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.hyphenate.messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a5d22d37-da9c-4e90-84ee-7fbe1eedc499";
+				PROVISIONING_PROFILE_SPECIFIER = "Hyphenate Messenger Swift Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hyphenate Messenger/Hyphenate-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -2005,8 +2008,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Hyphenate Messenger/Hyphenate Messenger.entitlements";
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Distribution: Hyphenate Inc. (ZHZ4TMESQ4)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hyphenate Inc. (ZHZ4TMESQ4)";
 				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -2026,7 +2029,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.hyphenate.messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "a5d22d37-da9c-4e90-84ee-7fbe1eedc499";
+				PROVISIONING_PROFILE_SPECIFIER = "Hyphenate Messenger Swift Distribution";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hyphenate Messenger/Hyphenate-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
