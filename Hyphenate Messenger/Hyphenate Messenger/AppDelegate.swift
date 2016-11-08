@@ -267,44 +267,5 @@ extension AppDelegate {
         }
         
     }
-    
-    func registerMessagingNotification() {
-        
-        //        let settings = UIUserNotificationSettings(types: [.alert, .badge, .sound], categories: nil)
-        //        UIApplication.shared.registerUserNotificationSettings(settings)
-        //        UIApplication.shared.registerForRemoteNotifications()
-        
-        
-        
-        
-        //        let application : UIApplication = UIApplication.shared;
-        //        application.applicationIconBadgeNumber = 0;
-        //
-        //#if !TARGET_IPHONE_SIMULATOR
-        //
-        //        if(application.responds(to: #selector(UIApplication.registerUserNotificationSettings(_:)))) {
-        //            let notificationTypes: UIUserNotificationType = [.badge, .alert, .sound]
-        //            let settings: UIUserNotificationSettings = UIUserNotificationSettings(types: notificationTypes, categories: nil)
-        //            application.registerUserNotificationSettings(settings)
-        //        } else {
-        //            let notificationTypes: UIRemoteNotificationType = [.badge, .sound, .alert]
-        //            UIApplication.shared.registerForRemoteNotifications(matching: notificationTypes)
-        //        }
-        //#endif
-        
-        /*XCode 8 issue, can not compile
-         #if !TARGET_IPHONE_SIMULATOR
-         
-         if(application.responds(to: #selector(self.registerForRemoteNotifications))) {
-         application.registerForRemoteNotifications()
-         } else {
-         let notificationTypes: UIRemoteNotificationType = [.badge, .sound, .alert]
-         UIApplication.shared.registerForRemoteNotifications(matching: notificationTypes)
-         }
-         #endif
-         
-         */
-    }
-    
 }
 
