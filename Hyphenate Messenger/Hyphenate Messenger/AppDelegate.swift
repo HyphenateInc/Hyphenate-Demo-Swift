@@ -212,7 +212,10 @@ extension AppDelegate {
             EMClient.shared().options.isAutoLogin = true
         }
         
+        // Hyphenate
         HyphenateMessengerHelper.sharedInstance.loadConversationFromDB()
+        
+        // Fabric
         Fabric.with([Crashlytics.self])
     }
     
@@ -230,7 +233,7 @@ extension AppDelegate {
         window?.rootViewController = self.mainViewController
     }
     
-    //logout
+    // logout
     func proceedLogout() {
         if EMClient.shared().isLoggedIn {
             HyphenateMessengerHelper.sharedInstance.logout()
