@@ -192,6 +192,7 @@
 		B6346B821D9E74CE00CBEAE2 /* ContactTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6346B811D9E74CE00CBEAE2 /* ContactTableViewCell.swift */; };
 		B6346B851DA24F5C00CBEAE2 /* RequestEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6346B841DA24F5C00CBEAE2 /* RequestEntity.swift */; };
 		B6346B871DA24F8700CBEAE2 /* InvitationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6346B861DA24F8700CBEAE2 /* InvitationManager.swift */; };
+		C469D79E1DD2ADE300CB634F /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C469D79D1DD2ADE300CB634F /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -562,6 +563,7 @@
 		B6346B811D9E74CE00CBEAE2 /* ContactTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ContactTableViewCell.swift; path = Views/ContactTableViewCell.swift; sourceTree = "<group>"; };
 		B6346B841DA24F5C00CBEAE2 /* RequestEntity.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = RequestEntity.swift; path = "Data Model/RequestEntity.swift"; sourceTree = "<group>"; };
 		B6346B861DA24F8700CBEAE2 /* InvitationManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = InvitationManager.swift; path = "Data Model/InvitationManager.swift"; sourceTree = "<group>"; };
+		C469D79D1DD2ADE300CB634F /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -655,6 +657,7 @@
 				9A17BDF71D9E1FB70075EF9F /* Hyphenate_Messenger.xcdatamodeld */,
 				9A3970A81DBF464600D68937 /* Splash.gif */,
 				B634674A1D9E4AD500CBEAE2 /* Hyphenate-Bridging-Header.h */,
+				C469D79D1DD2ADE300CB634F /* GoogleService-Info.plist */,
 			);
 			path = "Hyphenate Messenger";
 			sourceTree = "<group>";
@@ -1531,7 +1534,7 @@
 						CreatedOnToolsVersion = 7.3.1;
 						DevelopmentTeam = ZHZ4TMESQ4;
 						LastSwiftMigration = 0800;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.BackgroundModes = {
 								enabled = 1;
@@ -1598,6 +1601,7 @@
 				39062AE81D9F0D4400EE8412 /* ContactTableViewCell.xib in Resources */,
 				9A17BDFB1D9E1FB70075EF9F /* Assets.xcassets in Resources */,
 				B6346B501D9E6C5100CBEAE2 /* EMContactDetailedTableViewCell.xib in Resources */,
+				C469D79E1DD2ADE300CB634F /* GoogleService-Info.plist in Resources */,
 				9A3970A91DBF464600D68937 /* Splash.gif in Resources */,
 				B6346B351D9E6C5100CBEAE2 /* MWPhotoBrowser.bundle in Resources */,
 			);
@@ -1975,8 +1979,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Hyphenate Messenger/Hyphenate Messenger.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Hyphenate Inc. (ZHZ4TMESQ4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hyphenate Inc. (ZHZ4TMESQ4)";
-				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -1995,8 +1999,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.hyphenate.messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a5d22d37-da9c-4e90-84ee-7fbe1eedc499";
-				PROVISIONING_PROFILE_SPECIFIER = "Hyphenate Messenger Swift Distribution";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hyphenate Messenger/Hyphenate-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
@@ -2009,8 +2013,8 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = "Hyphenate Messenger/Hyphenate Messenger.entitlements";
 				CODE_SIGN_IDENTITY = "iPhone Distribution: Hyphenate Inc. (ZHZ4TMESQ4)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: Hyphenate Inc. (ZHZ4TMESQ4)";
-				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2029,8 +2033,8 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = io.hyphenate.messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "a5d22d37-da9c-4e90-84ee-7fbe1eedc499";
-				PROVISIONING_PROFILE_SPECIFIER = "Hyphenate Messenger Swift Distribution";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "Hyphenate Messenger/Hyphenate-Bridging-Header.h";
 				SWIFT_VERSION = 3.0;
 			};

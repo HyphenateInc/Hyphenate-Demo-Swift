@@ -11,6 +11,7 @@ import CoreData
 import Fabric
 import Crashlytics
 import Hyphenate
+import Firebase
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -54,6 +55,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
         hyphenateApplication(application, didFinishLaunchingWithOptions: launchOptions, appKey: AppDelegate.kHyphenateAppKey, apnsCertname: apnsCertName!, otherConfig:[AppDelegate.kSDKConfigEnableConsoleLogger: NSNumber(booleanLiteral: true)])
        
+        // Use Firebase library to configure APIs
+        FIRApp.configure()
+        
+//        var ref: FIRDatabaseReference!
+//        ref = FIRDatabase.database().reference()
+        
         return true
     }
     

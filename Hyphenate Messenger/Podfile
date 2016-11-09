@@ -11,6 +11,7 @@ target 'Hyphenate Messenger' do
     pod 'Crashlytics'
     pod 'Parse'
     pod 'SlimeRefresh'
+    pod 'Firebase/Core'
 
 end
 
