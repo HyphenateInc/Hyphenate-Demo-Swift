@@ -5,14 +5,12 @@ use_frameworks!
 
 target 'Hyphenate Messenger' do
     
-    pod 'GoogleCloudMessaging', '~> 1.2'
+    pod 'GoogleCloudMessaging'
     pod 'Google/Analytics'
     pod 'Fabric'
     pod 'Crashlytics'
-    pod 'Parse'
+
     pod 'SlimeRefresh'
     pod 'Firebase/Core'
 
 end
-
-
