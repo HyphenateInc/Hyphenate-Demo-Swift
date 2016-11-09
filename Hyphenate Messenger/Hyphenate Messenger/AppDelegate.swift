@@ -58,9 +58,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         // Use Firebase library to configure APIs
         FIRApp.configure()
         
-//        var ref: FIRDatabaseReference!
-//        ref = FIRDatabase.database().reference()
-        
         return true
     }
     
@@ -207,9 +204,7 @@ extension AppDelegate {
         if ((error) != nil) {
             print("Failed to initialize SDK")
         }
-        
-        registerMessagingNotification()
-        
+                
         if EMClient.shared().isAutoLogin {
             proceedLogin()
         } else {
