@@ -36,15 +36,19 @@ class SettingsAboutTableViewController: UITableViewController {
         switch (indexPath as NSIndexPath).row {
         case 0:
             cell.titleLabel.text = "App Version"
-            cell.detailLabel.text = "1.0.1"
+            
+            cell.detailLabel.text = "unknown"
+            if let version = Bundle.main.infoDictionary?["CFBundleShortVersionString"] as? String {
+                cell.detailLabel.text = version
+            }
             
         case 1:
             cell.titleLabel.text = "SDK Version"
-            cell.detailLabel.text = "3.1.4"
+            cell.detailLabel.text = EMClient.shared().version
             
         case 2:
             cell.titleLabel.text = "EaseUI Library Version"
-            cell.detailLabel.text = "3.1.5"
+            cell.detailLabel.text = ""
             
         default: break
             
