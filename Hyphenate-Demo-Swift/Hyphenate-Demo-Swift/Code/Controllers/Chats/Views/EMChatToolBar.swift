@@ -223,6 +223,19 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
         let chatText = inputTextView.text
         if !isDelete && (facialStr?.characters.count)! > 0{
             inputTextView.set(text: chatText! + facialStr!)
+        }else {
+            let subStr = chatText! as NSString
+            if subStr.length >= 2 {
+                let str = subStr.substring(from: subStr.length - 2)
+                if faceView.stringIsFace(str: str as String) {
+                    inputTextView.set(text: subStr.substring(to: subStr.length - 2) as String)
+                    return
+                }
+            }
+            
+            if subStr.length > 0  {
+                inputTextView.set(text: subStr.substring(to: subStr.length - 1) as String)
+            }
         }
     }
     
