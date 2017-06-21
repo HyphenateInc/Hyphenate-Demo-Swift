@@ -2,94 +2,116 @@
 //  EMBaseRefreshTableViewController.swift
 //  Hyphenate-Demo-Swift
 //
-//  Created by 杜洁鹏 on 2017/6/15.
+//  Created by 杜洁鹏 on 2017/6/13.
 //  Copyright © 2017年 杜洁鹏. All rights reserved.
 //
 
 import UIKit
+import MJRefresh
 
 class EMBaseRefreshTableViewController: UITableViewController {
+    
+    public var defaultFooterView: UIView?
+    public var _showRefreshHeader: Bool = false
+    public var _showRefreshFooter: Bool = false
+    
+    lazy var dataArray: Array<Any>? = {()-> Array<Any> in let tempArray = Array<Any>()
+        return tempArray
+    }()
+    
+    public var page: Int = 0
+    
+    public var showRefreshHeader: Bool{
+        get {
+            return _showRefreshHeader
+        }
         
+        set {
+            if newValue != _showRefreshHeader {
+                _showRefreshHeader = newValue
+                if _showRefreshHeader {
+                    self.tableView.mj_header = MJRefreshNormalHeader (refreshingBlock: {
+                        self.tableViewDidTriggerHeaderRefresh()
+                    })
+                    tableView.mj_header.accessibilityIdentifier = "refresh_header"
+                } else {
+                    tableView.mj_header = nil
+                }
+            }
+        }
+    }
+    
+    public var showRefreshFooter: Bool{
+        get {
+            return _showRefreshFooter
+        }
+        
+        set {
+            if newValue != _showRefreshFooter {
+                _showRefreshFooter = newValue
+                if _showRefreshFooter {
+                    self.tableView.mj_footer = MJRefreshBackNormalFooter (refreshingBlock: {
+                        
+                    })
+                    tableView.mj_footer.accessibilityIdentifier = "refresh_footer"
+                } else {
+                    tableView.mj_footer = nil
+                }
+            }
+        }
+    }
+    
+    
+    fileprivate var footRefreshControl: UIRefreshControl?
+    
+    init() {
+        super.init(style: UITableViewStyle.grouped)
+        defaultFooterView = UIView()
+    }
+    
+    override init(style: UITableViewStyle) {
+        super.init(style:style)
+        defaultFooterView = UIView()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
-        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-        // self.navigationItem.rightBarButtonItem = self.editButtonItem()
+        showRefreshHeader = true
+        showRefreshFooter = false
+        
+        tableView.tableFooterView = defaultFooterView
     }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-
-    // MARK: - Table view data source
-
-    override func numberOfSections(in tableView: UITableView) -> Int {
-        // #warning Incomplete implementation, return the number of sections
-        return 0
-    }
-
-    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // #warning Incomplete implementation, return the number of rows
-        return 0
-    }
-
-    /*
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
-
-        return cell
-    }
-    */
-
-    /*
-    // Override to support conditional editing of the table view.
-    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the specified item to be editable.
-        return true
-    }
-    */
-
-    /*
-    // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
-        if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
-        } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
-    }
-    */
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
-    }
-    */
-
-    /*
-    // Override to support conditional rearranging of the table view.
-    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
-        // Return false if you do not want the item to be re-orderable.
-        return true
-    }
-    */
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
     
+    // MARK: - public refresh
+    func tableViewDidTriggerHeaderRefresh() {
+        
+    }
+    
+    func tableViewDidTriggerFooterRefresh() {
+        
+    }
+    
+    func tableViewDidFinishTriggerHeader(isHeader: Bool) {
+        DispatchQueue.main.async {
+            if isHeader {
+                self.tableView.mj_header.endRefreshing()
+            } else {
+                self.tableView.mj_footer.endRefreshing()
+            }
+        }
+    }
+    
+    // MARK: - Table view data source
+    
+    override func numberOfSections(in tableView: UITableView) -> Int {
+        return 0
+    }
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return 0
+    }
 }

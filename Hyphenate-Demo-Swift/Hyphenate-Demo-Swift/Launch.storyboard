@@ -12,7 +12,7 @@
         <!--Launch View Controller-->
         <scene sceneID="rUt-Vb-sDJ">
             <objects>
-                <viewController id="2Px-Fe-IiU" customClass="EMLaunchViewController" customModule="Hyphenate_Demo_Swift" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="EMLaunchViewController" id="2Px-Fe-IiU" customClass="EMLaunchViewController" customModule="Hyphenate_Demo_Swift" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="i6m-kI-0as"/>
                         <viewControllerLayoutGuide type="bottom" id="l4k-3Y-uxB"/>

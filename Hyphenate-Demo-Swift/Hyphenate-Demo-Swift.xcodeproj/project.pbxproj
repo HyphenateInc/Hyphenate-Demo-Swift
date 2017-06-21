@@ -316,8 +316,46 @@
 		9011E1C81EEEC22700C43D05 /* logo9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E09B1EEEC22700C43D05 /* logo9@2x.png */; };
 		9011E1C91EEEC22700C43D05 /* logo9@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E09C1EEEC22700C43D05 /* logo9@3x.png */; };
 		9011E1CC1EEEC38600C43D05 /* EMColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9011E1CB1EEEC38600C43D05 /* EMColorUtils.swift */; };
+		90169F601EF275A300B9ADC6 /* UIImage+HeadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F5F1EF275A300B9ADC6 /* UIImage+HeadImage.swift */; };
+		90169F621EF2767200B9ADC6 /* EMUserProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F611EF2767200B9ADC6 /* EMUserProfileManager.swift */; };
+		90169F641EF2A30A00B9ADC6 /* AppDelegate+Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F631EF2A30A00B9ADC6 /* AppDelegate+Parse.swift */; };
+		902C0BC31EF24AC80069165E /* EMBaseRefreshTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C0BC11EF24AC80069165E /* EMBaseRefreshTableViewController.swift */; };
+		902C0BC61EF24BFD0069165E /* EMNotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C0BC51EF24BFD0069165E /* EMNotificationNames.swift */; };
+		90749ED21EF90E5B00D3A065 /* EMAudioPlayerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 90749EB41EF90E5B00D3A065 /* EMAudioPlayerUtil.m */; };
+		90749ED31EF90E5B00D3A065 /* EMAudioRecorderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 90749EB61EF90E5B00D3A065 /* EMAudioRecorderUtil.m */; };
+		90749ED41EF90E5B00D3A065 /* EMCDDeviceManager+Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 90749EB81EF90E5B00D3A065 /* EMCDDeviceManager+Media.m */; };
+		90749ED51EF90E5B00D3A065 /* EMCDDeviceManager+Microphone.m in Sources */ = {isa = PBXBuildFile; fileRef = 90749EBA1EF90E5B00D3A065 /* EMCDDeviceManager+Microphone.m */; };
+		90749ED61EF90E5B00D3A065 /* EMCDDeviceManager+ProximitySensor.m in Sources */ = {isa = PBXBuildFile; fileRef = 90749EBC1EF90E5B00D3A065 /* EMCDDeviceManager+ProximitySensor.m */; };
+		90749ED71EF90E5B00D3A065 /* EMCDDeviceManager+Remind.m in Sources */ = {isa = PBXBuildFile; fileRef = 90749EBE1EF90E5B00D3A065 /* EMCDDeviceManager+Remind.m */; };
+		90749ED81EF90E5B00D3A065 /* EMCDDeviceManagerBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 90749EC11EF90E5B00D3A065 /* EMCDDeviceManagerBase.m */; };
+		90749ED91EF90E5B00D3A065 /* amrFileCodec.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90749EC51EF90E5B00D3A065 /* amrFileCodec.mm */; };
+		90749EDA1EF90E5B00D3A065 /* wav.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90749EC71EF90E5B00D3A065 /* wav.mm */; };
+		90749EDB1EF90E5B00D3A065 /* EMVoiceConverter.mm in Sources */ = {isa = PBXBuildFile; fileRef = 90749EC91EF90E5B00D3A065 /* EMVoiceConverter.mm */; };
+		90749EDC1EF90E5B00D3A065 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90749ECD1EF90E5B00D3A065 /* libopencore-amrnb.a */; };
+		90749EDD1EF90E5B00D3A065 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90749ED11EF90E5B00D3A065 /* libopencore-amrwb.a */; };
+		90749EDF1EF9196200D3A065 /* EMChatToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90749EDE1EF9196200D3A065 /* EMChatToolBar.xib */; };
+		908324EA1EEFE5F000811A97 /* EMMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908324E91EEFE5F000811A97 /* EMMainViewController.swift */; };
+		908324F51EF0072700811A97 /* EMChatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908324F41EF0072700811A97 /* EMChatsController.swift */; };
+		908324F71EF00C1F00811A97 /* EMContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908324F61EF00C1F00811A97 /* EMContactsViewController.swift */; };
+		9084622D1EF7754F0008E480 /* EMMessageModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9084622C1EF7754F0008E480 /* EMMessageModel.swift */; };
+		908462341EF779270008E480 /* EMChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908462321EF779270008E480 /* EMChatViewController.swift */; };
+		908462351EF779270008E480 /* EMChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 908462331EF779270008E480 /* EMChatViewController.xib */; };
+		908462371EF77A140008E480 /* EMChatToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908462361EF77A140008E480 /* EMChatToolBar.swift */; };
+		90B777CF1EF140E0006D0977 /* EMChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B777CD1EF140E0006D0977 /* EMChatsCell.swift */; };
+		90B777D01EF140E0006D0977 /* EMChatsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90B777CE1EF140E0006D0977 /* EMChatsCell.xib */; };
+		90B777D21EF149AB006D0977 /* EMConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B777D11EF149AB006D0977 /* EMConversationModel.swift */; };
+		90BF54A31EF3878B00BEED2F /* EMRealtimeSearchUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BF54A21EF3878B00BEED2F /* EMRealtimeSearchUtil.swift */; };
 		90C00C771EEF8C5D0049BFAD /* UIView+HyphenateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C00C761EEF8C5D0049BFAD /* UIView+HyphenateView.swift */; };
 		90C00C791EEF92290049BFAD /* EMHyphenateDemoUIDefine.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C00C781EEF92290049BFAD /* EMHyphenateDemoUIDefine.swift */; };
+		90C00C7C1EEFA95B0049BFAD /* EMLoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C00C7B1EEFA95B0049BFAD /* EMLoginViewController.swift */; };
+		90FB78851EF78EB000B02F60 /* EMMessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB78841EF78EB000B02F60 /* EMMessageTextView.swift */; };
+		90FB78891EF7BFAE00B02F60 /* EMChatRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB78881EF7BFAE00B02F60 /* EMChatRecordView.swift */; };
+		90FB788B1EF7BFC600B02F60 /* EMChatRecordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FB788A1EF7BFC600B02F60 /* EMChatRecordView.xib */; };
+		90FB788D1EF7E76700B02F60 /* EMFaceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB788C1EF7E76700B02F60 /* EMFaceView.swift */; };
+		90FB788F1EF7ED4500B02F60 /* EMFacialView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB788E1EF7ED4500B02F60 /* EMFacialView.swift */; };
+		90FB78971EF7EE9B00B02F60 /* EMConvertToCommonEmoticonsHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FB78921EF7EE9B00B02F60 /* EMConvertToCommonEmoticonsHelper.m */; };
+		90FB78981EF7EE9B00B02F60 /* EMEmoji.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FB78941EF7EE9B00B02F60 /* EMEmoji.m */; };
+		90FB78991EF7EE9B00B02F60 /* EMEmojiEmoticons.m in Sources */ = {isa = PBXBuildFile; fileRef = 90FB78961EF7EE9B00B02F60 /* EMEmojiEmoticons.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -633,9 +671,69 @@
 		9011E09B1EEEC22700C43D05 /* logo9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo9@2x.png"; sourceTree = "<group>"; };
 		9011E09C1EEEC22700C43D05 /* logo9@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo9@3x.png"; sourceTree = "<group>"; };
 		9011E1CB1EEEC38600C43D05 /* EMColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMColorUtils.swift; sourceTree = "<group>"; };
+		90169F5F1EF275A300B9ADC6 /* UIImage+HeadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+HeadImage.swift"; sourceTree = "<group>"; };
+		90169F611EF2767200B9ADC6 /* EMUserProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMUserProfileManager.swift; sourceTree = "<group>"; };
+		90169F631EF2A30A00B9ADC6 /* AppDelegate+Parse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Parse.swift"; sourceTree = "<group>"; };
+		902C0BC11EF24AC80069165E /* EMBaseRefreshTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMBaseRefreshTableViewController.swift; sourceTree = "<group>"; };
+		902C0BC51EF24BFD0069165E /* EMNotificationNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMNotificationNames.swift; sourceTree = "<group>"; };
+		90749EAF1EF90E5B00D3A065 /* EMCDDeviceManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCDDeviceManagerDelegate.h; sourceTree = "<group>"; };
+		90749EB01EF90E5B00D3A065 /* EMCDDeviceManagerProximitySensorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCDDeviceManagerProximitySensorDelegate.h; sourceTree = "<group>"; };
+		90749EB21EF90E5B00D3A065 /* DemoErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoErrorCode.h; sourceTree = "<group>"; };
+		90749EB31EF90E5B00D3A065 /* EMAudioPlayerUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMAudioPlayerUtil.h; sourceTree = "<group>"; };
+		90749EB41EF90E5B00D3A065 /* EMAudioPlayerUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMAudioPlayerUtil.m; sourceTree = "<group>"; };
+		90749EB51EF90E5B00D3A065 /* EMAudioRecorderUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMAudioRecorderUtil.h; sourceTree = "<group>"; };
+		90749EB61EF90E5B00D3A065 /* EMAudioRecorderUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMAudioRecorderUtil.m; sourceTree = "<group>"; };
+		90749EB71EF90E5B00D3A065 /* EMCDDeviceManager+Media.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EMCDDeviceManager+Media.h"; sourceTree = "<group>"; };
+		90749EB81EF90E5B00D3A065 /* EMCDDeviceManager+Media.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EMCDDeviceManager+Media.m"; sourceTree = "<group>"; };
+		90749EB91EF90E5B00D3A065 /* EMCDDeviceManager+Microphone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EMCDDeviceManager+Microphone.h"; sourceTree = "<group>"; };
+		90749EBA1EF90E5B00D3A065 /* EMCDDeviceManager+Microphone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EMCDDeviceManager+Microphone.m"; sourceTree = "<group>"; };
+		90749EBB1EF90E5B00D3A065 /* EMCDDeviceManager+ProximitySensor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EMCDDeviceManager+ProximitySensor.h"; sourceTree = "<group>"; };
+		90749EBC1EF90E5B00D3A065 /* EMCDDeviceManager+ProximitySensor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EMCDDeviceManager+ProximitySensor.m"; sourceTree = "<group>"; };
+		90749EBD1EF90E5B00D3A065 /* EMCDDeviceManager+Remind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "EMCDDeviceManager+Remind.h"; sourceTree = "<group>"; };
+		90749EBE1EF90E5B00D3A065 /* EMCDDeviceManager+Remind.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "EMCDDeviceManager+Remind.m"; sourceTree = "<group>"; };
+		90749EBF1EF90E5B00D3A065 /* EMCDDeviceManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCDDeviceManager.h; sourceTree = "<group>"; };
+		90749EC01EF90E5B00D3A065 /* EMCDDeviceManagerBase.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCDDeviceManagerBase.h; sourceTree = "<group>"; };
+		90749EC11EF90E5B00D3A065 /* EMCDDeviceManagerBase.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMCDDeviceManagerBase.m; sourceTree = "<group>"; };
+		90749EC41EF90E5B00D3A065 /* amrFileCodec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = amrFileCodec.h; sourceTree = "<group>"; };
+		90749EC51EF90E5B00D3A065 /* amrFileCodec.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = amrFileCodec.mm; sourceTree = "<group>"; };
+		90749EC61EF90E5B00D3A065 /* wav.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = wav.h; sourceTree = "<group>"; };
+		90749EC71EF90E5B00D3A065 /* wav.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = wav.mm; sourceTree = "<group>"; };
+		90749EC81EF90E5B00D3A065 /* EMVoiceConverter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMVoiceConverter.h; sourceTree = "<group>"; };
+		90749EC91EF90E5B00D3A065 /* EMVoiceConverter.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = EMVoiceConverter.mm; sourceTree = "<group>"; };
+		90749ECB1EF90E5B00D3A065 /* interf_dec.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_dec.h; sourceTree = "<group>"; };
+		90749ECC1EF90E5B00D3A065 /* interf_enc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = interf_enc.h; sourceTree = "<group>"; };
+		90749ECD1EF90E5B00D3A065 /* libopencore-amrnb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrnb.a"; sourceTree = "<group>"; };
+		90749ECF1EF90E5B00D3A065 /* dec_if.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = dec_if.h; sourceTree = "<group>"; };
+		90749ED01EF90E5B00D3A065 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
+		90749ED11EF90E5B00D3A065 /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
+		90749EDE1EF9196200D3A065 /* EMChatToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMChatToolBar.xib; sourceTree = "<group>"; };
+		908324E91EEFE5F000811A97 /* EMMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMMainViewController.swift; sourceTree = "<group>"; };
+		908324F41EF0072700811A97 /* EMChatsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatsController.swift; sourceTree = "<group>"; };
+		908324F61EF00C1F00811A97 /* EMContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMContactsViewController.swift; sourceTree = "<group>"; };
+		9084622C1EF7754F0008E480 /* EMMessageModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMMessageModel.swift; sourceTree = "<group>"; };
+		908462321EF779270008E480 /* EMChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatViewController.swift; sourceTree = "<group>"; };
+		908462331EF779270008E480 /* EMChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMChatViewController.xib; sourceTree = "<group>"; };
+		908462361EF77A140008E480 /* EMChatToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatToolBar.swift; sourceTree = "<group>"; };
+		90B777CD1EF140E0006D0977 /* EMChatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatsCell.swift; sourceTree = "<group>"; };
+		90B777CE1EF140E0006D0977 /* EMChatsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMChatsCell.xib; sourceTree = "<group>"; };
+		90B777D11EF149AB006D0977 /* EMConversationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMConversationModel.swift; sourceTree = "<group>"; };
+		90BF54A21EF3878B00BEED2F /* EMRealtimeSearchUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRealtimeSearchUtil.swift; sourceTree = "<group>"; };
 		90C00C761EEF8C5D0049BFAD /* UIView+HyphenateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+HyphenateView.swift"; sourceTree = "<group>"; };
 		90C00C781EEF92290049BFAD /* EMHyphenateDemoUIDefine.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMHyphenateDemoUIDefine.swift; sourceTree = "<group>"; };
 		90C00C7A1EEF9C4B0049BFAD /* Hyphenate-Demo-Swift.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = "Hyphenate-Demo-Swift.entitlements"; sourceTree = "<group>"; };
+		90C00C7B1EEFA95B0049BFAD /* EMLoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMLoginViewController.swift; sourceTree = "<group>"; };
+		90FB78841EF78EB000B02F60 /* EMMessageTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMMessageTextView.swift; sourceTree = "<group>"; };
+		90FB78881EF7BFAE00B02F60 /* EMChatRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatRecordView.swift; sourceTree = "<group>"; };
+		90FB788A1EF7BFC600B02F60 /* EMChatRecordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMChatRecordView.xib; sourceTree = "<group>"; };
+		90FB788C1EF7E76700B02F60 /* EMFaceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMFaceView.swift; sourceTree = "<group>"; };
+		90FB788E1EF7ED4500B02F60 /* EMFacialView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMFacialView.swift; sourceTree = "<group>"; };
+		90FB78911EF7EE9B00B02F60 /* EMConvertToCommonEmoticonsHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMConvertToCommonEmoticonsHelper.h; sourceTree = "<group>"; };
+		90FB78921EF7EE9B00B02F60 /* EMConvertToCommonEmoticonsHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMConvertToCommonEmoticonsHelper.m; sourceTree = "<group>"; };
+		90FB78931EF7EE9B00B02F60 /* EMEmoji.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMEmoji.h; sourceTree = "<group>"; };
+		90FB78941EF7EE9B00B02F60 /* EMEmoji.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMEmoji.m; sourceTree = "<group>"; };
+		90FB78951EF7EE9B00B02F60 /* EMEmojiEmoticons.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMEmojiEmoticons.h; sourceTree = "<group>"; };
+		90FB78961EF7EE9B00B02F60 /* EMEmojiEmoticons.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = EMEmojiEmoticons.m; sourceTree = "<group>"; };
+		90FB789D1EF7EF4B00B02F60 /* Hyphenate-Bridge-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hyphenate-Bridge-Header.h"; sourceTree = "<group>"; };
 		A5E944F58DE3F0DB392C5330 /* Pods-Hyphenate-Demo-Swift.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Hyphenate-Demo-Swift.release.xcconfig"; path = "Pods/Target Support Files/Pods-Hyphenate-Demo-Swift/Pods-Hyphenate-Demo-Swift.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -645,6 +743,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				672BE66FDFF04D2E7D8741AD /* Pods_Hyphenate_Demo_Swift.framework in Frameworks */,
+				90749EDD1EF90E5B00D3A065 /* libopencore-amrwb.a in Frameworks */,
+				90749EDC1EF90E5B00D3A065 /* libopencore-amrnb.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -696,6 +796,8 @@
 				9011DF441EEEBEA400C43D05 /* AppDelegate.swift */,
 				9011DF4B1EEEBEA400C43D05 /* Assets.xcassets */,
 				9011DF501EEEBEA400C43D05 /* Info.plist */,
+				90169F611EF2767200B9ADC6 /* EMUserProfileManager.swift */,
+				90169F631EF2A30A00B9ADC6 /* AppDelegate+Parse.swift */,
 			);
 			path = "Hyphenate-Demo-Swift";
 			sourceTree = "<group>";
@@ -714,7 +816,16 @@
 		9011DF571EEEC00800C43D05 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				908324EB1EEFF06400811A97 /* Base */,
+				908324EC1EEFF06400811A97 /* Call */,
+				908324ED1EEFF06400811A97 /* Chatrooms */,
+				908324EE1EEFF06400811A97 /* Chats */,
+				908324EF1EEFF06400811A97 /* Contacts */,
+				908324F01EEFF06400811A97 /* Groups */,
+				908324F11EEFF06400811A97 /* Settings */,
 				9011DF5D1EEEC09200C43D05 /* EMLaunchViewController.swift */,
+				90C00C7B1EEFA95B0049BFAD /* EMLoginViewController.swift */,
+				908324E91EEFE5F000811A97 /* EMMainViewController.swift */,
 			);
 			path = Controllers;
 			sourceTree = "<group>";
@@ -722,6 +833,8 @@
 		9011DF581EEEC00800C43D05 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				90B777D11EF149AB006D0977 /* EMConversationModel.swift */,
+				9084622C1EF7754F0008E480 /* EMMessageModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -729,9 +842,15 @@
 		9011DF591EEEC00800C43D05 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				90749EAD1EF90E5B00D3A065 /* DeviceHelper */,
+				90FB78901EF7EE9B00B02F60 /* Emoji */,
 				9011E1CB1EEEC38600C43D05 /* EMColorUtils.swift */,
 				90C00C761EEF8C5D0049BFAD /* UIView+HyphenateView.swift */,
 				90C00C781EEF92290049BFAD /* EMHyphenateDemoUIDefine.swift */,
+				902C0BC51EF24BFD0069165E /* EMNotificationNames.swift */,
+				90169F5F1EF275A300B9ADC6 /* UIImage+HeadImage.swift */,
+				90BF54A21EF3878B00BEED2F /* EMRealtimeSearchUtil.swift */,
+				90FB789D1EF7EF4B00B02F60 /* Hyphenate-Bridge-Header.h */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -739,6 +858,7 @@
 		9011DF5A1EEEC00800C43D05 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				90FB78831EF78E9E00B02F60 /* CustomView */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1157,6 +1277,190 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		90749EAD1EF90E5B00D3A065 /* DeviceHelper */ = {
+			isa = PBXGroup;
+			children = (
+				90749EAE1EF90E5B00D3A065 /* delegates */,
+				90749EB11EF90E5B00D3A065 /* internal */,
+				90749EC21EF90E5B00D3A065 /* VoiceConvert */,
+			);
+			path = DeviceHelper;
+			sourceTree = "<group>";
+		};
+		90749EAE1EF90E5B00D3A065 /* delegates */ = {
+			isa = PBXGroup;
+			children = (
+				90749EAF1EF90E5B00D3A065 /* EMCDDeviceManagerDelegate.h */,
+				90749EB01EF90E5B00D3A065 /* EMCDDeviceManagerProximitySensorDelegate.h */,
+			);
+			path = delegates;
+			sourceTree = "<group>";
+		};
+		90749EB11EF90E5B00D3A065 /* internal */ = {
+			isa = PBXGroup;
+			children = (
+				90749EB21EF90E5B00D3A065 /* DemoErrorCode.h */,
+				90749EB31EF90E5B00D3A065 /* EMAudioPlayerUtil.h */,
+				90749EB41EF90E5B00D3A065 /* EMAudioPlayerUtil.m */,
+				90749EB51EF90E5B00D3A065 /* EMAudioRecorderUtil.h */,
+				90749EB61EF90E5B00D3A065 /* EMAudioRecorderUtil.m */,
+				90749EB71EF90E5B00D3A065 /* EMCDDeviceManager+Media.h */,
+				90749EB81EF90E5B00D3A065 /* EMCDDeviceManager+Media.m */,
+				90749EB91EF90E5B00D3A065 /* EMCDDeviceManager+Microphone.h */,
+				90749EBA1EF90E5B00D3A065 /* EMCDDeviceManager+Microphone.m */,
+				90749EBB1EF90E5B00D3A065 /* EMCDDeviceManager+ProximitySensor.h */,
+				90749EBC1EF90E5B00D3A065 /* EMCDDeviceManager+ProximitySensor.m */,
+				90749EBD1EF90E5B00D3A065 /* EMCDDeviceManager+Remind.h */,
+				90749EBE1EF90E5B00D3A065 /* EMCDDeviceManager+Remind.m */,
+				90749EBF1EF90E5B00D3A065 /* EMCDDeviceManager.h */,
+				90749EC01EF90E5B00D3A065 /* EMCDDeviceManagerBase.h */,
+				90749EC11EF90E5B00D3A065 /* EMCDDeviceManagerBase.m */,
+			);
+			path = internal;
+			sourceTree = "<group>";
+		};
+		90749EC21EF90E5B00D3A065 /* VoiceConvert */ = {
+			isa = PBXGroup;
+			children = (
+				90749EC31EF90E5B00D3A065 /* amrwapper */,
+				90749EC81EF90E5B00D3A065 /* EMVoiceConverter.h */,
+				90749EC91EF90E5B00D3A065 /* EMVoiceConverter.mm */,
+				90749ECA1EF90E5B00D3A065 /* opencore-amrnb */,
+				90749ECE1EF90E5B00D3A065 /* opencore-amrwb */,
+			);
+			path = VoiceConvert;
+			sourceTree = "<group>";
+		};
+		90749EC31EF90E5B00D3A065 /* amrwapper */ = {
+			isa = PBXGroup;
+			children = (
+				90749EC41EF90E5B00D3A065 /* amrFileCodec.h */,
+				90749EC51EF90E5B00D3A065 /* amrFileCodec.mm */,
+				90749EC61EF90E5B00D3A065 /* wav.h */,
+				90749EC71EF90E5B00D3A065 /* wav.mm */,
+			);
+			path = amrwapper;
+			sourceTree = "<group>";
+		};
+		90749ECA1EF90E5B00D3A065 /* opencore-amrnb */ = {
+			isa = PBXGroup;
+			children = (
+				90749ECB1EF90E5B00D3A065 /* interf_dec.h */,
+				90749ECC1EF90E5B00D3A065 /* interf_enc.h */,
+				90749ECD1EF90E5B00D3A065 /* libopencore-amrnb.a */,
+			);
+			path = "opencore-amrnb";
+			sourceTree = "<group>";
+		};
+		90749ECE1EF90E5B00D3A065 /* opencore-amrwb */ = {
+			isa = PBXGroup;
+			children = (
+				90749ECF1EF90E5B00D3A065 /* dec_if.h */,
+				90749ED01EF90E5B00D3A065 /* if_rom.h */,
+				90749ED11EF90E5B00D3A065 /* libopencore-amrwb.a */,
+			);
+			path = "opencore-amrwb";
+			sourceTree = "<group>";
+		};
+		908324EB1EEFF06400811A97 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				902C0BC11EF24AC80069165E /* EMBaseRefreshTableViewController.swift */,
+			);
+			path = Base;
+			sourceTree = "<group>";
+		};
+		908324EC1EEFF06400811A97 /* Call */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Call;
+			sourceTree = "<group>";
+		};
+		908324ED1EEFF06400811A97 /* Chatrooms */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Chatrooms;
+			sourceTree = "<group>";
+		};
+		908324EE1EEFF06400811A97 /* Chats */ = {
+			isa = PBXGroup;
+			children = (
+				90B777CB1EF140B5006D0977 /* Views */,
+				908324F41EF0072700811A97 /* EMChatsController.swift */,
+				908462321EF779270008E480 /* EMChatViewController.swift */,
+				908462331EF779270008E480 /* EMChatViewController.xib */,
+			);
+			path = Chats;
+			sourceTree = "<group>";
+		};
+		908324EF1EEFF06400811A97 /* Contacts */ = {
+			isa = PBXGroup;
+			children = (
+				908324F61EF00C1F00811A97 /* EMContactsViewController.swift */,
+			);
+			path = Contacts;
+			sourceTree = "<group>";
+		};
+		908324F01EEFF06400811A97 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		908324F11EEFF06400811A97 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		90B777CB1EF140B5006D0977 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				90B777CC1EF140B5006D0977 /* ChatCell */,
+				90B777CD1EF140E0006D0977 /* EMChatsCell.swift */,
+				90B777CE1EF140E0006D0977 /* EMChatsCell.xib */,
+				908462361EF77A140008E480 /* EMChatToolBar.swift */,
+				90749EDE1EF9196200D3A065 /* EMChatToolBar.xib */,
+				90FB78881EF7BFAE00B02F60 /* EMChatRecordView.swift */,
+				90FB788A1EF7BFC600B02F60 /* EMChatRecordView.xib */,
+				90FB788C1EF7E76700B02F60 /* EMFaceView.swift */,
+				90FB788E1EF7ED4500B02F60 /* EMFacialView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		90B777CC1EF140B5006D0977 /* ChatCell */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = ChatCell;
+			sourceTree = "<group>";
+		};
+		90FB78831EF78E9E00B02F60 /* CustomView */ = {
+			isa = PBXGroup;
+			children = (
+				90FB78841EF78EB000B02F60 /* EMMessageTextView.swift */,
+			);
+			path = CustomView;
+			sourceTree = "<group>";
+		};
+		90FB78901EF7EE9B00B02F60 /* Emoji */ = {
+			isa = PBXGroup;
+			children = (
+				90FB78911EF7EE9B00B02F60 /* EMConvertToCommonEmoticonsHelper.h */,
+				90FB78921EF7EE9B00B02F60 /* EMConvertToCommonEmoticonsHelper.m */,
+				90FB78931EF7EE9B00B02F60 /* EMEmoji.h */,
+				90FB78941EF7EE9B00B02F60 /* EMEmoji.m */,
+				90FB78951EF7EE9B00B02F60 /* EMEmojiEmoticons.h */,
+				90FB78961EF7EE9B00B02F60 /* EMEmojiEmoticons.m */,
+			);
+			path = Emoji;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -1428,6 +1732,7 @@
 				9011E1331EEEC22700C43D05 /* Button_Record cancel@2x.png in Resources */,
 				9011E1061EEEC22700C43D05 /* Button_Stats disabled.png in Resources */,
 				9011E0FD1EEEC22700C43D05 /* Button_Speaker active.png in Resources */,
+				908462351EF779270008E480 /* EMChatViewController.xib in Resources */,
 				9011E16F1EEEC22700C43D05 /* Icon_Back@2x.png in Resources */,
 				9011E1B81EEEC22700C43D05 /* logo4.png in Resources */,
 				9011E1091EEEC22700C43D05 /* Button_Stats.png in Resources */,
@@ -1456,7 +1761,9 @@
 				9011E1101EEEC22700C43D05 /* Icon_Check.png in Resources */,
 				9011E11B1EEEC22700C43D05 /* Icon_error_white@3x.png in Resources */,
 				9011E1151EEEC22700C43D05 /* Icon_Current Location pin@3x.png in Resources */,
+				90749EDF1EF9196200D3A065 /* EMChatToolBar.xib in Resources */,
 				9011E16E1EEEC22700C43D05 /* Icon_Back.png in Resources */,
+				90FB788B1EF7BFC600B02F60 /* EMChatRecordView.xib in Resources */,
 				9011E1BB1EEEC22700C43D05 /* logo5.png in Resources */,
 				9011E0DC1EEEC22700C43D05 /* Button_Camera switch active.png in Resources */,
 				9011E0AD1EEEC22700C43D05 /* Icon_Invitations@2x.png in Resources */,
@@ -1492,6 +1799,7 @@
 				9011E0EC1EEEC22700C43D05 /* Button_End@2x.png in Resources */,
 				9011E1961EEEC22700C43D05 /* Button_Chat.png in Resources */,
 				9011E12D1EEEC22700C43D05 /* iconVideo@3x.png in Resources */,
+				90B777D01EF140E0006D0977 /* EMChatsCell.xib in Resources */,
 				9011E1611EEEC22700C43D05 /* Icon_Call disabled@3x.png in Resources */,
 				9011E19B1EEEC22700C43D05 /* Button_Video@3x.png in Resources */,
 				9011E0A91EEEC22700C43D05 /* Button_Join.png in Resources */,
@@ -1588,11 +1896,43 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				90C00C7C1EEFA95B0049BFAD /* EMLoginViewController.swift in Sources */,
 				9011DF451EEEBEA400C43D05 /* AppDelegate.swift in Sources */,
+				90FB788F1EF7ED4500B02F60 /* EMFacialView.swift in Sources */,
 				9011E1CC1EEEC38600C43D05 /* EMColorUtils.swift in Sources */,
+				90FB78981EF7EE9B00B02F60 /* EMEmoji.m in Sources */,
+				90749ED21EF90E5B00D3A065 /* EMAudioPlayerUtil.m in Sources */,
+				908462341EF779270008E480 /* EMChatViewController.swift in Sources */,
+				90749ED51EF90E5B00D3A065 /* EMCDDeviceManager+Microphone.m in Sources */,
+				90FB788D1EF7E76700B02F60 /* EMFaceView.swift in Sources */,
+				90169F601EF275A300B9ADC6 /* UIImage+HeadImage.swift in Sources */,
+				90FB78971EF7EE9B00B02F60 /* EMConvertToCommonEmoticonsHelper.m in Sources */,
+				90169F641EF2A30A00B9ADC6 /* AppDelegate+Parse.swift in Sources */,
+				90BF54A31EF3878B00BEED2F /* EMRealtimeSearchUtil.swift in Sources */,
+				908462371EF77A140008E480 /* EMChatToolBar.swift in Sources */,
+				90749ED91EF90E5B00D3A065 /* amrFileCodec.mm in Sources */,
+				90B777CF1EF140E0006D0977 /* EMChatsCell.swift in Sources */,
+				90749EDA1EF90E5B00D3A065 /* wav.mm in Sources */,
+				90FB78991EF7EE9B00B02F60 /* EMEmojiEmoticons.m in Sources */,
+				90749ED41EF90E5B00D3A065 /* EMCDDeviceManager+Media.m in Sources */,
+				90749ED81EF90E5B00D3A065 /* EMCDDeviceManagerBase.m in Sources */,
+				90FB78891EF7BFAE00B02F60 /* EMChatRecordView.swift in Sources */,
+				902C0BC31EF24AC80069165E /* EMBaseRefreshTableViewController.swift in Sources */,
+				90749ED31EF90E5B00D3A065 /* EMAudioRecorderUtil.m in Sources */,
+				90FB78851EF78EB000B02F60 /* EMMessageTextView.swift in Sources */,
+				908324EA1EEFE5F000811A97 /* EMMainViewController.swift in Sources */,
 				90C00C771EEF8C5D0049BFAD /* UIView+HyphenateView.swift in Sources */,
+				90169F621EF2767200B9ADC6 /* EMUserProfileManager.swift in Sources */,
+				908324F51EF0072700811A97 /* EMChatsController.swift in Sources */,
+				908324F71EF00C1F00811A97 /* EMContactsViewController.swift in Sources */,
 				9011DF5E1EEEC09200C43D05 /* EMLaunchViewController.swift in Sources */,
+				902C0BC61EF24BFD0069165E /* EMNotificationNames.swift in Sources */,
+				90749ED61EF90E5B00D3A065 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
+				90749EDB1EF90E5B00D3A065 /* EMVoiceConverter.mm in Sources */,
+				90B777D21EF149AB006D0977 /* EMConversationModel.swift in Sources */,
+				90749ED71EF90E5B00D3A065 /* EMCDDeviceManager+Remind.m in Sources */,
 				90C00C791EEF92290049BFAD /* EMHyphenateDemoUIDefine.swift in Sources */,
+				9084622D1EF7754F0008E480 /* EMMessageModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1713,8 +2053,14 @@
 				INFOPLIST_FILE = "Hyphenate-Demo-Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Hyphenate-Demo-Swift/Code/Utilities/DeviceHelper/VoiceConvert/opencore-amrnb",
+					"$(PROJECT_DIR)/Hyphenate-Demo-Swift/Code/Utilities/DeviceHelper/VoiceConvert/opencore-amrwb",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.hyphenate.demo.im.Hyphenate-Demo-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Hyphenate-Demo-Swift/Code/Utilities/Hyphenate-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
@@ -1729,8 +2075,14 @@
 				INFOPLIST_FILE = "Hyphenate-Demo-Swift/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Hyphenate-Demo-Swift/Code/Utilities/DeviceHelper/VoiceConvert/opencore-amrnb",
+					"$(PROJECT_DIR)/Hyphenate-Demo-Swift/Code/Utilities/DeviceHelper/VoiceConvert/opencore-amrwb",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = "io.hyphenate.demo.im.Hyphenate-Demo-Swift";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Hyphenate-Demo-Swift/Code/Utilities/Hyphenate-Bridge-Header.h";
 				SWIFT_VERSION = 3.0;
 			};
 			name = Release;

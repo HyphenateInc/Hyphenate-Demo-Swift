@@ -9,5 +9,7 @@
 #ifndef Hyphenate_Bridge_Header_h
 #define Hyphenate_Bridge_Header_h
 
+#import "EMEmoji.h"
+#import "EMCDDeviceManager.h"
 
 #endif /* Hyphenate_Bridge_Header_h */

@@ -10,7 +10,7 @@ import UIKit
 import Hyphenate
 
 
-let animationDuration = 1.65;
+let animationDuration = 1.65 
 
 class EMLaunchViewController: UIViewController, EMClientDelegate {
     
@@ -18,16 +18,16 @@ class EMLaunchViewController: UIViewController, EMClientDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setBackgroundColor();
-        setLauchAnimation();
+        setBackgroundColor() 
+        setLauchAnimation() 
 
         DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + animationDuration, execute: {
             if EMClient.shared().isLoggedIn {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_LOGINCHANGE) , object: NSNumber(value: true));
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_LOGINCHANGE), object: NSNumber(value: true)) 
             } else {
-                NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_LOGINCHANGE) , object: NSNumber(value: false));
+                NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_LOGINCHANGE), object: NSNumber(value: false)) 
             }
-        });
+        }) 
     }
     
     override func didReceiveMemoryWarning() {
@@ -35,13 +35,18 @@ class EMLaunchViewController: UIViewController, EMClientDelegate {
         // Dispose of any resources that can be recreated.
     }
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated) 
+        UIApplication.shared.statusBarStyle = UIStatusBarStyle.lightContent 
+    }
+    
     func setBackgroundColor () {
-        let gradient = CAGradientLayer.init();
-        gradient.frame = UIScreen.main.bounds;
-        gradient.colors =  [LaunchTopColor.cgColor, LaunchBottomColor.cgColor];
-        gradient.startPoint = CGPoint.init(x: 0.0, y: 0.0);
-        gradient.endPoint = CGPoint.init(x: 0.0, y: 1.0);
-        view.layer.insertSublayer(gradient, at: 0);
+        let gradient = CAGradientLayer.init() 
+        gradient.frame = UIScreen.main.bounds 
+        gradient.colors =  [LaunchTopColor.cgColor, LaunchBottomColor.cgColor] 
+        gradient.startPoint = CGPoint.init(x: 0.0, y: 0.0) 
+        gradient.endPoint = CGPoint.init(x: 0.0, y: 1.0) 
+        view.layer.insertSublayer(gradient, at: 0) 
     }
     
     func setLauchAnimation () {
@@ -57,13 +62,13 @@ class EMLaunchViewController: UIViewController, EMClientDelegate {
             UIImage(named: "logo9")!,
             UIImage(named: "logo10")!,
             UIImage(named: "logo11")!
-        ];
+        ] 
         
-        launchImageView.animationDuration = animationDuration;
-        launchImageView.animationRepeatCount = 1;
-        launchImageView.startAnimating();
+        launchImageView.animationDuration = animationDuration 
+        launchImageView.animationRepeatCount = 1 
+        launchImageView.startAnimating() 
         
-        launchImageView.top(top: (kScreenHeight - launchImageView.height()) / 2);
-        launchImageView.left(left: (kSCreenWidth - launchImageView.width()) / 2);
+        launchImageView.top(top: (kScreenHeight - launchImageView.height()) / 2) 
+        launchImageView.left(left: (kScreenWidth - launchImageView.width()) / 2) 
     }
 }
