@@ -20,7 +20,7 @@ class EMChatBaseBubbleView: UIView {
     var _model: EMMessageModel?
     weak var delegate: EMChatBaseBubbleViewDelegate?
     
-    public func heightForBubble(withMessageModel model: EMMessageModel) -> Float{
+    public func heightForBubble(withMessageModel model: EMMessageModel) -> CGFloat{
         return 100
     }
     

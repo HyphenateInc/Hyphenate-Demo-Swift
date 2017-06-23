@@ -84,6 +84,18 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
             case EMMessageBodyTypeText:
                 delegate?.didTextCellPressed(model: model)
                 break
+            case EMMessageBodyTypeImage:
+                delegate?.didImageCellPressed(model: model)
+                break
+            case EMMessageBodyTypeVoice:
+                delegate?.didAudioCellPressed(model: model)
+                break
+            case EMMessageBodyTypeVideo:
+                delegate?.didVideoCellPressed(model: model)
+                break
+            case EMMessageBodyTypeLocation:
+                delegate?.didLocationCellPressed(model: model)
+                break
             default: break
                 
             }
@@ -114,6 +126,9 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
         switch _model!.message!.body.type {
         case EMMessageBodyTypeText:
             _bubbleView = EMChatTextBubbleView()
+            break
+        case EMMessageBodyTypeImage:
+            _bubbleView = EMChatImageBubbleView()
             break
         default: break
             
@@ -201,6 +216,9 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
         case EMMessageBodyTypeText:
             height = EMChatTextBubbleView.heightForBubble(withMessageModel: model)
             break
+        case EMMessageBodyTypeImage:
+            height = EMChatImageBubbleView.heightForBubble(withMessageModel: model)
+            break
         default:
             break
         }
@@ -217,6 +235,18 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
         switch model.message!.body.type {
         case EMMessageBodyTypeText:
             identifier = identifier + "Text"
+            break
+        case EMMessageBodyTypeImage:
+            identifier = identifier + "Image"
+            break
+        case EMMessageBodyTypeVoice:
+            identifier = identifier + "Audio"
+            break
+        case EMMessageBodyTypeLocation:
+            identifier = identifier + "Location"
+            break
+        case EMMessageBodyTypeVideo:
+            identifier = identifier + "Video"
             break
         default:
             break
