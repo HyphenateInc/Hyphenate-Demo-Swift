@@ -321,6 +321,12 @@
 		90169F641EF2A30A00B9ADC6 /* AppDelegate+Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F631EF2A30A00B9ADC6 /* AppDelegate+Parse.swift */; };
 		902C0BC31EF24AC80069165E /* EMBaseRefreshTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C0BC11EF24AC80069165E /* EMBaseRefreshTableViewController.swift */; };
 		902C0BC61EF24BFD0069165E /* EMNotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C0BC51EF24BFD0069165E /* EMNotificationNames.swift */; };
+		906AD6421EFB6D22004CCCAE /* EMChatBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AD6401EFB6D22004CCCAE /* EMChatBaseCell.swift */; };
+		906AD6431EFB6D22004CCCAE /* EMChatBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 906AD6411EFB6D22004CCCAE /* EMChatBaseCell.xib */; };
+		906AD6451EFB836D004CCCAE /* EMChatBaseBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AD6441EFB836D004CCCAE /* EMChatBaseBubbleView.swift */; };
+		906AD6471EFB8705004CCCAE /* EMChatTextBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AD6461EFB8705004CCCAE /* EMChatTextBubbleView.swift */; };
+		906AD6491EFBC74A004CCCAE /* EMSDKHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AD6481EFBC74A004CCCAE /* EMSDKHelper.swift */; };
+		906AD64C1EFBD2DC004CCCAE /* UIViewController+HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AD64B1EFBD2DC004CCCAE /* UIViewController+HUD.swift */; };
 		90749ED21EF90E5B00D3A065 /* EMAudioPlayerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 90749EB41EF90E5B00D3A065 /* EMAudioPlayerUtil.m */; };
 		90749ED31EF90E5B00D3A065 /* EMAudioRecorderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 90749EB61EF90E5B00D3A065 /* EMAudioRecorderUtil.m */; };
 		90749ED41EF90E5B00D3A065 /* EMCDDeviceManager+Media.m in Sources */ = {isa = PBXBuildFile; fileRef = 90749EB81EF90E5B00D3A065 /* EMCDDeviceManager+Media.m */; };
@@ -676,6 +682,12 @@
 		90169F631EF2A30A00B9ADC6 /* AppDelegate+Parse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Parse.swift"; sourceTree = "<group>"; };
 		902C0BC11EF24AC80069165E /* EMBaseRefreshTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMBaseRefreshTableViewController.swift; sourceTree = "<group>"; };
 		902C0BC51EF24BFD0069165E /* EMNotificationNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMNotificationNames.swift; sourceTree = "<group>"; };
+		906AD6401EFB6D22004CCCAE /* EMChatBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatBaseCell.swift; sourceTree = "<group>"; };
+		906AD6411EFB6D22004CCCAE /* EMChatBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMChatBaseCell.xib; sourceTree = "<group>"; };
+		906AD6441EFB836D004CCCAE /* EMChatBaseBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatBaseBubbleView.swift; sourceTree = "<group>"; };
+		906AD6461EFB8705004CCCAE /* EMChatTextBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatTextBubbleView.swift; sourceTree = "<group>"; };
+		906AD6481EFBC74A004CCCAE /* EMSDKHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMSDKHelper.swift; sourceTree = "<group>"; };
+		906AD64B1EFBD2DC004CCCAE /* UIViewController+HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+HUD.swift"; sourceTree = "<group>"; };
 		90749EAF1EF90E5B00D3A065 /* EMCDDeviceManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCDDeviceManagerDelegate.h; sourceTree = "<group>"; };
 		90749EB01EF90E5B00D3A065 /* EMCDDeviceManagerProximitySensorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCDDeviceManagerProximitySensorDelegate.h; sourceTree = "<group>"; };
 		90749EB21EF90E5B00D3A065 /* DemoErrorCode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DemoErrorCode.h; sourceTree = "<group>"; };
@@ -842,6 +854,7 @@
 		9011DF591EEEC00800C43D05 /* Utilities */ = {
 			isa = PBXGroup;
 			children = (
+				906AD64A1EFBD2BE004CCCAE /* Category */,
 				90749EAD1EF90E5B00D3A065 /* DeviceHelper */,
 				90FB78901EF7EE9B00B02F60 /* Emoji */,
 				9011E1CB1EEEC38600C43D05 /* EMColorUtils.swift */,
@@ -851,6 +864,7 @@
 				90169F5F1EF275A300B9ADC6 /* UIImage+HeadImage.swift */,
 				90BF54A21EF3878B00BEED2F /* EMRealtimeSearchUtil.swift */,
 				90FB789D1EF7EF4B00B02F60 /* Hyphenate-Bridge-Header.h */,
+				906AD6481EFBC74A004CCCAE /* EMSDKHelper.swift */,
 			);
 			path = Utilities;
 			sourceTree = "<group>";
@@ -1277,6 +1291,14 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		906AD64A1EFBD2BE004CCCAE /* Category */ = {
+			isa = PBXGroup;
+			children = (
+				906AD64B1EFBD2DC004CCCAE /* UIViewController+HUD.swift */,
+			);
+			path = Category;
+			sourceTree = "<group>";
+		};
 		90749EAD1EF90E5B00D3A065 /* DeviceHelper */ = {
 			isa = PBXGroup;
 			children = (
@@ -1436,6 +1458,10 @@
 		90B777CC1EF140B5006D0977 /* ChatCell */ = {
 			isa = PBXGroup;
 			children = (
+				906AD6401EFB6D22004CCCAE /* EMChatBaseCell.swift */,
+				906AD6411EFB6D22004CCCAE /* EMChatBaseCell.xib */,
+				906AD6441EFB836D004CCCAE /* EMChatBaseBubbleView.swift */,
+				906AD6461EFB8705004CCCAE /* EMChatTextBubbleView.swift */,
 			);
 			path = ChatCell;
 			sourceTree = "<group>";
@@ -1613,6 +1639,7 @@
 				9011E1011EEEC22700C43D05 /* Button_Speaker disabled@2x.png in Resources */,
 				9011E1C51EEEC22700C43D05 /* logo8@2x.png in Resources */,
 				9011E1471EEEC22700C43D05 /* Icon_Emoji.png in Resources */,
+				906AD6431EFB6D22004CCCAE /* EMChatBaseCell.xib in Resources */,
 				9011E1221EEEC22700C43D05 /* Icon_Play.png in Resources */,
 				9011E19C1EEEC22700C43D05 /* check@2x.png in Resources */,
 				9011E1521EEEC22700C43D05 /* Icon_File_disable@3x.png in Resources */,
@@ -1904,8 +1931,11 @@
 				90749ED21EF90E5B00D3A065 /* EMAudioPlayerUtil.m in Sources */,
 				908462341EF779270008E480 /* EMChatViewController.swift in Sources */,
 				90749ED51EF90E5B00D3A065 /* EMCDDeviceManager+Microphone.m in Sources */,
+				906AD6421EFB6D22004CCCAE /* EMChatBaseCell.swift in Sources */,
 				90FB788D1EF7E76700B02F60 /* EMFaceView.swift in Sources */,
 				90169F601EF275A300B9ADC6 /* UIImage+HeadImage.swift in Sources */,
+				906AD6471EFB8705004CCCAE /* EMChatTextBubbleView.swift in Sources */,
+				906AD6491EFBC74A004CCCAE /* EMSDKHelper.swift in Sources */,
 				90FB78971EF7EE9B00B02F60 /* EMConvertToCommonEmoticonsHelper.m in Sources */,
 				90169F641EF2A30A00B9ADC6 /* AppDelegate+Parse.swift in Sources */,
 				90BF54A31EF3878B00BEED2F /* EMRealtimeSearchUtil.swift in Sources */,
@@ -1917,10 +1947,12 @@
 				90749ED41EF90E5B00D3A065 /* EMCDDeviceManager+Media.m in Sources */,
 				90749ED81EF90E5B00D3A065 /* EMCDDeviceManagerBase.m in Sources */,
 				90FB78891EF7BFAE00B02F60 /* EMChatRecordView.swift in Sources */,
+				906AD64C1EFBD2DC004CCCAE /* UIViewController+HUD.swift in Sources */,
 				902C0BC31EF24AC80069165E /* EMBaseRefreshTableViewController.swift in Sources */,
 				90749ED31EF90E5B00D3A065 /* EMAudioRecorderUtil.m in Sources */,
 				90FB78851EF78EB000B02F60 /* EMMessageTextView.swift in Sources */,
 				908324EA1EEFE5F000811A97 /* EMMainViewController.swift in Sources */,
+				906AD6451EFB836D004CCCAE /* EMChatBaseBubbleView.swift in Sources */,
 				90C00C771EEF8C5D0049BFAD /* UIView+HyphenateView.swift in Sources */,
 				90169F621EF2767200B9ADC6 /* EMUserProfileManager.swift in Sources */,
 				908324F51EF0072700811A97 /* EMChatsController.swift in Sources */,

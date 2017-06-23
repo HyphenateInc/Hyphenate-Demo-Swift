@@ -127,6 +127,15 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
     
     // MARK: - Actions
     
+    @IBAction func sendAction(_ sender: UIButton) {
+        if inputTextView.text.characters.count > 0 {
+            if delegate != nil {
+                delegate?.didSendText!(text: inputTextView.text)
+            }
+            inputTextView.text = "";
+        }
+    }
+    
     @IBAction func cameraAction(_ sender: UIButton) {
         if delegate != nil {
             delegate?.didTakePhotos()
