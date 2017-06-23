@@ -130,6 +130,8 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
         case EMMessageBodyTypeImage:
             _bubbleView = EMChatImageBubbleView()
             break
+        case EMMessageBodyTypeVideo:
+            _bubbleView = EMChatVideoBubbleView()
         default: break
             
         }
@@ -219,6 +221,8 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
         case EMMessageBodyTypeImage:
             height = EMChatImageBubbleView.heightForBubble(withMessageModel: model)
             break
+        case EMMessageBodyTypeVideo:
+            height = EMChatVideoBubbleView.heightForBubble(withMessageModel: model)
         default:
             break
         }

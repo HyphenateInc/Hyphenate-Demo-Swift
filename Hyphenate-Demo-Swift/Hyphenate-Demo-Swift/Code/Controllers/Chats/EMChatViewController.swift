@@ -9,6 +9,9 @@
 import UIKit
 import Hyphenate
 import MBProgressHUD
+import MobileCoreServices
+import Photos
+import AssetsLibrary
 
 class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManagerDelegate, EMChatroomManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource{
     
@@ -244,15 +247,43 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     func didTakePhotos() {
-        
+        _chatToolBar?.endEditing(true)
+        _imagePickController?.sourceType = UIImagePickerControllerSourceType.camera
+        _imagePickController?.mediaTypes = [kUTTypeMovie as String, kUTTypeImage as String]
+        present(_imagePickController!, animated: true, completion: nil)
     }
     
     func didSelectPhotos() {
-        
+        _chatToolBar?.endEditing(true)
+        _imagePickController?.sourceType = UIImagePickerControllerSourceType.savedPhotosAlbum
+        present(_imagePickController!, animated: true, completion: nil)
     }
     
     func didSelectLocation() {
         
+    }
+    
+    // MARK: - UIImagePickerControllerDelegate
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+        let type = info[UIImagePickerControllerMediaType] as! String
+        if type == kUTTypeMovie as String {
+            let videoURL = info[UIImagePickerControllerMediaURL] as! URL
+            let mp4 = _convert2Mp4(movURL: videoURL)
+            let fm = FileManager.default
+            if fm.fileExists(atPath: videoURL.path) {
+                do { try fm.removeItem(at: videoURL)} catch {}
+            }
+            
+            let message = EMSDKHelper.createVideoMessage(mp4.path, "video.mp4", 0, to: (_conversaiton?.conversationId)!, _messageType(), nil)
+            _sendMessage(message: message)
+            
+        } else {
+            let orgImage = info[UIImagePickerControllerOriginalImage] as! UIImage
+            let data = UIImageJPEGRepresentation(orgImage, 1)
+            let message = EMSDKHelper.createImageMessage(data!, "image.jpg", to: (_conversaiton?.conversationId)!, _messageType(), nil)
+            _sendMessage(message: message)
+        }
+        picker.dismiss(animated: true, completion: nil)
     }
     
     func didUpdateInputTextInfo(inputInfo: String) {
@@ -398,12 +429,42 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
                 }
                 self._refresh?.endRefreshing()
                 self.tableView.reloadData()
-
+                
             })
         }
     }
     
-    // TODO _convert2Mp4
+    func _convert2Mp4(movURL: URL) -> URL {
+        var mp4Url: URL? = nil
+        let avAsset = AVURLAsset.init(url: movURL)
+        let compatiblePresets = AVAssetExportSession.exportPresets(compatibleWith: avAsset)
+        if compatiblePresets.contains(AVAssetExportPresetHighestQuality) {
+            let exportSession = AVAssetExportSession.init(asset: avAsset, presetName: AVAssetExportPresetHighestQuality)
+            let dataPath = NSHomeDirectory() + "/Library/appdata/chatbuffer"
+            let fm = FileManager.default
+            if !fm.fileExists(atPath: dataPath) {
+                do{ try fm.createDirectory(atPath: dataPath, withIntermediateDirectories: true, attributes: nil) } catch {}
+            }
+            
+            let mp4Path = dataPath + "/" + "\(Date.timeIntervalBetween1970AndReferenceDate)" + "\(arc4random() % 100000)" + ".mp4"
+            mp4Url = URL.init(fileURLWithPath: mp4Path)
+            exportSession?.outputURL = mp4Url
+            exportSession?.shouldOptimizeForNetworkUse = true
+            exportSession?.outputFileType = AVFileTypeMPEG4
+            
+            let semaphore = DispatchSemaphore(value: 9999)
+            
+            exportSession?.exportAsynchronously(completionHandler: { 
+                if exportSession?.status != AVAssetExportSessionStatus.completed {
+                    print("something error")
+                }
+                semaphore.signal()
+            })
+            semaphore.wait()
+        }
+        
+        return mp4Url!
+    }
     
     func _sendHasReadResponse(messages: Array<EMMessage>, _ isRead: Bool) {
         var unreadMessage = Array<EMMessage>()
