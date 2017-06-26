@@ -21,6 +21,7 @@ class EMChatVideoBubbleView: EMChatBaseBubbleView {
         
         videoButton = UIButton(type: UIButtonType.custom)
         videoButton.setBackgroundImage(UIImage(named:"Icon_Play"), for: UIControlState.normal)
+        videoButton.isUserInteractionEnabled = false
         addSubview(videoButton)
     }
     

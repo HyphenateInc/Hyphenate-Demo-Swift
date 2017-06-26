@@ -12,6 +12,7 @@ import MBProgressHUD
 import MobileCoreServices
 import Photos
 import AssetsLibrary
+import MediaPlayer
 
 class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManagerDelegate, EMChatroomManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, EMLocationViewDelegate, EMChatBaseCellDelegate, UIActionSheetDelegate{
     
@@ -464,7 +465,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
             exportSession?.shouldOptimizeForNetworkUse = true
             exportSession?.outputFileType = AVFileTypeMPEG4
             
-            let semaphore = DispatchSemaphore(value: 9999)
+            let semaphore = DispatchSemaphore(value: 0)
             
             exportSession?.exportAsynchronously(completionHandler: {
                 if exportSession?.status != AVAssetExportSessionStatus.completed {
@@ -472,7 +473,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
                 }
                 semaphore.signal()
             })
-            semaphore.wait()
+            _ = semaphore.wait(timeout: DispatchTime.distantFuture)
         }
         
         return mp4Url!
@@ -657,7 +658,18 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     func didVideoCellPressed(model: EMMessageModel) {
-        
+        let body = model.message?.body as! EMVideoMessageBody
+        if body.downloadStatus == EMDownloadStatusSuccessed {
+            if _shouldSendHasReadAck(message: model.message!, true) {
+                _sendHasReadResponse(messages: [model.message!], true)
+            }
+            let videoUrl = URL.init(fileURLWithPath: body.localPath)
+            let movePlayController = MPMoviePlayerViewController.init(contentURL: videoUrl)
+            movePlayController?.moviePlayer.movieSourceType = MPMovieSourceType.file
+            present(movePlayController!, animated: true, completion: nil)
+        }else {
+            EMClient.shared().chatManager.downloadMessageAttachment(model.message!, progress: nil, completion: nil)
+        }
     }
     
     func didLocationCellPressed(model: EMMessageModel) {
