@@ -53,8 +53,6 @@
 		9AC132391DA0DFE500A2BD05 /* SwitchTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9AC132371DA0DFE500A2BD05 /* SwitchTableViewCell.xib */; };
 		9AC132431DA17B8200A2BD05 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9AC132421DA17B8200A2BD05 /* ProfileViewController.swift */; };
 		9AE1B05C1DBDCB2F00E9E706 /* M13BadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = 9AE1B05B1DBDCB2E00E9E706 /* M13BadgeView.m */; };
-		9AE30CE81DC3103D0043BDB3 /* Hyphenate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE30CE71DC3103D0043BDB3 /* Hyphenate.framework */; };
-		9AE30CE91DC3103D0043BDB3 /* Hyphenate.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 9AE30CE71DC3103D0043BDB3 /* Hyphenate.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		9AFE4D721D9E2731007862CA /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9AFE4D711D9E2731007862CA /* Main.storyboard */; };
 		B63467511D9E526300CBEAE2 /* GroupListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B63467501D9E526300CBEAE2 /* GroupListViewController.swift */; };
 		B6346AEE1D9E6C5100CBEAE2 /* EMAudioPlayerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = B63469D11D9E6C5100CBEAE2 /* EMAudioPlayerUtil.m */; };
@@ -219,7 +217,6 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				9AE30CE91DC3103D0043BDB3 /* Hyphenate.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -286,7 +283,6 @@
 		9AC132421DA17B8200A2BD05 /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		9AE1B05A1DBDCB2E00E9E706 /* M13BadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = M13BadgeView.h; sourceTree = "<group>"; };
 		9AE1B05B1DBDCB2E00E9E706 /* M13BadgeView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = M13BadgeView.m; sourceTree = "<group>"; };
-		9AE30CE71DC3103D0043BDB3 /* Hyphenate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Hyphenate.framework; sourceTree = "<group>"; };
 		9AFE4D711D9E2731007862CA /* Main.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		B634674A1D9E4AD500CBEAE2 /* Hyphenate-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Hyphenate-Bridging-Header.h"; sourceTree = "<group>"; };
 		B63467501D9E526300CBEAE2 /* GroupListViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = GroupListViewController.swift; path = Controllers/ChatGroup/GroupListViewController.swift; sourceTree = "<group>"; };
@@ -582,7 +578,6 @@
 				B6346B691D9E6CBE00CBEAE2 /* CoreMedia.framework in Frameworks */,
 				B6346AF81D9E6C5100CBEAE2 /* libopencore-amrnb.a in Frameworks */,
 				B6346AF91D9E6C5100CBEAE2 /* libopencore-amrwb.a in Frameworks */,
-				9AE30CE81DC3103D0043BDB3 /* Hyphenate.framework in Frameworks */,
 				5C226CB1BB2ACE14FE2BC796 /* Pods_Hyphenate_Messenger.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -618,7 +613,6 @@
 		9A17BDE41D9E1FB70075EF9F = {
 			isa = PBXGroup;
 			children = (
-				9AE30CE71DC3103D0043BDB3 /* Hyphenate.framework */,
 				B6346B661D9E6C5D00CBEAE2 /* EaseUIResource.bundle */,
 				B63469C51D9E6C5100CBEAE2 /* EaseUI */,
 				9A17BDEF1D9E1FB70075EF9F /* Hyphenate Messenger */,
