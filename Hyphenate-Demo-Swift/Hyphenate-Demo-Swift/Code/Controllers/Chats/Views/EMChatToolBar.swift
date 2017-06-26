@@ -44,6 +44,7 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
     
     lazy var recordView: EMChatRecordView = {()-> EMChatRecordView in
         let chatRecordView = Bundle.main.loadNibNamed("EMChatRecordView", owner: nil, options: nil)?.first as! EMChatRecordView
+        chatRecordView.delegate = self
         return chatRecordView
     }()
 
@@ -127,6 +128,15 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
     
     // MARK: - Actions
     
+    @IBAction func sendAction(_ sender: UIButton) {
+        if inputTextView.text.characters.count > 0 {
+            if delegate != nil {
+                delegate?.didSendText!(text: inputTextView.text)
+            }
+            inputTextView.text = "";
+        }
+    }
+    
     @IBAction func cameraAction(_ sender: UIButton) {
         if delegate != nil {
             delegate?.didTakePhotos()
@@ -175,7 +185,7 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
     
     @IBAction func locationAction(_ sender: UIButton) {
         if delegate != nil {
-            delegate?.didTakePhotos()
+            delegate?.didSelectLocation()
         }
     }
     

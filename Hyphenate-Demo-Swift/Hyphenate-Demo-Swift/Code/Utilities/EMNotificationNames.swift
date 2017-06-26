@@ -11,3 +11,4 @@ import Foundation
 let KEM_UPDATE_CONVERSATIONS = "UpdateConversations"
 let KEM_END_CHAT = "endChat_notification"
 let KNOTIFICATIONNAME_DELETEALLMESSAGE = "RemoveAllMessages"
+let KEM_REMOVEGROUP_NOTIFICATION = "removeGroups_notification"
