@@ -36,7 +36,7 @@
                     </connections>
                 </button>
                 <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" mapType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="LhG-lN-y2h">
-                    <rect key="frame" x="0.0" y="0.0" width="375" height="623"/>
+                    <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                     <connections>
                         <outlet property="delegate" destination="-1" id="ZBe-CW-fED"/>
                     </connections>
@@ -44,11 +44,11 @@
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="Qwe-ny-1eq" firstAttribute="top" secondItem="LhG-lN-y2h" secondAttribute="bottom" id="1Qo-a9-hRV"/>
-                <constraint firstAttribute="trailing" secondItem="Qwe-ny-1eq" secondAttribute="trailing" id="2d2-VB-fKa"/>
-                <constraint firstAttribute="bottom" secondItem="Qwe-ny-1eq" secondAttribute="bottom" id="E38-rf-uye"/>
+                <constraint firstAttribute="bottom" secondItem="Qwe-ny-1eq" secondAttribute="bottom" id="7z4-VM-5PO"/>
                 <constraint firstAttribute="trailing" secondItem="LhG-lN-y2h" secondAttribute="trailing" id="Ew7-Ik-UoP"/>
-                <constraint firstItem="Qwe-ny-1eq" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="LH4-l1-Vua"/>
+                <constraint firstAttribute="bottom" secondItem="LhG-lN-y2h" secondAttribute="bottom" id="H8G-6N-IFv"/>
+                <constraint firstItem="Qwe-ny-1eq" firstAttribute="trailing" secondItem="LhG-lN-y2h" secondAttribute="trailing" id="VaN-bL-VDA"/>
+                <constraint firstItem="Qwe-ny-1eq" firstAttribute="leading" secondItem="LhG-lN-y2h" secondAttribute="leading" id="cZC-su-lN3"/>
                 <constraint firstItem="LhG-lN-y2h" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" id="gPe-hi-vpx"/>
                 <constraint firstItem="LhG-lN-y2h" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="p5i-jf-cFl"/>
             </constraints>

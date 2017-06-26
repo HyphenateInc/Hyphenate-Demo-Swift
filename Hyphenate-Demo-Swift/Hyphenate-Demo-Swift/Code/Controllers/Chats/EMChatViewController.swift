@@ -623,7 +623,9 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     func didLocationCellPressed(model: EMMessageModel) {
-    
+        let body = model.message?.body as! EMLocationMessageBody
+        let locationController = EMLocationViewController.init(location: CLLocationCoordinate2DMake(body.latitude, body.longitude))
+        navigationController?.pushViewController(locationController, animated: true)
     }
     
     func didCellLongPressed(cell: EMChatBaseCell) {

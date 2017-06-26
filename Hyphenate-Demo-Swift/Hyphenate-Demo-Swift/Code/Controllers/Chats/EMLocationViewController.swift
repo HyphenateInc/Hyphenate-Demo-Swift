@@ -21,14 +21,7 @@ class EMLocationViewController: UIViewController, MKMapViewDelegate, CLLocationM
     @IBOutlet weak var mapView: MKMapView!
     @IBOutlet weak var sendButton: UIButton!
     var _addressString: String?
-    var _backAction: UIButton = {() -> UIButton in
-    
-        let btn = UIButton(type: UIButtonType.custom)
-        btn.frame = CGRect(x: 0, y: 0, width: 8, height: 15)
-        btn.setImage(UIImage(named:"Icon_Back"), for: UIControlState.normal)
-        btn.addTarget(self, action: #selector(backAction), for: UIControlEvents.touchUpInside)
-        return btn
-    }()
+    var _backAction: UIButton?
     
     private var _locationManager: CLLocationManager?
     private var _currentLocationCoordinate: CLLocationCoordinate2D?
@@ -51,8 +44,16 @@ class EMLocationViewController: UIViewController, MKMapViewDelegate, CLLocationM
         fatalError("init(coder:) has not been implemented")
     }
     
+    func setupView() {
+        _backAction = UIButton(type: UIButtonType.custom)
+        _backAction!.frame = CGRect(x: 0, y: 0, width: 8, height: 15)
+        _backAction!.setImage(UIImage(named:"Icon_Back"), for: UIControlState.normal)
+        _backAction!.addTarget(self, action: #selector(backAction), for: UIControlEvents.touchUpInside)
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        setupView()
         if _isShowLocation {
             removeToLocation(locationCoordinate: _currentLocationCoordinate!)
             sendButton.isHidden = true
@@ -63,10 +64,10 @@ class EMLocationViewController: UIViewController, MKMapViewDelegate, CLLocationM
             view.bringSubview(toFront: sendButton)
         }
 
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: _backAction)
+        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: _backAction!)
     }
 
-    func backAction () {
+    func backAction() {
         navigationController?.popViewController(animated: true)
     }
     
