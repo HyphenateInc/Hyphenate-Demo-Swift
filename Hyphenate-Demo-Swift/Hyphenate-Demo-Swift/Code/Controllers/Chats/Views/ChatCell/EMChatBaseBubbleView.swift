@@ -60,7 +60,7 @@ class EMChatBaseBubbleView: UIView {
     }
     
     func bubbleViewLongPressed(sender: UILongPressGestureRecognizer) {
-        if delegate != nil {
+        if delegate != nil && sender.state == UIGestureRecognizerState.began{
             delegate!.didBubbleViewLongPressed()
         }
     }

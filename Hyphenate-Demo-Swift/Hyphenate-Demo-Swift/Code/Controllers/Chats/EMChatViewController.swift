@@ -13,7 +13,7 @@ import MobileCoreServices
 import Photos
 import AssetsLibrary
 
-class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManagerDelegate, EMChatroomManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, EMLocationViewDelegate, EMChatBaseCellDelegate{
+class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManagerDelegate, EMChatroomManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, EMLocationViewDelegate, EMChatBaseCellDelegate, UIActionSheetDelegate{
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -26,7 +26,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     private var _camButton: UIButton?
     private var _audioButton: UIButton?
     private var _detailButton: UIButton?
-    private var _longPressIndexPath: NSIndexPath?
+    private var _longPressIndexPath: IndexPath?
     
     private var _conversaiton: EMConversation?
     private var _pervAudioModel: EMMessageModel?
@@ -466,7 +466,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
             
             let semaphore = DispatchSemaphore(value: 9999)
             
-            exportSession?.exportAsynchronously(completionHandler: { 
+            exportSession?.exportAsynchronously(completionHandler: {
                 if exportSession?.status != AVAssetExportSessionStatus.completed {
                     print("something error")
                 }
@@ -592,7 +592,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     
     // MARK: - EMChatBaseCellDelegate
     func didHeadImagePressed(model: EMMessageModel) {
-    
+        
     }
     
     func didTextCellPressed(model: EMMessageModel) {
@@ -615,11 +615,11 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     func didAudioCellPressed(model: EMMessageModel) {
-    
+        
     }
     
     func didVideoCellPressed(model: EMMessageModel) {
-    
+        
     }
     
     func didLocationCellPressed(model: EMMessageModel) {
@@ -629,10 +629,58 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     func didCellLongPressed(cell: EMChatBaseCell) {
-    
+        let index = tableView.indexPath(for: cell)
+        let model = _dataSource![index!.row]
+        if model.message?.body.type == EMMessageBodyTypeText {
+            let sheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Copy", "Delete")
+            sheet.tag = 1000
+            sheet.show(in: view)
+            _longPressIndexPath = index
+        }else {
+            let sheet = UIActionSheet(title: nil, delegate: self, cancelButtonTitle: "Cancel", destructiveButtonTitle: nil, otherButtonTitles: "Delete")
+            sheet.tag = 1001
+            sheet.show(in: view)
+            _longPressIndexPath = index
+        }
     }
     
     func didResendButtonPressed(model: EMMessageModel) {
+        
+    }
     
+    // MARK: - UIActionSheetDelegate
+    func actionSheet(_ actionSheet: UIActionSheet, clickedButtonAt buttonIndex: Int) {
+        if buttonIndex == 0 {
+            _longPressIndexPath = nil
+            return
+        }
+        if _longPressIndexPath != nil {
+            let model = _dataSource![_longPressIndexPath!.row]
+            if actionSheet.tag == 1000 {
+                if buttonIndex == 1 {
+                    let pasteboard = UIPasteboard()
+                    if model.message!.body.type == EMMessageBodyTypeText {
+                        let body = model.message!.body as! EMTextMessageBody
+                        pasteboard.string = body.text
+                    }
+                } else if buttonIndex == 2 {
+                    _conversaiton?.deleteMessage(withId: model.message?.messageId!, error: nil)
+                    _dataSource?.remove(at: _longPressIndexPath!.row)
+                    tableView.beginUpdates()
+                    tableView.deleteRows(at: [_longPressIndexPath!], with: UITableViewRowAnimation.fade)
+                    tableView.endUpdates()
+                }
+            }else if actionSheet.tag == 1001 {
+                _conversaiton?.deleteMessage(withId: model.message?.messageId!, error: nil)
+                _dataSource?.remove(at: _longPressIndexPath!.row)
+                tableView.beginUpdates()
+                tableView.deleteRows(at: [_longPressIndexPath!], with: UITableViewRowAnimation.fade)
+                tableView.endUpdates()
+            }
+        }
+    }
+    
+    func actionSheetCancel(_ actionSheet: UIActionSheet) {
+        _longPressIndexPath = nil
     }
 }
