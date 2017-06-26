@@ -59,4 +59,5 @@ class EMSDKHelper: NSObject {
         msg!.chatType = chatType
         return msg!
     }
+
 }

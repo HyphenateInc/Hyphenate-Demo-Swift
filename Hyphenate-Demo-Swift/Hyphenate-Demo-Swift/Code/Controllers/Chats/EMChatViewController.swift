@@ -615,7 +615,45 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     func didAudioCellPressed(model: EMMessageModel) {
+        let body = model.message?.body as! EMVoiceMessageBody
+        let downloadStatus = body.downloadStatus
+        if downloadStatus == EMDownloadStatusDownloading { return }
+        else if (downloadStatus == EMDownloadStatusFailed) {
+            EMClient.shared().chatManager .downloadMessageAttachment(model.message, progress: nil, completion: nil)
+            return
+        }
         
+        if body.type == EMMessageBodyTypeVoice {
+            if _shouldSendHasReadAck(message: model.message!, true) {
+                _sendHasReadResponse(messages: [model.message!], true)
+            }
+            
+            var isPerpare = true
+            if _pervAudioModel == nil {
+                _pervAudioModel = model
+                model.isPlaying = true
+            } else if _pervAudioModel == model {
+                model.isPlaying = false
+                _pervAudioModel = nil
+                isPerpare = false
+            }else {
+                _pervAudioModel?.isPlaying = false
+                model.isPlaying = true
+            }
+            
+            tableView.reloadData()
+            if isPerpare {
+                _pervAudioModel = model
+                EMCDDeviceManager.sharedInstance().enableProximitySensor()
+                EMCDDeviceManager.sharedInstance().asyncPlaying(withPath: body.localPath, completion: { (error) in
+                    self.tableView.reloadData()
+                    EMCDDeviceManager.sharedInstance().disableProximitySensor()
+                    model.isPlaying = false
+                })
+            } else {
+                EMCDDeviceManager.sharedInstance().disableProximitySensor()
+            }
+        }
     }
     
     func didVideoCellPressed(model: EMMessageModel) {
@@ -645,7 +683,10 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     func didResendButtonPressed(model: EMMessageModel) {
-        
+        tableView.reloadData()
+        EMClient.shared().chatManager .resend(model.message, progress: nil) { (message, error) in
+            self.tableView.reloadData()
+        }
     }
     
     // MARK: - UIActionSheetDelegate
