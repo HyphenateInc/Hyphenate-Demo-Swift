@@ -214,7 +214,7 @@
                 [strongSelf saveChatroom:aChatroom];
             }
             else {
-                [[EMClient sharedClient].roomManager leaveChatroom:chatroomId completion:^(EMChatroom *aChatroom, EMError *aError) {
+                [[EMClient sharedClient].roomManager leaveChatroom:chatroomId completion:^(EMError *aError) {
                     if (!aError) {
                         [[EMClient sharedClient].chatManager deleteConversation:chatroomId isDeleteMessages:YES completion:nil];
                     }
@@ -231,7 +231,7 @@
             }
             else {
                 if (aError.code == EMErrorChatroomAlreadyJoined) {
-                    [[EMClient sharedClient].roomManager leaveChatroom:chatroomId completion:^(EMChatroom *aChatroom, EMError *aError) {
+                    [[EMClient sharedClient].roomManager leaveChatroom:chatroomId completion:^(EMError *aError) {
                         if (!aError) {
                             [[EMClient sharedClient].chatManager deleteConversation:chatroomId isDeleteMessages:YES completion:nil];
                         }
