@@ -13,7 +13,7 @@ import MobileCoreServices
 import Photos
 import AssetsLibrary
 
-class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManagerDelegate, EMChatroomManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource{
+class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManagerDelegate, EMChatroomManagerDelegate, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITableViewDelegate, UITableViewDataSource, EMLocationViewDelegate, EMChatBaseCellDelegate{
     
     
     @IBOutlet weak var tableView: UITableView!
@@ -211,6 +211,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         var cell = tableView.dequeueReusableCell(withIdentifier: CellIdentifier)
         if cell == nil {
             cell = EMChatBaseCell.chatBaseCell(withMessageModel: model)
+            (cell as! EMChatBaseCell).delegate = self
         }
         
         (cell as! EMChatBaseCell).set(model: model)
@@ -238,12 +239,13 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         _scrollViewToBottom(animated: false)
     }
     func didSendText(text:String) {
-        let message = EMSDKHelper.createTextMessage(text, to:(_conversaiton?.conversationId)!, _messageType(), nil)
+        let message = EMSDKHelper.createTextMessage(text, to:_conversaiton!.conversationId, _messageType(), nil)
         _sendMessage(message: message)
     }
     
     func didSendAudio(recordPath: String, duration:Int) {
-        
+        let message = EMSDKHelper.createVoiceMessage(recordPath, "audio.amr", duration, to: _conversaiton!.conversationId, _messageType(), nil)
+        _sendMessage(message: message)
     }
     
     func didTakePhotos() {
@@ -260,7 +262,10 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     func didSelectLocation() {
-        
+        _chatToolBar?.endEditing(true)
+        let locationViewController = EMLocationViewController.init(nibName: "EMLocationViewController", bundle: nil)
+        locationViewController.delegate = self
+        navigationController?.pushViewController(locationViewController, animated: true)
     }
     
     // MARK: - UIImagePickerControllerDelegate
@@ -274,16 +279,22 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
                 do { try fm.removeItem(at: videoURL)} catch {}
             }
             
-            let message = EMSDKHelper.createVideoMessage(mp4.path, "video.mp4", 0, to: (_conversaiton?.conversationId)!, _messageType(), nil)
+            let message = EMSDKHelper.createVideoMessage(mp4.path, "video.mp4", 0, to: _conversaiton!.conversationId, _messageType(), nil)
             _sendMessage(message: message)
             
         } else {
             let orgImage = info[UIImagePickerControllerOriginalImage] as! UIImage
             let data = UIImageJPEGRepresentation(orgImage, 1)
-            let message = EMSDKHelper.createImageMessage(data!, "image.jpg", to: (_conversaiton?.conversationId)!, _messageType(), nil)
+            let message = EMSDKHelper.createImageMessage(data!, "image.jpg", to: _conversaiton!.conversationId, _messageType(), nil)
             _sendMessage(message: message)
         }
         picker.dismiss(animated: true, completion: nil)
+    }
+    
+    // MARK: - EMLocationViewDelegate
+    func sendLocation(_ latitude: Double, _ longitude: Double, _ address: String) {
+        let message = EMSDKHelper.createLocationMessage(latitude, longitude, address, to: _conversaiton!.conversationId, _messageType(), nil)
+        _sendMessage(message: message)
     }
     
     func didUpdateInputTextInfo(inputInfo: String) {
@@ -434,6 +445,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         }
     }
     
+    // TODO there is somethine woring.
     func _convert2Mp4(movURL: URL) -> URL {
         var mp4Url: URL? = nil
         let avAsset = AVURLAsset.init(url: movURL)
@@ -576,5 +588,49 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
             navigationController?.popToViewController(self, animated: false)
             navigationController?.popViewController(animated: true)
         }
+    }
+    
+    // MARK: - EMChatBaseCellDelegate
+    func didHeadImagePressed(model: EMMessageModel) {
+    
+    }
+    
+    func didTextCellPressed(model: EMMessageModel) {
+        
+    }
+    
+    func didImageCellPressed(model: EMMessageModel) {
+        if _shouldSendHasReadAck(message: model.message!, true) {
+            _sendHasReadResponse(messages: [model.message!], true)
+        }
+        
+        let body = model.message!.body as! EMImageMessageBody
+        if model.message?.direction == EMMessageDirectionSend && body.localPath != nil {
+            let image = UIImage.init(contentsOfFile: body.localPath)
+            readManager.showBrower([image!])
+        }else {
+            readManager.showBrower([URL(string: body.remotePath)!])
+        }
+        
+    }
+    
+    func didAudioCellPressed(model: EMMessageModel) {
+    
+    }
+    
+    func didVideoCellPressed(model: EMMessageModel) {
+    
+    }
+    
+    func didLocationCellPressed(model: EMMessageModel) {
+    
+    }
+    
+    func didCellLongPressed(cell: EMChatBaseCell) {
+    
+    }
+    
+    func didResendButtonPressed(model: EMMessageModel) {
+    
     }
 }

@@ -44,6 +44,7 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
     
     lazy var recordView: EMChatRecordView = {()-> EMChatRecordView in
         let chatRecordView = Bundle.main.loadNibNamed("EMChatRecordView", owner: nil, options: nil)?.first as! EMChatRecordView
+        chatRecordView.delegate = self
         return chatRecordView
     }()
 
@@ -184,7 +185,7 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
     
     @IBAction func locationAction(_ sender: UIButton) {
         if delegate != nil {
-            delegate?.didTakePhotos()
+            delegate?.didSelectLocation()
         }
     }
     

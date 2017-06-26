@@ -27,7 +27,7 @@
 	</dict>
 	<key>NSCameraUsageDescription</key>
 	<string>Hyphenate need your Camera</string>
-	<key>NSLocationWhenInUseUsageDescription</key>
+	<key>NSLocationAlwaysUsageDescription</key>
 	<string>Hyphenate need your Location</string>
 	<key>NSMicrophoneUsageDescription</key>
 	<string>Hyphenate need your Microphone</string>

@@ -44,6 +44,9 @@ class EMSDKHelper: NSObject {
     
     class func createVoiceMessage(_ localPath: String, _ displayName: String, _ duration: Int, to receiver: String, _  chatType: EMChatType, _ ext: Dictionary<String, Any>?) -> EMMessage {
         let body = EMVoiceMessageBody.init(localPath: localPath, displayName: displayName)
+        if duration > 0 {
+            body?.duration = Int32(duration)
+        }
         let msg = EMMessage.init(conversationID: receiver, from: sender, to: receiver, body: body, ext: ext)
         msg!.chatType = chatType
         return msg!
