@@ -32,8 +32,11 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     private var _conversaiton: EMConversation?
     private var _pervAudioModel: EMMessageModel?
     
+    public var _conversationId: String?
+    
     init(_ conversationId: String, _ conversationType: EMConversationType) {
         super.init(nibName: nil, bundle: nil)
+        _conversationId = conversationId
         _conversaiton = EMClient.shared().chatManager.getConversation(conversationId, type: conversationType, createIfNotExist: true)
         _conversaiton?.markAllMessages(asRead: nil)
     }
