@@ -48,6 +48,9 @@
                         <rect key="frame" x="340" y="5" width="20" height="20"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <state key="normal" title="Button" image="Icon_error.png"/>
+                        <connections>
+                            <action selector="didResendButtonPressed:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="qq9-Xl-B5V"/>
+                        </connections>
                     </button>
                     <activityIndicatorView opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" style="gray" translatesAutoresizingMaskIntoConstraints="NO" id="TAg-FW-Plv">
                         <rect key="frame" x="48" y="10" width="20" height="20"/>

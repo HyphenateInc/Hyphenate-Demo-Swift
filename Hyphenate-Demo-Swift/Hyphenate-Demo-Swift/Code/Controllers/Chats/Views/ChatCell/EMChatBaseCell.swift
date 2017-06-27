@@ -115,7 +115,7 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
         }
     }
     
-    func didResendButtonPressed(sender: AnyObject) {
+    @IBAction func didResendButtonPressed(_ sender: UIButton) {
         if delegate != nil {
             delegate?.didResendButtonPressed(model: _model!)
         }
