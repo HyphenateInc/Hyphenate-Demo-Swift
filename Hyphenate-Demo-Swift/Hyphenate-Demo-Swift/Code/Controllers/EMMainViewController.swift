@@ -2,8 +2,8 @@
 //  EMMainViewController.swift
 //  Hyphenate-Demo-Swift
 //
-//  Created by 杜洁鹏 on 2017/6/13.
-//  Copyright © 2017年 杜洁鹏. All rights reserved.
+//  Created by dujiepeng on 2017/6/13.
+//  Copyright © 2017 dujiepeng. All rights reserved.
 //
 
 import UIKit
@@ -120,7 +120,7 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
         }
         
         if item.tag == 2 {
-            title = "设置"   
+            title = "settings"
             clearNavigationItem()   
         }
     }
@@ -146,7 +146,7 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
     }
     
     func connectionStateDidChange(_ aConnectionState: EMConnectionState) {
-        // TODO: 更新chatVC 的网络状态显示
+        // TODO: update chatVC connection status
     }
     
     func userAccountDidLoginFromOtherDevice() {
@@ -197,19 +197,19 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
                 msgStr = (msgBody as! EMTextMessageBody).text   
                 break   
             case EMMessageBodyTypeImage:
-                msgStr = "图片"   
+                msgStr = "Image"
                 break   
             case EMMessageBodyTypeLocation:
-                msgStr = "位置"   
+                msgStr = "Location"
                 break   
             case EMMessageBodyTypeVoice:
-                msgStr = "音频"   
+                msgStr = "Voice"
                 break   
             case EMMessageBodyTypeVideo:
-                msgStr = "视频"   
+                msgStr = "Video"
                 break   
             case EMMessageBodyTypeFile:
-                msgStr = "文件"   
+                msgStr = "File"
                 break   
             default:
                 msgStr = ""
@@ -221,7 +221,7 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
             } while false
             
         } else {
-            alertStr = "您有一条消息"   
+            alertStr = "You have a new message"
         }
     }
     

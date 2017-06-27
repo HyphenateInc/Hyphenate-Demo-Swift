@@ -2,8 +2,8 @@
 //  EMChatsController.swift
 //  Hyphenate-Demo-Swift
 //
-//  Created by 杜洁鹏 on 2017/6/13.
-//  Copyright © 2017年 杜洁鹏. All rights reserved.
+//  Created by dujiepeng on 2017/6/13.
+//  Copyright © 2017 dujiepeng. All rights reserved.
 //
 
 import UIKit
@@ -45,7 +45,7 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
         label.font = UIFont.systemFont(ofSize: 15.0);
         label.textColor = UIColor.gray;
         label.backgroundColor = UIColor.clear;
-        label.text = "网络连接断开";
+        label.text = "Internet disconnected";
         view.addSubview(label);
         return view;
     }();
@@ -143,7 +143,7 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
         };
         deleteAction.backgroundColor = UIColor.red
         
-        let topAction = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: model.isTop() ? "取消置顶" : "置顶") { (action, index) in
+        let topAction = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: model.isTop() ? "Cancel pin to the top" : "Pin to the top") { (action, index) in
             model.setIsTop(isTop: !model.isTop())
             self.tableViewDidTriggerHeaderRefresh()
         };

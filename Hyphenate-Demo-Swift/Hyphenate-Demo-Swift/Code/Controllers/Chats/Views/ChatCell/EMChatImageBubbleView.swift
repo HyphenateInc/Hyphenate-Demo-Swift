@@ -2,8 +2,8 @@
 //  EMChatImageBubbleView.swift
 //  Hyphenate-Demo-Swift
 //
-//  Created by 杜洁鹏 on 2017/6/23.
-//  Copyright © 2017年 杜洁鹏. All rights reserved.
+//  Created by dujiepeng on 2017/6/23.
+//  Copyright © 2017 dujiepeng. All rights reserved.
 //
 
 import UIKit

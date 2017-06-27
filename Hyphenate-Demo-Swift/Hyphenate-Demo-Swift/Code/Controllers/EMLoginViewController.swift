@@ -2,8 +2,8 @@
 //  EMLoginViewController.swift
 //  Hyphenate-Demo-Swift
 //
-//  Created by 杜洁鹏 on 2017/6/13.
-//  Copyright © 2017年 杜洁鹏. All rights reserved.
+//  Created by dujiepeng on 2017/6/13.
+//  Copyright 2017 dujiepeng. All rights reserved.
 //
 
 import UIKit
@@ -96,7 +96,7 @@ class EMLoginViewController: UIViewController, UITextFieldDelegate {
                     break
                 }
                 
-                let alertView = UIAlertView.init(title: nil, message: alertStr, delegate: nil, cancelButtonTitle: "确定")  
+                let alertView = UIAlertView.init(title: nil, message: alertStr, delegate: nil, cancelButtonTitle: "okay")
                 alertView.show()  
             }
         }  
@@ -113,9 +113,9 @@ class EMLoginViewController: UIViewController, UITextFieldDelegate {
             var alertStr = ""  
             MBProgressHUD.hide(for: self.view, animated: true)
             if error == nil {
-                alertStr = "注册成功"  
+                alertStr = "Registration Succeed"
             } else {
-                alertStr = "注册失败"  
+                alertStr = "Registration Failed"
                 switch error!.code {
                 case EMErrorServerNotReachable:
                     alertStr = error!.errorDescription  
@@ -134,7 +134,7 @@ class EMLoginViewController: UIViewController, UITextFieldDelegate {
                     break  
                 }
                 
-                let alertView = UIAlertView.init(title: nil, message: alertStr, delegate: nil, cancelButtonTitle: "确定")  
+                let alertView = UIAlertView.init(title: nil, message: alertStr, delegate: nil, cancelButtonTitle: "okay")
                 alertView.show()  
             }
         }  
@@ -190,7 +190,7 @@ class EMLoginViewController: UIViewController, UITextFieldDelegate {
         
         if (username?.characters.count)! == 0 || (password?.characters.count)! == 0 {
             ret = true  
-            let alertView = UIAlertView.init(title: "提醒", message: "请输入账号和密码", delegate: nil, cancelButtonTitle: "确定")  
+            let alertView = UIAlertView.init(title: "reminder", message: "please enter username and password", delegate: nil, cancelButtonTitle: "okay")
             alertView.show()  
         }
         

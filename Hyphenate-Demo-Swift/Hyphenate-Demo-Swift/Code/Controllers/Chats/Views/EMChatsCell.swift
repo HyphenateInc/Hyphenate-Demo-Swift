@@ -2,8 +2,8 @@
 //  EMChatsCell.swift
 //  Hyphenate-Demo-Swift
 //
-//  Created by 杜洁鹏 on 2017/6/14.
-//  Copyright © 2017年 杜洁鹏. All rights reserved.
+//  Created by dujiepeng on 2017/6/14.
+//  Copyright © 2017 dujiepeng. All rights reserved.
 //
 
 import UIKit
@@ -45,7 +45,7 @@ class EMChatsCell: UITableViewCell {
         
         let draft : String? = model.conversation!.ext?["Draft"] as? String
         
-        contentLabel.text = draft != nil && (draft?.characters.count)! > 0 ? "[草稿]" + _latestMessageTitle(withConversation: model.conversation!)! : _latestMessageTitle(withConversation: model.conversation!)
+        contentLabel.text = draft != nil && (draft?.characters.count)! > 0 ? "[Draft]" + _latestMessageTitle(withConversation: model.conversation!)! : _latestMessageTitle(withConversation: model.conversation!)
         
         timeLabel.text = _latestMessageTime(withConversation: model.conversation!)
     }
@@ -58,23 +58,23 @@ class EMChatsCell: UITableViewCell {
             let body = latestMsg!.body
             switch body!.type {
             case EMMessageBodyTypeText:
-                // TODO 解析表情
+                // TODO: show emoji
                 latestMsgTitle = (body as! EMTextMessageBody).text
                 break
             case EMMessageBodyTypeImage:
-                latestMsgTitle = "[图片]"
+                latestMsgTitle = "[Image]"
                 break
             case EMMessageBodyTypeVoice:
-                latestMsgTitle = "[音频]"
+                latestMsgTitle = "[Voice]"
                 break
             case EMMessageBodyTypeVideo:
-                latestMsgTitle = "[视频]"
+                latestMsgTitle = "[Video]"
                 break
             case EMMessageBodyTypeLocation:
-                latestMsgTitle = "[位置]"
+                latestMsgTitle = "[Location]"
                 break
             case EMMessageBodyTypeFile:
-                latestMsgTitle = "[文件]"
+                latestMsgTitle = "[File]"
                 break
             default: break
                 
