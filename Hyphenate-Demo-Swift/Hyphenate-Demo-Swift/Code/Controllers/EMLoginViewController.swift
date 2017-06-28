@@ -24,9 +24,9 @@ class EMLoginViewController: UIViewController, UITextFieldDelegate {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.setBackgroundColor()  
-        self.setupUI()  
-        self.setupForDismissKeyboard()  
+        setBackgroundColor()
+        setupUI()
+        setupForDismissKeyboard()
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillChangeFrame(noti:)), name: NSNotification.Name.UIKeyboardWillChangeFrame, object: nil)  
     }
     
@@ -61,14 +61,14 @@ class EMLoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func doLogin(_ sender: UIButton?) {
-        if self._isEmpty() {
+        if _isEmpty() {
             return  
         }
 
         MBProgressHUD.showAdded(to: view, animated: true)  
-        
+        weak var weakSelf = self
         EMClient.shared().login(withUsername: usernameTextField.text, password: passwordTextField.text) { (username, error) in
-            MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.hide(for: weakSelf?.view, animated: true)
             
             if error == nil {
                 EMClient.shared().options.isAutoLogin = true  
@@ -103,15 +103,15 @@ class EMLoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     @IBAction func doSignUp(_ sender: UIButton?) {
-        if self._isEmpty() {
+        if _isEmpty() {
             return  
         }
         
         MBProgressHUD.showAdded(to: view, animated: true)  
-        
+        weak var weakSelf = self
         EMClient.shared().register(withUsername: usernameTextField.text, password: passwordTextField.text) { (username, error) in
             var alertStr = ""  
-            MBProgressHUD.hide(for: self.view, animated: true)
+            MBProgressHUD.hide(for: weakSelf?.view, animated: true)
             if error == nil {
                 alertStr = "Registration Succeed"
             } else {
@@ -171,9 +171,9 @@ class EMLoginViewController: UIViewController, UITextFieldDelegate {
         } else if textField == passwordTextField {
             passwordTextField.resignFirstResponder()  
             if signupButton.isHidden == true {
-                self.doLogin(nil)
+                doLogin(nil)
             }else {
-                self.doSignUp(nil)  
+                doSignUp(nil)
             }
         }
         
@@ -227,10 +227,11 @@ class EMLoginViewController: UIViewController, UITextFieldDelegate {
             top = -100  
         }
         
+        weak var weakSelf = self
         UIView.animate(withDuration: 0.3) {
             UIApplication.shared.keyWindow?.top(top: top)  
-            self.loginButton.frame = btnFrame  
-            self.signupButton.frame = btnFrame
+            weakSelf?.loginButton.frame = btnFrame
+            weakSelf?.signupButton.frame = btnFrame
         }  
         
     }

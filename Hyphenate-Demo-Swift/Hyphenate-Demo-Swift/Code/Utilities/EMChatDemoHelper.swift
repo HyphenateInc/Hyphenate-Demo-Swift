@@ -179,6 +179,7 @@ class EMChatDemoHelper: NSObject, EMClientDelegate, EMContactManagerDelegate, EM
     }
     
     func groupInvitationDidReceive(_ aGroupId: String!, inviter aInviter: String!, message aMessage: String!) {
+        weak var weakSelf = self
         EMClient.shared().groupManager.getGroupSpecificationFromServer(withId: aGroupId) { (group, error) in
             if !EMApplyManager.defaultManager.isExisting(request: aInviter, aGroupId, EMApplyStype.groupInvitation
                 ) {
@@ -191,10 +192,10 @@ class EMChatDemoHelper: NSObject, EMClientDelegate, EMContactManagerDelegate, EM
             }
             
             if self.mainVC != nil {
-                self.setupUnrreatedApplyCount()
+                weakSelf?.setupUnrreatedApplyCount()
             }
             
-            self.contactsVC?.reloadContactRequests()
+            weakSelf?.contactsVC?.reloadContactRequests()
         }
     }
     

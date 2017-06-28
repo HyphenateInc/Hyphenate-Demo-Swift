@@ -30,8 +30,9 @@ class EMBaseRefreshTableViewController: UITableViewController {
             if newValue != _showRefreshHeader {
                 _showRefreshHeader = newValue
                 if _showRefreshHeader {
-                    self.tableView.mj_header = MJRefreshNormalHeader (refreshingBlock: {
-                        self.tableViewDidTriggerHeaderRefresh()
+                    weak var weakSelf = self
+                    tableView.mj_header = MJRefreshNormalHeader (refreshingBlock: {
+                        weakSelf?.tableViewDidTriggerHeaderRefresh()
                     })
                     tableView.mj_header.accessibilityIdentifier = "refresh_header"
                 } else {
@@ -50,7 +51,7 @@ class EMBaseRefreshTableViewController: UITableViewController {
             if newValue != _showRefreshFooter {
                 _showRefreshFooter = newValue
                 if _showRefreshFooter {
-                    self.tableView.mj_footer = MJRefreshBackNormalFooter (refreshingBlock: {
+                    tableView.mj_footer = MJRefreshBackNormalFooter (refreshingBlock: {
                         
                     })
                     tableView.mj_footer.accessibilityIdentifier = "refresh_footer"
@@ -96,11 +97,12 @@ class EMBaseRefreshTableViewController: UITableViewController {
     }
     
     func tableViewDidFinishTriggerHeader(isHeader: Bool) {
+        weak var weakSelf = self
         DispatchQueue.main.async {
             if isHeader {
-                self.tableView.mj_header.endRefreshing()
+                weakSelf?.tableView.mj_header.endRefreshing()
             } else {
-                self.tableView.mj_footer.endRefreshing()
+                weakSelf?.tableView.mj_footer.endRefreshing()
             }
         }
     }

@@ -147,6 +147,7 @@ class EMUserProfileManager: NSObject {
     }
     
     func uploadUserHeadImageProfileInBackground(image: UIImage, complation:@escaping (Bool, Error?)->Void?) {
+        weak var weakSelf = self
         let img = image.imageByScalingAndCroppingForSize(targetSize: CGSize.init(width: 120, height: 120))
         if objectId != nil && (objectId?.characters.count)! > 0 {
             let object = PFObject(withoutDataWithClassName: kPARSE_HXUSER, objectId: objectId)
@@ -161,7 +162,7 @@ class EMUserProfileManager: NSObject {
             unowned let uObject = object
             object.saveInBackground(block: { (successed, error) in
                 if successed {
-                    self.savePFUserInDisk(obj: uObject)
+                    weakSelf?.savePFUserInDisk(obj: uObject)
                 }
                 complation(successed, error)
             })
@@ -175,7 +176,7 @@ class EMUserProfileManager: NSObject {
                     unowned let uObject = object!
                     object!.saveInBackground(block: { (successed, error) in
                         if successed {
-                            self.savePFUserInDisk(obj: uObject)
+                            weakSelf?.savePFUserInDisk(obj: uObject)
                         }
                         complation(successed, error)
                     })
@@ -187,6 +188,7 @@ class EMUserProfileManager: NSObject {
     }
     
     func updateUserProfileInBackground(param:Dictionary<String, Any>?, complation:@escaping (Bool, Error?) -> Void?) {
+        weak var weakSelf = self
         if objectId != nil && (objectId?.characters.count)! > 0 {
             let object = PFObject(withoutDataWithClassName: kPARSE_HXUSER, objectId: objectId)
             DispatchQueue.global().async {
@@ -202,7 +204,7 @@ class EMUserProfileManager: NSObject {
             unowned let uObject = object
             object.saveInBackground(block: { (successed, error) in
                 if successed {
-                    self.savePFUserInDisk(obj: uObject)
+                    weakSelf?.savePFUserInDisk(obj: uObject)
                 }
                 complation(successed, error)
             })
@@ -218,7 +220,7 @@ class EMUserProfileManager: NSObject {
                     unowned let uObject = object!
                     object!.saveInBackground(block: { (successed, error) in
                         if successed {
-                            self.savePFUserInDisk(obj: uObject)
+                            weakSelf?.savePFUserInDisk(obj: uObject)
                         }
                         complation(successed, error)
                     })
@@ -248,6 +250,7 @@ class EMUserProfileManager: NSObject {
     }
     
     func loadUserProfileInBackground(usernames:Array<String>, saveToLocal save:Bool, complation:@escaping (Bool, Error?)->Void) {
+        weak var weakSelf = self
         let query = PFQuery.init(className: kPARSE_HXUSER)
         query.whereKey(kPARSE_HXUSER_USERNAME, containedIn: usernames)
         query.findObjectsInBackground { (objects, error) in
@@ -256,9 +259,9 @@ class EMUserProfileManager: NSObject {
                     if user.classForCoder == PFQuery.classForCoder() {
                         let pfUser = user as PFObject
                         if save {
-                            self.savePFUserInDisk(obj: pfUser)
+                            weakSelf?.savePFUserInDisk(obj: pfUser)
                         } else {
-                            self.savePFUserInMemory(obj: pfUser)
+                            weakSelf?.savePFUserInMemory(obj: pfUser)
                         }
                     }
                 }
@@ -304,12 +307,12 @@ class EMUserProfileManager: NSObject {
     func queryPFObject(complation:@escaping (PFObject?, Error?) -> Void) {
         let query = PFQuery.init(className: kPARSE_HXUSER)
         query.whereKey(kPARSE_HXUSER_USERNAME, equalTo: KCURRENT_USERNAME!)
-
+        weak var weakSelf = self
         query.findObjectsInBackground { (objects, error) in
             if error == nil {
                 if objects != nil && (objects?.count)! > 0 {
                     let object = objects![0] as PFObject
-                    object.acl = self.defaultACL
+                    object.acl = weakSelf?.defaultACL
                     let userDefault = UserDefaults.standard
                     userDefault.set(object.objectId, forKey: kPARSE_HXUSER+KCURRENT_USERNAME!)
                     userDefault.synchronize()

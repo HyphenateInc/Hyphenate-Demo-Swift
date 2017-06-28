@@ -119,9 +119,9 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
         let endFrame = userInfo[UIKeyboardFrameEndUserInfoKey]!.cgRectValue
         let beginFrame = userInfo[UIKeyboardFrameBeginUserInfoKey]!.cgRectValue
         let duration = (userInfo[UIKeyboardAnimationDurationUserInfoKey]! as! NSNumber).doubleValue
-
+        weak var weakSelf = self
         UIView.animate(withDuration: duration, delay: 0, options: [.curveEaseInOut, .beginFromCurrentState], animations: { 
-            self ._willShowKeyboard(fromFrame: beginFrame, endFrame: endFrame)
+            weakSelf?._willShowKeyboard(fromFrame: beginFrame, endFrame: endFrame)
         }, completion: nil)
         
     }
@@ -210,17 +210,19 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
     
     func textViewDidBeginEditing(_ textView: UITextView) {
         sendButton.isHidden = false
+        weak var weakSelf = self
         UIView.animate(withDuration: 0.25) { 
-            self.inputTextView.setNeedsDisplay()
-            self.inputTextView.width(width: kDefaultTextViewWidth - self.sendButton.width() - 15)
+            weakSelf?.inputTextView.setNeedsDisplay()
+            weakSelf?.inputTextView.width(width: kDefaultTextViewWidth - self.sendButton.width() - 15)
         }
     }
     
     func textViewDidEndEditing(_ textView: UITextView) {
         sendButton.isHidden = true
+        weak var weakSelf = self
         UIView.animate(withDuration: 0.25) {
-            self.inputTextView.setNeedsDisplay()
-            self.inputTextView.width(width: kDefaultTextViewWidth)
+            weakSelf?.inputTextView.setNeedsDisplay()
+            weakSelf?.inputTextView.width(width: kDefaultTextViewWidth)
         }
     }
     
@@ -330,8 +332,9 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
             isShowButtomView = true
         }
         
+        weak var weakSelf = self
         UIView.animate(withDuration: 0.25) { 
-            self.frame = toFrame
+            weakSelf?.frame = toFrame
         }
         
         _willShowView(toHeight: toHeight)

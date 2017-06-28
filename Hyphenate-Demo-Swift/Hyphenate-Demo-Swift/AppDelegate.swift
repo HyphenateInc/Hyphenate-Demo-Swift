@@ -42,10 +42,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         let storyboard = UIStoryboard.init(name: "Launch", bundle: nil)     
         let launchVC = storyboard.instantiateViewController(withIdentifier: "EMLaunchViewController")     
         
-        self.window = UIWindow.init(frame: UIScreen.main.bounds)     
-        self.window?.backgroundColor = UIColor.white     
-        self.window?.rootViewController = launchVC     
-        self.window?.makeKeyAndVisible()     
+        window = UIWindow.init(frame: UIScreen.main.bounds)
+        window?.backgroundColor = UIColor.white
+        window?.rootViewController = launchVC
+        window?.makeKeyAndVisible()
         
         
         _registerAPNS()     
@@ -58,10 +58,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         if (nofi.object as! NSNumber).boolValue {
             let mainVC = EMMainViewController()     
             let nav = UINavigationController.init(rootViewController: mainVC)     
-            self.window?.rootViewController = nav     
+            window?.rootViewController = nav
         } else {
             let storyboard = UIStoryboard.init(name: "Register&Login", bundle: nil)     
-            self.window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "EMLoginViewController")     
+            window?.rootViewController = storyboard.instantiateViewController(withIdentifier: "EMLoginViewController")     
         }
     }
     

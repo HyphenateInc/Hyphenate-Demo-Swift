@@ -235,9 +235,10 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     
     // MARK: - EMChatToolBarDelegate
     func chatToolBarDidChangeFrame(toHeight height: CGFloat) {
+        weak var weakSelf = self
         UIView.animate(withDuration: 0.25) {
-            self.tableView.top(top: 0)
-            self.tableView.height(height: self.view.height() - height)
+            weakSelf?.tableView.top(top: 0)
+            weakSelf?.tableView.height(height: weakSelf!.view.height() - height)
         }
         
         _scrollViewToBottom(animated: false)
@@ -307,17 +308,18 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     
     // MARK: - Actions
     func tableViewDidTriggerHeaderRefresh() {
+        weak var weakSelf = self
         DispatchQueue.global().async {
-            self._conversaiton?.loadMessagesStart(fromId: nil, count: 20, searchDirection: EMMessageSearchDirectionUp, completion: { (messages, aError) in
+            weakSelf?._conversaiton?.loadMessagesStart(fromId: nil, count: 20, searchDirection: EMMessageSearchDirectionUp, completion: { (messages, aError) in
                 if aError == nil {
-                    self._dataSource!.removeAll()
+                    weakSelf?._dataSource!.removeAll()
                     for msg in messages! {
-                        self._addMessageToDatasource(message: msg as! EMMessage)
+                        weakSelf?._addMessageToDatasource(message: msg as! EMMessage)
                     }
                     
-                    self.refresh().endRefreshing()
-                    self.tableView.reloadData()
-                    self._scrollViewToBottom(animated: false)
+                    weakSelf?.refresh().endRefreshing()
+                    weakSelf?.tableView.reloadData()
+                    weakSelf?._scrollViewToBottom(animated: false)
                 }
             })
         }
@@ -337,14 +339,15 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     
     func backAction() {
         if _conversaiton!.type == EMConversationTypeChatRoom {
-            self.showHub(inView: UIApplication.shared.keyWindow!, "Leaving the chatroom...")
+            showHub(inView: UIApplication.shared.keyWindow!, "Leaving the chatroom...")
+            weak var weakSelf = self
             EMClient.shared().roomManager.leaveChatroom(_conversaiton?.conversationId, completion: { (error) in
-                self.hideHub()
+                weakSelf?.hideHub()
                 if error != nil {
                     // TODO
                 }
-                self.navigationController?.popToViewController(self, animated: true)
-                self.navigationController?.popViewController(animated: true)
+                weakSelf?.navigationController?.popToViewController(weakSelf!, animated: true)
+                weakSelf?.navigationController?.popViewController(animated: true)
             })
         }else {
             self.navigationController?.popToViewController(self, animated: true)
@@ -379,8 +382,8 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         } else if obj is EMChatroom && _conversaiton?.type == EMConversationTypeChatRoom{
             let chatroom = obj as! EMChatroom
             if chatroom.chatroomId == _conversaiton?.conversationId {
-                self.navigationController?.popToViewController(self, animated: true)
-                self.navigationController?.popViewController(animated: true)
+                navigationController?.popToViewController(self, animated: true)
+                navigationController?.popViewController(animated: true)
             }
         }
     }
@@ -395,9 +398,10 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     // MARK: - Private
     func _joinChatroom(chatroomId: String) {
         // TODO
-        self.showHub(inView: view, "Joining the chatroom")
+        showHub(inView: view, "Joining the chatroom")
+        weak var weakSelf = self
         EMClient.shared().roomManager.joinChatroom(chatroomId) { (chatroom, error) in
-            self.hideHub()
+            weakSelf?.hideHub()
             if error != nil {
                 if error?.code == EMErrorChatroomAlreadyJoined {
                     
@@ -409,8 +413,9 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     func _sendMessage(message: EMMessage) {
         _addMessageToDatasource(message: message)
         tableView.reloadData()
+        weak var weakSelf = self
         EMClient.shared().chatManager.send(message, progress: nil) { (message, error) in
-            self.tableView.reloadData()
+            weakSelf?.tableView.reloadData()
         }
         _scrollViewToBottom(animated: true)
     }
@@ -428,22 +433,23 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     func _loadMoreMessage() {
+        weak var weakSelf = self
         DispatchQueue.global().async {
             var messageId = ""
-            if (self._dataSource?.count)! > 0 {
-                let model = self._dataSource?[0]
+            if (weakSelf?._dataSource?.count)! > 0 {
+                let model = weakSelf?._dataSource?[0]
                 messageId = model!.message!.messageId
             }
             
-            self._conversaiton?.loadMessagesStart(fromId: messageId.characters.count > 0 ? messageId : nil, count: 20, searchDirection: EMMessageSearchDirectionUp, completion: { (messages, error) in
+            weakSelf?._conversaiton?.loadMessagesStart(fromId: messageId.characters.count > 0 ? messageId : nil, count: 20, searchDirection: EMMessageSearchDirectionUp, completion: { (messages, error) in
                 if error == nil {
                     for message in messages as! Array<EMMessage> {
                         let model = EMMessageModel.init(withMesage: message)
                         self._dataSource?.insert(model, at: 0)
                     }
                 }
-                self._refresh?.endRefreshing()
-                self.tableView.reloadData()
+                weakSelf?._refresh?.endRefreshing()
+                weakSelf?.tableView.reloadData()
                 
             })
         }
@@ -648,9 +654,10 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
             tableView.reloadData()
             if isPerpare {
                 _pervAudioModel = model
+                weak var weakSelf = self
                 EMCDDeviceManager.sharedInstance().enableProximitySensor()
                 EMCDDeviceManager.sharedInstance().asyncPlaying(withPath: body.localPath, completion: { (error) in
-                    self.tableView.reloadData()
+                    weakSelf?.tableView.reloadData()
                     EMCDDeviceManager.sharedInstance().disableProximitySensor()
                     model.isPlaying = false
                 })
@@ -698,9 +705,10 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     func didResendButtonPressed(model: EMMessageModel) {
+        weak var weakSelf = self
         tableView.reloadData()
         EMClient.shared().chatManager .resend(model.message, progress: nil) { (message, error) in
-            self.tableView.reloadData()
+            weakSelf?.tableView.reloadData()
         }
     }
     

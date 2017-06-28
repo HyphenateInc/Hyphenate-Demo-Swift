@@ -343,6 +343,8 @@
 		90749EDC1EF90E5B00D3A065 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90749ECD1EF90E5B00D3A065 /* libopencore-amrnb.a */; };
 		90749EDD1EF90E5B00D3A065 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90749ED11EF90E5B00D3A065 /* libopencore-amrwb.a */; };
 		90749EDF1EF9196200D3A065 /* EMChatToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90749EDE1EF9196200D3A065 /* EMChatToolBar.xib */; };
+		9080EDE01F03896E00B6C488 /* EMAddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9080EDDE1F03896E00B6C488 /* EMAddContactViewController.swift */; };
+		9080EDE11F03896E00B6C488 /* EMAddContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9080EDDF1F03896E00B6C488 /* EMAddContactViewController.xib */; };
 		908324EA1EEFE5F000811A97 /* EMMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908324E91EEFE5F000811A97 /* EMMainViewController.swift */; };
 		908324F51EF0072700811A97 /* EMChatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908324F41EF0072700811A97 /* EMChatsController.swift */; };
 		908324F71EF00C1F00811A97 /* EMContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908324F61EF00C1F00811A97 /* EMContactsViewController.swift */; };
@@ -743,6 +745,8 @@
 		90749ED01EF90E5B00D3A065 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
 		90749ED11EF90E5B00D3A065 /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
 		90749EDE1EF9196200D3A065 /* EMChatToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMChatToolBar.xib; sourceTree = "<group>"; };
+		9080EDDE1F03896E00B6C488 /* EMAddContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMAddContactViewController.swift; sourceTree = "<group>"; };
+		9080EDDF1F03896E00B6C488 /* EMAddContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMAddContactViewController.xib; sourceTree = "<group>"; };
 		908324E91EEFE5F000811A97 /* EMMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMMainViewController.swift; sourceTree = "<group>"; };
 		908324F41EF0072700811A97 /* EMChatsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatsController.swift; sourceTree = "<group>"; };
 		908324F61EF00C1F00811A97 /* EMContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMContactsViewController.swift; sourceTree = "<group>"; };
@@ -1472,6 +1476,8 @@
 			children = (
 				90B43DC81F0120AF0084E67F /* Cell */,
 				908324F61EF00C1F00811A97 /* EMContactsViewController.swift */,
+				9080EDDE1F03896E00B6C488 /* EMAddContactViewController.swift */,
+				9080EDDF1F03896E00B6C488 /* EMAddContactViewController.xib */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -1819,6 +1825,7 @@
 				9011E0A21EEEC22700C43D05 /* addContact_enable@3x.png in Resources */,
 				9011E10E1EEEC22700C43D05 /* Icon_Call@2x.png in Resources */,
 				9011E1291EEEC22700C43D05 /* iconCall@2x.png in Resources */,
+				9080EDE11F03896E00B6C488 /* EMAddContactViewController.xib in Resources */,
 				9011E0A31EEEC22700C43D05 /* Button_Accept.png in Resources */,
 				9011E1AC1EEEC22700C43D05 /* logo10@3x.png in Resources */,
 				9011E0F71EEEC22700C43D05 /* Button_Mute disabled.png in Resources */,
@@ -1999,6 +2006,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9080EDE01F03896E00B6C488 /* EMAddContactViewController.swift in Sources */,
 				90C00C7C1EEFA95B0049BFAD /* EMLoginViewController.swift in Sources */,
 				9011DF451EEEBEA400C43D05 /* AppDelegate.swift in Sources */,
 				90FB788F1EF7ED4500B02F60 /* EMFacialView.swift in Sources */,

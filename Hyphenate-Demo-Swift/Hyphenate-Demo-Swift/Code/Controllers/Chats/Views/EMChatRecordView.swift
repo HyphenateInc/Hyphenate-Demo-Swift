@@ -77,10 +77,11 @@ class EMChatRecordView: UIView {
     
     @IBAction func recordButtonTouchUpInside(_ sender: UIButton) {
         resetView()
+        weak var weakSelf = self
         EMCDDeviceManager.sharedInstance().asyncStopRecording { (recordPath, aDuration, error) in
             if error == nil {
-                if self.delegate != nil {
-                    self.delegate?.didFinish(recordPatch: recordPath!, duration: aDuration)
+                if weakSelf?.delegate != nil {
+                    weakSelf?.delegate?.didFinish(recordPatch: recordPath!, duration: aDuration)
                 }
             }
         }

@@ -38,16 +38,23 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
         edgesForExtendedLayout = UIRectEdge(rawValue: 0);
         tableView.sectionIndexColor = BrightBlueColor
         tableView.sectionIndexBackgroundColor = UIColor.clear
+        
+        setupNavigationItem(navigationItem: navigationItem)
+//        reloadGroupNotifications()
+//        reloadContactRequests()
+        
+        tableViewDidTriggerHeaderRefresh()
     }
 
-    func setupNavigation(_ item: UINavigationItem) {
+    public func setupNavigationItem(navigationItem: UINavigationItem) {
         let btn = UIButton(type: UIButtonType.custom)
+        btn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         btn.setImage(UIImage(named:"Icon_Add"), for: UIControlState.normal)
         btn.setImage(UIImage(named:"Icon_Add"), for: UIControlState.highlighted)
-//        btn.addTarget(self, action: #selector(<#T##@objc method#>), for: UIControlEvents.touchUpInside)
+        btn.addTarget(self, action: #selector(addContactAction), for: UIControlEvents.touchUpInside)
         let rightBarButtonItem = UIBarButtonItem.init(customView: btn)
-        item.rightBarButtonItem = rightBarButtonItem
-        item.titleView = searchBar
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+        navigationItem.titleView = searchBar
     }
     
     override func tableViewDidTriggerHeaderRefresh() {
@@ -56,13 +63,18 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
             return
         }
         
+        weak var weakSelf = self
         EMClient.shared().contactManager.getContactsFromServer { (contactsList, error) in
             if error == nil {
                 DispatchQueue.global().async {
-                    // TODO
+                    weakSelf?.updateContacts(bubbyList: contactsList)
+                    weakSelf?.tableViewDidFinishTriggerHeader(isHeader: true)
+                    DispatchQueue.main.async {
+                        weakSelf?.tableView.reloadData()
+                    }
                 }
             }else {
-                self.tableViewDidFinishTriggerHeader(isHeader: true)
+                weakSelf?.tableViewDidFinishTriggerHeader(isHeader: true)
             }
         }
     }
@@ -73,41 +85,63 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
     
     func reloadContacts() {
         let buddyList = EMClient.shared().contactManager.getContacts()
-        // TODO
+        updateContacts(bubbyList: buddyList)
+        weak var weakSelf = self
+        DispatchQueue.main.async {
+            weakSelf?.tableView.reloadData()
+            weakSelf?.refreshControl?.endRefreshing()
+        }
     }
     
     func reloadContactRequests() {
-        
+        weak var weakSelf = self
+        DispatchQueue.main.async {
+            let contactApplys = EMApplyManager.defaultManager.contactApplys()
+            weakSelf?.contactRequests = contactApplys!
+            weakSelf?.tableView.reloadData()
+            EMChatDemoHelper.shareHelper.setupUnrreatedApplyCount()
+        }
     }
     
     func reloadGroupNotifications() {
-    
+        weak var weakSelf = self
+        DispatchQueue.main.async {
+            let groupApplys = EMApplyManager.defaultManager.groupApplys()
+            weakSelf?.contactRequests = groupApplys!
+            weakSelf?.tableView.reloadData()
+            EMChatDemoHelper.shareHelper.setupUnrreatedApplyCount()
+        }
     }
     
-    func updateContacts(bubbyList: Array<Any>) {
+    func updateContacts(bubbyList: Array<Any>?) {
         let blockList = EMClient.shared().contactManager.getBlackList() as Array
-        let contacts = NSMutableArray.init(array: bubbyList)
+        let contacts = NSMutableArray.init(array: bubbyList!)
         for blockId in blockList {
             contacts.remove(blockId)
         }
         sortContacts(contacts: contacts as! Array<String>)
+        weak var weakSelf = self
+        EMUserProfileManager.sharedInstance.loadUserProfileInBackgroundWithBuddy(buddyList: contacts as! Array<String>, saveToLocat: true) { (success, error) in
+            if success {
+                DispatchQueue.global().async {
+                    weakSelf?.sortContacts(contacts: contacts as! Array<String>)
+                    DispatchQueue.main.async {
+                        weakSelf?.tableView.reloadData()
+                    }
+                }
+            }
+        }
     }
     
     func sortContacts(contacts: Array<String>) {
-        
+        // TODO
     }
 
-    override func tableViewDidFinishTriggerHeader(isHeader: Bool) {
-        
+    // MARK: - Action Method
+    func addContactAction() {
+        let addContactViewController = EMAddContactViewController.init(nibName: "EMAddContactViewController", bundle: nil)
+        let nav = UINavigationController.init(rootViewController: addContactViewController)
+        present(nav, animated: true, completion: nil)
     }
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
 
 }

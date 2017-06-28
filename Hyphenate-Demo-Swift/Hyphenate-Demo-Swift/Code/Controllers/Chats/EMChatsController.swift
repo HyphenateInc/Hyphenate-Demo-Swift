@@ -94,10 +94,10 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if _isSearchState {
-            return self.resultsSource.count;
+            return resultsSource.count;
         }
         
-        return self.dataSource.count;
+        return dataSource.count;
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -135,17 +135,17 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
     override func tableView(_ tableView: UITableView, editActionsForRowAt indexPath: IndexPath) -> [UITableViewRowAction]? {
         
         let model = dataSource[indexPath.row]
-        
+        weak var weakSelf = self
         let deleteAction = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: "删除") { (action, index) in
             model.removeComplation {
-                self.tableViewDidTriggerHeaderRefresh()
+                weakSelf?.tableViewDidTriggerHeaderRefresh()
             }
         };
         deleteAction.backgroundColor = UIColor.red
         
         let topAction = UITableViewRowAction.init(style: UITableViewRowActionStyle.normal, title: model.isTop() ? "Cancel pin to the top" : "Pin to the top") { (action, index) in
             model.setIsTop(isTop: !model.isTop())
-            self.tableViewDidTriggerHeaderRefresh()
+            weakSelf?.tableViewDidTriggerHeaderRefresh()
         };
         
         topAction.backgroundColor = UIColor.blue;
@@ -189,12 +189,13 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
             return
         }
         
+        weak var weakSelf = self
         EMRealtimeSearchUtil.currentUtil().realtimeSearch(withSource: dataSource, searchText: searchText) { (results) in
             if results != nil {
                 DispatchQueue.main.async {
-                    self.resultsSource.removeAll()
-                    self.resultsSource = results as! Array<EMConversationModel>
-                    self.tableView.reloadData()
+                    weakSelf?.resultsSource.removeAll()
+                    weakSelf?.resultsSource = results as! Array<EMConversationModel>
+                    weakSelf?.tableView.reloadData()
                 }
             }
         }
@@ -222,14 +223,15 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
     // MARK: - action
     
     override func tableViewDidTriggerHeaderRefresh() {
+        weak var weakSelf = self
         DispatchQueue.global().async {
-            let sortCons = self._sortConversationList(aConversationList: EMClient.shared().chatManager.getAllConversations() as! Array<EMConversation>)
+            let sortCons = weakSelf?._sortConversationList(aConversationList: EMClient.shared().chatManager.getAllConversations() as! Array<EMConversation>)
             
             var tmpAry = Array<EMConversationModel>()
             var topAry = Array<EMConversationModel>()
             var ret = Array<EMConversationModel>()
             
-            for conversation in sortCons {
+            for conversation in sortCons! {
                 let conversationModel = EMConversationModel(conversation: conversation)
                 if conversationModel.isTop() {
                     topAry.append(conversationModel)
@@ -241,9 +243,9 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
             ret += topAry
             ret += tmpAry
             DispatchQueue.main.async {
-                self.dataSource = ret
-                self.tableViewDidFinishTriggerHeader(isHeader: true)
-                self.tableView.reloadData()
+                weakSelf?.dataSource = ret
+                weakSelf?.tableViewDidFinishTriggerHeader(isHeader: true)
+                weakSelf?.tableView.reloadData()
             }
         }
     }
@@ -255,15 +257,16 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
     }
     
     func conversationListDidUpdate(_ aConversationList: [Any]!) {
+        weak var weakSelf = self
         DispatchQueue.global().async {
-            let sorted = self._sortConversationList(aConversationList: aConversationList as! Array<EMConversation>);
+            let sorted = weakSelf?._sortConversationList(aConversationList: aConversationList as! Array<EMConversation>);
             DispatchQueue.main.async {
-                self.dataSource.removeAll();
-                for conversation in sorted {
+                weakSelf?.dataSource.removeAll();
+                for conversation in sorted! {
                     self.dataSource.append(EMConversationModel(conversation: conversation));
                 }
-                self.tableViewDidFinishTriggerHeader(isHeader: true);
-                self.tableView.reloadData();
+                weakSelf?.tableViewDidFinishTriggerHeader(isHeader: true);
+                weakSelf?.tableView.reloadData();
             }
         }
     }
