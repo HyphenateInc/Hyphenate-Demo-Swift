@@ -3,3 +3,6 @@ Pods/
 Podfile.lock
 xcuserdata/
 *.xcworkspace/
+Hyphenate-Demo-Swift/Podfile.lock
+
+*.pbxproj
