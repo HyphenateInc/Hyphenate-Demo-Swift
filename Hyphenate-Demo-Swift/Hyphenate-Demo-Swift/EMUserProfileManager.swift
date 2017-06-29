@@ -92,7 +92,7 @@ class EMUserProfileManager: NSObject {
     
     private var _currentName : String?
     
-    var users : Dictionary<String, UserProfileEntity>?
+    var users = Dictionary<String, UserProfileEntity>()
     var objectId : String?
     var defaultACL: PFACL?
     
@@ -101,7 +101,6 @@ class EMUserProfileManager: NSObject {
     
     override init() {
         super.init()
-        users = Dictionary()
         defaultACL = PFACL()
         defaultACL?.getPublicReadAccess = true
         defaultACL?.getPublicWriteAccess = true
@@ -126,11 +125,11 @@ class EMUserProfileManager: NSObject {
             _currentName = nil
         }
         
-        users?.removeAll()
+        users.removeAll()
     }
     
     func initData() {
-        users?.removeAll()
+        users.removeAll()
         let query = PFQuery.init(className: kPARSE_HXUSER)
         query.findObjectsInBackground { (objects, error) in
             if objects != nil && objects!.count > 0 {
@@ -273,8 +272,8 @@ class EMUserProfileManager: NSObject {
     }
     
     func getUserProfileByUsername(username:String) -> UserProfileEntity? {
-        if users?[username] != nil {
-            return users?[username]
+        if users[username] != nil {
+            return users[username]
         }
         
         return nil
@@ -301,7 +300,7 @@ class EMUserProfileManager: NSObject {
     
     func savePFUserInMemory(obj: PFObject) {
         let entity = UserProfileEntity.initPFObject(PFObject: obj)
-        users?[entity.username!] = entity
+        users[entity.username!] = entity
     }
     
     func queryPFObject(complation:@escaping (PFObject?, Error?) -> Void) {

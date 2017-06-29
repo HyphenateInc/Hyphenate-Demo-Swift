@@ -27,6 +27,7 @@ extension AppDelegate {
         defaultACL.getPublicWriteAccess = true
         
         PFACL.setDefault(defaultACL, withAccessForCurrentUser: true)
+        initParse()
     }
     
     func initParse() {

@@ -43,7 +43,7 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
         EMClient.shared().groupManager.removeDelegate(self)   
     }
     
-    // MARK: - viewController
+    // MARK: - viewControlle
     func loadViewControllers() {
         
         _contactsVC = EMContactsViewController()   

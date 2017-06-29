@@ -25,8 +25,10 @@ class EMApplyManager: NSObject {
         _contactApplys.removeAll()
         let contactKey = localContactApplyKey()
         if contactKey != nil {
-            let contactData = _userDefaults.object(forKey: contactKey!) as! Data
-            _contactApplys = NSKeyedUnarchiver.unarchiveObject(with: contactData) as! Array
+            let contactData = _userDefaults.object(forKey: contactKey!)
+            if contactData != nil {
+                _contactApplys = NSKeyedUnarchiver.unarchiveObject(with: contactData as! Data) as! Array
+            }
         }
         
         return _contactApplys
@@ -36,8 +38,10 @@ class EMApplyManager: NSObject {
         _groupApplys.removeAll()
         let groupKey = localGroupApplyKeys()
         if groupKey != nil {
-            let groupData = _userDefaults.object(forKey: groupKey!) as! Data
-            _groupApplys = NSKeyedUnarchiver.unarchiveObject(with: groupData) as! Array
+            let groupData = _userDefaults.object(forKey: groupKey!)
+            if groupData != nil {
+                _groupApplys = NSKeyedUnarchiver.unarchiveObject(with: groupData as! Data) as! Array
+            }
         }
         
         return _groupApplys
@@ -134,15 +138,18 @@ class EMApplyManager: NSObject {
     func loadAllApplys() {
         let contactKey = localContactApplyKey()
         if contactKey != nil {
-            let contactData = _userDefaults.object(forKey: contactKey!) as! Data
-            _contactApplys = NSKeyedUnarchiver.unarchiveObject(with: contactData) as! Array
-            
+            let contactData = _userDefaults.object(forKey: contactKey!)
+            if contactData != nil {
+                _contactApplys = NSKeyedUnarchiver.unarchiveObject(with: contactData as! Data) as! Array
+            }
         }
         
         let groupKey = localGroupApplyKeys()
         if groupKey != nil {
-            let groupData = _userDefaults.object(forKey: groupKey!) as! Data
-            _groupApplys = NSKeyedUnarchiver.unarchiveObject(with: groupData) as! Array
+            let groupData = _userDefaults.object(forKey: groupKey!)
+            if groupData != nil {
+                _groupApplys = NSKeyedUnarchiver.unarchiveObject(with: groupData as! Data) as! Array
+            }
         }
     }
     

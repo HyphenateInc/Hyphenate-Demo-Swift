@@ -42,14 +42,13 @@ class EMRealtimeSearchUtil: NSObject {
     }
     
     func searchBegin(searchString string: String) {
-        weak var weakSelf = self
         searchQueue.async {
             if string.characters.count == 0 {
-                weakSelf?.result!(weakSelf?.source)
+                self.result!(self.source)
             }else {
                 var results = Array<Any>()
                 let subStr = string.lowercased()
-                for object in (weakSelf?.source)! {
+                for object in (self.source)! {
                     var tmpStr = ""
                     tmpStr = object.searchKey() == nil ? "" : object.searchKey()!.lowercased()
                     
@@ -59,7 +58,7 @@ class EMRealtimeSearchUtil: NSObject {
                     }
                 }
                 
-                weakSelf?.result!(results)
+                self.result!(results)
             }
         }
     }
