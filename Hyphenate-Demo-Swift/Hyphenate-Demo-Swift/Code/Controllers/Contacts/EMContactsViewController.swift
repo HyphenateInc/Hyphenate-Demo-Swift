@@ -100,7 +100,7 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
             let contactApplys = EMApplyManager.defaultManager.contactApplys()
             weakSelf?.contactRequests = contactApplys!
             weakSelf?.tableView.reloadData()
-            EMChatDemoHelper.shareHelper.setupUnrreatedApplyCount()
+            EMChatDemoHelper.shareHelper.setupUntreatedApplyCount()
         }
     }
     
@@ -110,7 +110,7 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
             let groupApplys = EMApplyManager.defaultManager.groupApplys()
             weakSelf?.contactRequests = groupApplys!
             weakSelf?.tableView.reloadData()
-            EMChatDemoHelper.shareHelper.setupUnrreatedApplyCount()
+            EMChatDemoHelper.shareHelper.setupUntreatedApplyCount()
         }
     }
     
@@ -148,7 +148,6 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
             let nickname2 = EMUserProfileManager.sharedInstance.getNickNameWithUsername(username: contact2)
             return nickname1 > nickname2
         }
-        print(ary)
         
         var _searchSource = Array<EMUserModel>()
         for hyphenateId in ary {
@@ -240,6 +239,19 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        var model: EMUserModel?
+        if isSearchState {
+            model = searchResults[indexPath.row]
+        }else {
+            model = (contacts[indexPath.section] as! Array)[indexPath.row]
+        }
+        
+        let contactInfo = EMContactInfoViewController.init(model!)
+        navigationController?.pushViewController(contactInfo, animated: true)
     }
     
     // MARK: - UISearchBarDelegate

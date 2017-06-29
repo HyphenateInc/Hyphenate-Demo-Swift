@@ -39,7 +39,7 @@ class EMChatDemoHelper: NSObject, EMClientDelegate, EMContactManagerDelegate, EM
         EMClient.shared().roomManager.remove(self)
     }
     
-    public func setupUnrreatedApplyCount() {
+    public func setupUntreatedApplyCount() {
         let unreadCount = EMApplyManager.defaultManager.unHandleApplysCount()
         if contactsVC != nil {
             if unreadCount > 0 {
@@ -103,7 +103,7 @@ class EMChatDemoHelper: NSObject, EMClientDelegate, EMContactManagerDelegate, EM
         }
         
         if mainVC != nil {
-            setupUnrreatedApplyCount()
+            setupUntreatedApplyCount()
             // TODO: send localNotification
         }
         
@@ -158,7 +158,7 @@ class EMChatDemoHelper: NSObject, EMClientDelegate, EMContactManagerDelegate, EM
         }
         
         if mainVC != nil {
-            setupUnrreatedApplyCount()
+            setupUntreatedApplyCount()
         }
         
         contactsVC?.reloadContactRequests()
@@ -192,7 +192,7 @@ class EMChatDemoHelper: NSObject, EMClientDelegate, EMContactManagerDelegate, EM
             }
             
             if self.mainVC != nil {
-                weakSelf?.setupUnrreatedApplyCount()
+                weakSelf?.setupUntreatedApplyCount()
             }
             
             weakSelf?.contactsVC?.reloadContactRequests()

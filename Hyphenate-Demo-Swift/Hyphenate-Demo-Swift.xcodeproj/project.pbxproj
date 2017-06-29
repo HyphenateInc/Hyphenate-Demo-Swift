@@ -377,6 +377,8 @@
 		90F3DC431F023E7700DEBB86 /* EMSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F3DC411F023E7700DEBB86 /* EMSettingsViewController.swift */; };
 		90F3DC441F023E7700DEBB86 /* EMSettingsViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F3DC421F023E7700DEBB86 /* EMSettingsViewController.xib */; };
 		90F3DC461F0242AD00DEBB86 /* NSObject+EMAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F3DC451F0242AD00DEBB86 /* NSObject+EMAlertView.swift */; };
+		90F9B7231F04F00500513DC1 /* EMContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F9B7211F04F00500513DC1 /* EMContactInfoViewController.swift */; };
+		90F9B7241F04F00500513DC1 /* EMContactInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F9B7221F04F00500513DC1 /* EMContactInfoViewController.xib */; };
 		90FB78851EF78EB000B02F60 /* EMMessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB78841EF78EB000B02F60 /* EMMessageTextView.swift */; };
 		90FB78891EF7BFAE00B02F60 /* EMChatRecordView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB78881EF7BFAE00B02F60 /* EMChatRecordView.swift */; };
 		90FB788B1EF7BFC600B02F60 /* EMChatRecordView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90FB788A1EF7BFC600B02F60 /* EMChatRecordView.xib */; };
@@ -780,6 +782,8 @@
 		90F3DC411F023E7700DEBB86 /* EMSettingsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMSettingsViewController.swift; sourceTree = "<group>"; };
 		90F3DC421F023E7700DEBB86 /* EMSettingsViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMSettingsViewController.xib; sourceTree = "<group>"; };
 		90F3DC451F0242AD00DEBB86 /* NSObject+EMAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+EMAlertView.swift"; sourceTree = "<group>"; };
+		90F9B7211F04F00500513DC1 /* EMContactInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMContactInfoViewController.swift; sourceTree = "<group>"; };
+		90F9B7221F04F00500513DC1 /* EMContactInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMContactInfoViewController.xib; sourceTree = "<group>"; };
 		90FB78841EF78EB000B02F60 /* EMMessageTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMMessageTextView.swift; sourceTree = "<group>"; };
 		90FB78881EF7BFAE00B02F60 /* EMChatRecordView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatRecordView.swift; sourceTree = "<group>"; };
 		90FB788A1EF7BFC600B02F60 /* EMChatRecordView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMChatRecordView.xib; sourceTree = "<group>"; };
@@ -1478,6 +1482,8 @@
 				908324F61EF00C1F00811A97 /* EMContactsViewController.swift */,
 				9080EDDE1F03896E00B6C488 /* EMAddContactViewController.swift */,
 				9080EDDF1F03896E00B6C488 /* EMAddContactViewController.xib */,
+				90F9B7211F04F00500513DC1 /* EMContactInfoViewController.swift */,
+				90F9B7221F04F00500513DC1 /* EMContactInfoViewController.xib */,
 			);
 			path = Contacts;
 			sourceTree = "<group>";
@@ -1872,6 +1878,7 @@
 				9011E1151EEEC22700C43D05 /* Icon_Current Location pin@3x.png in Resources */,
 				90749EDF1EF9196200D3A065 /* EMChatToolBar.xib in Resources */,
 				9011E16E1EEEC22700C43D05 /* Icon_Back.png in Resources */,
+				90F9B7241F04F00500513DC1 /* EMContactInfoViewController.xib in Resources */,
 				90FB788B1EF7BFC600B02F60 /* EMChatRecordView.xib in Resources */,
 				9011E1BB1EEEC22700C43D05 /* logo5.png in Resources */,
 				9011E0DC1EEEC22700C43D05 /* Button_Camera switch active.png in Resources */,
@@ -2065,6 +2072,7 @@
 				90F3DC461F0242AD00DEBB86 /* NSObject+EMAlertView.swift in Sources */,
 				90F3DC3A1F02125700DEBB86 /* EMApplyManager.swift in Sources */,
 				9084622D1EF7754F0008E480 /* EMMessageModel.swift in Sources */,
+				90F9B7231F04F00500513DC1 /* EMContactInfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
