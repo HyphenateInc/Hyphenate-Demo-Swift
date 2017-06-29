@@ -7,11 +7,12 @@
 //
 
 import UIKit
+import Hyphenate
 
 typealias ApplyCallBack = (_ model: EMApplyModel) -> Void
 
 class EMApplyRequestCell: UITableViewCell {
-
+    
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var acceptButton: UIButton!
@@ -27,12 +28,27 @@ class EMApplyRequestCell: UITableViewCell {
         accessoryType = UITableViewCellAccessoryType.none
         selectionStyle = UITableViewCellSelectionStyle.none
     }
-
+    
     func set(model: EMApplyModel) {
         _model = model
-        let defaultImage = "default_avatar.png"
+        var defaultImage = "default_avatar.png"
         if _model?.style == EMApplyStype.contact {
-            
+            titleLabel.text = _model?.applyNickName
+        }else {
+            defaultImage = "default_group_avatar.png"
+            titleLabel.text = (_model?.groupSubject?.characters.count)! > 0 ? _model?.groupSubject : _model?.groupId
+            if _model?.style == EMApplyStype.joinGroup {
+                titleLabel.text = "\(String(describing: _model?.applyNickName))" + "wants to join"
+            }
+        }
+        
+        avatarImageView.image = UIImage(named:defaultImage)
+        if _model?.style == EMApplyStype.groupInvitation {
+            acceptButton.setImage(UIImage(named:"Button_Join.png"), for: UIControlState.normal)
+        }else {
+            acceptButton.setImage(UIImage(named:"Button_Accept.png"), for: UIControlState.normal)
         }
     }
+    
+    
 }

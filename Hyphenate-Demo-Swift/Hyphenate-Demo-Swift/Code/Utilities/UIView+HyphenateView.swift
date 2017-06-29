@@ -55,15 +55,15 @@ extension UIView {
 extension UIViewController {
     
     func setupForDismissKeyboard() {
-        
+        weak var weakSelf = self
         let notiCenter = NotificationCenter.default      
         let signleTapGR = UITapGestureRecognizer.init(target: self, action: #selector(tapAnyWhereToDismissKeyboard(gesture:)))
         notiCenter.addObserver(forName: NSNotification.Name.UIKeyboardWillShow, object: nil, queue: nil) { (noti) in
-            self.view.addGestureRecognizer(signleTapGR)
+            weakSelf?.view.addGestureRecognizer(signleTapGR)
         }      
         
         notiCenter.addObserver(forName: NSNotification.Name.UIKeyboardWillHide, object: nil, queue: nil) { (noti) in
-            self.view.removeGestureRecognizer(signleTapGR)      
+            weakSelf?.view.removeGestureRecognizer(signleTapGR)
         }      
     }
     

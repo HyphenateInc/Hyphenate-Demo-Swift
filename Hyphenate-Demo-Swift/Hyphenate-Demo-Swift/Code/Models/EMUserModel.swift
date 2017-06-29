@@ -17,7 +17,7 @@ protocol IEMUserModel {
     static func createWithHyphenateId(hyphenateId: String) -> IEMUserModel?
 }
 
-class EMUserModel: NSObject, IEMUserModel{
+class EMUserModel: NSObject, IEMUserModel, EMRealtimeSearchUtilDelegate{
 
     var _hyphenateID: String?
     
@@ -62,5 +62,10 @@ class EMUserModel: NSObject, IEMUserModel{
         let userModel = EMUserModel()
         userModel.hyphenateID = hyphenateId
         return userModel
+    }
+    
+    // MARK: - EMRealtimeSearchUtilDelegate
+    func searchKey() -> String? {
+        return nickname
     }
 }

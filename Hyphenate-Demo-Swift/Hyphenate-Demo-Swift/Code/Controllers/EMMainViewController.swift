@@ -43,7 +43,7 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
         EMClient.shared().groupManager.removeDelegate(self)   
     }
     
-    // MARK: - viewController
+    // MARK: - viewControlle
     func loadViewControllers() {
         
         _contactsVC = EMContactsViewController()   
@@ -57,7 +57,8 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
         selectedTapTabBarItems(item: _chatsVC?.tabBarItem)   
         
         viewControllers = [_contactsVC!,_chatsVC!]   
-        selectedIndex = 0   
+        selectedIndex = 0
+        _contactsVC?.setupNavigationItem(navigationItem: navigationItem)
     }
     
     func unSelectedTapTabBarItems(item: UITabBarItem?) {
@@ -91,11 +92,11 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
     public func didReceiveLocalNotification(noti: UILocalNotification) {
         var userInfo = noti.userInfo   
         if userInfo != nil {
-            let viewControllers = self.navigationController?.viewControllers   
+            let viewControllers = navigationController?.viewControllers
             for (_, obj) in (viewControllers?.enumerated())! {
                 if obj != self {
                     if !obj.isKind(of: self.classForCoder) {
-                        self.navigationController?.popViewController(animated: false)   
+                        navigationController?.popViewController(animated: false)   
                     } else {
                         userInfo = userInfo as! Dictionary<String, Any>   
                         //                        let chatter = userInfo?[kConversationChatter]   
@@ -111,7 +112,7 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
     // MARK: - UITabbarDelegate
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if item.tag == 0 {
-            
+            _contactsVC?.setupNavigationItem(navigationItem: navigationItem)
         }
         
         if item.tag == 1 {

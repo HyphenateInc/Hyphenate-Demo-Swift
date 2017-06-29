@@ -87,11 +87,12 @@ class EMLocationViewController: UIViewController, MKMapViewDelegate, CLLocationM
     // MARK: - MKMapViewDelegate
     func mapView(_ mapView: MKMapView, didUpdate userLocation: MKUserLocation) {
         let geocorde = CLGeocoder()
+        weak var weakSelf = self
         geocorde.reverseGeocodeLocation(userLocation.location!) { (array, error) in
             if error == nil && (array?.count)! > 0 {
                 let placeMark = array?.first
-                self._addressString = placeMark?.name
-                self.removeToLocation(locationCoordinate: userLocation.coordinate)
+                weakSelf?._addressString = placeMark?.name
+                weakSelf?.removeToLocation(locationCoordinate: userLocation.coordinate)
             }
         }
     }

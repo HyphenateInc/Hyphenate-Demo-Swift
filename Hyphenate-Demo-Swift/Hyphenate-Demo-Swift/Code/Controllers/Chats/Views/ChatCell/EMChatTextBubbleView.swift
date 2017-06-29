@@ -16,7 +16,7 @@ let LABEL_LINESPACE: CGFloat = 4
 
 
 class EMChatTextBubbleView: EMChatBaseBubbleView {
-    var textLabel: UILabel = {()-> UILabel in
+    lazy var textLabel: UILabel = {()-> UILabel in
         let _label = UILabel()
         _label.numberOfLines = 0
         _label.lineBreakMode = NSLineBreakMode.byCharWrapping

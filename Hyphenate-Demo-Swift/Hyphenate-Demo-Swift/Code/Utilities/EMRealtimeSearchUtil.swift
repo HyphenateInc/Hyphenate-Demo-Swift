@@ -48,7 +48,7 @@ class EMRealtimeSearchUtil: NSObject {
             }else {
                 var results = Array<Any>()
                 let subStr = string.lowercased()
-                for object in self.source! {
+                for object in (self.source)! {
                     var tmpStr = ""
                     tmpStr = object.searchKey() == nil ? "" : object.searchKey()!.lowercased()
                     
