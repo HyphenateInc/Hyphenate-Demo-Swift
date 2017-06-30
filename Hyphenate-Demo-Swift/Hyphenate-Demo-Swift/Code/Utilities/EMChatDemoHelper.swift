@@ -93,7 +93,7 @@ class EMChatDemoHelper: NSObject, EMClientDelegate, EMContactManagerDelegate, EM
     }
     
     func friendRequestDidReceive(fromUser aUsername: String!, message aMessage: String!) {
-        if EMApplyManager.defaultManager.isExisting(request: aUsername, nil, EMApplyStype.contact) {
+        if !EMApplyManager.defaultManager.isExisting(request: aUsername, nil, EMApplyStype.contact) {
             let model = EMApplyModel()
             model.applyHyphenateId = aUsername
             model.applyNickName = aUsername

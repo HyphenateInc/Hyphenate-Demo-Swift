@@ -8,6 +8,7 @@
 
 import UIKit
 import Hyphenate
+import MBProgressHUD
 
 let  KEM_CONTACT_BASICSECTION_NUM = 3
 
@@ -197,11 +198,11 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
             return 1
         }
         
-        return sectionTitles.count
+        return sectionTitles.count + 1
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
-        return sectionTitles 
+        return  sectionTitles
     }
     
     override func tableView(_ tableView: UITableView, sectionForSectionIndexTitle title: String, at index: Int) -> Int {
@@ -213,41 +214,111 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
             return searchResults.count
         }
         
-        let ary = contacts[section] as! Array<Any>
+        if section == 0 {
+            return contactRequests.count
+        }
+        
+        let ary = contacts[section - 1] as! Array<Any>
         return ary.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellItentify = "EMContactCell"
-        var cell = tableView.dequeueReusableCell(withIdentifier: cellItentify)
-        if cell == nil {
-            cell = Bundle.main.loadNibNamed("EMContactCell", owner: self, options: nil)?.first as! EMContactCell
-        }
         
+        if indexPath.section == 0 && !isSearchState {
+            let model = contactRequests[indexPath.row]
+            return fetchApplyRequestCell(withTableView: tableView, model: model as! EMApplyModel)
+        }
+
         var model: EMUserModel?
         if isSearchState {
             model = searchResults[indexPath.row]
         }else {
-            model = (contacts[indexPath.section] as! Array)[indexPath.row]
+            model = (contacts[indexPath.section - 1] as! Array)[indexPath.row]
         }
         
-        (cell as! EMContactCell).set(model: model!)
+        return fetchContactCell(withTableView: tableView, model: model!)
+    }
+    
+    func fetchApplyRequestCell(withTableView: UITableView , model: EMApplyModel) -> UITableViewCell {
+        var cell = withTableView.dequeueReusableCell(withIdentifier: "EMApplyRequestCell")
+        if cell == nil {
+            cell = Bundle.main.loadNibNamed("EMApplyRequestCell", owner: self, options: nil)?.first as! EMApplyRequestCell
+        }
+        
+        weak var weakSelf = self
+        (cell as! EMApplyRequestCell).set(model: model)
+        (cell as! EMApplyRequestCell).acceptApply = { (acceptModel) -> Void in
+            if acceptModel.style == .contact {
+                MBProgressHUD.showAdded(to: weakSelf?.view, animated: true)
+                EMClient.shared().contactManager.approveFriendRequest(fromUser: acceptModel.applyHyphenateId, completion: { (username, error) in
+                    MBProgressHUD.hide(for: weakSelf?.view, animated: true)
+                    if error == nil {
+                        EMApplyManager.defaultManager.removeApplyRequest(model: acceptModel)
+                    } else {
+                        weakSelf?.showAlert("Accept failed", error!.errorDescription)
+                    }
+                    DispatchQueue.main.async {
+                        weakSelf?.reloadContactRequests()
+                    }
+                })
+            }
+            // TODO: groups
+        }
+        
+        (cell as! EMApplyRequestCell).declineApply = { (declineModel) -> Void in
+            if declineModel.style == .contact {
+                MBProgressHUD.showAdded(to: weakSelf?.view, animated: true)
+                EMClient.shared().contactManager.declineFriendRequest(fromUser: declineModel.applyHyphenateId, completion: { (username, error) in
+                    MBProgressHUD.hide(for: weakSelf?.view, animated: true)
+                    if error == nil {
+                        EMApplyManager.defaultManager.removeApplyRequest(model: declineModel)
+                    } else {
+                        weakSelf?.showAlert("Decline failed", error!.errorDescription)
+                    }
+                    DispatchQueue.main.async {
+                        weakSelf?.reloadContactRequests()
+                    }
+                })
+            }
+            // TODO: groups
+        }
+        return cell!
+    }
+    
+    func fetchContactCell(withTableView: UITableView, model: EMUserModel) -> UITableViewCell {
+        let cellItentify = "EMContactCell"
+        var cell = withTableView.dequeueReusableCell(withIdentifier: cellItentify)
+        if cell == nil {
+            cell = Bundle.main.loadNibNamed("EMContactCell", owner: self, options: nil)?.first as! EMContactCell
+        }
+        
+        (cell as! EMContactCell).set(model: model)
         
         return cell!
-
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 50
     }
     
+    override func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if section == 0 {
+            return 10
+        }
+        
+        return 0
+    }
+    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        if indexPath.section == 0 && isSearchState == false {
+            return
+        }
         var model: EMUserModel?
         if isSearchState {
             model = searchResults[indexPath.row]
         }else {
-            model = (contacts[indexPath.section] as! Array)[indexPath.row]
+            model = (contacts[indexPath.section - 1] as! Array)[indexPath.row]
         }
         
         let contactInfo = EMContactInfoViewController.init(model!)

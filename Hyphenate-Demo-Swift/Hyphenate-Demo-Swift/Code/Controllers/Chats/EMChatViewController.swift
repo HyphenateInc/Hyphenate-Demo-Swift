@@ -109,7 +109,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // TODO
+        
     }
     
     deinit {
@@ -338,6 +338,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     func backAction() {
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_UPDATEUNREADCOUNT), object: nil);
         if _conversaiton!.type == EMConversationTypeChatRoom {
             showHub(inView: UIApplication.shared.keyWindow!, "Leaving the chatroom...")
             weak var weakSelf = self

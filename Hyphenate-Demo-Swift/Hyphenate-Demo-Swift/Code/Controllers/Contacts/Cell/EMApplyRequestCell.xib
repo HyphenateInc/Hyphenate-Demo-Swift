@@ -40,6 +40,9 @@
                             <constraint firstAttribute="width" constant="70" id="ijZ-2Y-XCS"/>
                         </constraints>
                         <state key="normal" image="Button_Accept.png"/>
+                        <connections>
+                            <action selector="AcceptAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="Obf-1b-INF"/>
+                        </connections>
                     </button>
                     <button opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0xx-eV-RoM">
                         <rect key="frame" x="235" y="10" width="70" height="40"/>
@@ -47,6 +50,9 @@
                             <constraint firstAttribute="width" constant="70" id="G98-He-hWL"/>
                         </constraints>
                         <state key="normal" image="Button_Decline.png"/>
+                        <connections>
+                            <action selector="declineAction:" destination="KGk-i7-Jjw" eventType="touchUpInside" id="XfI-90-SmJ"/>
+                        </connections>
                     </button>
                 </subviews>
                 <constraints>

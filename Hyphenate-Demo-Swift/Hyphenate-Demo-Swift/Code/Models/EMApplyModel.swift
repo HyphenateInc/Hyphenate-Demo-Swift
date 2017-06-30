@@ -37,7 +37,14 @@ class EMApplyModel: NSObject, NSCoding {
         aCoder.encode(groupId, forKey: "groupId")
         aCoder.encode(groupSubject, forKey: "groupSubject")
         aCoder.encode(groupMemberCount, forKey: "groupMemberCount")
-        aCoder.encode(style, forKey: "style")
+        switch (style!) {
+        case .contact: aCoder.encode(0, forKey: "style")
+            break
+        case .joinGroup: aCoder.encode(1, forKey: "style")
+            break
+        case .groupInvitation: aCoder.encode(2, forKey: "style")
+            break
+        }
     }
     
     required init?(coder aDecoder: NSCoder) {
@@ -49,8 +56,31 @@ class EMApplyModel: NSObject, NSCoding {
         receiverNickname = aDecoder.decodeObject(forKey: "receiverNickname") as? String
         groupId = aDecoder.decodeObject(forKey: "groupId") as? String
         groupSubject = aDecoder.decodeObject(forKey: "groupSubject") as? String
-        groupMemberCount = aDecoder.decodeObject(forKey: "groupMemberCount") as! Int
-        style = aDecoder.decodeObject(forKey: "style") as? EMApplyStype
+        if aDecoder.decodeObject(forKey: "groupMemberCount") == nil {
+            groupMemberCount = 0
+        }else {
+            groupMemberCount = aDecoder.decodeObject(forKey: "groupMemberCount") as! Int
+        }
+        
+        
+        if aDecoder.decodeObject(forKey: "style") != nil {
+            switch aDecoder.decodeObject(forKey: "style") as! Int {
+            case 0:
+                style = .contact
+                break
+            case 1:
+                style = .joinGroup
+                break
+            case 2:
+                style = .groupInvitation
+                break
+            default:
+                break
+            }
+        }else {
+            style = .contact
+        }
+
     }
     
     override init() {

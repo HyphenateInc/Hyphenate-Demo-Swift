@@ -66,7 +66,7 @@ class EMBaseRefreshTableViewController: UITableViewController {
     fileprivate var footRefreshControl: UIRefreshControl?
     
     init() {
-        super.init(style: UITableViewStyle.grouped)
+        super.init(style: UITableViewStyle.plain)
         defaultFooterView = UIView()
     }
     

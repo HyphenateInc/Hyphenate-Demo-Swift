@@ -59,6 +59,10 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
         viewControllers = [_contactsVC!,_chatsVC!]   
         selectedIndex = 0
         _contactsVC?.setupNavigationItem(navigationItem: navigationItem)
+        
+        
+        EMChatDemoHelper.shareHelper.contactsVC = _contactsVC
+        EMChatDemoHelper.shareHelper.chatsVC = _chatsVC
     }
     
     func unSelectedTapTabBarItems(item: UITabBarItem?) {
