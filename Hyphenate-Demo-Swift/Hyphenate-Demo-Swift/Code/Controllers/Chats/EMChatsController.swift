@@ -66,8 +66,6 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
         super.viewWillAppear(animated);
         registerNotifications();
         tableViewDidTriggerHeaderRefresh();
-        
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_UPDATEUNREADCOUNT), object: nil);
     }
     
     override func viewWillDisappear(_ animated: Bool) {

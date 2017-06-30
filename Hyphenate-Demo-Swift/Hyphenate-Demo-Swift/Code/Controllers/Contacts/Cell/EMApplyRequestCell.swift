@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import Hyphenate
 
 typealias ApplyCallBack = (_ model: EMApplyModel) -> Void
 
@@ -27,6 +26,14 @@ class EMApplyRequestCell: UITableViewCell {
         super.awakeFromNib()
         accessoryType = UITableViewCellAccessoryType.none
         selectionStyle = UITableViewCellSelectionStyle.none
+    }
+    
+    func setAccept(_ callBack: @escaping ApplyCallBack){
+        acceptApply = callBack
+    }
+    
+    func setDecline(_ callBack: @escaping ApplyCallBack) {
+        declineApply = callBack
     }
     
     func set(model: EMApplyModel) {
@@ -50,5 +57,12 @@ class EMApplyRequestCell: UITableViewCell {
         }
     }
     
+    @IBAction func AcceptAction(_ sender: UIButton) {
+        
+        acceptApply!(_model!)
+    }
     
+    @IBAction func declineAction(_ sender: UIButton) {
+        declineApply!(_model!)
+    }
 }

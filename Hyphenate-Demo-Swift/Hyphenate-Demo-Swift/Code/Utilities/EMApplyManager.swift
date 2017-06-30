@@ -63,7 +63,7 @@ class EMApplyManager: NSObject {
             return
         }
         
-        let data = NSKeyedArchiver.archivedData(withRootObject: ary)
+        let data = NSKeyedArchiver.archivedData(withRootObject: (ary as NSArray))
         _userDefaults.set(data, forKey: key)
     }
     
