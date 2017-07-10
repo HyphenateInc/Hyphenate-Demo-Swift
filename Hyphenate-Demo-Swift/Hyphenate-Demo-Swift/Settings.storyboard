@@ -105,26 +105,6 @@
                                             <segue destination="tzv-J2-UjC" kind="push" id="P5H-gM-eLe"/>
                                         </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" id="Czd-ND-9m6">
-                                        <rect key="frame" x="0.0" y="165" width="375" height="55"/>
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="Czd-ND-9m6" id="Lst-Bl-zIb">
-                                            <rect key="frame" x="0.0" y="0.0" width="342" height="55"/>
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Chats" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yCD-LS-Re0">
-                                                    <rect key="frame" x="15" y="17.5" width="40" height="18"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="yCD-LS-Re0" firstAttribute="centerY" secondItem="Lst-Bl-zIb" secondAttribute="centerY" id="EgS-3Z-1fQ"/>
-                                                <constraint firstItem="yCD-LS-Re0" firstAttribute="leading" secondItem="Lst-Bl-zIb" secondAttribute="leading" constant="15" id="SDj-fu-nGM"/>
-                                            </constraints>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
                                 </cells>
                             </tableViewSection>
                         </sections>
@@ -134,6 +114,10 @@
                         </connections>
                     </tableView>
                     <simulatedNavigationBarMetrics key="simulatedTopBarMetrics" prompted="NO"/>
+                    <connections>
+                        <outlet property="hyphenateIdLabel" destination="yTT-r8-Ift" id="MCw-3B-FbU"/>
+                        <outlet property="pushNotificationLabel" destination="xaN-ea-liF" id="QPX-dz-Bf7"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="0cw-bC-hMo" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -163,6 +147,10 @@
                                                         <constraint firstAttribute="height" constant="44" id="ORb-ee-nAT"/>
                                                         <constraint firstAttribute="width" constant="44" id="ly4-ER-FIr"/>
                                                     </constraints>
+                                                    <userDefinedRuntimeAttributes>
+                                                        <userDefinedRuntimeAttribute type="string" keyPath="layer.cornerRadius" value="22"/>
+                                                        <userDefinedRuntimeAttribute type="boolean" keyPath="layer.masksToBounds" value="YES"/>
+                                                    </userDefinedRuntimeAttributes>
                                                 </imageView>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Sx4-cb-PYu">
                                                     <rect key="frame" x="74" y="18" width="32" height="34"/>

@@ -48,26 +48,23 @@ class EMAccountViewController: EMBaseSettingController, UIImagePickerControllerD
         weak var weakSelf = self
         EMUserProfileManager.sharedInstance.loadUserProfileInBackground(usernames: [currentUser!], saveToLocal: true) { (success, error) in
             if error == nil && success {
-                weakSelf?.tableView.reloadData()
+                let user = EMUserProfileManager.sharedInstance.getCurUserProfile()
+                weakSelf?.avatarView.imageWithUsername(username: user?.username, placeholderImage: nil)
+                weakSelf?.usernameLabel.text = EMClient.shared().currentUsername
+                weakSelf?.nameLabel.text = user?.nickname != nil ? user?.nickname : weakSelf?.usernameLabel.text
             }
         }
-        
-        let user = EMUserProfileManager.sharedInstance.getCurUserProfile()
-        avatarView.imageWithUsername(username: user?.username, placeholderImage: nil)
-        usernameLabel.text = EMClient.shared().currentUsername
-        nameLabel.text = user?.nickname != nil ? user?.nickname : usernameLabel.text
     }
     
     // MARK: - Actions
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        hideHub()
-        showHub(inView: view, "Uplading...")
-        
+
         weak var weakSelf = self
         let orgImage = info[UIImagePickerControllerOriginalImage]
         picker.dismiss(animated: true, completion: nil)
         if orgImage != nil {
+            showHub(inView: view, "Uploading...")
             EMUserProfileManager.sharedInstance.uploadUserHeadImageProfileInBackground(image: (orgImage as! UIImage), complation: { (success, error) in
                 weakSelf?.hideHub()
                 if success {
@@ -78,8 +75,8 @@ class EMAccountViewController: EMBaseSettingController, UIImagePickerControllerD
                     weakSelf?.avatarView.imageWithUsername(username: (user?.username)!, placeholderImage: (orgImage as! UIImage))
                 }
             })
+            avatarView.imageWithUsername(username: nil, placeholderImage: (orgImage as! UIImage))
         } else {
-            hideHub()
             show("Upload Failed")
         }
     }

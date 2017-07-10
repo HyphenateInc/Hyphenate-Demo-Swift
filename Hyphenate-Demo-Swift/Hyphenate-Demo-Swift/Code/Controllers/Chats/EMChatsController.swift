@@ -277,6 +277,7 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
     
     public func setupNavigationItem(navigationItem: UINavigationItem) {
         navigationItem.titleView = searchBar;
+        navigationItem.rightBarButtonItem = nil
     }
     
     public func networkChanged(connectionState: EMConnectionState) {

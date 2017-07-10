@@ -37,7 +37,7 @@ class EMContactInfoViewController: UITableViewController {
         nicknameLabel.text = model?.nickname
         avatarImage.image = model?.defaultAvatarImage
         if model?.avatarURLPath != nil {
-            avatarImage.sd_setImage(with: URL(fileURLWithPath: (model?.avatarURLPath)!), placeholderImage: model?.defaultAvatarImage)
+            avatarImage.sd_setImage(with: URL(string: (model?.avatarURLPath)!), placeholderImage: model?.defaultAvatarImage)
         }
     }
     

@@ -29,7 +29,7 @@ class EMContactCell: UITableViewCell {
         nicknameLabel.text = _model?.nickname
         avatarImage.image = _model?.defaultAvatarImage
         if _model?.avatarURLPath != nil {
-            avatarImage.sd_setImage(with: URL.init(fileURLWithPath: (_model?.avatarURLPath)!), placeholderImage: _model?.defaultAvatarImage)
+            avatarImage.sd_setImage(with: URL(string: (_model?.avatarURLPath)!), placeholderImage: _model?.defaultAvatarImage)
         }
     }
     
