@@ -15,10 +15,10 @@ let kPARSE_HXUSER_USERNAME = "username"
 let kPARSE_HXUSER_NICKNAME = "nickname"
 let kPARSE_HXUSER_AVATAR = "avatar"
 
-let KCURRENT_USERNAME = EMClient.shared().currentUsername
+
 
 extension UIImage {
-    func imageByScalingAndCroppingForSize(targetSize:CGSize) -> UIImage? {
+    func imageByScalingAndCroppingForSize(targetSize:CGSize) -> UIImage {
         let sourceImage = self
         var newImage : UIImage? = nil
         let imageSize = sourceImage.size
@@ -59,7 +59,7 @@ extension UIImage {
         newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
-        return newImage
+        return newImage!
     }
 }
 
@@ -96,7 +96,6 @@ class EMUserProfileManager: NSObject {
     var objectId : String?
     var defaultACL: PFACL?
     
-    
     static let sharedInstance = EMUserProfileManager()
     
     override init() {
@@ -113,7 +112,7 @@ class EMUserProfileManager: NSObject {
             self.objectId = objId
         }
         
-        _currentName = KCURRENT_USERNAME
+        _currentName = EMClient.shared().currentUsername
         initData()
     }
     
@@ -134,18 +133,17 @@ class EMUserProfileManager: NSObject {
         query.findObjectsInBackground { (objects, error) in
             if objects != nil && objects!.count > 0 {
                 for user in objects! {
-                    if user.classForCoder == PFQuery.classForCoder() {
-                        let entity = UserProfileEntity.initPFObject(PFObject: user)
-                        if (entity.username?.characters.count)! > 0 {
-                            user.setObject(entity, forKey: entity.username!)
-                        }
+                    let entity = UserProfileEntity.initPFObject(PFObject: user)
+                    if (entity.username?.characters.count)! > 0 {
+                        user.setObject(entity, forKey: entity.username!)
                     }
+
                 }
             }
         }
     }
     
-    func uploadUserHeadImageProfileInBackground(image: UIImage, complation:@escaping (Bool, Error?)->Void?) {
+    func uploadUserHeadImageProfileInBackground(image: UIImage, complation:@escaping (Bool, Error?) -> Void) {
         weak var weakSelf = self
         let img = image.imageByScalingAndCroppingForSize(targetSize: CGSize.init(width: 120, height: 120))
         if objectId != nil && (objectId?.characters.count)! > 0 {
@@ -154,28 +152,25 @@ class EMUserProfileManager: NSObject {
                 do{ try object.fetchIfNeeded() } catch {}
             }
             
-            let data = UIImageJPEGRepresentation(img!, 0.5)
+            let data = UIImageJPEGRepresentation(img, 0.5)
             let imageFile = PFFile.init(name: "image.png", data: data!)
             object[kPARSE_HXUSER_AVATAR] = imageFile
-            
-            unowned let uObject = object
             object.saveInBackground(block: { (successed, error) in
                 if successed {
-                    weakSelf?.savePFUserInDisk(obj: uObject)
+                    weakSelf?.savePFUserInDisk(obj: object)
                 }
                 complation(successed, error)
             })
         } else {
             queryPFObject(complation: { (object, error) in
                 if object != nil {
-                    let data = UIImageJPEGRepresentation(img!, 0.5)
+                    let data = UIImageJPEGRepresentation(img, 0.5)
                     let imageFile = PFFile.init(name: "image.png", data: data!)
                     object?[kPARSE_HXUSER_AVATAR] = imageFile
                     
-                    unowned let uObject = object!
                     object!.saveInBackground(block: { (successed, error) in
                         if successed {
-                            weakSelf?.savePFUserInDisk(obj: uObject)
+                            weakSelf?.savePFUserInDisk(obj: object)
                         }
                         complation(successed, error)
                     })
@@ -186,7 +181,7 @@ class EMUserProfileManager: NSObject {
         }
     }
     
-    func updateUserProfileInBackground(param:Dictionary<String, Any>?, complation:@escaping (Bool, Error?) -> Void?) {
+    func updateUserProfileInBackground(param:Dictionary<String, Any>?, complation:@escaping (Bool, Error?) -> Void) {
         weak var weakSelf = self
         if objectId != nil && (objectId?.characters.count)! > 0 {
             let object = PFObject(withoutDataWithClassName: kPARSE_HXUSER, objectId: objectId)
@@ -200,7 +195,7 @@ class EMUserProfileManager: NSObject {
                 }
             }
             
-            unowned let uObject = object
+            weak var uObject = object
             object.saveInBackground(block: { (successed, error) in
                 if successed {
                     weakSelf?.savePFUserInDisk(obj: uObject)
@@ -216,7 +211,7 @@ class EMUserProfileManager: NSObject {
                         }
                     }
                     
-                    unowned let uObject = object!
+                    weak var uObject = object!
                     object!.saveInBackground(block: { (successed, error) in
                         if successed {
                             weakSelf?.savePFUserInDisk(obj: uObject)
@@ -271,16 +266,17 @@ class EMUserProfileManager: NSObject {
         }
     }
     
-    func getUserProfileByUsername(username:String) -> UserProfileEntity? {
-        if users[username] != nil {
-            return users[username]
+    func getUserProfileByUsername(username:String?) -> UserProfileEntity? {
+        if  username != nil {
+            if users[username!] != nil {
+                return users[username!]
+            }
         }
-        
         return nil
     }
     
     func getCurUserProfile() -> UserProfileEntity? {
-        return getUserProfileByUsername(username: KCURRENT_USERNAME!)
+        return getUserProfileByUsername(username: EMClient.shared().currentUsername)
     }
     
     func getNickNameWithUsername(username:String) -> String {
@@ -293,9 +289,11 @@ class EMUserProfileManager: NSObject {
     }
     
     // MARK: - Private
-    func savePFUserInDisk(obj: PFObject) {
-        obj.pinInBackground(withName: KCURRENT_USERNAME!)
-        savePFUserInMemory(obj: obj)
+    func savePFUserInDisk(obj: PFObject?) {
+        if obj != nil {
+            obj!.pinInBackground(withName: EMClient.shared().currentUsername)
+            savePFUserInMemory(obj: obj!)
+        }
     }
     
     func savePFUserInMemory(obj: PFObject) {
@@ -305,7 +303,7 @@ class EMUserProfileManager: NSObject {
     
     func queryPFObject(complation:@escaping (PFObject?, Error?) -> Void) {
         let query = PFQuery.init(className: kPARSE_HXUSER)
-        query.whereKey(kPARSE_HXUSER_USERNAME, equalTo: KCURRENT_USERNAME!)
+        query.whereKey(kPARSE_HXUSER_USERNAME, equalTo: EMClient.shared().currentUsername)
         weak var weakSelf = self
         query.findObjectsInBackground { (objects, error) in
             if error == nil {
@@ -313,7 +311,7 @@ class EMUserProfileManager: NSObject {
                     let object = objects![0] as PFObject
                     object.acl = weakSelf?.defaultACL
                     let userDefault = UserDefaults.standard
-                    userDefault.set(object.objectId, forKey: kPARSE_HXUSER+KCURRENT_USERNAME!)
+                    userDefault.set(object.objectId, forKey: kPARSE_HXUSER+EMClient.shared().currentUsername)
                     userDefault.synchronize()
                     complation(object, error)
                 }
