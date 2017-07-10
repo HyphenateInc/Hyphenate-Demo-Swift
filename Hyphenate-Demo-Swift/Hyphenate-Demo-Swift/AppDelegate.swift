@@ -12,7 +12,7 @@ import UserNotifications
 
 
 @UIApplicationMain
-class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate {
+class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterDelegate, EMClientDelegate {
 
     var window: UIWindow?
 
@@ -73,6 +73,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         EMClient.shared().applicationWillEnterForeground(application)     
     }
  
+    func application(_ application: UIApplication, didRegisterForRemoteNotificationsWithDeviceToken deviceToken: Data) {
+        EMClient.shared().registerForRemoteNotifications(withDeviceToken: deviceToken, completion: nil)
+    }
+    
     fileprivate func _registerAPNS() {
         let application = UIApplication.shared     
         application.applicationIconBadgeNumber = 0     
@@ -82,7 +86,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             center.delegate = self      
             center.requestAuthorization(options: [.alert, .sound, .badge]) {
                 (granted, error) in
-                // Enable or disable features based on authorization.
                 if granted {
                     application.registerForRemoteNotifications()     
                 }

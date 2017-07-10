@@ -18,6 +18,7 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
     
     private var _contactsVC : EMContactsViewController?
     private var _chatsVC: EMChatsController?
+    private var _settingsVC: EMSettingsViewController?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,22 +48,32 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
     func loadViewControllers() {
         
         _contactsVC = EMContactsViewController()   
-        _contactsVC?.tabBarItem = UITabBarItem.init(title: "Chats", image: UIImage(named: "Chats"), tag: 0)   
+        _contactsVC?.tabBarItem = UITabBarItem.init(title: "Contacts", image: UIImage(named: "Contacts"), tag: 0)
+        _contactsVC?.tabBarItem.selectedImage = UIImage(named:"Contacts_active")
         unSelectedTapTabBarItems(item: _contactsVC?.tabBarItem)   
         selectedTapTabBarItems(item: _contactsVC?.tabBarItem)   
         
         _chatsVC = EMChatsController()   
-        _chatsVC?.tabBarItem = UITabBarItem.init(title: "Chats", image: UIImage(named: "Chats"), tag: 1)   
+        _chatsVC?.tabBarItem = UITabBarItem.init(title: "Chats", image: UIImage(named: "Chats"), tag: 1)
+        _chatsVC?.tabBarItem.selectedImage = UIImage(named:"Chats_active")
         unSelectedTapTabBarItems(item: _chatsVC?.tabBarItem)   
         selectedTapTabBarItems(item: _chatsVC?.tabBarItem)   
         
-        viewControllers = [_contactsVC!,_chatsVC!]   
+        let storyboard = UIStoryboard.init(name: "Settings", bundle: nil)
+        _settingsVC  = storyboard.instantiateViewController(withIdentifier: "EMSettingsViewController") as? EMSettingsViewController
+        _settingsVC?.tabBarItem = UITabBarItem.init(title: "Settings", image: UIImage(named:"Settings"), tag: 2)
+        _settingsVC?.tabBarItem.selectedImage = UIImage(named:"Settings_active")
+        unSelectedTapTabBarItems(item: _settingsVC?.tabBarItem)
+        selectedTapTabBarItems(item: _settingsVC?.tabBarItem)
+        
+        viewControllers = [_contactsVC!,_chatsVC!,_settingsVC!]
+        
         selectedIndex = 0
         _contactsVC?.setupNavigationItem(navigationItem: navigationItem)
         
-        
         EMChatDemoHelper.shareHelper.contactsVC = _contactsVC
         EMChatDemoHelper.shareHelper.chatsVC = _chatsVC
+        EMChatDemoHelper.shareHelper.settings = _settingsVC
     }
     
     func unSelectedTapTabBarItems(item: UITabBarItem?) {
@@ -125,7 +136,7 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
         }
         
         if item.tag == 2 {
-            title = "settings"
+            title = "Settings"
             clearNavigationItem()   
         }
     }

@@ -334,6 +334,10 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
         return true
     }
     
+    func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+        tableView.isUserInteractionEnabled = true
+    }
+    
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         tableView.isUserInteractionEnabled = true
         if searchBar.text?.characters.count == 0 {

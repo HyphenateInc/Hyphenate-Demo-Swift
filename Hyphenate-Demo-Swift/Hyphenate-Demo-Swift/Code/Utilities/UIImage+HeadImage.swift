@@ -11,7 +11,7 @@ import UIKit
 import SDWebImage
 
 extension UIImageView {
-    func imageWithUsername(username:String, placeholderImage:UIImage?) {
+    func imageWithUsername(username:String?, placeholderImage:UIImage?) {
         var placeholderImage = placeholderImage
         if placeholderImage == nil {
             placeholderImage = UIImage(named: "default_avatar")

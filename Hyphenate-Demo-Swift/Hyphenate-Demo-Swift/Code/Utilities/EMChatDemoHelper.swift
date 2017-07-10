@@ -72,15 +72,15 @@ class EMChatDemoHelper: NSObject, EMClientDelegate, EMContactManagerDelegate, EM
     
     // MARK: - EMContactsManagerDelegate
     func friendRequestDidApprove(byUser aUsername: String!) {
-        showAlert("\(aUsername)" + " agreed to add friends to apply")
+        showAlert("\(aUsername!)" + " agreed to add friends to apply")
     }
     
     func friendRequestDidDecline(byUser aUsername: String!) {
-        showAlert("\(aUsername)" + " refuse to add friends to apply")
+        showAlert("\(aUsername!)" + " refuse to add friends to apply")
     }
     
     func friendshipDidRemove(byUser aUsername: String!) {
-        showAlert("\(aUsername)" + " Delete")
+        showAlert("\(aUsername!)" + " Delete")
         if contactsVC != nil {
             contactsVC?.reloadContacts()
         }

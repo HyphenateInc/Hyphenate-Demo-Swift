@@ -8,6 +8,7 @@
 
 import UIKit
 import Hyphenate
+import MBProgressHUD
 
 class EMContactInfoViewController: UITableViewController {
  
@@ -116,8 +117,20 @@ class EMContactInfoViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        if indexPath.section == 1 && indexPath.row == 1 {
-            // TODO delete contact
+        if indexPath.section == 1 && indexPath.row == 0 {
+            weak var weakSelf = self
+           let alertController = UIAlertController.init(title: nil, message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
+            let cancel = UIAlertAction.init(title: "Cancel", style: UIAlertActionStyle.cancel, handler: nil)
+            let delete = UIAlertAction.init(title: "Delete", style: UIAlertActionStyle.destructive, handler: { (action) in
+                MBProgressHUD.showAdded(to: weakSelf?.view, animated: true)
+                EMClient.shared().contactManager.deleteContact(weakSelf?.model?.hyphenateID, isDeleteConversation: true, completion: { (username, error) in
+                    MBProgressHUD.hide(for: weakSelf?.view, animated: true)
+                    weakSelf?.navigationController?.popToRootViewController(animated: true)
+                })
+            })
+            alertController.addAction(cancel)
+            alertController.addAction(delete)
+            present(alertController, animated: true, completion: nil)
         }
     }
 }
