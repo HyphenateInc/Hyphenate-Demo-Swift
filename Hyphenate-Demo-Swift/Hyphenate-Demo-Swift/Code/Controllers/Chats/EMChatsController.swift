@@ -41,7 +41,7 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
         let imgView = UIImageView.init(frame: CGRect.init(x: 10, y: (view.height() - 20) / 2, width: 20, height: 20));
         imgView.image = UIImage(named: "Icon_error_white");
         view.addSubview(imgView);
-        let label = UILabel.init(frame: CGRect(x: imgView.bounds.size.width + 5, y: 0, width: view.width() - imgView.bounds.size.width + 15, height: view.height()))
+        let label = UILabel.init(frame: CGRect(x: imgView.width() + imgView.frame.origin.x + 5, y: 0, width: view.width() - imgView.bounds.size.width + 15, height: view.height()))
         label.font = UIFont.systemFont(ofSize: 15.0);
         label.textColor = UIColor.gray;
         label.backgroundColor = UIColor.clear;
