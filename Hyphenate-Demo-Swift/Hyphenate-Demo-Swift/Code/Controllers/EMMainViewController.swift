@@ -8,6 +8,7 @@
 
 import UIKit
 import Hyphenate
+import UserNotifications
 
 let kDefaultPlaySoundInterval = 3.0   
 let kMessageType = "MessageType"   
@@ -19,6 +20,8 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
     private var _contactsVC : EMContactsViewController?
     private var _chatsVC: EMChatsController?
     private var _settingsVC: EMSettingsViewController?
+    
+    private var lastPlaySoundDate = Date()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -104,26 +107,6 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
         }
     }
     
-    public func didReceiveLocalNotification(noti: UILocalNotification) {
-        var userInfo = noti.userInfo   
-        if userInfo != nil {
-            let viewControllers = navigationController?.viewControllers
-            for (_, obj) in (viewControllers?.enumerated())! {
-                if obj != self {
-                    if !obj.isKind(of: self.classForCoder) {
-                        navigationController?.popViewController(animated: false)   
-                    } else {
-                        userInfo = userInfo as! Dictionary<String, Any>   
-                        //                        let chatter = userInfo?[kConversationChatter]   
-                        // TODO 点击跳转
-                    }
-                } else {
-                    
-                }
-            }
-        }
-    }
-    
     // MARK: - UITabbarDelegate
     override func tabBar(_ tabBar: UITabBar, didSelect item: UITabBarItem) {
         if item.tag == 0 {
@@ -162,7 +145,7 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
     }
     
     func connectionStateDidChange(_ aConnectionState: EMConnectionState) {
-        // TODO: update chatVC connection status
+        _chatsVC?.networkChanged(connectionState: aConnectionState)
     }
     
     func userAccountDidLoginFromOtherDevice() {
@@ -198,13 +181,20 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
     }
     
     func playSoundAndVibration() {
+        let timeInterval = Date().timeIntervalSince(lastPlaySoundDate)
+        if timeInterval < 3.0 {
+            return
+        }
         
+        lastPlaySoundDate = Date()
+        EMCDDeviceManager.sharedInstance().playNewMessageSound()
+        EMCDDeviceManager.sharedInstance().playVibration()
     }
     
     // TODO
     func showNotificationWithMessage(msg: EMMessage) {
         let options = EMClient.shared().pushOptions   
-        var alertStr = ""   
+        var alertStr = ""
         if options?.displayStyle == EMPushDisplayStyleMessageSummary {
             let msgBody = msg.body   
             var msgStr = ""   
@@ -213,32 +203,60 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
                 msgStr = (msgBody as! EMTextMessageBody).text   
                 break   
             case EMMessageBodyTypeImage:
-                msgStr = "Image"
+                msgStr = "[Image]"
                 break   
             case EMMessageBodyTypeLocation:
-                msgStr = "Location"
+                msgStr = "[Location]"
                 break   
             case EMMessageBodyTypeVoice:
-                msgStr = "Voice"
+                msgStr = "[Voice]"
                 break   
             case EMMessageBodyTypeVideo:
-                msgStr = "Video"
+                msgStr = "[Video]"
                 break   
             case EMMessageBodyTypeFile:
-                msgStr = "File"
+                msgStr = "[File]"
                 break   
             default:
                 msgStr = ""
                 break   
             }
             
-            repeat {
-                
-            } while false
+//            repeat {
+//                  alertStr = EMUserProfileManager.sharedInstance.getNickNameWithUsername(username: msg.from) + ":" + msgStr
+//            } while false
+            
+            alertStr = EMUserProfileManager.sharedInstance.getNickNameWithUsername(username: msg.from) + ":" + msgStr
             
         } else {
             alertStr = "You have a new message"
         }
+        
+        let timeInterval = Date().timeIntervalSince(lastPlaySoundDate)
+        var playSound = false
+        if timeInterval > 3.0 {
+            lastPlaySoundDate = Date()
+            playSound = true
+        }
+        if #available(iOS 10.0, *) {
+            let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 0.01, repeats: false)
+            let content = UNMutableNotificationContent()
+            content.body = alertStr
+            if playSound {
+                content.sound = UNNotificationSound.default()
+            }
+            let request = UNNotificationRequest(identifier: msg.messageId, content: content, trigger: trigger)
+            UNUserNotificationCenter.current().add(request, withCompletionHandler: nil)
+        }else if #available(iOS 8.0, *){
+            let notification = UILocalNotification()
+            notification.fireDate = Date()
+            notification.alertBody = alertStr
+            notification.alertAction = "Open"
+            notification.timeZone = NSTimeZone.default
+            if playSound {
+                notification.soundName = UILocalNotificationDefaultSoundName
+            }
+            UIApplication.shared.scheduleLocalNotification(notification)
+        }
     }
-    
 }

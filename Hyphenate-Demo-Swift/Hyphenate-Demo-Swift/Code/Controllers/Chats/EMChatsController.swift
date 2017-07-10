@@ -41,7 +41,7 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
         let imgView = UIImageView.init(frame: CGRect.init(x: 10, y: (view.height() - 20) / 2, width: 20, height: 20));
         imgView.image = UIImage(named: "Icon_error_white");
         view.addSubview(imgView);
-        let label = UILabel.init(frame: CGRect(x: imgView.bounds.size.width + 5, y: 0, width: view.width() - imgView.bounds.size.width + 15, height: view.height()))
+        let label = UILabel.init(frame: CGRect(x: imgView.width() + imgView.frame.origin.x + 5, y: 0, width: view.width() - imgView.bounds.size.width + 15, height: view.height()))
         label.font = UIFont.systemFont(ofSize: 15.0);
         label.textColor = UIColor.gray;
         label.backgroundColor = UIColor.clear;
@@ -291,8 +291,15 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
     // MARK: - private
     
     private func _sortConversationList(aConversationList: Array <EMConversation> ) -> Array <EMConversation> {
+        if aConversationList.count == 1 {
+            return aConversationList
+        }
         let ary = aConversationList.sorted { (conversation1, conversation2) -> Bool in
-            return conversation1.latestMessage.timestamp > conversation2.latestMessage.timestamp;
+            if conversation1.latestMessage != nil && conversation2.latestMessage != nil {
+                return conversation1.latestMessage.timestamp > conversation2.latestMessage.timestamp;
+            }else {
+                return true
+            }
         };
         
         return ary;

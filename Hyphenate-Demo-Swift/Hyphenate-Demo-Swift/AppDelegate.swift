@@ -17,6 +17,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
+        
+        UITabBar.appearance().tintColor = KermitGreenTwoColor
+        UINavigationBar.appearance().tintColor = AlmostBlackColor
+        
+        
         let options = EMOptions.init(appkey: "hyphenatedemo#hyphenatedemo")     
         
         var apnsCerName = ""     
