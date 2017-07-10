@@ -181,7 +181,14 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
     }
     
     func playSoundAndVibration() {
+        let timeInterval = Date().timeIntervalSince(lastPlaySoundDate)
+        if timeInterval < 3.0 {
+            return
+        }
         
+        lastPlaySoundDate = Date()
+        EMCDDeviceManager.sharedInstance().playNewMessageSound()
+        EMCDDeviceManager.sharedInstance().playVibration()
     }
     
     // TODO
