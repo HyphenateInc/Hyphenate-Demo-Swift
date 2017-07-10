@@ -291,8 +291,15 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
     // MARK: - private
     
     private func _sortConversationList(aConversationList: Array <EMConversation> ) -> Array <EMConversation> {
+        if aConversationList.count == 1 {
+            return aConversationList
+        }
         let ary = aConversationList.sorted { (conversation1, conversation2) -> Bool in
-            return conversation1.latestMessage.timestamp > conversation2.latestMessage.timestamp;
+            if conversation1.latestMessage != nil && conversation2.latestMessage != nil {
+                return conversation1.latestMessage.timestamp > conversation2.latestMessage.timestamp;
+            }else {
+                return true
+            }
         };
         
         return ary;

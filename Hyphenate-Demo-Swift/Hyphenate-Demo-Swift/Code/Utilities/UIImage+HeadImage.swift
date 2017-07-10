@@ -18,7 +18,7 @@ extension UIImageView {
         }
         
         let entity = EMUserProfileManager.sharedInstance.getUserProfileByUsername(username: username)
-        if entity != nil {
+        if entity != nil && entity?.imageUrl != nil {
             sd_setImage(with: URL.init(string: (entity?.imageUrl)!), placeholderImage: placeholderImage)
         } else {
             sd_setImage(with: nil, placeholderImage: placeholderImage)
