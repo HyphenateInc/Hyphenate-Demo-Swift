@@ -229,7 +229,7 @@ class EMUserProfileManager: NSObject {
         var usernames = Array<String>()
         for buddyName in buddyList {
             if  buddyName.characters.count > 0 {
-                if getUserProfileByUsername(username: buddyName) != nil {
+                if getUserProfileByUsername(username: buddyName) == nil {
                     usernames.append(buddyName)
                 }
             }
@@ -250,13 +250,11 @@ class EMUserProfileManager: NSObject {
         query.findObjectsInBackground { (objects, error) in
             if error == nil {
                 for user in objects! {
-                    if user.classForCoder == PFQuery.classForCoder() {
-                        let pfUser = user as PFObject
-                        if save {
-                            weakSelf?.savePFUserInDisk(obj: pfUser)
-                        } else {
-                            weakSelf?.savePFUserInMemory(obj: pfUser)
-                        }
+                    let pfUser = user as PFObject
+                    if save {
+                        weakSelf?.savePFUserInDisk(obj: pfUser)
+                    } else {
+                        weakSelf?.savePFUserInMemory(obj: pfUser)
                     }
                 }
                 complation(true, nil)
