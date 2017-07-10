@@ -17,9 +17,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        
-        parseApplication(application, didFinishLaunchingWithOptions: launchOptions)
-        
         let options = EMOptions.init(appkey: "hyphenatedemo#hyphenatedemo")     
         
         var apnsCerName = ""     
@@ -47,7 +44,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         window?.rootViewController = launchVC
         window?.makeKeyAndVisible()
         
-        
+        parseApplication(application, didFinishLaunchingWithOptions: launchOptions)
         _registerAPNS()     
         
         return true

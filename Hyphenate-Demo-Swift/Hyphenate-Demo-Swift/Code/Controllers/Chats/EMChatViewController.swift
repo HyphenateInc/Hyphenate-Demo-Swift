@@ -157,6 +157,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         btn.frame = CGRect(x: 0, y: 0, width: 50, height: 50)
         btn.imageView?.contentMode = UIViewContentMode.scaleAspectFit
         btn.addTarget(self, action: #selector(backAction), for: UIControlEvents.touchUpInside)
+        btn.setImage(UIImage(named:"Icon_Back"), for: UIControlState.normal)
         return btn
     }
     

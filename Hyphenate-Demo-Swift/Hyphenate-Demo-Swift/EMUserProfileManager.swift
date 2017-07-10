@@ -11,6 +11,7 @@ import Parse
 import Hyphenate
 
 let kPARSE_HXUSER = "hxuser"
+//let kPARSE_HXUSER = "HyphenateUser"
 let kPARSE_HXUSER_USERNAME = "username"
 let kPARSE_HXUSER_NICKNAME = "nickname"
 let kPARSE_HXUSER_AVATAR = "avatar"
@@ -107,7 +108,7 @@ class EMUserProfileManager: NSObject {
     
     func intParse() {
         let userDefault = UserDefaults.standard
-        let objId : String? = userDefault.object(forKey: kPARSE_HXUSER+kPARSE_HXUSER_USERNAME) as? String
+        let objId : String? = userDefault.object(forKey: kPARSE_HXUSER + EMClient.shared().currentUsername) as? String
         if objId != nil {
             self.objectId = objId
         }
@@ -120,7 +121,7 @@ class EMUserProfileManager: NSObject {
         objectId = nil
         let userDefault = UserDefaults.standard
         if _currentName != nil {
-            userDefault.removeObject(forKey: kPARSE_HXUSER+_currentName!)
+            userDefault.removeObject(forKey: kPARSE_HXUSER + _currentName!)
             _currentName = nil
         }
         
@@ -137,7 +138,6 @@ class EMUserProfileManager: NSObject {
                     if (entity.username?.characters.count)! > 0 {
                         user.setObject(entity, forKey: entity.username!)
                     }
-
                 }
             }
         }
@@ -167,7 +167,6 @@ class EMUserProfileManager: NSObject {
                     let data = UIImageJPEGRepresentation(img, 0.5)
                     let imageFile = PFFile.init(name: "image.png", data: data!)
                     object?[kPARSE_HXUSER_AVATAR] = imageFile
-                    
                     object!.saveInBackground(block: { (successed, error) in
                         if successed {
                             weakSelf?.savePFUserInDisk(obj: object)
