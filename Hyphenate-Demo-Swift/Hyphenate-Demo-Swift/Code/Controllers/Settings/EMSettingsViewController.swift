@@ -18,18 +18,18 @@ class EMSettingsViewController: UITableViewController {
         super.viewDidLoad()
         tableView.tableFooterView = UIView()
         hyphenateIdLabel.text = EMClient.shared().currentUsername
-        weak var weakSelf = self
-        MBProgressHUD.showAdded(to: view, animated: true)
-        EMClient.shared().getPushNotificationOptionsFromServer { (pushOptions, error) in
-            MBProgressHUD.hide(for: weakSelf?.view, animated: true)
-            if error == nil {
-                if pushOptions?.noDisturbStatus == EMPushNoDisturbStatusClose {
-                    weakSelf?.pushNotificationLabel.text = "Enable"
-                }else {
-                    weakSelf?.pushNotificationLabel.text = "Disable"
-                }
-            }
-        }
+//        weak var weakSelf = self
+//        MBProgressHUD.showAdded(to: view, animated: true)
+//        EMClient.shared().getPushNotificationOptionsFromServer { (pushOptions, error) in
+//            MBProgressHUD.hide(for: weakSelf?.view, animated: true)
+//            if error == nil {
+//                if pushOptions?.noDisturbStatus == EMPushNoDisturbStatusClose {
+//                    weakSelf?.pushNotificationLabel.text = "Enable"
+//                }else {
+//                    weakSelf?.pushNotificationLabel.text = "Disable"
+//                }
+//            }
+//        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
