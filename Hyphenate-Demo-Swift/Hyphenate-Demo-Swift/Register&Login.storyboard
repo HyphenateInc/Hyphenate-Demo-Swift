@@ -24,7 +24,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="H2U-Mk-xhe">
                                 <rect key="frame" x="0.0" y="20" width="375" height="400"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_green.png" translatesAutoresizingMaskIntoConstraints="NO" id="d5T-23-byL">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Logo_green.png" translatesAutoresizingMaskIntoConstraints="NO" id="d5T-23-byL">
                                         <rect key="frame" x="88" y="100" width="200" height="71"/>
                                         <constraints>
                                             <constraint firstAttribute="height" constant="71" id="28P-PI-sMQ"/>
@@ -50,7 +50,7 @@
                                         <constraints>
                                             <constraint firstAttribute="height" constant="15" id="R5o-B7-vTk"/>
                                         </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                         <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <nil key="highlightedColor"/>
                                     </label>

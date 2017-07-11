@@ -28,9 +28,9 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
         loadViewControllers()   
         NotificationCenter.default.addObserver(self, selector: #selector(setupUnreadMessageCount), name: NSNotification.Name(rawValue:KNOTIFICATION_UPDATEUNREADCOUNT), object: nil)   
         
-        setupUnreadMessageCount()   
-        
-        registerNotifications()   
+        setupUnreadMessageCount()
+        registerNotifications()
+        EMClient.shared().getPushNotificationOptionsFromServer { (pushOptions, error) in  }
     }
     
     // MARK: - Notification Registration
@@ -191,9 +191,9 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
         EMCDDeviceManager.sharedInstance().playVibration()
     }
     
-    // TODO
     func showNotificationWithMessage(msg: EMMessage) {
-        let options = EMClient.shared().pushOptions   
+        let options = EMClient.shared().pushOptions
+
         var alertStr = ""
         if options?.displayStyle == EMPushDisplayStyleMessageSummary {
             let msgBody = msg.body   
