@@ -201,7 +201,7 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
             nickLabel.isHidden = false
         }
         
-        if _model!.message!.chatType == EMChatTypeChat {
+        if _model!.message!.chatType != EMChatTypeChat {
             checkView.isHidden = true
             readLabel.isHidden = true
         }

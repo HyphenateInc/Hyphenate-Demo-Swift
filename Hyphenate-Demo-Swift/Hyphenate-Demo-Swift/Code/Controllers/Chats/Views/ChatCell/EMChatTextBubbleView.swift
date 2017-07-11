@@ -51,8 +51,8 @@ class EMChatTextBubbleView: EMChatBaseBubbleView {
         var retSize = CGSize.zero
         let text = (_model?.message?.body as! EMTextMessageBody).text as NSString
         let paragraphStype = NSMutableParagraphStyle()
-        paragraphStype.lineSpacing = self.classForCoder.lineSpacing()
-        retSize = (text.boundingRect(with: textBlockMinSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:self.classForCoder.textLabelFont(),NSParagraphStyleAttributeName:paragraphStype], context: nil) as CGRect).size
+        paragraphStype.lineSpacing = EMChatTextBubbleView.lineSpacing()
+        retSize = (text.boundingRect(with: textBlockMinSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:EMChatTextBubbleView.textLabelFont(),NSParagraphStyleAttributeName:paragraphStype], context: nil) as CGRect).size
         
         let height = 2 * BUBBLE_VIEW_PAGGING + retSize.height
         let width = 2 * BUBBLE_VIEW_PAGGING + retSize.width
@@ -66,7 +66,7 @@ class EMChatTextBubbleView: EMChatBaseBubbleView {
         _model = model
         let text = (_model?.message?.body as! EMTextMessageBody).text as NSString
         let paragraphStype = NSMutableParagraphStyle()
-        paragraphStype.lineSpacing = self.classForCoder.lineSpacing()
+        paragraphStype.lineSpacing = EMChatTextBubbleView.lineSpacing()
         let attributeString = NSMutableAttributedString(string: text as String)
         attributeString.addAttribute(NSParagraphStyleAttributeName, value: paragraphStype, range: NSMakeRange(0, text.length))
         textLabel.textColor = _model?.message?.direction == EMMessageDirectionSend ? WhiteColor : AlmostBlackColor
@@ -78,8 +78,8 @@ class EMChatTextBubbleView: EMChatBaseBubbleView {
         var retSize = CGSize.zero
         let text = (model.message?.body as! EMTextMessageBody).text as NSString
         let paragraphStype = NSMutableParagraphStyle()
-        paragraphStype.lineSpacing = self.classForCoder().lineSpacing()
-        retSize = (text.boundingRect(with: textBlockMinSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:self.classForCoder().textLabelFont(),NSParagraphStyleAttributeName:paragraphStype], context: nil) as CGRect).size
+        paragraphStype.lineSpacing = EMChatTextBubbleView.lineSpacing()
+        retSize = (text.boundingRect(with: textBlockMinSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:EMChatTextBubbleView.textLabelFont(),NSParagraphStyleAttributeName:paragraphStype], context: nil) as CGRect).size
         
         return 2 * BUBBLE_VIEW_PAGGING + retSize.height
     }

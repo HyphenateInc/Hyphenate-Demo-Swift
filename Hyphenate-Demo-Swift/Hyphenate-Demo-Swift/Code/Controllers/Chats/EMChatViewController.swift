@@ -109,7 +109,6 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        
     }
     
     deinit {
