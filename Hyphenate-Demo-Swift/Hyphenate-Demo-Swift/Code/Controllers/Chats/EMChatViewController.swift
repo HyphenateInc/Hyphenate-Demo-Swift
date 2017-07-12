@@ -271,25 +271,37 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     
     // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
-        let type = info[UIImagePickerControllerMediaType] as! String
-        if type == kUTTypeMovie as String {
-            let videoURL = info[UIImagePickerControllerMediaURL] as! URL
-            let mp4 = _convert2Mp4(movURL: videoURL)
-            let fm = FileManager.default
-            if fm.fileExists(atPath: videoURL.path) {
-                do { try fm.removeItem(at: videoURL)} catch {}
+        weak var weakSelf = self
+        let compressData:(UIImagePickerController, Dictionary<String, Any>) -> (EMMessage, UIImagePickerController)  = { (imagePicker, selectInfo) -> (EMMessage, UIImagePickerController) in
+            let type = selectInfo[UIImagePickerControllerMediaType] as! String
+            if type == kUTTypeMovie as String {
+                let videoURL = selectInfo[UIImagePickerControllerMediaURL] as! URL
+                let mp4 = weakSelf?._convert2Mp4(movURL: videoURL)
+                let fm = FileManager.default
+                if fm.fileExists(atPath: videoURL.path) {
+                    do { try fm.removeItem(at: videoURL)} catch {}
+                }
+                
+                let message = EMSDKHelper.createVideoMessage((mp4?.path)!, "video.mp4", 0, to: (weakSelf?._conversaiton!.conversationId)!, (weakSelf?._messageType())!, nil)
+                return (message, imagePicker)
+            } else {
+                let orgImage = selectInfo[UIImagePickerControllerOriginalImage] as! UIImage
+                let data = UIImageJPEGRepresentation(orgImage, 1)
+                let message = EMSDKHelper.createImageMessage(data!, "image.jpg", to: (weakSelf?._conversaiton!.conversationId)!, (weakSelf?._messageType())!, nil)
+                return (message, imagePicker)
             }
-            
-            let message = EMSDKHelper.createVideoMessage(mp4.path, "video.mp4", 0, to: _conversaiton!.conversationId, _messageType(), nil)
-            _sendMessage(message: message)
-            
-        } else {
-            let orgImage = info[UIImagePickerControllerOriginalImage] as! UIImage
-            let data = UIImageJPEGRepresentation(orgImage, 1)
-            let message = EMSDKHelper.createImageMessage(data!, "image.jpg", to: _conversaiton!.conversationId, _messageType(), nil)
-            _sendMessage(message: message)
         }
-        picker.dismiss(animated: true, completion: nil)
+        
+        MBProgressHUD.showAdded(to: picker.view, animated: true)
+        DispatchQueue.global().async {
+            let (message, imagePicker) = compressData(picker, info)
+            DispatchQueue.main.async {
+                MBProgressHUD.hide(for: imagePicker.view, animated: true)
+                imagePicker.dismiss(animated: true, completion: nil)
+                weakSelf?._sendMessage(message: message)
+            }
+        }
+        
     }
     
     // MARK: - EMLocationViewDelegate
