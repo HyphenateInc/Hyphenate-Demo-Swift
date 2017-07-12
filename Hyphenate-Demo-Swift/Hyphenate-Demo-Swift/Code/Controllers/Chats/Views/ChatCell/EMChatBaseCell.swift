@@ -174,7 +174,7 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
                     readLabel.text = "Read"
                     checkView.isHidden = false
                 } else {
-                    readLabel.text = "Send"
+                    readLabel.text = "Sent"
                     checkView.isHidden = true
                 }
                 

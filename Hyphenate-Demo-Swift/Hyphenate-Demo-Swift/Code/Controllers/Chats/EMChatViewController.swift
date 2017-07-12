@@ -507,7 +507,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     
     func _shouldSendHasReadAck(message: EMMessage,_ isRead: Bool) -> Bool {
         let account = EMClient.shared().currentUsername
-        if message.chatType != EMChatTypeChat || message.isReadAcked || account != message.from || UIApplication.shared.applicationState == UIApplicationState.background {
+        if message.chatType != EMChatTypeChat || message.isReadAcked || account == message.from || UIApplication.shared.applicationState == UIApplicationState.background {
             return false
         }
         
