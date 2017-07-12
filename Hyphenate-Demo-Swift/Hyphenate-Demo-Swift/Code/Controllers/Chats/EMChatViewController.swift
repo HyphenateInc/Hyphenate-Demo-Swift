@@ -73,7 +73,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         _setupNavigationBar()
         _setupViewLayout()
         
-        NotificationCenter.default.addObserver(self, selector: #selector(remoteGroupNotification(noti:)), name: NSNotification.Name(rawValue:KEM_REMOVEGROUP_NOTIFICATION), object: nil) // oc demo in "viewDidAppear"
+//        NotificationCenter.default.addObserver(self, selector: #selector(remoteGroupNotification(noti:)), name: NSNotification.Name(rawValue:KEM_REMOVEGROUP_NOTIFICATION), object: nil) // oc demo in "viewDidAppear"
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -112,7 +112,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     deinit {
-        // TODO
+        print(" ----------------------------------------------- ChatViewController dealloc ---------------------------------------------------")
     }
     
     
@@ -209,6 +209,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         return _dataSource?.count ?? 0
     }
     
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let model = _dataSource![indexPath.row]
         let CellIdentifier = EMChatBaseCell.cellIdentifier(forMessageModel: model)
@@ -222,12 +223,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         
         return cell!
     }
-    
-    // MARK: - Table view delegate
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        tableView.deselectRow(at: indexPath, animated: true)
-    }
-    
+ 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         let model = _dataSource![indexPath.row]
         return EMChatBaseCell.height(forMessageModel: model)
