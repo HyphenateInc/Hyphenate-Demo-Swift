@@ -272,7 +272,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     // MARK: - UIImagePickerControllerDelegate
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         weak var weakSelf = self
-        let compressData:(UIImagePickerController, Dictionary<String, Any>) -> (EMMessage, UIImagePickerController)  = { (imagePicker, selectInfo) -> (EMMessage, UIImagePickerController) in
+        let compressData:(UIImagePickerController, Dictionary<String, Any>) -> (EMMessage, UIImagePickerController) = { (imagePicker, selectInfo) -> (EMMessage, UIImagePickerController) in
             let type = selectInfo[UIImagePickerControllerMediaType] as! String
             if type == kUTTypeMovie as String {
                 let videoURL = selectInfo[UIImagePickerControllerMediaURL] as! URL
@@ -286,8 +286,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
                 return (message, imagePicker)
             } else {
                 let orgImage = selectInfo[UIImagePickerControllerOriginalImage] as! UIImage
-                let data = UIImageJPEGRepresentation(orgImage, 1)
-                let message = EMSDKHelper.createImageMessage(data!, "image.jpg", to: (weakSelf?._conversaiton!.conversationId)!, (weakSelf?._messageType())!, nil)
+                let message = EMSDKHelper.createImageMessage(orgImage, "image.jpg", to: (weakSelf?._conversaiton!.conversationId)!, (weakSelf?._messageType())!, nil)
                 return (message, imagePicker)
             }
         }
@@ -296,12 +295,11 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         DispatchQueue.global().async {
             let (message, imagePicker) = compressData(picker, info)
             DispatchQueue.main.async {
-                MBProgressHUD.hide(for: imagePicker.view, animated: true)
-                imagePicker.dismiss(animated: true, completion: nil)
                 weakSelf?._sendMessage(message: message)
+                imagePicker.dismiss(animated: true, completion: nil)
+                MBProgressHUD.hide(for: imagePicker.view, animated: true)
             }
         }
-        
     }
     
     // MARK: - EMLocationViewDelegate
@@ -423,10 +421,14 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         _addMessageToDatasource(message: message)
         tableView.reloadData()
         weak var weakSelf = self
-        EMClient.shared().chatManager.send(message, progress: nil) { (message, error) in
-            weakSelf?.tableView.reloadData()
+        DispatchQueue.global().async {
+            EMClient.shared().chatManager.send(message, progress: nil) { (message, error) in
+                DispatchQueue.main.async {
+                    weakSelf?.tableView.reloadData()
+                    weakSelf?._scrollViewToBottom(animated: true)
+                }
+            }
         }
-        _scrollViewToBottom(animated: true)
     }
     
     func _addMessageToDatasource(message: EMMessage) {
