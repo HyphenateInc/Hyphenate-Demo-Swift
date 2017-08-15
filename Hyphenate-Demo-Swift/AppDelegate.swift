@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UITabBar.appearance().tintColor = KermitGreenTwoColor
         UINavigationBar.appearance().tintColor = AlmostBlackColor
         
-        
         let options = EMOptions.init(appkey: "hyphenatedemo#hyphenatedemo")     
         
         var apnsCerName = ""     
@@ -39,7 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         EMClient.shared().initializeSDK(with: options)     
         
-        NotificationCenter.default.addObserver(self, selector: #selector(loginStateChange(nofi:)), name: NSNotification.Name(rawValue:KNOTIFICATION_LOGINCHANGE), object: nil)     
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(loginStateChange(nofi:)),
+                                               name: NSNotification.Name(rawValue:KNOTIFICATION_LOGINCHANGE),
+                                               object: nil)
         
         let storyboard = UIStoryboard.init(name: "Launch", bundle: nil)     
         let launchVC = storyboard.instantiateViewController(withIdentifier: "EMLaunchViewController")     
@@ -93,7 +95,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
                 }
             }
 
-        }else if #available(iOS 8.0, *){
+        }
+        else if #available(iOS 8.0, *) {
             let settings = UIUserNotificationSettings.init(types: [.badge, .sound, .alert], categories: nil)     
             application .registerUserNotificationSettings(settings)     
         }
