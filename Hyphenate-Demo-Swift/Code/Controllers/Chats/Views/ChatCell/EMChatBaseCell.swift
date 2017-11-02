@@ -167,7 +167,7 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
                 activityView.isHidden = true
                 resendButton.isHidden = false
                 notDeliveredLabel.isHighlighted = false
-            }else if (_model!.message!.status == EMMessageStatusSuccessed) {
+            }else if (_model!.message!.status == EMMessageStatusSucceed) {
                 if _model!.message!.isReadAcked {
                     readLabel.text = "Read"
                     checkView.isHidden = false

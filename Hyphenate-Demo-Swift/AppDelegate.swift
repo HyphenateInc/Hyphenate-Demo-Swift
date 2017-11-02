@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UINavigationBar.appearance().tintColor = AlmostBlackColor
         
         
-        let options = EMOptions.init(appkey: "hyphenatedemo#hyphenatedemo")     
+        let options = EMOptions.init(appkey: "easemob-demo#chatdemoui")
         
         var apnsCerName = ""     
         #if DEBUG

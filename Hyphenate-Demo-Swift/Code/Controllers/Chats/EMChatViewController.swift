@@ -270,7 +270,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     // MARK: - UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {    
         weak var weakSelf = self
         let compressData:(UIImagePickerController, Dictionary<String, Any>) -> (EMMessage, UIImagePickerController) = { (imagePicker, selectInfo) -> (EMMessage, UIImagePickerController) in
             let type = selectInfo[UIImagePickerControllerMediaType] as! String

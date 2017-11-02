@@ -32,9 +32,6 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
         setupUnreadMessageCount()
         registerNotifications()
         EMClient.shared().getPushNotificationOptionsFromServer { (pushOptions, error) in  }
-        
-//        SDImageCache.shared().shouldDecompressImages = false
-//        SDWebImageDownloader.shared().shouldDecompressImages = false
         SDImageCache.shared().maxMemoryCost = 3000 * 3000
     }
     
@@ -226,11 +223,6 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
                 msgStr = ""
                 break   
             }
-            
-//            repeat {
-//                  alertStr = EMUserProfileManager.sharedInstance.getNickNameWithUsername(username: msg.from) + ":" + msgStr
-//            } while false
-            
             alertStr = EMUserProfileManager.sharedInstance.getNickNameWithUsername(username: msg.from) + ":" + msgStr
             
         } else {
