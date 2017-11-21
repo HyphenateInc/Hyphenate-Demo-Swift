@@ -73,7 +73,9 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         _setupNavigationBar()
         _setupViewLayout()
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(remoteGroupNotification(noti:)), name: NSNotification.Name(rawValue:KEM_REMOVEGROUP_NOTIFICATION), object: nil) // oc demo in "viewDidAppear"
+        if _conversaiton?.type == EMConversationTypeChatRoom {
+            _joinChatroom(chatroomId: _conversaiton!.conversationId)
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

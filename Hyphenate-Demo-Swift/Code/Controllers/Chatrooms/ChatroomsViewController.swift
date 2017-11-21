@@ -92,6 +92,9 @@ class ChatroomsViewController: EMBaseRefreshTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let chatroomModel = dataArray![indexPath.row] as! EMChatroomModel
+        let chatVC = EMChatViewController(chatroomModel.id!, EMConversationTypeChatRoom)
+        navigationController?.pushViewController(chatVC, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

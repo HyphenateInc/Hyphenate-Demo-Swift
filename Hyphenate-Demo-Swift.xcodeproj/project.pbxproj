@@ -306,6 +306,7 @@
 		90169F641EF2A30A00B9ADC6 /* AppDelegate+Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F631EF2A30A00B9ADC6 /* AppDelegate+Parse.swift */; };
 		9017ED9C1FC44324005C77F7 /* ChatroomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017ED9B1FC44324005C77F7 /* ChatroomsViewController.swift */; };
 		9017ED9E1FC44486005C77F7 /* EMChatroomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017ED9D1FC44486005C77F7 /* EMChatroomModel.swift */; };
+		9017EDA01FC44B2D005C77F7 /* EMChatFileBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017ED9F1FC44B2D005C77F7 /* EMChatFileBubbleView.swift */; };
 		90190C781F0F470F00A238F3 /* EMAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90190C761F0F470F00A238F3 /* EMAboutViewController.swift */; };
 		90190C7B1F0F488800A238F3 /* EMAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90190C7A1F0F488800A238F3 /* EMAccountViewController.swift */; };
 		90190C7F1F0F76F000A238F3 /* EMChatsSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90190C7E1F0F76F000A238F3 /* EMChatsSettingViewController.swift */; };
@@ -689,6 +690,7 @@
 		90169F631EF2A30A00B9ADC6 /* AppDelegate+Parse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Parse.swift"; sourceTree = "<group>"; };
 		9017ED9B1FC44324005C77F7 /* ChatroomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomsViewController.swift; sourceTree = "<group>"; };
 		9017ED9D1FC44486005C77F7 /* EMChatroomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatroomModel.swift; sourceTree = "<group>"; };
+		9017ED9F1FC44B2D005C77F7 /* EMChatFileBubbleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatFileBubbleView.swift; sourceTree = "<group>"; };
 		90190C761F0F470F00A238F3 /* EMAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMAboutViewController.swift; sourceTree = "<group>"; };
 		90190C7A1F0F488800A238F3 /* EMAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMAccountViewController.swift; sourceTree = "<group>"; };
 		90190C7E1F0F76F000A238F3 /* EMChatsSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatsSettingViewController.swift; sourceTree = "<group>"; };
@@ -1510,6 +1512,7 @@
 				90AC4A441EFD104F0062DB30 /* EMChatVideoBubbleView.swift */,
 				90B43DC21F00C9C90084E67F /* EMChatLocationBubbleView.swift */,
 				90B43DC41F00DE0B0084E67F /* EMChatAudioBubbleView.swift */,
+				9017ED9F1FC44B2D005C77F7 /* EMChatFileBubbleView.swift */,
 			);
 			path = ChatCell;
 			sourceTree = "<group>";
@@ -2021,6 +2024,7 @@
 				90749EDA1EF90E5B00D3A065 /* wav.mm in Sources */,
 				90FB78991EF7EE9B00B02F60 /* EMEmojiEmoticons.m in Sources */,
 				90749ED41EF90E5B00D3A065 /* EMCDDeviceManager+Media.m in Sources */,
+				9017EDA01FC44B2D005C77F7 /* EMChatFileBubbleView.swift in Sources */,
 				90749ED81EF90E5B00D3A065 /* EMCDDeviceManagerBase.m in Sources */,
 				90FB78891EF7BFAE00B02F60 /* EMChatRecordView.swift in Sources */,
 				906AD64C1EFBD2DC004CCCAE /* UIViewController+HUD.swift in Sources */,

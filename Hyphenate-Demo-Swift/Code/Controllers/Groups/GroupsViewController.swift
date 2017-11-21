@@ -104,6 +104,9 @@ class GroupsViewController: EMBaseRefreshTableViewController {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        let groupModel = dataArray![indexPath.row] as! EMGroupModel
+        let chatVC = EMChatViewController(groupModel.id!, EMConversationTypeGroupChat)
+        navigationController?.pushViewController(chatVC, animated: true)
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

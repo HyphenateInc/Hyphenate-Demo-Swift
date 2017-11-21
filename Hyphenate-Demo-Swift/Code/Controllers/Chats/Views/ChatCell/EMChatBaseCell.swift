@@ -136,6 +136,9 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
         case EMMessageBodyTypeVoice:
             _bubbleView = EMChatAudioBubbleView()
             break
+        case EMMessageBodyTypeFile:
+            _bubbleView = EMChatFileBubbleView()
+            break
         default: break
             
         }
