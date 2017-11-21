@@ -345,10 +345,12 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
         if isSearchState {
             model = searchResults[indexPath.row]
         }else if (indexPath.section == 1) {
-            let groupsVC = GroupsViewController();
+            let groupsVC = GroupsViewController()
             navigationController?.pushViewController(groupsVC, animated: true)
             return
         }else if (indexPath.section == 2) {
+            let chatroomsVC = ChatroomsViewController()
+            navigationController?.pushViewController(chatroomsVC, animated: true)
             return
         }else {
             model = (contacts[indexPath.section - 3] as! Array)[indexPath.row]

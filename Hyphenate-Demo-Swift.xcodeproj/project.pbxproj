@@ -304,6 +304,8 @@
 		90169F601EF275A300B9ADC6 /* UIImage+HeadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F5F1EF275A300B9ADC6 /* UIImage+HeadImage.swift */; };
 		90169F621EF2767200B9ADC6 /* EMUserProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F611EF2767200B9ADC6 /* EMUserProfileManager.swift */; };
 		90169F641EF2A30A00B9ADC6 /* AppDelegate+Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F631EF2A30A00B9ADC6 /* AppDelegate+Parse.swift */; };
+		9017ED9C1FC44324005C77F7 /* ChatroomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017ED9B1FC44324005C77F7 /* ChatroomsViewController.swift */; };
+		9017ED9E1FC44486005C77F7 /* EMChatroomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017ED9D1FC44486005C77F7 /* EMChatroomModel.swift */; };
 		90190C781F0F470F00A238F3 /* EMAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90190C761F0F470F00A238F3 /* EMAboutViewController.swift */; };
 		90190C7B1F0F488800A238F3 /* EMAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90190C7A1F0F488800A238F3 /* EMAccountViewController.swift */; };
 		90190C7F1F0F76F000A238F3 /* EMChatsSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90190C7E1F0F76F000A238F3 /* EMChatsSettingViewController.swift */; };
@@ -685,6 +687,8 @@
 		90169F5F1EF275A300B9ADC6 /* UIImage+HeadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+HeadImage.swift"; sourceTree = "<group>"; };
 		90169F611EF2767200B9ADC6 /* EMUserProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMUserProfileManager.swift; sourceTree = "<group>"; };
 		90169F631EF2A30A00B9ADC6 /* AppDelegate+Parse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Parse.swift"; sourceTree = "<group>"; };
+		9017ED9B1FC44324005C77F7 /* ChatroomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatroomsViewController.swift; sourceTree = "<group>"; };
+		9017ED9D1FC44486005C77F7 /* EMChatroomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatroomModel.swift; sourceTree = "<group>"; };
 		90190C761F0F470F00A238F3 /* EMAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMAboutViewController.swift; sourceTree = "<group>"; };
 		90190C7A1F0F488800A238F3 /* EMAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMAccountViewController.swift; sourceTree = "<group>"; };
 		90190C7E1F0F76F000A238F3 /* EMChatsSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatsSettingViewController.swift; sourceTree = "<group>"; };
@@ -868,6 +872,7 @@
 		9011DF571EEEC00800C43D05 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9017ED9A1FC442DE005C77F7 /* Chatrooms */,
 				90BE3F4D1F3DA2A500B84B78 /* Groups */,
 				908324EB1EEFF06400811A97 /* Base */,
 				908324EE1EEFF06400811A97 /* Chats */,
@@ -889,6 +894,7 @@
 				90B43DD71F0133180084E67F /* EMApplyModel.swift */,
 				9069B3BF1FC409F2004F9DBD /* EMGroupModel.swift */,
 				9069B3C21FC40CBE004F9DBD /* IEMGroupModelDeleagte.swift */,
+				9017ED9D1FC44486005C77F7 /* EMChatroomModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1312,6 +1318,14 @@
 				9011E09C1EEEC22700C43D05 /* logo9@3x.png */,
 			);
 			path = Splash;
+			sourceTree = "<group>";
+		};
+		9017ED9A1FC442DE005C77F7 /* Chatrooms */ = {
+			isa = PBXGroup;
+			children = (
+				9017ED9B1FC44324005C77F7 /* ChatroomsViewController.swift */,
+			);
+			path = Chatrooms;
 			sourceTree = "<group>";
 		};
 		906AD64A1EFBD2BE004CCCAE /* Category */ = {
@@ -1970,6 +1984,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9080EDE01F03896E00B6C488 /* EMAddContactViewController.swift in Sources */,
+				9017ED9E1FC44486005C77F7 /* EMChatroomModel.swift in Sources */,
 				90C00C7C1EEFA95B0049BFAD /* EMLoginViewController.swift in Sources */,
 				9011DF451EEEBEA400C43D05 /* AppDelegate.swift in Sources */,
 				90FB788F1EF7ED4500B02F60 /* EMFacialView.swift in Sources */,
@@ -1988,6 +2003,7 @@
 				90FB788D1EF7E76700B02F60 /* EMFaceView.swift in Sources */,
 				90169F601EF275A300B9ADC6 /* UIImage+HeadImage.swift in Sources */,
 				906FB2551EFCD2A400CA241E /* EMChatImageBubbleView.swift in Sources */,
+				9017ED9C1FC44324005C77F7 /* ChatroomsViewController.swift in Sources */,
 				90F3DC3F1F023B4E00DEBB86 /* EMBaseSettingController.swift in Sources */,
 				90B43DD11F012D8F0084E67F /* EMGroupTitleCell.swift in Sources */,
 				90B43DCE1F0120F10084E67F /* EMUserModel.swift in Sources */,

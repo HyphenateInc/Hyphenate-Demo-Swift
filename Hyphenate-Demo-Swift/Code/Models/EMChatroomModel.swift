@@ -1,5 +1,5 @@
 //
-//  EMGroupModel.swift
+//  EMChatroomModel.swift
 //  Hyphenate-Demo-Swift
 //
 //  Created by 杜洁鹏 on 2017/11/21.
@@ -9,25 +9,25 @@
 import UIKit
 import Hyphenate
 
-class EMGroupModel: IEMConferenceModelDelegate {
+class EMChatroomModel: IEMConferenceModelDelegate {
     var _avatarImage: String?
     var _avatarURLPath: String?
-    var group:EMGroup?
+    var chatroom:EMChatroom?
     var id: String? {
         get {
-            return group?.groupId
+            return chatroom?.chatroomId
         }
     }
     
     var subject: String? {
         get {
-            return group?.subject
+            return chatroom?.subject
         }
     }
     
     var des: String? {
         get {
-            return group?.description
+            return chatroom?.description
         }
     }
     
@@ -52,10 +52,10 @@ class EMGroupModel: IEMConferenceModelDelegate {
     }
     
     static func createWith(conference: Any) -> IEMConferenceModelDelegate {
-        let groupModel = EMGroupModel();
-        if conference is EMGroup {
-            groupModel.group = conference as? EMGroup
+        let chatroomModel = EMChatroomModel();
+        if conference is EMChatroom {
+            chatroomModel.chatroom = conference as? EMChatroom
         }
-        return groupModel
+        return chatroomModel
     }
 }

@@ -11,7 +11,7 @@ import SDWebImage
 
 class EMGroupCell: UITableViewCell {
 
-    public var model : EMGroupModel?
+    public var model : IEMConferenceModelDelegate?
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -23,7 +23,7 @@ class EMGroupCell: UITableViewCell {
         // Configure the view for the selected state
     }
     
-    func setGroupModel(model:EMGroupModel) {
+    func setGroupModel(model:IEMConferenceModelDelegate) {
         self.model = model
         textLabel?.text = model.subject
         detailTextLabel?.text = model.des

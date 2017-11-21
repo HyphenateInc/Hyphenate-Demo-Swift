@@ -6,7 +6,7 @@ target 'Hyphenate-Demo-Swift' do
   use_frameworks!
 
   # Pods for Hyphenate-Demo-Swift
-    pod 'Hyphenate', '~> 3.3.1' ,:inhibit_warnings => true
+    pod 'Hyphenate', '~> 3.3.6' ,:inhibit_warnings => true
     pod 'MWPhotoBrowser', '~> 2.1.2' ,:inhibit_warnings => true
     pod 'MJRefresh' ,:inhibit_warnings => true
     pod 'DACircularProgress', '~> 2.3.1' ,:inhibit_warnings => true
