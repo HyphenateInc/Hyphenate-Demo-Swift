@@ -43,7 +43,7 @@ class EMApplyRequestCell: UITableViewCell {
             titleLabel.text = _model?.applyNickName
         }else {
             defaultImage = "default_group_avatar.png"
-            titleLabel.text = (_model?.groupSubject?.characters.count)! > 0 ? _model?.groupSubject : _model?.groupId
+            titleLabel.text = (_model?.groupSubject?.count)! > 0 ? _model?.groupSubject : _model?.groupId
             if _model?.style == EMApplyStype.joinGroup {
                 titleLabel.text = "\(String(describing: _model?.applyNickName))" + "wants to join"
             }

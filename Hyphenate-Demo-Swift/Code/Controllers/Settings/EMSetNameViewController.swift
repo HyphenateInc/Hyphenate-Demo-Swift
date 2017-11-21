@@ -30,7 +30,7 @@ class EMSetNameViewController: UIViewController, UITextFieldDelegate {
     }
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if textField.text?.characters.count == 0 {
+        if textField.text?.count == 0 {
             showAlert("请设置昵称")
             return true
         }

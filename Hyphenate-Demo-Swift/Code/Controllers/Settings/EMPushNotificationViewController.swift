@@ -28,7 +28,7 @@ class EMPushNotificationViewController: UITableViewController {
         NotificationCenter.default.addObserver(self, selector: #selector(setupSystemNotificationType), name: NSNotification.Name.UIApplicationDidBecomeActive, object: nil)
     }
  
-    func setupSystemNotificationType() {
+    @objc func setupSystemNotificationType() {
         systemNotificationTypes.text = isAllowNotification() ? "Enable" : "Disable"
     }
     

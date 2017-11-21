@@ -331,19 +331,19 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         }
     }
     
-    func makeVideoCall() {
+    @objc func makeVideoCall() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_CALL), object: ["chatter":_conversaiton?.conversationId! as Any,"type":NSNumber.init(value: 1)])
     }
     
-    func makeAudioCall() {
+    @objc func makeAudioCall() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_CALL), object: ["chatter":_conversaiton?.conversationId! as Any,"type":NSNumber.init(value: 0)])
     }
     
-    func enterDetailView() {
+    @objc func enterDetailView() {
         // TODO info
     }
     
-    func backAction() {
+    @objc func backAction() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_UPDATEUNREADCOUNT), object: nil);
         if _conversaiton!.type == EMConversationTypeChatRoom {
             showHub(inView: UIApplication.shared.keyWindow!, "Leaving the chatroom...")
@@ -362,7 +362,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         }
     }
     
-    func deleteAllMessages(sender: AnyObject) {
+    @objc func deleteAllMessages(sender: AnyObject) {
         if _dataSource!.count == 0 {
             return
         }
@@ -379,11 +379,11 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         }
     }
     
-    func endChat(withConversationIdNotification notification: NSNotification) {
+    @objc func endChat(withConversationIdNotification notification: NSNotification) {
         let obj = notification.object
         if obj is String{
             let conversationId = obj as! String
-            if conversationId.characters.count > 0 && conversationId == _conversaiton?.conversationId {
+            if conversationId.count > 0 && conversationId == _conversaiton?.conversationId {
                 backAction()
             }
         } else if obj is EMChatroom && _conversaiton?.type == EMConversationTypeChatRoom{
@@ -396,7 +396,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     // MARK: - GestureRecognizer
-    func keyboardHidden(tap: UITapGestureRecognizer) {
+    @objc func keyboardHidden(tap: UITapGestureRecognizer) {
         if tap.state == UIGestureRecognizerState.ended {
             _chatToolBar?.endEditing(true)
         }
@@ -443,7 +443,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         }
     }
     
-    func _loadMoreMessage() {
+    @objc func _loadMoreMessage() {
         weak var weakSelf = self
         DispatchQueue.global().async {
             var messageId = ""
@@ -452,7 +452,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
                 messageId = model!.message!.messageId
             }
             
-            weakSelf?._conversaiton?.loadMessagesStart(fromId: messageId.characters.count > 0 ? messageId : nil, count: 20, searchDirection: EMMessageSearchDirectionUp, completion: { (messages, error) in
+            weakSelf?._conversaiton?.loadMessagesStart(fromId: messageId.count > 0 ? messageId : nil, count: 20, searchDirection: EMMessageSearchDirectionUp, completion: { (messages, error) in
                 if error == nil {
                     for message in messages as! Array<EMMessage> {
                         let model = EMMessageModel.init(withMesage: message)
@@ -483,7 +483,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
             mp4Url = URL.init(fileURLWithPath: mp4Path)
             exportSession?.outputURL = mp4Url
             exportSession?.shouldOptimizeForNetworkUse = true
-            exportSession?.outputFileType = AVFileTypeMPEG4
+            exportSession?.outputFileType = AVFileType.mp4
             
             let semaphore = DispatchSemaphore(value: 0)
             

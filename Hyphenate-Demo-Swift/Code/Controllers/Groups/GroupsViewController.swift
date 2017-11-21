@@ -30,7 +30,7 @@ class GroupsViewController: EMBaseRefreshTableViewController {
         navigationItem.title = "Groups"
     }
     
-    func addGroup() {
+    @objc func addGroup() {
     
     }
     

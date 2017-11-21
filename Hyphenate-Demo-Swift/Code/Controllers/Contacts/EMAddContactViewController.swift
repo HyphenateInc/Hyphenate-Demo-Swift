@@ -64,7 +64,7 @@ class EMAddContactViewController: UIViewController, UITextFieldDelegate {
         textField.returnKeyType = UIReturnKeyType.search
     }
     
-    func cancelAddContact() {
+    @objc func cancelAddContact() {
         textField.resignFirstResponder()
         dismiss(animated: true, completion: nil)
     }
@@ -82,7 +82,7 @@ class EMAddContactViewController: UIViewController, UITextFieldDelegate {
     
     func addContact() {
         let contactName = textField.text
-        if contactName?.characters.count == 0 {
+        if contactName?.count == 0 {
             showAlert("No input contact name")
             return
         }
@@ -137,7 +137,7 @@ class EMAddContactViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    func keyboardWillChangeFrame(noti: Notification) {
+    @objc func keyboardWillChangeFrame(noti: Notification) {
         let userInfo = (noti.userInfo as! Dictionary<String, NSValue>)
         let endFrame = userInfo[UIKeyboardFrameEndUserInfoKey]!.cgRectValue
         

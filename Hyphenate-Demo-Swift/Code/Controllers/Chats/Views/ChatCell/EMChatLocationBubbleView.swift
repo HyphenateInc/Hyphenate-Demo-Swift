@@ -33,7 +33,7 @@ class EMChatLocationBubbleView: EMChatBaseBubbleView {
     override func sizeThatFits(_ size: CGSize) -> CGSize {
         let textBlockMinSize: CGSize = CGSize(width: 95, height: 25)
         let body = _model?.message?.body as! EMLocationMessageBody
-        let addressSize = (body.address!.boundingRect(with: textBlockMinSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSFontAttributeName:addressLabel!.font], context: nil) as CGRect).size
+        let addressSize = (body.address!.boundingRect(with: textBlockMinSize, options: NSStringDrawingOptions.usesLineFragmentOrigin, attributes: [NSAttributedStringKey.font:addressLabel!.font], context: nil) as CGRect).size
 
         let width = addressSize.width < LOCATION_IMAGEVIEW_SIZE ? LOCATION_IMAGEVIEW_SIZE : addressSize.width
         

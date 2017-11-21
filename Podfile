@@ -6,12 +6,12 @@ target 'Hyphenate-Demo-Swift' do
   use_frameworks!
 
   # Pods for Hyphenate-Demo-Swift
-    pod 'Hyphenate', '~> 3.3.1'
-    pod 'MWPhotoBrowser', '~> 2.1.2'
-    pod 'MJRefresh'
-    pod 'DACircularProgress', '~> 2.3.1'
+    pod 'Hyphenate', '~> 3.3.1' ,:inhibit_warnings => true
+    pod 'MWPhotoBrowser', '~> 2.1.2' ,:inhibit_warnings => true
+    pod 'MJRefresh' ,:inhibit_warnings => true
+    pod 'DACircularProgress', '~> 2.3.1' ,:inhibit_warnings => true
   # pod 'Firebase/Core'
   # pod 'Fabric'
   # pod 'Crashlytics'
-    pod 'Parse'
+    pod 'Parse' ,:inhibit_warnings => true
 end

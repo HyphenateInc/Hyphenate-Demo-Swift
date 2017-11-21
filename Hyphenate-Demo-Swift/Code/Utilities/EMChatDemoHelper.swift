@@ -119,7 +119,7 @@ class EMChatDemoHelper: NSObject, EMClientDelegate, EMContactManagerDelegate, EM
             msgStr = "Group: " + aGroup.subject + " is destroyed"
         }
         
-        if msgStr.characters.count > 0 {
+        if msgStr.count > 0 {
             showAlert(msgStr)
         }
         

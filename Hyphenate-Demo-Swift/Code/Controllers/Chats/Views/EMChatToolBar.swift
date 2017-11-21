@@ -51,7 +51,7 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
     lazy var faceView: EMFaceView = {() -> EMFaceView in
         let _faceView = EMFaceView.init(frame: CGRect(x: 0, y: 0, width: self.width(), height: 180))
         _faceView.delegate = self
-        _faceView.backgroundColor = UIColor.init(colorLiteralRed: 240 / 255, green: 242 / 255, blue: 247 / 255, alpha: 1)
+        _faceView.backgroundColor = RGBACOLOR(red: 240, green: 242, blue: 247, alpha: 1);
         
         return _faceView
     }()
@@ -114,7 +114,7 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
     
     
     // MARK: - UIKeyboardNotification
-    func chatKeyboardWillChangeFrame(noti: Notification) {
+    @objc func chatKeyboardWillChangeFrame(noti: Notification) {
         let userInfo = (noti.userInfo as! Dictionary<String, NSValue>)
         let endFrame = userInfo[UIKeyboardFrameEndUserInfoKey]!.cgRectValue
         let beginFrame = userInfo[UIKeyboardFrameBeginUserInfoKey]!.cgRectValue
@@ -129,7 +129,7 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
     // MARK: - Actions
     
     @IBAction func sendAction(_ sender: UIButton) {
-        if inputTextView.text.characters.count > 0 {
+        if inputTextView.text.count > 0 {
             if delegate != nil {
                 delegate?.didSendText!(text: inputTextView.text)
             }
@@ -233,7 +233,7 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
     // MARK: - EMFaceDelegate
     func selected(facialStr: String?, isDelete: Bool) {
         let chatText = inputTextView.text
-        if !isDelete && (facialStr?.characters.count)! > 0{
+        if !isDelete && (facialStr?.count)! > 0{
             inputTextView.set(text: chatText! + facialStr!)
         }else {
             let subStr = chatText! as NSString
@@ -263,7 +263,7 @@ class EMChatToolBar: UIView , UITextViewDelegate, EMChatRecordViewDelegate, EMFa
     
     func sendFace() {
         if delegate != nil {
-            if inputTextView.text.characters.count != 0 {
+            if inputTextView.text.count != 0 {
                 let attStr = NSMutableString.init(string: inputTextView.attributedText.string)
                 delegate?.didSendText!(text: attStr as String)
                 inputTextView.set(text: "")

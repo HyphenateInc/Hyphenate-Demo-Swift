@@ -45,7 +45,7 @@ class EMChatsCell: UITableViewCell {
         
         let draft : String? = model.conversation!.ext?["Draft"] as? String
         
-        contentLabel.text = draft != nil && (draft?.characters.count)! > 0 ? "[Draft]" + _latestMessageTitle(withConversation: model.conversation!)! : _latestMessageTitle(withConversation: model.conversation!)
+        contentLabel.text = draft != nil && (draft?.count)! > 0 ? "[Draft]" + _latestMessageTitle(withConversation: model.conversation!)! : _latestMessageTitle(withConversation: model.conversation!)
         
         timeLabel.text = _latestMessageTime(withConversation: model.conversation!)
     }

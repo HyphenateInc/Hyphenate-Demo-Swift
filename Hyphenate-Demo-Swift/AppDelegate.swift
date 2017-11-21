@@ -56,7 +56,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
     }
  
     
-    func loginStateChange(nofi: NSNotification) {
+    @objc func loginStateChange(nofi: NSNotification) {
         if (nofi.object as! NSNumber).boolValue {
             let mainVC = EMMainViewController()     
             let nav = UINavigationController.init(rootViewController: mainVC)     

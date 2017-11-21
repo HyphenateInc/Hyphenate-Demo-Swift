@@ -88,7 +88,7 @@ class EMChatAudioBubbleView: EMChatBaseBubbleView {
         return ret
     }
     
-    func playAuido() {
+    @objc func playAuido() {
         let body = _model!.message!.body as! EMVoiceMessageBody
         progressView.setProgress(progress, animated: true)
         progress = progress + 1 / (CGFloat(body.duration) / TIMER_TI)

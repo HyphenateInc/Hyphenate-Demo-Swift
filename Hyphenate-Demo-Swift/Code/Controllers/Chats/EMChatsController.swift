@@ -181,7 +181,7 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         tableView.isUserInteractionEnabled = true
-        if searchBar.text?.characters.count  == 0 {
+        if searchBar.text?.count  == 0 {
             resultsSource.removeAll()
             tableView.reloadData()
             return

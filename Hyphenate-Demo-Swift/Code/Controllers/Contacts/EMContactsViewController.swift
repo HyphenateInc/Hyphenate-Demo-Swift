@@ -183,7 +183,7 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
     }
     
     // MARK: - Action Method
-    func addContactAction() {
+    @objc func addContactAction() {
         let addContactViewController = EMAddContactViewController.init(nibName: "EMAddContactViewController", bundle: nil)
         let nav = UINavigationController.init(rootViewController: addContactViewController)
         present(nav, animated: true, completion: nil)
@@ -371,7 +371,7 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         tableView.isUserInteractionEnabled = true
-        if searchBar.text?.characters.count == 0 {
+        if searchBar.text?.count == 0 {
             searchResults.removeAll()
             tableView.reloadData()
             

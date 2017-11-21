@@ -135,7 +135,7 @@ class EMUserProfileManager: NSObject {
             if objects != nil && objects!.count > 0 {
                 for user in objects! {
                     let entity = UserProfileEntity.initPFObject(PFObject: user)
-                    if (entity.username?.characters.count)! > 0 {
+                    if (entity.username?.count)! > 0 {
                         user.setObject(entity, forKey: entity.username!)
                     }
                 }
@@ -146,7 +146,7 @@ class EMUserProfileManager: NSObject {
     func uploadUserHeadImageProfileInBackground(image: UIImage, complation:@escaping (Bool, Error?) -> Void) {
         weak var weakSelf = self
         let img = image.imageByScalingAndCroppingForSize(targetSize: CGSize.init(width: 120, height: 120))
-        if objectId != nil && (objectId?.characters.count)! > 0 {
+        if objectId != nil && (objectId?.count)! > 0 {
             let object = PFObject(withoutDataWithClassName: kPARSE_HXUSER, objectId: objectId)
             DispatchQueue.global().async {
                 do{ try object.fetchIfNeeded() } catch {}
@@ -182,7 +182,7 @@ class EMUserProfileManager: NSObject {
     
     func updateUserProfileInBackground(param:Dictionary<String, Any>?, complation:@escaping (Bool, Error?) -> Void) {
         weak var weakSelf = self
-        if objectId != nil && (objectId?.characters.count)! > 0 {
+        if objectId != nil && (objectId?.count)! > 0 {
             let object = PFObject(withoutDataWithClassName: kPARSE_HXUSER, objectId: objectId)
             DispatchQueue.global().async {
                 do{ try object.fetchIfNeeded() } catch {}
@@ -227,7 +227,7 @@ class EMUserProfileManager: NSObject {
     func loadUserProfileInBackgroundWithBuddy(buddyList:Array<String>, saveToLocat save:Bool, complation:@escaping (Bool, Error?)->Void) {
         var usernames = Array<String>()
         for buddyName in buddyList {
-            if  buddyName.characters.count > 0 {
+            if  buddyName.count > 0 {
                 if getUserProfileByUsername(username: buddyName) == nil {
                     usernames.append(buddyName)
                 }
@@ -278,7 +278,7 @@ class EMUserProfileManager: NSObject {
     
     func getNickNameWithUsername(username:String) -> String {
         let entity = getUserProfileByUsername(username: username)
-        if entity?.nickname != nil && (entity?.nickname?.characters.count)! > 0 {
+        if entity?.nickname != nil && (entity?.nickname?.count)! > 0 {
             return (entity?.nickname)!
         }
         

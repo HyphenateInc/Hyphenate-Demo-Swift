@@ -31,7 +31,7 @@ class EMConversationModel: NSObject, EMRealtimeSearchUtilDelegate {
             }
         }
         
-        if _title?.characters.count == 0 {
+        if _title?.count == 0 {
             _title = conversation?.conversationId
         }
     }
