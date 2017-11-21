@@ -8,8 +8,18 @@
 
 import Foundation
 
-let KEM_UPDATE_CONVERSATIONS = "UpdateConversations"
-let KEM_END_CHAT = "endChat_notification"
+
+
 let KNOTIFICATIONNAME_DELETEALLMESSAGE = "RemoveAllMessages"
+
+let KEM_REFRESH_GROUPLIST_NOTIFICATION = "refreshGroups_notification"
 let KEM_REMOVEGROUP_NOTIFICATION = "removeGroups_notification"
 let KEM_REFRESH_GROUP_INFO = "UpdateGroupInfo_notification"
+
+let KEM_REFRESH_CHATROOMLIST_NOTIFICATION = "refreshChatrooms_notification"
+let KEM_DESTROY_CHATROOM_NOTIFICATION = "UpdateChatroomInfo_notification"
+let KEM_REFRESH_CHATROOM_INFO = "destroyChatroom_notification"
+
+
+let KEM_END_CHAT = "endChat_notification"
+let KEM_UPDATE_CONVERSATIONS = "UpdateConversations"

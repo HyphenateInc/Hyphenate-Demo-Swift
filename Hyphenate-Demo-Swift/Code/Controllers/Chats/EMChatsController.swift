@@ -108,7 +108,7 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
             
             (cell as! EMChatsCell).setConversationModel(model: resultsSource[indexPath.row])
             
-            return cell!;
+            return cell!
         }
         
         let cellId = "EMChatsCell";
@@ -119,7 +119,7 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
         
         (cell as! EMChatsCell).setConversationModel(model: dataSource[indexPath.row])
         
-        return cell!;
+        return cell!
     }
     
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
