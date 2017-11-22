@@ -2240,7 +2240,7 @@
 					"$(PROJECT_DIR)/Hyphenate-Demo-Swift/Code/Utilities/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/Hyphenate-Demo-Swift/Code/Utilities/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.hyphenate.demo.im;
+				PRODUCT_BUNDLE_IDENTIFIER = io.hyphenate.messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Hyphenate-Demo-Swift/Code/Utilities/Hyphenate-Bridge-Header.h";
@@ -2265,7 +2265,7 @@
 					"$(PROJECT_DIR)/Hyphenate-Demo-Swift/Code/Utilities/DeviceHelper/VoiceConvert/opencore-amrnb",
 					"$(PROJECT_DIR)/Hyphenate-Demo-Swift/Code/Utilities/DeviceHelper/VoiceConvert/opencore-amrwb",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = io.hyphenate.demo.im;
+				PRODUCT_BUNDLE_IDENTIFIER = io.hyphenate.messenger;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Hyphenate-Demo-Swift/Code/Utilities/Hyphenate-Bridge-Header.h";
