@@ -105,6 +105,14 @@ class GroupsViewController: EMBaseRefreshTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let groupModel = dataArray![indexPath.row] as! EMGroupModel
+        let conversation = EMClient.shared().chatManager .getConversation(groupModel.id, type: EMConversationTypeGroupChat, createIfNotExist: true)
+        var ext = conversation?.ext
+        if ext == nil {
+            ext = ["subject":groupModel.subject ?? groupModel.id!]
+        }else {
+            ext!["subject"] = groupModel.subject ?? groupModel.id!
+        }
+        conversation?.ext = ext
         let chatVC = EMChatViewController(groupModel.id!, EMConversationTypeGroupChat)
         navigationController?.pushViewController(chatVC, animated: true)
     }

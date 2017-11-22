@@ -129,6 +129,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
             title = EMConversationModel.init(conversation: _conversaiton!).title()
         } else if _conversaiton?.type == EMConversationTypeChatRoom {
             navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: _detailButton!)
+            title = EMConversationModel.init(conversation: _conversaiton!).title()
         }
     }
     

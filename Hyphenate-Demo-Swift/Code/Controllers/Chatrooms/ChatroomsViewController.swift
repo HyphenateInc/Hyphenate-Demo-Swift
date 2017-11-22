@@ -93,6 +93,14 @@ class ChatroomsViewController: EMBaseRefreshTableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         let chatroomModel = dataArray![indexPath.row] as! EMChatroomModel
+        let conversation = EMClient.shared().chatManager .getConversation(chatroomModel.id, type: EMConversationTypeChatRoom, createIfNotExist: true)
+        var ext = conversation?.ext
+        if ext == nil {
+            ext = ["subject":chatroomModel.subject ?? chatroomModel.id!]
+        }else {
+            ext!["subject"] = chatroomModel.subject ?? chatroomModel.id!
+        }
+        conversation?.ext = ext 
         let chatVC = EMChatViewController(chatroomModel.id!, EMConversationTypeChatRoom)
         navigationController?.pushViewController(chatVC, animated: true)
     }
