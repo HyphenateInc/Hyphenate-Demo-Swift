@@ -25,7 +25,7 @@ class EMChatsCell: UITableViewCell {
             unreadLabel.isHidden = true
             nameLabel.left(left: 75.0)
             nameLabel.width(width: 170.0)
-        }else {
+        } else {
             unreadLabel.isHidden = false
             nameLabel.left(left: 95.0)
             nameLabel.width(width: 150.0)
@@ -35,12 +35,13 @@ class EMChatsCell: UITableViewCell {
 
     func setConversationModel(model:EMConversationModel) {
         self.model = model
-        if model.conversation?.type == EMConversationTypeChat{
+        if model.conversation?.type == EMConversationTypeChat {
             headImageView.imageWithUsername(username: model.conversation!.conversationId, placeholderImage: UIImage(named: "default_avatar"))
         } else {
             headImageView.image = UIImage(named: "default_group_avatar")
         }
         
+        // Set chat view title
         nameLabel.text = model.title()
         
         let draft : String? = model.conversation!.ext?["Draft"] as? String

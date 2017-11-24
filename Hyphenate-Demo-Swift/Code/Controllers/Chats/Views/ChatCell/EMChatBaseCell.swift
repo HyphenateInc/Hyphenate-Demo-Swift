@@ -170,7 +170,7 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
                 activityView.isHidden = true
                 resendButton.isHidden = false
                 notDeliveredLabel.isHighlighted = false
-            }else if (_model!.message!.status == EMMessageStatusSucceed) {
+            }else if (_model!.message!.status == EMMessageStatusSucceed) {  
                 if _model!.message!.isReadAcked {
                     readLabel.text = "Read"
                     checkView.isHidden = false
@@ -183,7 +183,7 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
                 notDeliveredLabel.isHidden = true
                 activityView.isHidden = true
                 readLabel.isHidden = false
-            }else if (_model!.message!.status == EMMessageStatusDelivering) {
+            } else if (_model!.message!.status == EMMessageStatusDelivering) {
                 activityView.isHidden = true
                 readLabel.isHidden = true
                 checkView.isHidden = true
