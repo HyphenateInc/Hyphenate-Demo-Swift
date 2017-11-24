@@ -106,7 +106,7 @@ class EMFacialView: UIView, UIScrollViewDelegate {
         }
     }
 
-    func selected(btn: UIButton) {
+    @objc func selected(btn: UIButton) {
         if btn.tag == 10000 && delegate != nil {
             delegate?.deleteSelected(str: nil)
         } else {

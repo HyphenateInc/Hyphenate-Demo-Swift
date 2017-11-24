@@ -51,8 +51,9 @@ class EMBaseRefreshTableViewController: UITableViewController {
             if newValue != _showRefreshFooter {
                 _showRefreshFooter = newValue
                 if _showRefreshFooter {
+                    weak var weakSelf = self
                     tableView.mj_footer = MJRefreshBackNormalFooter (refreshingBlock: {
-                        
+                         weakSelf?.tableViewDidTriggerFooterRefresh()
                     })
                     tableView.mj_footer.accessibilityIdentifier = "refresh_footer"
                 } else {

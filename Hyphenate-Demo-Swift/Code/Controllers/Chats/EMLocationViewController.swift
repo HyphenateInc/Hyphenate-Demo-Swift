@@ -67,7 +67,7 @@ class EMLocationViewController: UIViewController, MKMapViewDelegate, CLLocationM
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: _backAction!)
     }
 
-    func backAction() {
+    @objc func backAction() {
         navigationController?.popViewController(animated: true)
     }
     

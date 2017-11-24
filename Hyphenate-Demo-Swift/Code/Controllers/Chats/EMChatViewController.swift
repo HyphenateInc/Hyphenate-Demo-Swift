@@ -48,11 +48,10 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     override func viewDidLoad() {
         super.viewDidLoad()
         _setupInstanceUI()
+        registerNotifications()
+        
         view.backgroundColor = UIColor.white
         edgesForExtendedLayout = UIRectEdge(rawValue: 0)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(endChat(withConversationIdNotification:)), name: NSNotification.Name(rawValue:KEM_END_CHAT), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteAllMessages(sender:)), name: NSNotification.Name(rawValue:KNOTIFICATIONNAME_DELETEALLMESSAGE), object: nil)
         
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(keyboardHidden(tap:)))
         view.addGestureRecognizer(tap)
@@ -73,7 +72,14 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         _setupNavigationBar()
         _setupViewLayout()
         
-//        NotificationCenter.default.addObserver(self, selector: #selector(remoteGroupNotification(noti:)), name: NSNotification.Name(rawValue:KEM_REMOVEGROUP_NOTIFICATION), object: nil) // oc demo in "viewDidAppear"
+        if _conversaiton?.type == EMConversationTypeChatRoom {
+            _joinChatroom(chatroomId: _conversaiton!.conversationId)
+        }
+    }
+    
+    func registerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(endChat(withConversationIdNotification:)), name: NSNotification.Name(rawValue:KEM_END_CHAT), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteAllMessages(sender:)), name: NSNotification.Name(rawValue:KNOTIFICATIONNAME_DELETEALLMESSAGE), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -115,6 +121,9 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         print(" ----------------------------------------------- ChatViewController dealloc ---------------------------------------------------")
     }
     
+    @objc func endChat() {
+        navigationController?.popViewController(animated: true)
+    }
     
     // MARK: - Private Layout Views
     private func _setupNavigationBar() {
@@ -127,6 +136,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
             title = EMConversationModel.init(conversation: _conversaiton!).title()
         } else if _conversaiton?.type == EMConversationTypeChatRoom {
             navigationItem.rightBarButtonItem = UIBarButtonItem.init(customView: _detailButton!)
+            title = EMConversationModel.init(conversation: _conversaiton!).title()
         }
     }
     
@@ -270,7 +280,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     // MARK: - UIImagePickerControllerDelegate
-    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {    
         weak var weakSelf = self
         let compressData:(UIImagePickerController, Dictionary<String, Any>) -> (EMMessage, UIImagePickerController) = { (imagePicker, selectInfo) -> (EMMessage, UIImagePickerController) in
             let type = selectInfo[UIImagePickerControllerMediaType] as! String
@@ -331,19 +341,22 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         }
     }
     
-    func makeVideoCall() {
+    @objc func makeVideoCall() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_CALL), object: ["chatter":_conversaiton?.conversationId! as Any,"type":NSNumber.init(value: 1)])
     }
     
-    func makeAudioCall() {
+    @objc func makeAudioCall() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_CALL), object: ["chatter":_conversaiton?.conversationId! as Any,"type":NSNumber.init(value: 0)])
     }
     
-    func enterDetailView() {
-        // TODO info
+    @objc func enterDetailView() {
+        let storyboard = UIStoryboard(name: "ChatroomInfo", bundle: nil)
+        let chatroomInfoVC = storyboard.instantiateViewController(withIdentifier: "ChatroomInfoViewController") as! EMChatroomInfoViewController
+        chatroomInfoVC.chatroom = EMChatroom(id: _conversaiton!.conversationId)
+        navigationController?.pushViewController(chatroomInfoVC, animated: true)
     }
     
-    func backAction() {
+    @objc func backAction() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_UPDATEUNREADCOUNT), object: nil);
         if _conversaiton!.type == EMConversationTypeChatRoom {
             showHub(inView: UIApplication.shared.keyWindow!, "Leaving the chatroom...")
@@ -362,7 +375,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         }
     }
     
-    func deleteAllMessages(sender: AnyObject) {
+    @objc func deleteAllMessages(sender: AnyObject) {
         if _dataSource!.count == 0 {
             return
         }
@@ -379,11 +392,11 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         }
     }
     
-    func endChat(withConversationIdNotification notification: NSNotification) {
+    @objc func endChat(withConversationIdNotification notification: NSNotification) {
         let obj = notification.object
         if obj is String{
             let conversationId = obj as! String
-            if conversationId.characters.count > 0 && conversationId == _conversaiton?.conversationId {
+            if conversationId.count > 0 && conversationId == _conversaiton?.conversationId {
                 backAction()
             }
         } else if obj is EMChatroom && _conversaiton?.type == EMConversationTypeChatRoom{
@@ -396,7 +409,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     // MARK: - GestureRecognizer
-    func keyboardHidden(tap: UITapGestureRecognizer) {
+    @objc func keyboardHidden(tap: UITapGestureRecognizer) {
         if tap.state == UIGestureRecognizerState.ended {
             _chatToolBar?.endEditing(true)
         }
@@ -433,6 +446,9 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     
     func _addMessageToDatasource(message: EMMessage) {
         let model = EMMessageModel.init(withMesage: message)
+        if model.message?.body.type == EMMessageBodyTypeFile {
+            return
+        }
         _dataSource?.append(model)
     }
     
@@ -443,7 +459,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         }
     }
     
-    func _loadMoreMessage() {
+    @objc func _loadMoreMessage() {
         weak var weakSelf = self
         DispatchQueue.global().async {
             var messageId = ""
@@ -452,7 +468,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
                 messageId = model!.message!.messageId
             }
             
-            weakSelf?._conversaiton?.loadMessagesStart(fromId: messageId.characters.count > 0 ? messageId : nil, count: 20, searchDirection: EMMessageSearchDirectionUp, completion: { (messages, error) in
+            weakSelf?._conversaiton?.loadMessagesStart(fromId: messageId.count > 0 ? messageId : nil, count: 20, searchDirection: EMMessageSearchDirectionUp, completion: { (messages, error) in
                 if error == nil {
                     for message in messages as! Array<EMMessage> {
                         let model = EMMessageModel.init(withMesage: message)
@@ -483,7 +499,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
             mp4Url = URL.init(fileURLWithPath: mp4Path)
             exportSession?.outputURL = mp4Url
             exportSession?.shouldOptimizeForNetworkUse = true
-            exportSession?.outputFileType = AVFileTypeMPEG4
+            exportSession?.outputFileType = AVFileType.mp4
             
             let semaphore = DispatchSemaphore(value: 0)
             

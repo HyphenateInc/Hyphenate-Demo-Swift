@@ -9,8 +9,8 @@
 import Foundation
 import UIKit
 
-func RGBACOLOR (red: Float, green: Float, blue: Float, alpha: Float) -> UIColor{
-    return UIColor.init(colorLiteralRed: red/255.0, green: green/255.0, blue: blue/255.0, alpha: alpha)
+func RGBACOLOR (red: CGFloat, green: CGFloat, blue: CGFloat, alpha: CGFloat) -> UIColor{
+    return UIColor(red: red/255.0, green: green/255.0, blue: blue/255.0, alpha: alpha)
 }
 
 let DenimColor          =   RGBACOLOR(red: 64.0,green: 94.0,blue: 122.0,alpha: 1.0);

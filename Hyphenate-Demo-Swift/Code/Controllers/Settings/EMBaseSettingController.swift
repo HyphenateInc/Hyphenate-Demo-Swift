@@ -27,7 +27,7 @@ class EMBaseSettingController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: btn)
     }
     
-    func back() {
+    @objc func back() {
         navigationController?.popViewController(animated: true)
     }
 

@@ -41,9 +41,9 @@ class EMRealtimeSearchUtil: NSObject {
  
     }
     
-    func searchBegin(searchString string: String) {
+    @objc func searchBegin(searchString string: String) {
         searchQueue.async {
-            if string.characters.count == 0 {
+            if string.count == 0 {
                 self.result!(self.source)
             }else {
                 var results = Array<Any>()

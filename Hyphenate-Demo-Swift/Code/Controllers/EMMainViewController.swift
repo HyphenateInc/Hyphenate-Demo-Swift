@@ -32,9 +32,6 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
         setupUnreadMessageCount()
         registerNotifications()
         EMClient.shared().getPushNotificationOptionsFromServer { (pushOptions, error) in  }
-        
-//        SDImageCache.shared().shouldDecompressImages = false
-//        SDWebImageDownloader.shared().shouldDecompressImages = false
         SDImageCache.shared().maxMemoryCost = 3000 * 3000
     }
     
@@ -86,17 +83,17 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
     
     func unSelectedTapTabBarItems(item: UITabBarItem?) {
         if item != nil {
-            item!.setTitleTextAttributes(NSDictionary.init(objects: [UIFont.systemFont(ofSize: 11),BlueyGreyColor], forKeys: [NSFontAttributeName as NSCopying,NSForegroundColorAttributeName as NSCopying]) as? [String : Any], for: UIControlState.normal)
+            item!.setTitleTextAttributes([NSAttributedStringKey.font:UIFont.systemFont(ofSize: 11),NSAttributedStringKey.foregroundColor:BlueyGreyColor], for: UIControlState.normal)
         }
     }
     
     func selectedTapTabBarItems(item: UITabBarItem?) {
         if item != nil {
-            item!.setTitleTextAttributes(NSDictionary.init(objects: [UIFont.systemFont(ofSize: 11),KermitGreenTwoColor], forKeys: [NSFontAttributeName as NSCopying,NSForegroundColorAttributeName as NSCopying]) as? [String : Any], for: UIControlState.selected)
+                item!.setTitleTextAttributes([NSAttributedStringKey.font:UIFont.systemFont(ofSize: 11),NSAttributedStringKey.foregroundColor:KermitGreenTwoColor], for: UIControlState.normal)
         }
     }
     
-    public func setupUnreadMessageCount() {
+    @objc public func setupUnreadMessageCount() {
         let conversations = EMClient.shared().chatManager.getAllConversations()   
         var unreadCount = 0   
         for conversation in conversations! {
@@ -226,11 +223,6 @@ class EMMainViewController: UITabBarController, EMChatManagerDelegate, EMGroupMa
                 msgStr = ""
                 break   
             }
-            
-//            repeat {
-//                  alertStr = EMUserProfileManager.sharedInstance.getNickNameWithUsername(username: msg.from) + ":" + msgStr
-//            } while false
-            
             alertStr = EMUserProfileManager.sharedInstance.getNickNameWithUsername(username: msg.from) + ":" + msgStr
             
         } else {

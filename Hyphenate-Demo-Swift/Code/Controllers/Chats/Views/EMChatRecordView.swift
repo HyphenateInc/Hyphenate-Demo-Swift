@@ -102,7 +102,7 @@ class EMChatRecordView: UIView {
         backgroundColor = PaleGrayColor
     }
     
-    func recordTimerAction() {
+    @objc func recordTimerAction() {
         _recordLength = _recordLength + 1
         let h = _recordLength / 3600
         let m = (_recordLength - h * 3600) / 60

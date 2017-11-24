@@ -13,7 +13,7 @@ import MBProgressHUD
 let  KEM_CONTACT_BASICSECTION_NUM = 3
 
 class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDelegate{
-    
+ 
     lazy var searchBar: UISearchBar = {()-> UISearchBar in
         let _searchBar = UISearchBar.init(frame: CGRect(x: 0, y: 0, width: kScreenWidth, height: 30));
         _searchBar.placeholder = "Search";
@@ -25,7 +25,6 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
         _searchBar.tintColor = AlmostBlackColor;
         return _searchBar;
     }()
-    
     
     var contacts = Array<Any>()
     var contactRequests = Array<Any>()
@@ -184,7 +183,7 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
     }
     
     // MARK: - Action Method
-    func addContactAction() {
+    @objc func addContactAction() {
         let addContactViewController = EMAddContactViewController.init(nibName: "EMAddContactViewController", bundle: nil)
         let nav = UINavigationController.init(rootViewController: addContactViewController)
         present(nav, animated: true, completion: nil)
@@ -196,7 +195,7 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
             return 1
         }
         
-        return sectionTitles.count + 1
+        return sectionTitles.count + 3
     }
     
     override func sectionIndexTitles(for tableView: UITableView) -> [String]? {
@@ -212,12 +211,15 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
             return searchResults.count
         }
         
-        if section == 0 {
+        switch section {
+        case 0:
             return contactRequests.count
+        case 1, 2:
+             return 1
+        default:
+            let ary = contacts[section - 3] as! Array<Any>
+            return ary.count
         }
-        
-        let ary = contacts[section - 1] as! Array<Any>
-        return ary.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -226,15 +228,31 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
             let model = contactRequests[indexPath.row]
             return fetchApplyRequestCell(withTableView: tableView, model: model as! EMApplyModel)
         }
-
+        
         var model: EMUserModel?
         if isSearchState {
             model = searchResults[indexPath.row]
+        }else if (indexPath.section == 1 || indexPath.section == 2){
+            let id = "MucCell";
+            var cell = tableView.dequeueReusableCell(withIdentifier: id)
+            if cell == nil {
+                cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: id)
+            }
+            if indexPath.section == 1
+            {
+                cell?.textLabel?.text = "Group"
+            }
+            else
+            {
+                cell?.textLabel?.text = "ChatRoom"
+            }
+            
+            return cell!
         }else {
-            model = (contacts[indexPath.section - 1] as! Array)[indexPath.row]
+            model = (contacts[indexPath.section - 3] as! Array)[indexPath.row]
         }
         
-        return fetchContactCell(withTableView: tableView, model: model!)
+        return fetchContactCellWith(tableView: tableView, model: model)
     }
     
     func fetchApplyRequestCell(withTableView: UITableView , model: EMApplyModel) -> UITableViewCell {
@@ -283,16 +301,27 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
         return cell!
     }
     
-    func fetchContactCell(withTableView: UITableView, model: EMUserModel) -> UITableViewCell {
-        let cellItentify = "EMContactCell"
-        var cell = withTableView.dequeueReusableCell(withIdentifier: cellItentify)
-        if cell == nil {
-            cell = Bundle.main.loadNibNamed("EMContactCell", owner: self, options: nil)?.first as! EMContactCell
+    func fetchContactCellWith(tableView: UITableView, model: EMUserModel?) -> UITableViewCell {
+        if model != nil{
+            let cellItentify = "EMContactCell"
+            var cell = tableView.dequeueReusableCell(withIdentifier: cellItentify)
+            if cell == nil {
+                cell = Bundle.main.loadNibNamed("EMContactCell", owner: self, options: nil)?.first as! EMContactCell
+            }
+            
+            (cell as! EMContactCell).set(model: model!)
+            
+            return cell!
         }
-        
-        (cell as! EMContactCell).set(model: model)
-        
-        return cell!
+        else {
+            let id = "MucCell";
+            var cell = tableView.dequeueReusableCell(withIdentifier: id)
+            if cell == nil {
+                cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: id)
+            }
+            
+            return cell!
+        }
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
@@ -315,8 +344,16 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
         var model: EMUserModel?
         if isSearchState {
             model = searchResults[indexPath.row]
+        }else if (indexPath.section == 1) {
+            let groupsVC = EMGroupsViewController()
+            navigationController?.pushViewController(groupsVC, animated: true)
+            return
+        }else if (indexPath.section == 2) {
+            let chatroomsVC = EMChatroomsViewController()
+            navigationController?.pushViewController(chatroomsVC, animated: true)
+            return
         }else {
-            model = (contacts[indexPath.section - 1] as! Array)[indexPath.row]
+            model = (contacts[indexPath.section - 3] as! Array)[indexPath.row]
         }
         
         let contactInfo = EMContactInfoViewController.init(model!)
@@ -338,7 +375,7 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
     
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         tableView.isUserInteractionEnabled = true
-        if searchBar.text?.characters.count == 0 {
+        if searchBar.text?.count == 0 {
             searchResults.removeAll()
             tableView.reloadData()
             
@@ -369,3 +406,4 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
         tableView.reloadData()
     }
 }
+

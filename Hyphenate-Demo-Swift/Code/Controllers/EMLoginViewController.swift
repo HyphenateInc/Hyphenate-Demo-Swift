@@ -188,7 +188,7 @@ class EMLoginViewController: UIViewController, UITextFieldDelegate {
         let username = usernameTextField.text  
         let password = passwordTextField.text  
         
-        if (username?.characters.count)! == 0 || (password?.characters.count)! == 0 {
+        if (username?.count)! == 0 || (password?.count)! == 0 {
             ret = true  
             let alertView = UIAlertView.init(title: "reminder", message: "please enter username and password", delegate: nil, cancelButtonTitle: "okay")
             alertView.show()  
@@ -198,7 +198,7 @@ class EMLoginViewController: UIViewController, UITextFieldDelegate {
     }
     
     // MARK: - notification
-    func keyboardWillChangeFrame(noti: NSNotification) {
+    @objc func keyboardWillChangeFrame(noti: NSNotification) {
         let userInfo = (noti.userInfo as! Dictionary<String, NSValue>)  
         let beginValue = userInfo["UIKeyboardFrameBeginUserInfoKey"]!  
         let endValue = userInfo["UIKeyboardFrameEndUserInfoKey"]!  

@@ -59,7 +59,7 @@ class EMApplyManager: NSObject {
             _groupApplys.append(model)
             ary = _groupApplys
         }
-        if key.characters.count == 0 {
+        if key.count == 0 {
             return
         }
         
@@ -77,7 +77,7 @@ class EMApplyManager: NSObject {
             key = localGroupApplyKeys()!
             ary = _groupApplys
         }
-        if key.characters.count == 0 {
+        if key.count == 0 {
             return
         }
         

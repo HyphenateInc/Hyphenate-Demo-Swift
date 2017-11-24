@@ -126,9 +126,6 @@
 		9011E10A1EEEC22700C43D05 /* Button_Stats@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011DFD51EEEC22700C43D05 /* Button_Stats@2x.png */; };
 		9011E10B1EEEC22700C43D05 /* Button_Stats@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011DFD61EEEC22700C43D05 /* Button_Stats@3x.png */; };
 		9011E10C1EEEC22700C43D05 /* faceDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011DFD71EEEC22700C43D05 /* faceDelete@2x.png */; };
-		9011E10D1EEEC22700C43D05 /* Icon_Call.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011DFD81EEEC22700C43D05 /* Icon_Call.png */; };
-		9011E10E1EEEC22700C43D05 /* Icon_Call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011DFD91EEEC22700C43D05 /* Icon_Call@2x.png */; };
-		9011E10F1EEEC22700C43D05 /* Icon_Call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011DFDA1EEEC22700C43D05 /* Icon_Call@3x.png */; };
 		9011E1101EEEC22700C43D05 /* Icon_Check.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011DFDB1EEEC22700C43D05 /* Icon_Check.png */; };
 		9011E1111EEEC22700C43D05 /* Icon_Check@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011DFDC1EEEC22700C43D05 /* Icon_Check@2x.png */; };
 		9011E1121EEEC22700C43D05 /* Icon_Check@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011DFDD1EEEC22700C43D05 /* Icon_Check@3x.png */; };
@@ -208,18 +205,6 @@
 		9011E15C1EEEC22700C43D05 /* Icon_Location_disable.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E0281EEEC22700C43D05 /* Icon_Location_disable.png */; };
 		9011E15D1EEEC22700C43D05 /* Icon_Location_disable@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E0291EEEC22700C43D05 /* Icon_Location_disable@2x.png */; };
 		9011E15E1EEEC22700C43D05 /* Icon_Location_disable@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E02A1EEEC22700C43D05 /* Icon_Location_disable@3x.png */; };
-		9011E15F1EEEC22700C43D05 /* Icon_Call disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E02C1EEEC22700C43D05 /* Icon_Call disabled.png */; };
-		9011E1601EEEC22700C43D05 /* Icon_Call disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E02D1EEEC22700C43D05 /* Icon_Call disabled@2x.png */; };
-		9011E1611EEEC22700C43D05 /* Icon_Call disabled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E02E1EEEC22700C43D05 /* Icon_Call disabled@3x.png */; };
-		9011E1621EEEC22700C43D05 /* Icon_Call.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E02F1EEEC22700C43D05 /* Icon_Call.png */; };
-		9011E1631EEEC22700C43D05 /* Icon_Call@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E0301EEEC22700C43D05 /* Icon_Call@2x.png */; };
-		9011E1641EEEC22700C43D05 /* Icon_Call@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E0311EEEC22700C43D05 /* Icon_Call@3x.png */; };
-		9011E1651EEEC22700C43D05 /* Icon_Video disabled.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E0321EEEC22700C43D05 /* Icon_Video disabled.png */; };
-		9011E1661EEEC22700C43D05 /* Icon_Video disabled@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E0331EEEC22700C43D05 /* Icon_Video disabled@2x.png */; };
-		9011E1671EEEC22700C43D05 /* Icon_Video disabled@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E0341EEEC22700C43D05 /* Icon_Video disabled@3x.png */; };
-		9011E1681EEEC22700C43D05 /* Icon_Video.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E0351EEEC22700C43D05 /* Icon_Video.png */; };
-		9011E1691EEEC22700C43D05 /* Icon_Video@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E0361EEEC22700C43D05 /* Icon_Video@2x.png */; };
-		9011E16A1EEEC22700C43D05 /* Icon_Video@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E0371EEEC22700C43D05 /* Icon_Video@3x.png */; };
 		9011E16B1EEEC22700C43D05 /* Icon_Add.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E0391EEEC22700C43D05 /* Icon_Add.png */; };
 		9011E16C1EEEC22700C43D05 /* Icon_Add@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E03A1EEEC22700C43D05 /* Icon_Add@2x.png */; };
 		9011E16D1EEEC22700C43D05 /* Icon_Add@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E03B1EEEC22700C43D05 /* Icon_Add@3x.png */; };
@@ -319,6 +304,8 @@
 		90169F601EF275A300B9ADC6 /* UIImage+HeadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F5F1EF275A300B9ADC6 /* UIImage+HeadImage.swift */; };
 		90169F621EF2767200B9ADC6 /* EMUserProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F611EF2767200B9ADC6 /* EMUserProfileManager.swift */; };
 		90169F641EF2A30A00B9ADC6 /* AppDelegate+Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F631EF2A30A00B9ADC6 /* AppDelegate+Parse.swift */; };
+		9017ED9C1FC44324005C77F7 /* EMChatroomsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017ED9B1FC44324005C77F7 /* EMChatroomsViewController.swift */; };
+		9017ED9E1FC44486005C77F7 /* EMChatroomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9017ED9D1FC44486005C77F7 /* EMChatroomModel.swift */; };
 		90190C781F0F470F00A238F3 /* EMAboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90190C761F0F470F00A238F3 /* EMAboutViewController.swift */; };
 		90190C7B1F0F488800A238F3 /* EMAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90190C7A1F0F488800A238F3 /* EMAccountViewController.swift */; };
 		90190C7F1F0F76F000A238F3 /* EMChatsSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90190C7E1F0F76F000A238F3 /* EMChatsSettingViewController.swift */; };
@@ -329,6 +316,14 @@
 		9024B15B1F00AEAD0043FD81 /* EMLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9024B1591F00AEAD0043FD81 /* EMLocationViewController.xib */; };
 		902C0BC31EF24AC80069165E /* EMBaseRefreshTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C0BC11EF24AC80069165E /* EMBaseRefreshTableViewController.swift */; };
 		902C0BC61EF24BFD0069165E /* EMNotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C0BC51EF24BFD0069165E /* EMNotificationNames.swift */; };
+		905912B81FC57701001510BC /* EMChatroomAdminListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905912B71FC57701001510BC /* EMChatroomAdminListViewController.swift */; };
+		905912BA1FC57710001510BC /* EMChatroomMemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905912B91FC57710001510BC /* EMChatroomMemberListViewController.swift */; };
+		90593CE91FC535310029FB66 /* ChatroomInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90593CE81FC535310029FB66 /* ChatroomInfo.storyboard */; };
+		90593CEB1FC535F40029FB66 /* EMChatroomInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90593CEA1FC535F40029FB66 /* EMChatroomInfoViewController.swift */; };
+		9069B3C01FC409F2004F9DBD /* EMGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9069B3BF1FC409F2004F9DBD /* EMGroupModel.swift */; };
+		9069B3C31FC40CBE004F9DBD /* IEMGroupModelDeleagte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9069B3C21FC40CBE004F9DBD /* IEMGroupModelDeleagte.swift */; };
+		9069B3C81FC41C25004F9DBD /* EMGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9069B3C61FC41C25004F9DBD /* EMGroupCell.swift */; };
+		9069B3C91FC41C25004F9DBD /* EMGroupCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9069B3C71FC41C25004F9DBD /* EMGroupCell.xib */; };
 		906AD6421EFB6D22004CCCAE /* EMChatBaseCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AD6401EFB6D22004CCCAE /* EMChatBaseCell.swift */; };
 		906AD6431EFB6D22004CCCAE /* EMChatBaseCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 906AD6411EFB6D22004CCCAE /* EMChatBaseCell.xib */; };
 		906AD6451EFB836D004CCCAE /* EMChatBaseBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AD6441EFB836D004CCCAE /* EMChatBaseBubbleView.swift */; };
@@ -349,6 +344,10 @@
 		90749EDC1EF90E5B00D3A065 /* libopencore-amrnb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90749ECD1EF90E5B00D3A065 /* libopencore-amrnb.a */; };
 		90749EDD1EF90E5B00D3A065 /* libopencore-amrwb.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 90749ED11EF90E5B00D3A065 /* libopencore-amrwb.a */; };
 		90749EDF1EF9196200D3A065 /* EMChatToolBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90749EDE1EF9196200D3A065 /* EMChatToolBar.xib */; };
+		907FBAAF1FC679C0003386C1 /* EMChatroomParticipantsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FBAAE1FC679C0003386C1 /* EMChatroomParticipantsViewController.swift */; };
+		907FBAB31FC6822B003386C1 /* EMChatroomMuteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FBAB21FC6822B003386C1 /* EMChatroomMuteListViewController.swift */; };
+		907FBAB51FC68273003386C1 /* EMChatroomBlackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FBAB41FC68273003386C1 /* EMChatroomBlackListViewController.swift */; };
+		907FBAB71FC68E0B003386C1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FBAB61FC68E0B003386C1 /* Extension.swift */; };
 		9080EDE01F03896E00B6C488 /* EMAddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9080EDDE1F03896E00B6C488 /* EMAddContactViewController.swift */; };
 		9080EDE11F03896E00B6C488 /* EMAddContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9080EDDF1F03896E00B6C488 /* EMAddContactViewController.xib */; };
 		908324EA1EEFE5F000811A97 /* EMMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908324E91EEFE5F000811A97 /* EMMainViewController.swift */; };
@@ -358,6 +357,7 @@
 		908462341EF779270008E480 /* EMChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908462321EF779270008E480 /* EMChatViewController.swift */; };
 		908462351EF779270008E480 /* EMChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 908462331EF779270008E480 /* EMChatViewController.xib */; };
 		908462371EF77A140008E480 /* EMChatToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908462361EF77A140008E480 /* EMChatToolBar.swift */; };
+		909602221FC7D8C700E71B93 /* EMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909602211FC7D8C700E71B93 /* EMAlertAction.swift */; };
 		90AC4A451EFD104F0062DB30 /* EMChatVideoBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90AC4A441EFD104F0062DB30 /* EMChatVideoBubbleView.swift */; };
 		90B43DC31F00C9C90084E67F /* EMChatLocationBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B43DC21F00C9C90084E67F /* EMChatLocationBubbleView.swift */; };
 		90B43DC51F00DE0B0084E67F /* EMChatAudioBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B43DC41F00DE0B0084E67F /* EMChatAudioBubbleView.swift */; };
@@ -373,6 +373,7 @@
 		90B777CF1EF140E0006D0977 /* EMChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B777CD1EF140E0006D0977 /* EMChatsCell.swift */; };
 		90B777D01EF140E0006D0977 /* EMChatsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90B777CE1EF140E0006D0977 /* EMChatsCell.xib */; };
 		90B777D21EF149AB006D0977 /* EMConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B777D11EF149AB006D0977 /* EMConversationModel.swift */; };
+		90BE3F4F1F3DA2B300B84B78 /* EMGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BE3F4E1F3DA2B300B84B78 /* EMGroupsViewController.swift */; };
 		90BE5EC41F133D0D00C126EB /* EMSetNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BE5EC31F133D0D00C126EB /* EMSetNameViewController.swift */; };
 		90BF54A31EF3878B00BEED2F /* EMRealtimeSearchUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BF54A21EF3878B00BEED2F /* EMRealtimeSearchUtil.swift */; };
 		90C00C771EEF8C5D0049BFAD /* UIView+HyphenateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90C00C761EEF8C5D0049BFAD /* UIView+HyphenateView.swift */; };
@@ -381,7 +382,6 @@
 		90F3DC3A1F02125700DEBB86 /* EMApplyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F3DC391F02125700DEBB86 /* EMApplyManager.swift */; };
 		90F3DC3C1F023A4D00DEBB86 /* EMChatDemoHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F3DC3B1F023A4D00DEBB86 /* EMChatDemoHelper.swift */; };
 		90F3DC3F1F023B4E00DEBB86 /* EMBaseSettingController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F3DC3D1F023B4E00DEBB86 /* EMBaseSettingController.swift */; };
-		90F3DC461F0242AD00DEBB86 /* NSObject+EMAlertView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F3DC451F0242AD00DEBB86 /* NSObject+EMAlertView.swift */; };
 		90F9B7231F04F00500513DC1 /* EMContactInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90F9B7211F04F00500513DC1 /* EMContactInfoViewController.swift */; };
 		90F9B7241F04F00500513DC1 /* EMContactInfoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90F9B7221F04F00500513DC1 /* EMContactInfoViewController.xib */; };
 		90FB78851EF78EB000B02F60 /* EMMessageTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90FB78841EF78EB000B02F60 /* EMMessageTextView.swift */; };
@@ -517,9 +517,6 @@
 		9011DFD51EEEC22700C43D05 /* Button_Stats@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Stats@2x.png"; sourceTree = "<group>"; };
 		9011DFD61EEEC22700C43D05 /* Button_Stats@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Button_Stats@3x.png"; sourceTree = "<group>"; };
 		9011DFD71EEEC22700C43D05 /* faceDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "faceDelete@2x.png"; sourceTree = "<group>"; };
-		9011DFD81EEEC22700C43D05 /* Icon_Call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Call.png; sourceTree = "<group>"; };
-		9011DFD91EEEC22700C43D05 /* Icon_Call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Call@2x.png"; sourceTree = "<group>"; };
-		9011DFDA1EEEC22700C43D05 /* Icon_Call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Call@3x.png"; sourceTree = "<group>"; };
 		9011DFDB1EEEC22700C43D05 /* Icon_Check.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Check.png; sourceTree = "<group>"; };
 		9011DFDC1EEEC22700C43D05 /* Icon_Check@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Check@2x.png"; sourceTree = "<group>"; };
 		9011DFDD1EEEC22700C43D05 /* Icon_Check@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Check@3x.png"; sourceTree = "<group>"; };
@@ -599,18 +596,6 @@
 		9011E0281EEEC22700C43D05 /* Icon_Location_disable.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Location_disable.png; sourceTree = "<group>"; };
 		9011E0291EEEC22700C43D05 /* Icon_Location_disable@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Location_disable@2x.png"; sourceTree = "<group>"; };
 		9011E02A1EEEC22700C43D05 /* Icon_Location_disable@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Location_disable@3x.png"; sourceTree = "<group>"; };
-		9011E02C1EEEC22700C43D05 /* Icon_Call disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Call disabled.png"; sourceTree = "<group>"; };
-		9011E02D1EEEC22700C43D05 /* Icon_Call disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Call disabled@2x.png"; sourceTree = "<group>"; };
-		9011E02E1EEEC22700C43D05 /* Icon_Call disabled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Call disabled@3x.png"; sourceTree = "<group>"; };
-		9011E02F1EEEC22700C43D05 /* Icon_Call.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Call.png; sourceTree = "<group>"; };
-		9011E0301EEEC22700C43D05 /* Icon_Call@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Call@2x.png"; sourceTree = "<group>"; };
-		9011E0311EEEC22700C43D05 /* Icon_Call@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Call@3x.png"; sourceTree = "<group>"; };
-		9011E0321EEEC22700C43D05 /* Icon_Video disabled.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Video disabled.png"; sourceTree = "<group>"; };
-		9011E0331EEEC22700C43D05 /* Icon_Video disabled@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Video disabled@2x.png"; sourceTree = "<group>"; };
-		9011E0341EEEC22700C43D05 /* Icon_Video disabled@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Video disabled@3x.png"; sourceTree = "<group>"; };
-		9011E0351EEEC22700C43D05 /* Icon_Video.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Video.png; sourceTree = "<group>"; };
-		9011E0361EEEC22700C43D05 /* Icon_Video@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Video@2x.png"; sourceTree = "<group>"; };
-		9011E0371EEEC22700C43D05 /* Icon_Video@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Video@3x.png"; sourceTree = "<group>"; };
 		9011E0391EEEC22700C43D05 /* Icon_Add.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Icon_Add.png; sourceTree = "<group>"; };
 		9011E03A1EEEC22700C43D05 /* Icon_Add@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Add@2x.png"; sourceTree = "<group>"; };
 		9011E03B1EEEC22700C43D05 /* Icon_Add@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Icon_Add@3x.png"; sourceTree = "<group>"; };
@@ -710,6 +695,8 @@
 		90169F5F1EF275A300B9ADC6 /* UIImage+HeadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+HeadImage.swift"; sourceTree = "<group>"; };
 		90169F611EF2767200B9ADC6 /* EMUserProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMUserProfileManager.swift; sourceTree = "<group>"; };
 		90169F631EF2A30A00B9ADC6 /* AppDelegate+Parse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Parse.swift"; sourceTree = "<group>"; };
+		9017ED9B1FC44324005C77F7 /* EMChatroomsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatroomsViewController.swift; sourceTree = "<group>"; };
+		9017ED9D1FC44486005C77F7 /* EMChatroomModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatroomModel.swift; sourceTree = "<group>"; };
 		90190C761F0F470F00A238F3 /* EMAboutViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMAboutViewController.swift; sourceTree = "<group>"; };
 		90190C7A1F0F488800A238F3 /* EMAccountViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMAccountViewController.swift; sourceTree = "<group>"; };
 		90190C7E1F0F76F000A238F3 /* EMChatsSettingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatsSettingViewController.swift; sourceTree = "<group>"; };
@@ -720,6 +707,14 @@
 		9024B1591F00AEAD0043FD81 /* EMLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMLocationViewController.xib; sourceTree = "<group>"; };
 		902C0BC11EF24AC80069165E /* EMBaseRefreshTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMBaseRefreshTableViewController.swift; sourceTree = "<group>"; };
 		902C0BC51EF24BFD0069165E /* EMNotificationNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMNotificationNames.swift; sourceTree = "<group>"; };
+		905912B71FC57701001510BC /* EMChatroomAdminListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatroomAdminListViewController.swift; sourceTree = "<group>"; };
+		905912B91FC57710001510BC /* EMChatroomMemberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatroomMemberListViewController.swift; sourceTree = "<group>"; };
+		90593CE81FC535310029FB66 /* ChatroomInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatroomInfo.storyboard; sourceTree = "<group>"; };
+		90593CEA1FC535F40029FB66 /* EMChatroomInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatroomInfoViewController.swift; sourceTree = "<group>"; };
+		9069B3BF1FC409F2004F9DBD /* EMGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupModel.swift; sourceTree = "<group>"; };
+		9069B3C21FC40CBE004F9DBD /* IEMGroupModelDeleagte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IEMGroupModelDeleagte.swift; sourceTree = "<group>"; };
+		9069B3C61FC41C25004F9DBD /* EMGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupCell.swift; sourceTree = "<group>"; };
+		9069B3C71FC41C25004F9DBD /* EMGroupCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EMGroupCell.xib; sourceTree = "<group>"; };
 		906AD6401EFB6D22004CCCAE /* EMChatBaseCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatBaseCell.swift; sourceTree = "<group>"; };
 		906AD6411EFB6D22004CCCAE /* EMChatBaseCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMChatBaseCell.xib; sourceTree = "<group>"; };
 		906AD6441EFB836D004CCCAE /* EMChatBaseBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatBaseBubbleView.swift; sourceTree = "<group>"; };
@@ -758,6 +753,10 @@
 		90749ED01EF90E5B00D3A065 /* if_rom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = if_rom.h; sourceTree = "<group>"; };
 		90749ED11EF90E5B00D3A065 /* libopencore-amrwb.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "libopencore-amrwb.a"; sourceTree = "<group>"; };
 		90749EDE1EF9196200D3A065 /* EMChatToolBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMChatToolBar.xib; sourceTree = "<group>"; };
+		907FBAAE1FC679C0003386C1 /* EMChatroomParticipantsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatroomParticipantsViewController.swift; sourceTree = "<group>"; };
+		907FBAB21FC6822B003386C1 /* EMChatroomMuteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatroomMuteListViewController.swift; sourceTree = "<group>"; };
+		907FBAB41FC68273003386C1 /* EMChatroomBlackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatroomBlackListViewController.swift; sourceTree = "<group>"; };
+		907FBAB61FC68E0B003386C1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		9080EDDE1F03896E00B6C488 /* EMAddContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMAddContactViewController.swift; sourceTree = "<group>"; };
 		9080EDDF1F03896E00B6C488 /* EMAddContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMAddContactViewController.xib; sourceTree = "<group>"; };
 		908324E91EEFE5F000811A97 /* EMMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMMainViewController.swift; sourceTree = "<group>"; };
@@ -767,6 +766,7 @@
 		908462321EF779270008E480 /* EMChatViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatViewController.swift; sourceTree = "<group>"; };
 		908462331EF779270008E480 /* EMChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMChatViewController.xib; sourceTree = "<group>"; };
 		908462361EF77A140008E480 /* EMChatToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatToolBar.swift; sourceTree = "<group>"; };
+		909602211FC7D8C700E71B93 /* EMAlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAlertAction.swift; sourceTree = "<group>"; };
 		90AC4A441EFD104F0062DB30 /* EMChatVideoBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatVideoBubbleView.swift; sourceTree = "<group>"; };
 		90B43DC21F00C9C90084E67F /* EMChatLocationBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatLocationBubbleView.swift; sourceTree = "<group>"; };
 		90B43DC41F00DE0B0084E67F /* EMChatAudioBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatAudioBubbleView.swift; sourceTree = "<group>"; };
@@ -782,6 +782,7 @@
 		90B777CD1EF140E0006D0977 /* EMChatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatsCell.swift; sourceTree = "<group>"; };
 		90B777CE1EF140E0006D0977 /* EMChatsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMChatsCell.xib; sourceTree = "<group>"; };
 		90B777D11EF149AB006D0977 /* EMConversationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMConversationModel.swift; sourceTree = "<group>"; };
+		90BE3F4E1F3DA2B300B84B78 /* EMGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMGroupsViewController.swift; sourceTree = "<group>"; };
 		90BE5EC31F133D0D00C126EB /* EMSetNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMSetNameViewController.swift; sourceTree = "<group>"; };
 		90BF54A21EF3878B00BEED2F /* EMRealtimeSearchUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRealtimeSearchUtil.swift; sourceTree = "<group>"; };
 		90C00C761EEF8C5D0049BFAD /* UIView+HyphenateView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+HyphenateView.swift"; sourceTree = "<group>"; };
@@ -791,7 +792,6 @@
 		90F3DC391F02125700DEBB86 /* EMApplyManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMApplyManager.swift; sourceTree = "<group>"; };
 		90F3DC3B1F023A4D00DEBB86 /* EMChatDemoHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatDemoHelper.swift; sourceTree = "<group>"; };
 		90F3DC3D1F023B4E00DEBB86 /* EMBaseSettingController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMBaseSettingController.swift; sourceTree = "<group>"; };
-		90F3DC451F0242AD00DEBB86 /* NSObject+EMAlertView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "NSObject+EMAlertView.swift"; sourceTree = "<group>"; };
 		90F9B7211F04F00500513DC1 /* EMContactInfoViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMContactInfoViewController.swift; sourceTree = "<group>"; };
 		90F9B7221F04F00500513DC1 /* EMContactInfoViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMContactInfoViewController.xib; sourceTree = "<group>"; };
 		90FB78841EF78EB000B02F60 /* EMMessageTextView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMMessageTextView.swift; sourceTree = "<group>"; };
@@ -888,12 +888,11 @@
 		9011DF571EEEC00800C43D05 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				9017ED9A1FC442DE005C77F7 /* Chatrooms */,
+				90BE3F4D1F3DA2A500B84B78 /* Groups */,
 				908324EB1EEFF06400811A97 /* Base */,
-				908324EC1EEFF06400811A97 /* Call */,
-				908324ED1EEFF06400811A97 /* Chatrooms */,
 				908324EE1EEFF06400811A97 /* Chats */,
 				908324EF1EEFF06400811A97 /* Contacts */,
-				908324F01EEFF06400811A97 /* Groups */,
 				908324F11EEFF06400811A97 /* Settings */,
 				9011DF5D1EEEC09200C43D05 /* EMLaunchViewController.swift */,
 				90C00C7B1EEFA95B0049BFAD /* EMLoginViewController.swift */,
@@ -909,6 +908,9 @@
 				9084622C1EF7754F0008E480 /* EMMessageModel.swift */,
 				90B43DCD1F0120F10084E67F /* EMUserModel.swift */,
 				90B43DD71F0133180084E67F /* EMApplyModel.swift */,
+				9069B3BF1FC409F2004F9DBD /* EMGroupModel.swift */,
+				9069B3C21FC40CBE004F9DBD /* IEMGroupModelDeleagte.swift */,
+				9017ED9D1FC44486005C77F7 /* EMChatroomModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -949,6 +951,7 @@
 				9011DF5F1EEEC13C00C43D05 /* Launch.storyboard */,
 				9011DF611EEEC1B300C43D05 /* Register&Login.storyboard */,
 				90190C801F0F859500A238F3 /* Settings.storyboard */,
+				90593CE81FC535310029FB66 /* ChatroomInfo.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -961,7 +964,6 @@
 				9011DF8D1EEEC22700C43D05 /* Chat Details */,
 				9011DFA31EEEC22700C43D05 /* Chatting */,
 				9011DFFA1EEEC22700C43D05 /* Footer Type Bar */,
-				9011E02B1EEEC22700C43D05 /* Header */,
 				9011E0381EEEC22700C43D05 /* Header Search Bar */,
 				9011E0481EEEC22700C43D05 /* Logo */,
 				9011E04C1EEEC22700C43D05 /* Nav Bar */,
@@ -1108,9 +1110,6 @@
 				9011DFD51EEEC22700C43D05 /* Button_Stats@2x.png */,
 				9011DFD61EEEC22700C43D05 /* Button_Stats@3x.png */,
 				9011DFD71EEEC22700C43D05 /* faceDelete@2x.png */,
-				9011DFD81EEEC22700C43D05 /* Icon_Call.png */,
-				9011DFD91EEEC22700C43D05 /* Icon_Call@2x.png */,
-				9011DFDA1EEEC22700C43D05 /* Icon_Call@3x.png */,
 				9011DFDB1EEEC22700C43D05 /* Icon_Check.png */,
 				9011DFDC1EEEC22700C43D05 /* Icon_Check@2x.png */,
 				9011DFDD1EEEC22700C43D05 /* Icon_Check@3x.png */,
@@ -1199,25 +1198,6 @@
 				9011E02A1EEEC22700C43D05 /* Icon_Location_disable@3x.png */,
 			);
 			path = "Footer Type Bar";
-			sourceTree = "<group>";
-		};
-		9011E02B1EEEC22700C43D05 /* Header */ = {
-			isa = PBXGroup;
-			children = (
-				9011E02C1EEEC22700C43D05 /* Icon_Call disabled.png */,
-				9011E02D1EEEC22700C43D05 /* Icon_Call disabled@2x.png */,
-				9011E02E1EEEC22700C43D05 /* Icon_Call disabled@3x.png */,
-				9011E02F1EEEC22700C43D05 /* Icon_Call.png */,
-				9011E0301EEEC22700C43D05 /* Icon_Call@2x.png */,
-				9011E0311EEEC22700C43D05 /* Icon_Call@3x.png */,
-				9011E0321EEEC22700C43D05 /* Icon_Video disabled.png */,
-				9011E0331EEEC22700C43D05 /* Icon_Video disabled@2x.png */,
-				9011E0341EEEC22700C43D05 /* Icon_Video disabled@3x.png */,
-				9011E0351EEEC22700C43D05 /* Icon_Video.png */,
-				9011E0361EEEC22700C43D05 /* Icon_Video@2x.png */,
-				9011E0371EEEC22700C43D05 /* Icon_Video@3x.png */,
-			);
-			path = Header;
 			sourceTree = "<group>";
 		};
 		9011E0381EEEC22700C43D05 /* Header Search Bar */ = {
@@ -1357,11 +1337,25 @@
 			path = Splash;
 			sourceTree = "<group>";
 		};
+		9017ED9A1FC442DE005C77F7 /* Chatrooms */ = {
+			isa = PBXGroup;
+			children = (
+				9017ED9B1FC44324005C77F7 /* EMChatroomsViewController.swift */,
+				90593CEA1FC535F40029FB66 /* EMChatroomInfoViewController.swift */,
+				905912B71FC57701001510BC /* EMChatroomAdminListViewController.swift */,
+				905912B91FC57710001510BC /* EMChatroomMemberListViewController.swift */,
+				907FBAAE1FC679C0003386C1 /* EMChatroomParticipantsViewController.swift */,
+				907FBAB21FC6822B003386C1 /* EMChatroomMuteListViewController.swift */,
+				907FBAB41FC68273003386C1 /* EMChatroomBlackListViewController.swift */,
+			);
+			path = Chatrooms;
+			sourceTree = "<group>";
+		};
 		906AD64A1EFBD2BE004CCCAE /* Category */ = {
 			isa = PBXGroup;
 			children = (
 				906AD64B1EFBD2DC004CCCAE /* UIViewController+HUD.swift */,
-				90F3DC451F0242AD00DEBB86 /* NSObject+EMAlertView.swift */,
+				907FBAB61FC68E0B003386C1 /* Extension.swift */,
 			);
 			path = Category;
 			sourceTree = "<group>";
@@ -1459,20 +1453,6 @@
 			path = Base;
 			sourceTree = "<group>";
 		};
-		908324EC1EEFF06400811A97 /* Call */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Call;
-			sourceTree = "<group>";
-		};
-		908324ED1EEFF06400811A97 /* Chatrooms */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Chatrooms;
-			sourceTree = "<group>";
-		};
 		908324EE1EEFF06400811A97 /* Chats */ = {
 			isa = PBXGroup;
 			children = (
@@ -1497,13 +1477,6 @@
 				90F9B7221F04F00500513DC1 /* EMContactInfoViewController.xib */,
 			);
 			path = Contacts;
-			sourceTree = "<group>";
-		};
-		908324F01EEFF06400811A97 /* Groups */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Groups;
 			sourceTree = "<group>";
 		};
 		908324F11EEFF06400811A97 /* Settings */ = {
@@ -1564,10 +1537,29 @@
 			path = ChatCell;
 			sourceTree = "<group>";
 		};
+		90BE3F4D1F3DA2A500B84B78 /* Groups */ = {
+			isa = PBXGroup;
+			children = (
+				90BE3F501F3DA83F00B84B78 /* Views */,
+				90BE3F4E1F3DA2B300B84B78 /* EMGroupsViewController.swift */,
+			);
+			path = Groups;
+			sourceTree = "<group>";
+		};
+		90BE3F501F3DA83F00B84B78 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9069B3C61FC41C25004F9DBD /* EMGroupCell.swift */,
+				9069B3C71FC41C25004F9DBD /* EMGroupCell.xib */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		90FB78831EF78E9E00B02F60 /* CustomView */ = {
 			isa = PBXGroup;
 			children = (
 				90FB78841EF78EB000B02F60 /* EMMessageTextView.swift */,
+				909602211FC7D8C700E71B93 /* EMAlertAction.swift */,
 			);
 			path = CustomView;
 			sourceTree = "<group>";
@@ -1615,12 +1607,13 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0830;
-				LastUpgradeCheck = 0830;
+				LastUpgradeCheck = 0910;
 				ORGANIZATIONNAME = "杜洁鹏";
 				TargetAttributes = {
 					9011DF401EEEBEA400C43D05 = {
 						CreatedOnToolsVersion = 8.3;
 						DevelopmentTeam = ZHZ4TMESQ4;
+						LastSwiftMigration = 0910;
 						ProvisioningStyle = Automatic;
 						SystemCapabilities = {
 							com.apple.Push = {
@@ -1671,8 +1664,6 @@
 				9011E0F21EEEC22700C43D05 /* Button_Minimize@2x.png in Resources */,
 				9011E13F1EEEC22700C43D05 /* Icon_Audio_disable@2x.png in Resources */,
 				9011E15A1EEEC22700C43D05 /* Icon_Location@2x.png in Resources */,
-				9011E1631EEEC22700C43D05 /* Icon_Call@2x.png in Resources */,
-				9011E1671EEEC22700C43D05 /* Icon_Video disabled@3x.png in Resources */,
 				9011E1A01EEEC22700C43D05 /* default_group_avatar.png in Resources */,
 				9011E13E1EEEC22700C43D05 /* Icon_Audio_disable.png in Resources */,
 				9011E0D31EEEC22700C43D05 /* feedback.png in Resources */,
@@ -1715,12 +1706,10 @@
 				9011E1791EEEC22700C43D05 /* Icon_Search@3x.png in Resources */,
 				9011E0F31EEEC22700C43D05 /* Button_Minimize@3x.png in Resources */,
 				9011E0E91EEEC22700C43D05 /* Button_Current Location@2x.png in Resources */,
-				9011E10F1EEEC22700C43D05 /* Icon_Call@3x.png in Resources */,
 				9011E1781EEEC22700C43D05 /* Icon_Search@2x.png in Resources */,
 				9011E0FA1EEEC22700C43D05 /* Button_Mute.png in Resources */,
 				9011E1A81EEEC22700C43D05 /* shape_right@2x.png in Resources */,
 				9011E1951EEEC22700C43D05 /* Button_Call@3x.png in Resources */,
-				9011E1601EEEC22700C43D05 /* Icon_Call disabled@2x.png in Resources */,
 				9011E1531EEEC22700C43D05 /* Icon_Image active.png in Resources */,
 				9011E18E1EEEC22700C43D05 /* Settings_active@3x.png in Resources */,
 				9011E0EE1EEEC22700C43D05 /* Button_Minimize disabled.png in Resources */,
@@ -1744,7 +1733,7 @@
 				9011E1521EEEC22700C43D05 /* Icon_File_disable@3x.png in Resources */,
 				9011E0F91EEEC22700C43D05 /* Button_Mute disabled@3x.png in Resources */,
 				9011E18D1EEEC22700C43D05 /* Settings_active@2x.png in Resources */,
-				9011E10D1EEEC22700C43D05 /* Icon_Call.png in Resources */,
+				90593CE91FC535310029FB66 /* ChatroomInfo.storyboard in Resources */,
 				9011E0D81EEEC22700C43D05 /* message@3x.png in Resources */,
 				9011E0E51EEEC22700C43D05 /* Button_Cancel Call.png in Resources */,
 				9011E0B11EEEC22700C43D05 /* Icon_New chat@3x.png in Resources */,
@@ -1764,7 +1753,6 @@
 				9011E0E61EEEC22700C43D05 /* Button_Cancel Call@2x.png in Resources */,
 				9011E0A11EEEC22700C43D05 /* addContact_enable@2x.png in Resources */,
 				9011E1591EEEC22700C43D05 /* Icon_Location.png in Resources */,
-				9011E1651EEEC22700C43D05 /* Icon_Video disabled.png in Resources */,
 				9011E11D1EEEC22700C43D05 /* icon_info@2x.png in Resources */,
 				9011E0BA1EEEC22700C43D05 /* Swipe_Delete@3x.png in Resources */,
 				9011E1321EEEC22700C43D05 /* Button_Record cancel.png in Resources */,
@@ -1790,7 +1778,6 @@
 				9011E1AD1EEEC22700C43D05 /* logo11.png in Resources */,
 				9011E1281EEEC22700C43D05 /* iconCall.png in Resources */,
 				9011E18A1EEEC22700C43D05 /* Settings@2x.png in Resources */,
-				9011E15F1EEEC22700C43D05 /* Icon_Call disabled.png in Resources */,
 				9011E1A21EEEC22700C43D05 /* default_group_avatar@3x.png in Resources */,
 				9011E14D1EEEC22700C43D05 /* Icon_File.png in Resources */,
 				9011E14C1EEEC22700C43D05 /* icon_emoji_disable@3x.png in Resources */,
@@ -1803,6 +1790,7 @@
 				9011E0DE1EEEC22700C43D05 /* Button_Camera switch active@3x.png in Resources */,
 				9011E17C1EEEC22700C43D05 /* Logo_green@3x.png in Resources */,
 				9011E1B51EEEC22700C43D05 /* logo3.png in Resources */,
+				9069B3C91FC41C25004F9DBD /* EMGroupCell.xib in Resources */,
 				9011E1C81EEEC22700C43D05 /* logo9@2x.png in Resources */,
 				9011E0EA1EEEC22700C43D05 /* Button_Current Location@3x.png in Resources */,
 				9011E1C21EEEC22700C43D05 /* logo7@2x.png in Resources */,
@@ -1834,7 +1822,6 @@
 				90190C811F0F859500A238F3 /* Settings.storyboard in Resources */,
 				9011E1001EEEC22700C43D05 /* Button_Speaker disabled.png in Resources */,
 				9011E15B1EEEC22700C43D05 /* Icon_Location@3x.png in Resources */,
-				9011E1621EEEC22700C43D05 /* Icon_Call.png in Resources */,
 				9011E15C1EEEC22700C43D05 /* Icon_Location_disable.png in Resources */,
 				9011E1AB1EEEC22700C43D05 /* logo10@2x.png in Resources */,
 				9011E0BE1EEEC22700C43D05 /* Toggle off.png in Resources */,
@@ -1844,7 +1831,6 @@
 				9011E1411EEEC22700C43D05 /* Icon_Camera active.png in Resources */,
 				9011E1931EEEC22700C43D05 /* Button_Call.png in Resources */,
 				9011E0A21EEEC22700C43D05 /* addContact_enable@3x.png in Resources */,
-				9011E10E1EEEC22700C43D05 /* Icon_Call@2x.png in Resources */,
 				9011E1291EEEC22700C43D05 /* iconCall@2x.png in Resources */,
 				9080EDE11F03896E00B6C488 /* EMAddContactViewController.xib in Resources */,
 				9011E0A31EEEC22700C43D05 /* Button_Accept.png in Resources */,
@@ -1868,9 +1854,7 @@
 				9011E1091EEEC22700C43D05 /* Button_Stats.png in Resources */,
 				9011E0C31EEEC22700C43D05 /* Toggle on@3x.png in Resources */,
 				9011E1A31EEEC22700C43D05 /* Group3@2x.png in Resources */,
-				9011E16A1EEEC22700C43D05 /* Icon_Video@3x.png in Resources */,
 				9011E1A11EEEC22700C43D05 /* default_group_avatar@2x.png in Resources */,
-				9011E1681EEEC22700C43D05 /* Icon_Video.png in Resources */,
 				9011E0C11EEEC22700C43D05 /* Toggle on.png in Resources */,
 				9011E1231EEEC22700C43D05 /* Icon_Play@2x.png in Resources */,
 				9011E1361EEEC22700C43D05 /* Button_Record@2x.png in Resources */,
@@ -1879,8 +1863,6 @@
 				9011E0ED1EEEC22700C43D05 /* Button_End@3x.png in Resources */,
 				9011E1751EEEC22700C43D05 /* Icon_New@2x.png in Resources */,
 				9011E19D1EEEC22700C43D05 /* default_avatar.png in Resources */,
-				9011E1641EEEC22700C43D05 /* Icon_Call@3x.png in Resources */,
-				9011E1691EEEC22700C43D05 /* Icon_Video@2x.png in Resources */,
 				9011E0E21EEEC22700C43D05 /* Button_Camera switch.png in Resources */,
 				9011E1A71EEEC22700C43D05 /* shape_left@2x.png in Resources */,
 				9011E1971EEEC22700C43D05 /* Button_Chat@2x.png in Resources */,
@@ -1902,7 +1884,6 @@
 				9011E1BE1EEEC22700C43D05 /* logo6.png in Resources */,
 				9011E09E1EEEC22700C43D05 /* addContact_disable@2x.png in Resources */,
 				9011E0EF1EEEC22700C43D05 /* Button_Minimize disabled@2x.png in Resources */,
-				9011E1661EEEC22700C43D05 /* Icon_Video disabled@2x.png in Resources */,
 				9011E0FB1EEEC22700C43D05 /* Button_Mute@2x.png in Resources */,
 				9011E1981EEEC22700C43D05 /* Button_Chat@3x.png in Resources */,
 				9011E0F61EEEC22700C43D05 /* Button_Mute active@3x.png in Resources */,
@@ -1932,7 +1913,6 @@
 				9011E1961EEEC22700C43D05 /* Button_Chat.png in Resources */,
 				9011E12D1EEEC22700C43D05 /* iconVideo@3x.png in Resources */,
 				90B777D01EF140E0006D0977 /* EMChatsCell.xib in Resources */,
-				9011E1611EEEC22700C43D05 /* Icon_Call disabled@3x.png in Resources */,
 				9011E19B1EEEC22700C43D05 /* Button_Video@3x.png in Resources */,
 				9011E0A91EEEC22700C43D05 /* Button_Join.png in Resources */,
 				9011E1AF1EEEC22700C43D05 /* logo11@3x.png in Resources */,
@@ -2029,15 +2009,20 @@
 			buildActionMask = 2147483647;
 			files = (
 				9080EDE01F03896E00B6C488 /* EMAddContactViewController.swift in Sources */,
+				9017ED9E1FC44486005C77F7 /* EMChatroomModel.swift in Sources */,
 				90C00C7C1EEFA95B0049BFAD /* EMLoginViewController.swift in Sources */,
 				9011DF451EEEBEA400C43D05 /* AppDelegate.swift in Sources */,
 				90FB788F1EF7ED4500B02F60 /* EMFacialView.swift in Sources */,
 				90B43DC71F00F1100084E67F /* EMMessageReadManager.swift in Sources */,
+				90593CEB1FC535F40029FB66 /* EMChatroomInfoViewController.swift in Sources */,
+				907FBAB51FC68273003386C1 /* EMChatroomBlackListViewController.swift in Sources */,
 				9011E1CC1EEEC38600C43D05 /* EMColorUtils.swift in Sources */,
 				90FB78981EF7EE9B00B02F60 /* EMEmoji.m in Sources */,
+				9069B3C81FC41C25004F9DBD /* EMGroupCell.swift in Sources */,
 				90190C831F0F997D00A238F3 /* EMPushNotificationViewController.swift in Sources */,
 				9024B15A1F00AEAD0043FD81 /* EMLocationViewController.swift in Sources */,
 				90190C7B1F0F488800A238F3 /* EMAccountViewController.swift in Sources */,
+				905912B81FC57701001510BC /* EMChatroomAdminListViewController.swift in Sources */,
 				90749ED21EF90E5B00D3A065 /* EMAudioPlayerUtil.m in Sources */,
 				908462341EF779270008E480 /* EMChatViewController.swift in Sources */,
 				90B43DD81F0133180084E67F /* EMApplyModel.swift in Sources */,
@@ -2046,7 +2031,9 @@
 				90FB788D1EF7E76700B02F60 /* EMFaceView.swift in Sources */,
 				90169F601EF275A300B9ADC6 /* UIImage+HeadImage.swift in Sources */,
 				906FB2551EFCD2A400CA241E /* EMChatImageBubbleView.swift in Sources */,
+				9017ED9C1FC44324005C77F7 /* EMChatroomsViewController.swift in Sources */,
 				90F3DC3F1F023B4E00DEBB86 /* EMBaseSettingController.swift in Sources */,
+				905912BA1FC57710001510BC /* EMChatroomMemberListViewController.swift in Sources */,
 				90B43DD11F012D8F0084E67F /* EMGroupTitleCell.swift in Sources */,
 				90B43DCE1F0120F10084E67F /* EMUserModel.swift in Sources */,
 				90190C781F0F470F00A238F3 /* EMAboutViewController.swift in Sources */,
@@ -2059,22 +2046,28 @@
 				90190C7F1F0F76F000A238F3 /* EMChatsSettingViewController.swift in Sources */,
 				908462371EF77A140008E480 /* EMChatToolBar.swift in Sources */,
 				90749ED91EF90E5B00D3A065 /* amrFileCodec.mm in Sources */,
+				907FBAB71FC68E0B003386C1 /* Extension.swift in Sources */,
 				90B777CF1EF140E0006D0977 /* EMChatsCell.swift in Sources */,
 				90749EDA1EF90E5B00D3A065 /* wav.mm in Sources */,
 				90FB78991EF7EE9B00B02F60 /* EMEmojiEmoticons.m in Sources */,
+				909602221FC7D8C700E71B93 /* EMAlertAction.swift in Sources */,
 				90749ED41EF90E5B00D3A065 /* EMCDDeviceManager+Media.m in Sources */,
 				90749ED81EF90E5B00D3A065 /* EMCDDeviceManagerBase.m in Sources */,
 				90FB78891EF7BFAE00B02F60 /* EMChatRecordView.swift in Sources */,
 				906AD64C1EFBD2DC004CCCAE /* UIViewController+HUD.swift in Sources */,
+				90BE3F4F1F3DA2B300B84B78 /* EMGroupsViewController.swift in Sources */,
 				902C0BC31EF24AC80069165E /* EMBaseRefreshTableViewController.swift in Sources */,
 				901D8D071F0F3998009D6644 /* EMSettingsViewController.swift in Sources */,
 				90749ED31EF90E5B00D3A065 /* EMAudioRecorderUtil.m in Sources */,
 				90FB78851EF78EB000B02F60 /* EMMessageTextView.swift in Sources */,
+				907FBAB31FC6822B003386C1 /* EMChatroomMuteListViewController.swift in Sources */,
 				908324EA1EEFE5F000811A97 /* EMMainViewController.swift in Sources */,
+				907FBAAF1FC679C0003386C1 /* EMChatroomParticipantsViewController.swift in Sources */,
 				906AD6451EFB836D004CCCAE /* EMChatBaseBubbleView.swift in Sources */,
 				90C00C771EEF8C5D0049BFAD /* UIView+HyphenateView.swift in Sources */,
 				90B43DC51F00DE0B0084E67F /* EMChatAudioBubbleView.swift in Sources */,
 				90169F621EF2767200B9ADC6 /* EMUserProfileManager.swift in Sources */,
+				9069B3C01FC409F2004F9DBD /* EMGroupModel.swift in Sources */,
 				908324F51EF0072700811A97 /* EMChatsController.swift in Sources */,
 				908324F71EF00C1F00811A97 /* EMContactsViewController.swift in Sources */,
 				9011DF5E1EEEC09200C43D05 /* EMLaunchViewController.swift in Sources */,
@@ -2082,6 +2075,7 @@
 				90BE5EC41F133D0D00C126EB /* EMSetNameViewController.swift in Sources */,
 				90F3DC3C1F023A4D00DEBB86 /* EMChatDemoHelper.swift in Sources */,
 				90749ED61EF90E5B00D3A065 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
+				9069B3C31FC40CBE004F9DBD /* IEMGroupModelDeleagte.swift in Sources */,
 				90B43DD51F012E910084E67F /* EMApplyRequestCell.swift in Sources */,
 				90749EDB1EF90E5B00D3A065 /* EMVoiceConverter.mm in Sources */,
 				90B777D21EF149AB006D0977 /* EMConversationModel.swift in Sources */,
@@ -2089,7 +2083,6 @@
 				90C00C791EEF92290049BFAD /* EMHyphenateDemoUIDefine.swift in Sources */,
 				90AC4A451EFD104F0062DB30 /* EMChatVideoBubbleView.swift in Sources */,
 				90B43DCB1F0120D00084E67F /* EMContactCell.swift in Sources */,
-				90F3DC461F0242AD00DEBB86 /* NSObject+EMAlertView.swift in Sources */,
 				90F3DC3A1F02125700DEBB86 /* EMApplyManager.swift in Sources */,
 				9084622D1EF7754F0008E480 /* EMMessageModel.swift in Sources */,
 				90F9B7231F04F00500513DC1 /* EMContactInfoViewController.swift in Sources */,
@@ -2120,7 +2113,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -2128,7 +2123,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2170,7 +2169,9 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
@@ -2178,7 +2179,11 @@
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
 				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -2213,7 +2218,7 @@
 				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Hyphenate-Demo-Swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2224,7 +2229,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Hyphenate-Demo-Swift/Code/Utilities/Hyphenate-Bridge-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -2238,7 +2244,7 @@
 				DEVELOPMENT_TEAM = ZHZ4TMESQ4;
 				ENABLE_BITCODE = NO;
 				INFOPLIST_FILE = "Hyphenate-Demo-Swift/Info.plist";
-				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
@@ -2249,7 +2255,8 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "$(SRCROOT)/Hyphenate-Demo-Swift/Code/Utilities/Hyphenate-Bridge-Header.h";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};

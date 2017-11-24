@@ -54,7 +54,7 @@ class EMChatImageBubbleView: EMChatBaseBubbleView {
         super.set(model: model)
         let body = _model?.message?.body as! EMImageMessageBody
         
-        if body.thumbnailLocalPath.characters.count > 0 {
+        if body.thumbnailLocalPath.count > 0 {
             _backImageView?.image = UIImage.init(contentsOfFile: body.thumbnailLocalPath)
             return
         }

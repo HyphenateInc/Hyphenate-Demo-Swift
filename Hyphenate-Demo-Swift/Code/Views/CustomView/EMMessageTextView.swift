@@ -51,7 +51,7 @@ class EMMessageTextView: UITextView {
     }
     
     class func numberOfLines(forMessage message: String) -> Int {
-        return (message.characters.count / EMMessageTextView.maxChatactersPerLine()) + 1
+        return (message.count / EMMessageTextView.maxChatactersPerLine()) + 1
     }
     
     // MARK: - text view overrides
@@ -76,7 +76,7 @@ class EMMessageTextView: UITextView {
     }
     
     // MARK: - Notifications
-    func didReceive(textDidChangeNotification: Notification) {
+    @objc func didReceive(textDidChangeNotification: Notification) {
         setNeedsDisplay()
     }
     
@@ -111,7 +111,7 @@ class EMMessageTextView: UITextView {
     
     override func draw(_ rect: CGRect) {
         super.draw(rect)
-        if text.characters.count == 0 && placeHolder != nil {
+        if text.count == 0 && placeHolder != nil {
             let placeHoldeRect = CGRect.init(x: 10, y: 7, width: rect.size.width, height: rect.size.height)
             placeHolderTextColor?.set()
             
@@ -119,8 +119,8 @@ class EMMessageTextView: UITextView {
             paragraphStype.lineBreakMode = NSLineBreakMode.byTruncatingTail
             paragraphStype.alignment = textAlignment
             
-            placeHolder?.draw(in: placeHoldeRect, withAttributes: [NSFontAttributeName: font!, NSForegroundColorAttributeName: placeHolderTextColor!,
-                                                                   NSParagraphStyleAttributeName: paragraphStype])
+            placeHolder?.draw(in: placeHoldeRect, withAttributes: [NSAttributedStringKey.font: font!, NSAttributedStringKey.foregroundColor: placeHolderTextColor!,
+                                                                   NSAttributedStringKey.paragraphStyle: paragraphStype])
         }
     }
 }

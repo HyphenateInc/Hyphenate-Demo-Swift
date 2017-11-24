@@ -16,10 +16,6 @@ class EMConversationModel: NSObject, EMRealtimeSearchUtilDelegate {
     
     init(conversation con: EMConversation) {
         conversation = con
-        let subject = con.ext?["subject"] as? String
-        if subject != nil {
-            _title = subject
-        }
         
         if conversation?.type == EMConversationTypeGroupChat {
             let groups = EMClient.shared().groupManager.getJoinedGroups()
@@ -31,7 +27,12 @@ class EMConversationModel: NSObject, EMRealtimeSearchUtilDelegate {
             }
         }
         
-        if _title?.characters.count == 0 {
+        let subject = con.ext?["subject"] as? String
+        if subject != nil {
+            _title = subject
+        }
+        
+        if _title?.count == 0 {
             _title = conversation?.conversationId
         }
     }

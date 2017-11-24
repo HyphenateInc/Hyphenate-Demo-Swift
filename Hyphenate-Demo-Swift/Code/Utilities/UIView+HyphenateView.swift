@@ -54,6 +54,20 @@ extension UIView {
 
 extension UIViewController {
     
+//    func setupBackAction() {
+//    let leftBtn = UIButton(type: UIButtonType.custom)
+//    leftBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+//    leftBtn.setImage(UIImage(named:"Icon_Back"), for: .normal)
+//    leftBtn.setImage(UIImage(named:"Icon_Back"), for: .highlighted)
+//    leftBtn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
+//    let leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
+//    navigationItem.leftBarButtonItem = leftBarButtonItem
+//    }
+//    
+//    @objc func backAction() {
+//    
+//    }
+    
     func setupForDismissKeyboard() {
         weak var weakSelf = self
         let notiCenter = NotificationCenter.default      
@@ -67,7 +81,7 @@ extension UIViewController {
         }      
     }
     
-    func tapAnyWhereToDismissKeyboard(gesture: UIGestureRecognizer) {
+    @objc func tapAnyWhereToDismissKeyboard(gesture: UIGestureRecognizer) {
         view.endEditing(true)      
     }
 }

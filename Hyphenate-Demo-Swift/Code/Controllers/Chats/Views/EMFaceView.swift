@@ -57,7 +57,7 @@ class EMFaceView: UIView, EMFacialViewDelegate {
         sendBtn.frame = CGRect(x: CGFloat((kButtomNum - 1)) * (_facialView?.width())! / CGFloat(kButtomNum), y: ((_facialView?.frame.origin.y)! + (_facialView?.height())!), width: (_facialView?.width())! / CGFloat(kButtomNum), height: (_bottomScrollView?.height())!)
         sendBtn.setTitle("Send", for: UIControlState.normal)
         sendBtn.setTitleColor(KermitGreenTwoColor, for: UIControlState.normal)
-        sendBtn.addTarget(self, action: #selector(sendFace as (Void) -> Void), for: UIControlEvents.touchUpInside)
+        sendBtn.addTarget(self, action: #selector(sendFace as () -> Void), for: UIControlEvents.touchUpInside)
         addSubview(sendBtn)
         
         _facialView?.loadFacialView()
@@ -96,7 +96,7 @@ class EMFaceView: UIView, EMFacialViewDelegate {
     }
     
     // MARK: - Actions
-    func didSelect(btn: UIButton) {
+    @objc func didSelect(btn: UIButton) {
         let tag = btn.tag
         if tag < (_emojiManagers?.count)! {
             _facialView?.loadFacialView()

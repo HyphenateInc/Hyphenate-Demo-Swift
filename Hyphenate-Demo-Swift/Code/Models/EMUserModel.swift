@@ -31,10 +31,10 @@ class EMUserModel: NSObject, IEMUserModel, EMRealtimeSearchUtilDelegate{
         }
     }
     
-    var nickname: String? {
+    @objc var nickname: String? {
         get {
             let nickname = EMUserProfileManager.sharedInstance.getNickNameWithUsername(username: hyphenateID!)
-            if nickname.characters.count > 0 {
+            if nickname.count > 0 {
                 return nickname
             }
             return hyphenateID

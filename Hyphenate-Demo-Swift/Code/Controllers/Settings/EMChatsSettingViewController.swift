@@ -47,7 +47,7 @@ class EMChatsSettingViewController: EMBaseSettingController {
         tableView.reloadData()
     }
     
-    func autoAcceptAction(_ sender: UISwitch) {
+    @objc func autoAcceptAction(_ sender: UISwitch) {
         let options = EMClient.shared().options
         options?.isAutoAcceptGroupInvitation = sender.isOn
     }
