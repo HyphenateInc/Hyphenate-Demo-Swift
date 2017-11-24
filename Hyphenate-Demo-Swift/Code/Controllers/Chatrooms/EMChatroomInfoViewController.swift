@@ -96,14 +96,27 @@ class EMChatroomInfoViewController: UITableViewController {
     }
     
     @objc func leaveChatroom() {
-        showHub(inView: UIApplication.shared.keyWindow!, "Leaving the chatroom...")
-        weak var weakSelf = self
-        EMClient.shared().roomManager.leaveChatroom(chatroom!.chatroomId) { (error) in
-            weakSelf?.hideHub()
-            if error == nil {
-                
-            }else {
-                weakSelf?.show((error?.errorDescription)!)
+        if isOwner {
+            showHub(inView: UIApplication.shared.keyWindow!, "Destroy the chatroom...")
+            weak var weakSelf = self
+            EMClient.shared().roomManager.destroyChatroom(chatroom!.chatroomId) { (error) in
+                weakSelf?.hideHub()
+                if error == nil {
+                    NotificationCenter.default.post(name: NSNotification.Name(KEM_END_CHAT), object: weakSelf?.chatroom)
+                }else {
+                    weakSelf?.show((error?.errorDescription)!)
+                }
+            }
+        } else {
+            showHub(inView: UIApplication.shared.keyWindow!, "Leaving the chatroom...")
+            weak var weakSelf = self
+            EMClient.shared().roomManager.leaveChatroom(chatroom!.chatroomId) { (error) in
+                weakSelf?.hideHub()
+                if error == nil {
+                    NotificationCenter.default.post(name: NSNotification.Name(KEM_END_CHAT), object: weakSelf?.chatroom)
+                }else {
+                    weakSelf?.show((error?.errorDescription)!)
+                }
             }
         }
     }

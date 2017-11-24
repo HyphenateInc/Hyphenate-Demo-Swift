@@ -12,14 +12,13 @@ import Foundation
 
 let KNOTIFICATIONNAME_DELETEALLMESSAGE = "RemoveAllMessages"
 
-let KEM_REFRESH_GROUPLIST_NOTIFICATION = "refreshGroups_notification"
-let KEM_REMOVEGROUP_NOTIFICATION = "removeGroups_notification"
-let KEM_REFRESH_GROUP_INFO = "UpdateGroupInfo_notification"
+let KEM_REFRESH_GROUPLIST_NOTIFICATION = "RefreshGroupsNotification"
+let KEM_REMOVEGROUP_NOTIFICATION = "RemoveGroupNotification"
+let KEM_REFRESH_GROUP_INFO = "UpdateGroupInfoNotification"
 
-let KEM_REFRESH_CHATROOMLIST_NOTIFICATION = "refreshChatrooms_notification"
-let KEM_DESTROY_CHATROOM_NOTIFICATION = "destroyChatroom_notification"
-let KEM_REFRESH_CHATROOM_INFO = "UpdateChatroomInfo_notification"
+let KEM_REFRESH_CHATROOMLIST_NOTIFICATION = "RefreshChatroomsNotification"
+let KEM_DESTROY_CHATROOM_NOTIFICATION = "LeaveCatroomNotification"
+let KEM_REFRESH_CHATROOM_INFO = "UpdateChatroomInfoNotification"
 
-
-let KEM_END_CHAT = "endChat_notification"
+let KEM_END_CHAT = "EndChatNotification"
 let KEM_UPDATE_CONVERSATIONS = "UpdateConversations"

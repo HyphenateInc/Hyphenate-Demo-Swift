@@ -48,11 +48,10 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     override func viewDidLoad() {
         super.viewDidLoad()
         _setupInstanceUI()
+        registerNotifications()
+        
         view.backgroundColor = UIColor.white
         edgesForExtendedLayout = UIRectEdge(rawValue: 0)
-        
-        NotificationCenter.default.addObserver(self, selector: #selector(endChat(withConversationIdNotification:)), name: NSNotification.Name(rawValue:KEM_END_CHAT), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteAllMessages(sender:)), name: NSNotification.Name(rawValue:KNOTIFICATIONNAME_DELETEALLMESSAGE), object: nil)
         
         let tap = UITapGestureRecognizer.init(target: self, action: #selector(keyboardHidden(tap:)))
         view.addGestureRecognizer(tap)
@@ -76,6 +75,11 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         if _conversaiton?.type == EMConversationTypeChatRoom {
             _joinChatroom(chatroomId: _conversaiton!.conversationId)
         }
+    }
+    
+    func registerNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(endChat(withConversationIdNotification:)), name: NSNotification.Name(rawValue:KEM_END_CHAT), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteAllMessages(sender:)), name: NSNotification.Name(rawValue:KNOTIFICATIONNAME_DELETEALLMESSAGE), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -117,6 +121,9 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         print(" ----------------------------------------------- ChatViewController dealloc ---------------------------------------------------")
     }
     
+    @objc func endChat() {
+        navigationController?.popViewController(animated: true)
+    }
     
     // MARK: - Private Layout Views
     private func _setupNavigationBar() {
