@@ -17,8 +17,8 @@ let KEM_REMOVEGROUP_NOTIFICATION = "removeGroups_notification"
 let KEM_REFRESH_GROUP_INFO = "UpdateGroupInfo_notification"
 
 let KEM_REFRESH_CHATROOMLIST_NOTIFICATION = "refreshChatrooms_notification"
-let KEM_DESTROY_CHATROOM_NOTIFICATION = "UpdateChatroomInfo_notification"
-let KEM_REFRESH_CHATROOM_INFO = "destroyChatroom_notification"
+let KEM_DESTROY_CHATROOM_NOTIFICATION = "destroyChatroom_notification"
+let KEM_REFRESH_CHATROOM_INFO = "UpdateChatroomInfo_notification"
 
 
 let KEM_END_CHAT = "endChat_notification"

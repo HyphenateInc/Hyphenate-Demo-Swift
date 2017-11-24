@@ -9,8 +9,13 @@
 import UIKit
 import SDWebImage
 
+protocol EMContactCellDelegate {
+    func contactCellDidLongPressed(model: EMUserModel?)
+}
+
 class EMContactCell: UITableViewCell {
 
+    var delegate: EMContactCellDelegate?
     var _model: EMUserModel?
     
     @IBOutlet weak var avatarImage: UIImageView!
@@ -19,6 +24,17 @@ class EMContactCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         accessoryType = UITableViewCellAccessoryType.none
+        
+        let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction))
+        addGestureRecognizer(longPress)
+    }
+    
+    @objc func longPressAction(lpgr: UILongPressGestureRecognizer) {
+        if lpgr.state == .began {
+            if delegate != nil {
+                delegate?.contactCellDidLongPressed(model: _model)
+            }
+        }
     }
 
     func set(model: EMUserModel) {

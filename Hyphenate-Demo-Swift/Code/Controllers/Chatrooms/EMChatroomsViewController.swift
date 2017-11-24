@@ -10,8 +10,8 @@ import UIKit
 import Hyphenate
 import MBProgressHUD
 
-class ChatroomsViewController: EMBaseRefreshTableViewController {
-
+class EMChatroomsViewController: EMBaseRefreshTableViewController {
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupNavBar()
@@ -34,7 +34,7 @@ class ChatroomsViewController: EMBaseRefreshTableViewController {
     }
     
     func loadGroupsFromServer() {
-        self.tableViewDidTriggerHeaderRefresh()
+        tableViewDidTriggerHeaderRefresh()
     }
     
     func loadGroupsFromCache() {
@@ -146,8 +146,7 @@ class ChatroomsViewController: EMBaseRefreshTableViewController {
                     }else {
                         self.showRefreshFooter = true;
                     }
-                }
-                
+                }   
             }
         }
     }

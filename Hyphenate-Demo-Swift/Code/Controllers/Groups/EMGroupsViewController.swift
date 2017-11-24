@@ -10,7 +10,7 @@ import UIKit
 import Hyphenate
 import MBProgressHUD
 
-class GroupsViewController: EMBaseRefreshTableViewController {
+class EMGroupsViewController: EMBaseRefreshTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()

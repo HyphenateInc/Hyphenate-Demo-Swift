@@ -26,7 +26,7 @@ class EMGroupCell: UITableViewCell {
     func setGroupModel(model:IEMConferenceModelDelegate) {
         self.model = model
         textLabel?.text = model.subject
-        detailTextLabel?.text = model.des
+        detailTextLabel?.text = ""// model.des
         imageView?.sd_setImage(with: URL(string: model.avatarURLPath!), placeholderImage: UIImage(named:model.avatarImage != nil ? model.avatarImage! : "default_group_avatar"))
     }
 }

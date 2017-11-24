@@ -343,7 +343,10 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     @objc func enterDetailView() {
-        // TODO info
+        let storyboard = UIStoryboard(name: "ChatroomInfo", bundle: nil)
+        let chatroomInfoVC = storyboard.instantiateViewController(withIdentifier: "ChatroomInfoViewController") as! EMChatroomInfoViewController
+        chatroomInfoVC.chatroom = EMChatroom(id: _conversaiton!.conversationId)
+        navigationController?.pushViewController(chatroomInfoVC, animated: true)
     }
     
     @objc func backAction() {
@@ -436,6 +439,9 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     
     func _addMessageToDatasource(message: EMMessage) {
         let model = EMMessageModel.init(withMesage: message)
+        if model.message?.body.type == EMMessageBodyTypeFile {
+            return
+        }
         _dataSource?.append(model)
     }
     

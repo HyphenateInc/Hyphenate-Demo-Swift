@@ -34,7 +34,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         options?.apnsCertName = apnsCerName     
         options?.enableConsoleLog = true     
         options?.isDeleteMessagesWhenExitGroup = false     
-        options?.isDeleteMessagesWhenExitChatRoom = false     
+        options?.isDeleteMessagesWhenExitChatRoom = false
+        options?.isChatroomOwnerLeaveAllowed = false
         options?.usingHttpsOnly = true     
         
         EMClient.shared().initializeSDK(with: options)     
@@ -89,7 +90,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             center.requestAuthorization(options: [.alert, .sound, .badge]) {
                 (granted, error) in
                 if granted {
-                    application.registerForRemoteNotifications()     
+                    DispatchQueue.main.async {
+                        application.registerForRemoteNotifications()
+                    }
                 }
             }
 
