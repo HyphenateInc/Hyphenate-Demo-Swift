@@ -13,12 +13,12 @@ class EMChatroomInfoViewController: UITableViewController {
 
     
     @IBOutlet weak var chatroomIdLabel: UILabel!
+    @IBOutlet weak var chatroomSubjectLabel: UILabel!
     @IBOutlet weak var chatroomDescLabel: UILabel!
     @IBOutlet weak var chatroomOccupantCountLabel: UILabel!
     @IBOutlet weak var chatroomOwnerLabel: UILabel!
     @IBOutlet weak var chatroomAdminListLabel: UILabel!
     @IBOutlet weak var chatroomMembersCountLabel: UILabel!
-    @IBOutlet weak var chatroomAmmouncementLabel: UILabel!
     
     var isOwner = false
     var isAdmin = false
@@ -65,17 +65,17 @@ class EMChatroomInfoViewController: UITableViewController {
         self.isAdmin = (chatroom!.adminList.contains(where: { (username) -> Bool in
             return (username as! String) == EMClient.shared().currentUsername
         }))
+        self.chatroomSubjectLabel.text = chatroom!.subject
         self.chatroomDescLabel.text = chatroom!.description
         self.chatroomOccupantCountLabel.text = String(describing: chatroom!.occupantsCount) + "/" + String(describing: chatroom!.maxOccupantsCount)
         self.chatroomOwnerLabel.text = chatroom!.owner
         self.chatroomAdminListLabel.text = String(describing: chatroom!.adminList.count)
         self.chatroomMembersCountLabel.text = String(describing: chatroom!.occupantsCount - chatroom!.adminList.count - 1 /* owner */)
-        self.chatroomAmmouncementLabel.text = chatroom!.announcement
+        print(chatroom!.announcement)
         self.tableView.reloadData()
     }
     
     func setupUI() {
-        
         let leftBtn = UIButton(type: UIButtonType.custom)
         leftBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         leftBtn.setImage(UIImage(named:"Icon_Back"), for: .normal)
@@ -124,53 +124,81 @@ class EMChatroomInfoViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch indexPath.row {
-        case 0, 1, 2, 3: break
-        case 4:
+        case 1:
+            if isOwner || isAdmin{
+                // Only owner or admin can change.
+                weak var weakSelf = self
+                let action = EMAlertAction.defaultAction(title: "Change", handler: { (alertAction) in
+                    let action = alertAction as! EMAlertAction
+                    let textField = action.alertController?.textFields?.first
+                    weakSelf?.showHub(inView: (weakSelf?.view)!, "Uploading...")
+                    EMClient.shared().roomManager.updateSubject(textField?.text, forChatroom: weakSelf?.chatroom?.chatroomId, completion: { (room, error) in
+                        weakSelf?.hideHub()
+                        if error == nil {
+                            weakSelf?.chatroom = room
+                            weakSelf?.updateInfo()
+                            weakSelf?.tableView.reloadData()
+                        }else {
+                            weakSelf?.show((error?.errorDescription)!)
+                        }
+                    })
+                })
+                let alert = UIAlertController.textField(withTitle:"Change Subject", item: action, defaultText: chatroom?.subject)
+                present(alert, animated: true, completion: nil)
+            }
+            break
+        case 2:
+            if isOwner || isAdmin{
+                // Only owner or admin can change.
+                weak var weakSelf = self
+                let action = EMAlertAction.defaultAction(title: "Change", handler: { (alertAction) in
+                    let action = alertAction as! EMAlertAction
+                    let textField = action.alertController?.textFields?.first
+                    weakSelf?.showHub(inView: (weakSelf?.view)!, "Uploading...")
+                    EMClient.shared().roomManager.updateDescription(textField?.text, forChatroom: weakSelf?.chatroom?.chatroomId, completion: { (room, error) in
+                        weakSelf?.hideHub()
+                        if error == nil {
+                            weakSelf?.chatroom = room
+                            weakSelf?.updateInfo()
+                            weakSelf?.tableView.reloadData()
+                        }else {
+                            weakSelf?.show((error?.errorDescription)!)
+                        }
+                    })
+                })
+                let alert = UIAlertController.textField(withTitle:"Change Description", item: action, defaultText: chatroom?.description)
+                present(alert, animated: true, completion: nil)
+            }
+            break
+        case 0, 3, 4: break
+        case 5:
             let chatroomAdminListVC = EMChatroomAdminListViewController()
             chatroomAdminListVC.chatroom = chatroom
             chatroomAdminListVC.isOwner = isOwner
             chatroomAdminListVC.isAdmin = isAdmin
             navigationController?.pushViewController(chatroomAdminListVC, animated: true)
             break
-        case 5:
+        case 6:
             let chatroomMemberListVC = EMChatroomMemberListViewController()
             chatroomMemberListVC.chatroom = chatroom
             chatroomMemberListVC.isOwner = isOwner
             chatroomMemberListVC.isAdmin = isAdmin
             navigationController?.pushViewController(chatroomMemberListVC, animated: true)
             break
-        case 6:
-            if isOwner || isAdmin{
-                // Only owner or admin can change announcement.
-                weak var weakSelf = self
-                let action = EMAlertAction.defaultAction(title: "Change", handler: { (alertAction) in
-                    let action = alertAction as! EMAlertAction
-                    let textField = action.alertController?.textFields?.first
-                    weakSelf?.showHub(inView: (weakSelf?.view)!, "Uploading...")
-                    EMClient.shared().roomManager.updateChatroomAnnouncement(withId: weakSelf?.chatroom?.chatroomId, announcement: textField?.text
-                    , completion: { (room, error) in
-                        weakSelf?.hideHub()
-                        if error == nil {
-                            weakSelf?.chatroom = room
-                            weakSelf?.tableView.reloadData()
-                        }else {
-                            weakSelf?.show((error?.errorDescription)!)
-                        }
-                        
-                   })
-                })
-                let alert = UIAlertController.textField(withTitle:"Change Announcement", item: action, defaultText: chatroom?.announcement)
-                present(alert, animated: true, completion: nil)
-            }
-            break
         case 7:
+            let chatroomAnnouncementViewController = EMChatroomAnnouncementViewController()
+            chatroomAnnouncementViewController.isCanChange = isOwner || isAdmin ? true : false
+            chatroomAnnouncementViewController.chatroom = chatroom
+            navigationController?.pushViewController(chatroomAnnouncementViewController, animated: true)
+            break
+        case 8:
             let chatroomMuteListVC = EMChatroomMuteListViewController()
             chatroomMuteListVC.chatroom = chatroom
             chatroomMuteListVC.isOwner = isOwner
             chatroomMuteListVC.isAdmin = isAdmin
             navigationController?.pushViewController(chatroomMuteListVC, animated: true)
             break
-        case 8:
+        case 9:
             let chatroomBlackListVC = EMChatroomBlackListViewController()
             chatroomBlackListVC.chatroom = chatroom
             chatroomBlackListVC.isOwner = isOwner
@@ -184,9 +212,9 @@ class EMChatroomInfoViewController: UITableViewController {
     
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if isAdmin || isOwner{
-            return 9
+            return 10
         } else {
-            return 7
+            return 8
         }
         
     }
