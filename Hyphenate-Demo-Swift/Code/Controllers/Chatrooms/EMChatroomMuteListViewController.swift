@@ -47,8 +47,9 @@ class EMChatroomMuteListViewController: EMChatroomParticipantsViewController {
     
     override func fetchPersion(isHeader: Bool) {
         weak var weakSelf = self
-        
+        weakSelf?.showHub(inView: (weakSelf!.view)!, "Uploading...")
         EMClient.shared().roomManager.getChatroomMuteListFromServer(withId: chatroom?.chatroomId, pageNumber: page, pageSize: pageSize) { (resultList, error) in
+            weakSelf?.hideHub()
             weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)
             if error == nil {
                 if (isHeader) {
@@ -70,6 +71,8 @@ class EMChatroomMuteListViewController: EMChatroomParticipantsViewController {
                         self.showRefreshFooter = true;
                     }
                 }
+            }else {
+                weakSelf?.show((error?.errorDescription)!)
             }
         }
     }
