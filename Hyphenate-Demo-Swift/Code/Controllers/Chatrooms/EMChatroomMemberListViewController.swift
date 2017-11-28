@@ -24,7 +24,7 @@ class EMChatroomMemberListViewController: EMChatroomParticipantsViewController {
         }
         weak var weakSelf = self
         let removeFromGroupAction = EMAlertAction.defaultAction(title: "Remove from group") { (action) in
-            weakSelf?.showHub(inView: (weakSelf!.view)!, "Uploading...")
+            weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
             EMClient.shared().roomManager.removeMembers([(model?.hyphenateID)!], fromChatroom: weakSelf?.chatroom?.chatroomId, completion: { (room, error) in
                 weakSelf?.hideHub()
                 if error == nil {
@@ -37,10 +37,11 @@ class EMChatroomMemberListViewController: EMChatroomParticipantsViewController {
                     weakSelf?.show((error?.errorDescription)!)
                 }
             })
+            
         }
         
         let addToAdminAction = EMAlertAction.defaultAction(title: "Add to admin") { (action) in
-            weakSelf?.showHub(inView: (weakSelf!.view)!, "Uploading...")
+            weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
             EMClient.shared().roomManager.addAdmin(model?.hyphenateID, toChatroom: weakSelf?.chatroom?.chatroomId, completion: { (root, error) in
                 weakSelf?.hideHub()
                 if error == nil {
@@ -56,15 +57,11 @@ class EMChatroomMemberListViewController: EMChatroomParticipantsViewController {
         }
         
         let muteAction = EMAlertAction.defaultAction(title: "Mute") { (action) in
-            weakSelf?.showHub(inView: (weakSelf!.view)!, "Uploading...")
+            weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
             EMClient.shared().roomManager.muteMembers([(model?.hyphenateID)!], muteMilliseconds:-1 ,fromChatroom: self.chatroom!.chatroomId, completion: { (root, error) in
                 weakSelf?.hideHub()
                 if error == nil {
-//                    self.postNotificationToUpdateChatroomInfo()
-//                    let ary = NSMutableArray(array: self.dataArray! as NSArray)
-//                    ary.remove(model!)
-//                    self.dataArray = ary as Array
-//                    self.tableView.reloadData()
+
                 }else {
                     weakSelf?.show((error?.errorDescription)!)
                 }
@@ -72,7 +69,7 @@ class EMChatroomMemberListViewController: EMChatroomParticipantsViewController {
         }
         
         let moveToBlackList = EMAlertAction.defaultAction(title: "Move to blackList") { (action) in
-            weakSelf?.showHub(inView: (weakSelf!.view)!, "Uploading...")
+            weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
             EMClient.shared().roomManager.blockMembers([(model?.hyphenateID)!], fromChatroom: weakSelf?.chatroom!.chatroomId, completion: { (chatroom, error) in
                 weakSelf?.hideHub()
                 if error == nil {
@@ -102,7 +99,7 @@ class EMChatroomMemberListViewController: EMChatroomParticipantsViewController {
     
     override func fetchPersion(isHeader: Bool) {
         weak var weakSelf = self
-        weakSelf?.showHub(inView: (weakSelf!.view)!, "Uploading...")
+        weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
         EMClient.shared().roomManager.getChatroomMemberListFromServer(withId: chatroom?.chatroomId, cursor: cursor, pageSize: pageSize) { (result, error) in
             weakSelf?.hideHub()
             weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)

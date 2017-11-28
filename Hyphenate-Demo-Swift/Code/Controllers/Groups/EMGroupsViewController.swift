@@ -72,7 +72,17 @@ class EMGroupsViewController: EMBaseRefreshTableViewController {
     }
     
     @objc func addGroupAction() {
+        weak var weakSelf = self
+        let createAction = EMAlertAction.defaultAction(title: "Create a group") { (action) in
+            print("create a group")
+        }
         
+        let joinAction = EMAlertAction.defaultAction(title: "Join public group") { (action) in
+            let joinPublicGroupVC = EMPublicGroupsViewController()
+            weakSelf?.navigationController?.pushViewController(joinPublicGroupVC, animated: true)
+        }
+        let alertController = UIAlertController.alertWith(item: createAction, joinAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Notification Method
@@ -125,12 +135,12 @@ class EMGroupsViewController: EMBaseRefreshTableViewController {
     
     override func tableViewDidTriggerHeaderRefresh() {
         page = 1
-        self.fetchJoinedGroupWith(page: page, isHeader: true)
+        fetchJoinedGroupWith(page: page, isHeader: true)
     }
     
     override func tableViewDidTriggerFooterRefresh() {
         page += 1
-        self.fetchJoinedGroupWith(page: page, isHeader: false)
+        fetchJoinedGroupWith(page: page, isHeader: false)
     }
     
     func fetchJoinedGroupWith(page: Int, isHeader: Bool) {

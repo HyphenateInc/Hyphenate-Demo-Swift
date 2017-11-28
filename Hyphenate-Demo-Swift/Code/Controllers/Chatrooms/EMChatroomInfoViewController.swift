@@ -108,7 +108,7 @@ class EMChatroomInfoViewController: UITableViewController {
                 }
             }
         } else {
-            showHub(inView: UIApplication.shared.keyWindow!, "Leaving the chatroom...")
+            showHub(inView: UIApplication.shared.keyWindow, "Leaving the chatroom...")
             weak var weakSelf = self
             EMClient.shared().roomManager.leaveChatroom(chatroom!.chatroomId) { (error) in
                 weakSelf?.hideHub()
@@ -131,7 +131,7 @@ class EMChatroomInfoViewController: UITableViewController {
                 let action = EMAlertAction.defaultAction(title: "Change", handler: { (alertAction) in
                     let action = alertAction as! EMAlertAction
                     let textField = action.alertController?.textFields?.first
-                    weakSelf?.showHub(inView: (weakSelf?.view)!, "Uploading...")
+                    weakSelf?.showHub(inView: weakSelf?.view, "Uploading...")
                     EMClient.shared().roomManager.updateSubject(textField?.text, forChatroom: weakSelf?.chatroom?.chatroomId, completion: { (room, error) in
                         weakSelf?.hideHub()
                         if error == nil {
@@ -154,7 +154,7 @@ class EMChatroomInfoViewController: UITableViewController {
                 let action = EMAlertAction.defaultAction(title: "Change", handler: { (alertAction) in
                     let action = alertAction as! EMAlertAction
                     let textField = action.alertController?.textFields?.first
-                    weakSelf?.showHub(inView: (weakSelf?.view)!, "Uploading...")
+                    weakSelf?.showHub(inView: weakSelf?.view, "Uploading...")
                     EMClient.shared().roomManager.updateDescription(textField?.text, forChatroom: weakSelf?.chatroom?.chatroomId, completion: { (room, error) in
                         weakSelf?.hideHub()
                         if error == nil {

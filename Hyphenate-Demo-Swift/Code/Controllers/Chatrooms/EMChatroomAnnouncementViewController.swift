@@ -64,7 +64,7 @@ class EMChatroomAnnouncementViewController: UIViewController {
     
     func fetchAnnouncement() {
         weak var weakSelf = self
-        weakSelf?.showHub(inView: (weakSelf!.view)!, "Fetching...")
+        weakSelf?.showHub(inView: weakSelf!.view, "Fetching...")
         EMClient.shared().roomManager.getChatroomAnnouncement(withId: chatroom?.chatroomId) { (announcement, error) in
             weakSelf?.hideHub()
             if error == nil {

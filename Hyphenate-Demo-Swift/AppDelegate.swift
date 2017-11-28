@@ -21,7 +21,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UITabBar.appearance().tintColor = KermitGreenTwoColor
         UINavigationBar.appearance().tintColor = AlmostBlackColor
         
-        
         let options = EMOptions.init(appkey: "easemob-demo#chatdemoui")
         
         var apnsCerName = ""     
@@ -55,7 +54,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         return true
     }
- 
     
     @objc func loginStateChange(nofi: NSNotification) {
         if (nofi.object as! NSNumber).boolValue {

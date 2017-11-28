@@ -22,7 +22,7 @@ class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
         }
         weak var weakSelf = self
         let removeAdminAction = EMAlertAction.defaultAction(title: "Remove from Admin") { (action) in
-            weakSelf?.showHub(inView: (weakSelf!.view)!, "Uploading...")
+            weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
             EMClient.shared().roomManager.removeAdmin(model?.hyphenateID, fromChatroom: weakSelf?.chatroom?.chatroomId, completion: { (room, error) in
                 weakSelf?.hideHub()
                 if error == nil {
@@ -38,7 +38,7 @@ class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
         }
         
         let muteAction = EMAlertAction.defaultAction(title: "Mute") { (action) in
-            weakSelf?.showHub(inView: (weakSelf!.view)!, "Uploading...")
+            weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
             EMClient.shared().roomManager.muteMembers([(model?.hyphenateID)!], muteMilliseconds:-1 ,fromChatroom: self.chatroom!.chatroomId, completion: { (root, error) in
                 weakSelf?.hideHub()
                 if error == nil {
@@ -50,7 +50,7 @@ class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
         }
         
         let moveToBlackList = EMAlertAction.defaultAction(title: "Move to blackList") { (action) in
-            weakSelf?.showHub(inView: (weakSelf!.view)!, "Uploading...")
+            weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
             EMClient.shared().roomManager.blockMembers([(model?.hyphenateID)!], fromChatroom: weakSelf?.chatroom!.chatroomId, completion: { (chatroom, error) in
                 weakSelf?.hideHub()
                 if error == nil {
@@ -71,7 +71,7 @@ class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
     }
     
     override func fetchPersion(isHeader: Bool) {
-        self.showHub(inView: (view)!, "Uploading...")
+        self.showHub(inView: view, "Uploading...")
         weak var weakSelf = self
         EMClient.shared().roomManager.getChatroomSpecificationFromServer(withId: chatroom!.chatroomId) { (result, error) in
             weakSelf?.hideHub()

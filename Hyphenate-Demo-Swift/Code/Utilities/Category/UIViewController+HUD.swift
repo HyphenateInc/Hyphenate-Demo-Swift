@@ -26,10 +26,13 @@ extension UIViewController {
         }
     }
  
-    func showHub(inView view: UIView,_ hint: String) {
+    func showHub(inView view: UIView?,_ hint: String) {
+        if view == nil {
+            return
+        }
         HUD = MBProgressHUD(view: view)
         HUD?.labelText = hint
-        view.addSubview(HUD!)
+        view!.addSubview(HUD!)
         HUD?.show(true)
     }
     

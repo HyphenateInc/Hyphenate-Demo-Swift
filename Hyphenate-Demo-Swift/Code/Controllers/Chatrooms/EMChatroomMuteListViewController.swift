@@ -21,7 +21,7 @@ class EMChatroomMuteListViewController: EMChatroomParticipantsViewController {
         }
         let removeAction = EMAlertAction.defaultAction(title: "Unmute") { (action) in
             weak var weakSelf = self
-            weakSelf?.showHub(inView: (weakSelf!.view)!, "Uploading...")
+            weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
             EMClient.shared().roomManager.unmuteMembers([(model?.hyphenateID)!], fromChatroom: self.chatroom!.chatroomId, completion: { (chatroom, error) in
                 weakSelf?.hideHub()
                 if error == nil {
@@ -47,7 +47,7 @@ class EMChatroomMuteListViewController: EMChatroomParticipantsViewController {
     
     override func fetchPersion(isHeader: Bool) {
         weak var weakSelf = self
-        weakSelf?.showHub(inView: (weakSelf!.view)!, "Uploading...")
+        weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
         EMClient.shared().roomManager.getChatroomMuteListFromServer(withId: chatroom?.chatroomId, pageNumber: page, pageSize: pageSize) { (resultList, error) in
             weakSelf?.hideHub()
             weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)
