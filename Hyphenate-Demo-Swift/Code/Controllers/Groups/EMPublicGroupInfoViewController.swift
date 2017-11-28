@@ -57,7 +57,8 @@ class EMPublicGroupInfoViewController: UITableViewController {
                 EMClient.shared().groupManager.request(toJoinPublicGroup: weakSelf?.group?.groupId, message: textField?.text, completion: { (group, error) in
                     weakSelf?.hideHub()
                     if error == nil {
-                        weakSelf?.show("Succeed")
+                        weakSelf?.show("Send succeed")
+                        NotificationCenter.default.post(name: NSNotification.Name(KEM_REFRESH_GROUPLIST_NOTIFICATION), object: nil)
                     }else {
                         weakSelf?.show((error?.errorDescription)!)
                     }
@@ -71,7 +72,8 @@ class EMPublicGroupInfoViewController: UITableViewController {
             EMClient.shared().groupManager.joinPublicGroup(weakSelf?.group?.groupId, completion: { (group, error) in
                 weakSelf?.hideHub()
                 if error == nil {
-                    
+                    weakSelf?.show("Succeed")
+                    NotificationCenter.default.post(name: NSNotification.Name(KEM_REFRESH_GROUPLIST_NOTIFICATION), object: nil)
                 }else {
                     weakSelf?.show((error?.errorDescription)!)
                 }

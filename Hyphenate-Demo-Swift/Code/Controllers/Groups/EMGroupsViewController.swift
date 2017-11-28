@@ -17,7 +17,7 @@ class EMGroupsViewController: EMBaseRefreshTableViewController {
         setupNavBar()
         tableView.delegate = self
         tableView.dataSource = self
-    
+        addNotifications()
         tableViewDidTriggerHeaderRefresh()
     }
     
