@@ -316,10 +316,15 @@
 		9024B15B1F00AEAD0043FD81 /* EMLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9024B1591F00AEAD0043FD81 /* EMLocationViewController.xib */; };
 		902C0BC31EF24AC80069165E /* EMBaseRefreshTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C0BC11EF24AC80069165E /* EMBaseRefreshTableViewController.swift */; };
 		902C0BC61EF24BFD0069165E /* EMNotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C0BC51EF24BFD0069165E /* EMNotificationNames.swift */; };
+		90453D4B1FCE6EA900DFD5FB /* EMCreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90453D4A1FCE6EA900DFD5FB /* EMCreateGroupViewController.swift */; };
+		90453D4D1FCE706700DFD5FB /* CreateGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90453D4C1FCE706700DFD5FB /* CreateGroup.storyboard */; };
+		90453D551FCEA26A00DFD5FB /* EMSelectItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90453D541FCEA26A00DFD5FB /* EMSelectItemViewController.swift */; };
 		905912B81FC57701001510BC /* EMChatroomAdminListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905912B71FC57701001510BC /* EMChatroomAdminListViewController.swift */; };
 		905912BA1FC57710001510BC /* EMChatroomMemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 905912B91FC57710001510BC /* EMChatroomMemberListViewController.swift */; };
 		90593CE91FC535310029FB66 /* ChatroomInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90593CE81FC535310029FB66 /* ChatroomInfo.storyboard */; };
 		90593CEB1FC535F40029FB66 /* EMChatroomInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90593CEA1FC535F40029FB66 /* EMChatroomInfoViewController.swift */; };
+		90638D971FCED86400D76493 /* EMMemberCollectionCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90638D961FCED86400D76493 /* EMMemberCollectionCell.xib */; };
+		90638D991FCED88200D76493 /* EMMemberCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90638D981FCED88200D76493 /* EMMemberCollectionViewCell.swift */; };
 		9069B3C01FC409F2004F9DBD /* EMGroupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9069B3BF1FC409F2004F9DBD /* EMGroupModel.swift */; };
 		9069B3C31FC40CBE004F9DBD /* IEMGroupModelDeleagte.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9069B3C21FC40CBE004F9DBD /* IEMGroupModelDeleagte.swift */; };
 		9069B3C81FC41C25004F9DBD /* EMGroupCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9069B3C61FC41C25004F9DBD /* EMGroupCell.swift */; };
@@ -711,10 +716,15 @@
 		9024B1591F00AEAD0043FD81 /* EMLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMLocationViewController.xib; sourceTree = "<group>"; };
 		902C0BC11EF24AC80069165E /* EMBaseRefreshTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMBaseRefreshTableViewController.swift; sourceTree = "<group>"; };
 		902C0BC51EF24BFD0069165E /* EMNotificationNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMNotificationNames.swift; sourceTree = "<group>"; };
+		90453D4A1FCE6EA900DFD5FB /* EMCreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCreateGroupViewController.swift; sourceTree = "<group>"; };
+		90453D4C1FCE706700DFD5FB /* CreateGroup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateGroup.storyboard; sourceTree = "<group>"; };
+		90453D541FCEA26A00DFD5FB /* EMSelectItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMSelectItemViewController.swift; sourceTree = "<group>"; };
 		905912B71FC57701001510BC /* EMChatroomAdminListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatroomAdminListViewController.swift; sourceTree = "<group>"; };
 		905912B91FC57710001510BC /* EMChatroomMemberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatroomMemberListViewController.swift; sourceTree = "<group>"; };
 		90593CE81FC535310029FB66 /* ChatroomInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = ChatroomInfo.storyboard; sourceTree = "<group>"; };
 		90593CEA1FC535F40029FB66 /* EMChatroomInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMChatroomInfoViewController.swift; sourceTree = "<group>"; };
+		90638D961FCED86400D76493 /* EMMemberCollectionCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EMMemberCollectionCell.xib; sourceTree = "<group>"; };
+		90638D981FCED88200D76493 /* EMMemberCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMMemberCollectionViewCell.swift; sourceTree = "<group>"; };
 		9069B3BF1FC409F2004F9DBD /* EMGroupModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupModel.swift; sourceTree = "<group>"; };
 		9069B3C21FC40CBE004F9DBD /* IEMGroupModelDeleagte.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IEMGroupModelDeleagte.swift; sourceTree = "<group>"; };
 		9069B3C61FC41C25004F9DBD /* EMGroupCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupCell.swift; sourceTree = "<group>"; };
@@ -961,6 +971,7 @@
 				90190C801F0F859500A238F3 /* Settings.storyboard */,
 				90593CE81FC535310029FB66 /* ChatroomInfo.storyboard */,
 				90A387CD1FCD513200468B60 /* PublicGroupInfo.storyboard */,
+				90453D4C1FCE706700DFD5FB /* CreateGroup.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1552,8 +1563,10 @@
 			children = (
 				90BE3F501F3DA83F00B84B78 /* Views */,
 				90A387CB1FCD240E00468B60 /* EMPublicGroupsViewController.swift */,
+				90453D541FCEA26A00DFD5FB /* EMSelectItemViewController.swift */,
 				90BE3F4E1F3DA2B300B84B78 /* EMGroupsViewController.swift */,
 				90A387CF1FCD525800468B60 /* EMPublicGroupInfoViewController.swift */,
+				90453D4A1FCE6EA900DFD5FB /* EMCreateGroupViewController.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -1563,6 +1576,8 @@
 			children = (
 				9069B3C61FC41C25004F9DBD /* EMGroupCell.swift */,
 				9069B3C71FC41C25004F9DBD /* EMGroupCell.xib */,
+				90638D961FCED86400D76493 /* EMMemberCollectionCell.xib */,
+				90638D981FCED88200D76493 /* EMMemberCollectionViewCell.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -1696,6 +1711,7 @@
 				9011E0B41EEEC22700C43D05 /* Icon_New group@3x.png in Resources */,
 				9011E11C1EEEC22700C43D05 /* icon_info.png in Resources */,
 				9011E1381EEEC22700C43D05 /* Disabled.png in Resources */,
+				90638D971FCED86400D76493 /* EMMemberCollectionCell.xib in Resources */,
 				9011E1731EEEC22700C43D05 /* Icon_Clear@3x.png in Resources */,
 				9011E1041EEEC22700C43D05 /* Button_Speaker@2x.png in Resources */,
 				9011E1461EEEC22700C43D05 /* Icon_Camera@3x.png in Resources */,
@@ -1910,6 +1926,7 @@
 				9011E11F1EEEC22700C43D05 /* Icon_Pause.png in Resources */,
 				9011E15D1EEEC22700C43D05 /* Icon_Location_disable@2x.png in Resources */,
 				9011E0B21EEEC22700C43D05 /* Icon_New group.png in Resources */,
+				90453D4D1FCE706700DFD5FB /* CreateGroup.storyboard in Resources */,
 				9011E1941EEEC22700C43D05 /* Button_Call@2x.png in Resources */,
 				9011E12A1EEEC22700C43D05 /* iconCall@3x.png in Resources */,
 				9011E1501EEEC22700C43D05 /* Icon_File_disable.png in Resources */,
@@ -2033,6 +2050,7 @@
 				90FB78981EF7EE9B00B02F60 /* EMEmoji.m in Sources */,
 				9069B3C81FC41C25004F9DBD /* EMGroupCell.swift in Sources */,
 				90190C831F0F997D00A238F3 /* EMPushNotificationViewController.swift in Sources */,
+				90638D991FCED88200D76493 /* EMMemberCollectionViewCell.swift in Sources */,
 				9024B15A1F00AEAD0043FD81 /* EMLocationViewController.swift in Sources */,
 				90190C7B1F0F488800A238F3 /* EMAccountViewController.swift in Sources */,
 				905912B81FC57701001510BC /* EMChatroomAdminListViewController.swift in Sources */,
@@ -2063,6 +2081,7 @@
 				907FBAB71FC68E0B003386C1 /* Extension.swift in Sources */,
 				90B777CF1EF140E0006D0977 /* EMChatsCell.swift in Sources */,
 				90A3CAC81FCC05D2001BB4C5 /* EMChatroomAnnouncementViewController.swift in Sources */,
+				90453D4B1FCE6EA900DFD5FB /* EMCreateGroupViewController.swift in Sources */,
 				90749EDA1EF90E5B00D3A065 /* wav.mm in Sources */,
 				90FB78991EF7EE9B00B02F60 /* EMEmojiEmoticons.m in Sources */,
 				909602221FC7D8C700E71B93 /* EMAlertAction.swift in Sources */,
@@ -2093,6 +2112,7 @@
 				90749ED61EF90E5B00D3A065 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
 				9069B3C31FC40CBE004F9DBD /* IEMGroupModelDeleagte.swift in Sources */,
 				90B43DD51F012E910084E67F /* EMApplyRequestCell.swift in Sources */,
+				90453D551FCEA26A00DFD5FB /* EMSelectItemViewController.swift in Sources */,
 				90749EDB1EF90E5B00D3A065 /* EMVoiceConverter.mm in Sources */,
 				90B777D21EF149AB006D0977 /* EMConversationModel.swift in Sources */,
 				90749ED71EF90E5B00D3A065 /* EMCDDeviceManager+Remind.m in Sources */,

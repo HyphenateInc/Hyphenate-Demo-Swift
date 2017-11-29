@@ -113,42 +113,6 @@ class EMPublicGroupsViewController: EMBaseRefreshTableViewController {
         let vc = storyboard.instantiateViewController(withIdentifier: "EMPublicGroupInfoViewController") as? EMPublicGroupInfoViewController
         vc?.group = groupModel.group
         navigationController?.pushViewController(vc!, animated: true)
-        /*
-        weak var weakSelf = self
- 
-        if groupModel.group?.setting.style == EMGroupStylePublicJoinNeedApproval {
-            let applyJoinAction = EMAlertAction.defaultAction(title: "Send", handler: { (alertAction) in
-                let action = alertAction as! EMAlertAction
-                let textField = action.alertController?.textFields?.first
-                weakSelf?.showHub(inView: weakSelf?.view, "Send group of application......")
-                EMClient.shared().groupManager.request(toJoinPublicGroup: groupModel.group?.groupId, message: textField?.text, completion: { (group, error) in
-                    weakSelf?.hideHub()
-                    if error == nil {
-                        
-                    }else {
-                        weakSelf?.show((error?.errorDescription)!)
-                    }
-                })
-            })
-            let alertController = UIAlertController.textField(item: applyJoinAction)
-            present(alertController, animated: true, completion: nil)
-            
-        } else if (groupModel.group?.setting.style == EMGroupStylePublicOpenJoin) {
-            let joinAction = EMAlertAction.defaultAction(title: "Join the group") { (action) in
-                weakSelf?.showHub(inView: weakSelf?.view, "Joining...")
-                EMClient.shared().groupManager.joinPublicGroup(groupModel.group?.groupId, completion: { (group, error) in
-                    weakSelf?.hideHub()
-                    if error == nil {
-                        
-                    }else {
-                        weakSelf?.show((error?.errorDescription)!)
-                    }
-                })
-            }
-            let alertController = UIAlertController.alertWith(item: joinAction)
-            present(alertController, animated: true, completion: nil)
-        }
-         */
     }
     
     override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {

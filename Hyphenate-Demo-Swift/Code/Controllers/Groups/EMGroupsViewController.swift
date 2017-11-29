@@ -74,7 +74,9 @@ class EMGroupsViewController: EMBaseRefreshTableViewController {
     @objc func addGroupAction() {
         weak var weakSelf = self
         let createAction = EMAlertAction.defaultAction(title: "Create a group") { (action) in
-            print("create a group")
+            let storyboard = UIStoryboard.init(name: "CreateGroup", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "EMCreateGroupViewController") as? EMCreateGroupViewController
+            weakSelf?.navigationController?.pushViewController(vc!, animated: true)
         }
         
         let joinAction = EMAlertAction.defaultAction(title: "Join public group") { (action) in

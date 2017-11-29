@@ -19,7 +19,7 @@ protocol IEMUserModel {
 
 class EMUserModel: NSObject, IEMUserModel, EMRealtimeSearchUtilDelegate{
 
-    var _hyphenateID: String?
+    private var _hyphenateID: String?
     
     var hyphenateID: String? {
         get {
