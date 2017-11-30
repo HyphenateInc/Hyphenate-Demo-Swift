@@ -9,9 +9,9 @@
 import UIKit
 
 protocol IEMUserModel {
-    var hyphenateID: String? {get set}
-    var nickname: String? {get}
-    var avatarURLPath: String? {get}
+    var hyphenateID: String {get set}
+    var nickname: String {get}
+    var avatarURLPath: String {get}
     var defaultAvatarImage: UIImage? {get}
     
     static func createWithHyphenateId(hyphenateId: String) -> IEMUserModel?
@@ -21,9 +21,9 @@ class EMUserModel: NSObject, IEMUserModel, EMRealtimeSearchUtilDelegate{
 
     private var _hyphenateID: String?
     
-    var hyphenateID: String? {
+    var hyphenateID: String {
         get {
-            return _hyphenateID
+            return _hyphenateID!
         }
         
         set {
@@ -31,9 +31,9 @@ class EMUserModel: NSObject, IEMUserModel, EMRealtimeSearchUtilDelegate{
         }
     }
     
-    @objc var nickname: String? {
+    @objc var nickname: String {
         get {
-            let nickname = EMUserProfileManager.sharedInstance.getNickNameWithUsername(username: hyphenateID!)
+            let nickname = EMUserProfileManager.sharedInstance.getNickNameWithUsername(username: hyphenateID)
             if nickname.count > 0 {
                 return nickname
             }
@@ -41,14 +41,14 @@ class EMUserModel: NSObject, IEMUserModel, EMRealtimeSearchUtilDelegate{
         }
     }
     
-    var avatarURLPath: String? {
+    var avatarURLPath: String {
         get {
-            let userEntity = EMUserProfileManager.sharedInstance.getUserProfileByUsername(username: hyphenateID!)
+            let userEntity = EMUserProfileManager.sharedInstance.getUserProfileByUsername(username: hyphenateID)
             if userEntity != nil && userEntity?.imageUrl != nil {
                return (userEntity?.imageUrl)!
             }
 
-            return nil
+            return ""
         }
     }
     

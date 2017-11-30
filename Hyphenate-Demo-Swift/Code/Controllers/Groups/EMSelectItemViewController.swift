@@ -16,7 +16,7 @@ protocol EMSelectItemViewControllerDelegate {
 class EMSelectItemViewController: UITableViewController {
 
     var delegate: EMSelectItemViewControllerDelegate?
-    var selectedDic = Dictionary<String,IEMUserModel>()
+    var selectedAry = Array<IEMUserModel>()
     var sectionTitles = Array<String>()
     var contacts = Array<Any>()
     var titleArray: Array<String>?
@@ -51,12 +51,12 @@ class EMSelectItemViewController: UITableViewController {
     }
     
     @objc func doneAction() {
-        delegate?.didSelected(item: Array(selectedDic.values))
+        delegate?.didSelected(item: Array(selectedAry))
         dismiss(animated: true, completion: nil)
     }
     
     func updateSelectedCount() {
-        doneBtn?.title = "Done" + "("+String(selectedDic.keys.count)+")"
+        doneBtn?.title = "Done" + "("+String(selectedAry.count)+")"
     }
     
     func setupDataSource() {
@@ -157,7 +157,9 @@ class EMSelectItemViewController: UITableViewController {
         }
         
         (cell as! EMContactCell).set(model: model!)
-        if selectedDic[(model?.hyphenateID)!] != nil {
+        if selectedAry.contains(where: { (selectedModel) -> Bool in
+            return selectedModel.hyphenateID == model?.hyphenateID
+        }) {
             tableView .selectRow(at: indexPath, animated: false, scrollPosition: .none)
         }else {
             tableView .deselectRow(at: indexPath, animated: false)
@@ -169,14 +171,18 @@ class EMSelectItemViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var model: EMUserModel?
         model = (contacts[indexPath.section] as! Array)[indexPath.row]
-        selectedDic[(model?.hyphenateID)!] = model
+        selectedAry.append(model!)
         updateSelectedCount()
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         var model: EMUserModel?
         model = (contacts[indexPath.section] as! Array)[indexPath.row]
-        selectedDic[(model?.hyphenateID)!] = nil
+  
+        selectedAry.remove(at: selectedAry.index { (indexModel) -> Bool in
+            return indexModel.hyphenateID == model!.hyphenateID
+            }!)
+        
         updateSelectedCount()
     }
 
