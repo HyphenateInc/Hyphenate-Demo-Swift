@@ -82,7 +82,7 @@ class EMCreateGroupViewController: UITableViewController, EMSelectItemViewContro
     }
     
     @IBAction func selectPhotoAction(_ sender: UIButton) {
-        showAlert("Unsuppend")
+        showAlert("unsupport")
     }
 
     @IBAction func appearSwitchChangeAction(_ sender: UISwitch) {
