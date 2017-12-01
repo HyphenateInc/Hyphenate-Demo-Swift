@@ -15,28 +15,14 @@ class EMChatroomParticipantsViewController: EMBaseRefreshTableViewController, EM
     var isOwner = false
     var isAdmin = false
     var chatroom: EMChatroom?
+    var group: EMGroup?
     
     override func viewDidLoad() {
         super.viewDidLoad()
         showRefreshHeader = true
-        setupNavBar()
+        setupBackAction()
         tableViewDidTriggerHeaderRefresh()
     }
-    
-    func setupNavBar() {
-        let leftBtn = UIButton(type: UIButtonType.custom)
-        leftBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .normal)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .highlighted)
-        leftBtn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        let leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-    }
-    
-    @objc func backAction() {
-        navigationController?.popViewController(animated: true)
-    }
-    
     func contactCellDidLongPressed(model: EMUserModel?) {
         if isOwner == false  && isAdmin == false{
             return
@@ -45,6 +31,10 @@ class EMChatroomParticipantsViewController: EMBaseRefreshTableViewController, EM
     
     func postNotificationToUpdateChatroomInfo() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:KEM_REFRESH_CHATROOM_INFO), object: chatroom)
+    }
+    
+    func postNotificationToUpdateGroupInfo() {
+        
     }
     
     func fetchPersion(isHeader: Bool) {

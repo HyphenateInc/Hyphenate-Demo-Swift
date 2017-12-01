@@ -301,6 +301,11 @@
 		9011E1C81EEEC22700C43D05 /* logo9@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E09B1EEEC22700C43D05 /* logo9@2x.png */; };
 		9011E1C91EEEC22700C43D05 /* logo9@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 9011E09C1EEEC22700C43D05 /* logo9@3x.png */; };
 		9011E1CC1EEEC38600C43D05 /* EMColorUtils.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9011E1CB1EEEC38600C43D05 /* EMColorUtils.swift */; };
+		90150AF51FD13418004AEF92 /* EMGroupAnnouncementViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90150AF41FD13418004AEF92 /* EMGroupAnnouncementViewController.swift */; };
+		90150AF71FD134ED004AEF92 /* EMGroupAdminListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90150AF61FD134ED004AEF92 /* EMGroupAdminListViewController.swift */; };
+		90150AF91FD13DA7004AEF92 /* EMGroupMemberListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90150AF81FD13DA7004AEF92 /* EMGroupMemberListViewController.swift */; };
+		90150AFB1FD141F0004AEF92 /* EMGroupBlackListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90150AFA1FD141F0004AEF92 /* EMGroupBlackListViewController.swift */; };
+		90150AFD1FD142A6004AEF92 /* EMGroupMuteListViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90150AFC1FD142A6004AEF92 /* EMGroupMuteListViewController.swift */; };
 		90169F601EF275A300B9ADC6 /* UIImage+HeadImage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F5F1EF275A300B9ADC6 /* UIImage+HeadImage.swift */; };
 		90169F621EF2767200B9ADC6 /* EMUserProfileManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F611EF2767200B9ADC6 /* EMUserProfileManager.swift */; };
 		90169F641EF2A30A00B9ADC6 /* AppDelegate+Parse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90169F631EF2A30A00B9ADC6 /* AppDelegate+Parse.swift */; };
@@ -382,6 +387,8 @@
 		90B777CF1EF140E0006D0977 /* EMChatsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B777CD1EF140E0006D0977 /* EMChatsCell.swift */; };
 		90B777D01EF140E0006D0977 /* EMChatsCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90B777CE1EF140E0006D0977 /* EMChatsCell.xib */; };
 		90B777D21EF149AB006D0977 /* EMConversationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90B777D11EF149AB006D0977 /* EMConversationModel.swift */; };
+		90BBFA611FCFDD4800CDE81C /* GroupInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90BBFA601FCFDD4800CDE81C /* GroupInfo.storyboard */; };
+		90BBFA631FCFDF4600CDE81C /* EMGroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BBFA621FCFDF4600CDE81C /* EMGroupInfoViewController.swift */; };
 		90BE3F4F1F3DA2B300B84B78 /* EMGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BE3F4E1F3DA2B300B84B78 /* EMGroupsViewController.swift */; };
 		90BE5EC41F133D0D00C126EB /* EMSetNameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BE5EC31F133D0D00C126EB /* EMSetNameViewController.swift */; };
 		90BF54A31EF3878B00BEED2F /* EMRealtimeSearchUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90BF54A21EF3878B00BEED2F /* EMRealtimeSearchUtil.swift */; };
@@ -701,6 +708,11 @@
 		9011E09B1EEEC22700C43D05 /* logo9@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo9@2x.png"; sourceTree = "<group>"; };
 		9011E09C1EEEC22700C43D05 /* logo9@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "logo9@3x.png"; sourceTree = "<group>"; };
 		9011E1CB1EEEC38600C43D05 /* EMColorUtils.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMColorUtils.swift; sourceTree = "<group>"; };
+		90150AF41FD13418004AEF92 /* EMGroupAnnouncementViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupAnnouncementViewController.swift; sourceTree = "<group>"; };
+		90150AF61FD134ED004AEF92 /* EMGroupAdminListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupAdminListViewController.swift; sourceTree = "<group>"; };
+		90150AF81FD13DA7004AEF92 /* EMGroupMemberListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupMemberListViewController.swift; sourceTree = "<group>"; };
+		90150AFA1FD141F0004AEF92 /* EMGroupBlackListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupBlackListViewController.swift; sourceTree = "<group>"; };
+		90150AFC1FD142A6004AEF92 /* EMGroupMuteListViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupMuteListViewController.swift; sourceTree = "<group>"; };
 		90169F5F1EF275A300B9ADC6 /* UIImage+HeadImage.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIImage+HeadImage.swift"; sourceTree = "<group>"; };
 		90169F611EF2767200B9ADC6 /* EMUserProfileManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMUserProfileManager.swift; sourceTree = "<group>"; };
 		90169F631EF2A30A00B9ADC6 /* AppDelegate+Parse.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "AppDelegate+Parse.swift"; sourceTree = "<group>"; };
@@ -800,6 +812,8 @@
 		90B777CD1EF140E0006D0977 /* EMChatsCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatsCell.swift; sourceTree = "<group>"; };
 		90B777CE1EF140E0006D0977 /* EMChatsCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMChatsCell.xib; sourceTree = "<group>"; };
 		90B777D11EF149AB006D0977 /* EMConversationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMConversationModel.swift; sourceTree = "<group>"; };
+		90BBFA601FCFDD4800CDE81C /* GroupInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = GroupInfo.storyboard; sourceTree = "<group>"; };
+		90BBFA621FCFDF4600CDE81C /* EMGroupInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupInfoViewController.swift; sourceTree = "<group>"; };
 		90BE3F4E1F3DA2B300B84B78 /* EMGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMGroupsViewController.swift; sourceTree = "<group>"; };
 		90BE5EC31F133D0D00C126EB /* EMSetNameViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMSetNameViewController.swift; sourceTree = "<group>"; };
 		90BF54A21EF3878B00BEED2F /* EMRealtimeSearchUtil.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMRealtimeSearchUtil.swift; sourceTree = "<group>"; };
@@ -972,6 +986,7 @@
 				90593CE81FC535310029FB66 /* ChatroomInfo.storyboard */,
 				90A387CD1FCD513200468B60 /* PublicGroupInfo.storyboard */,
 				90453D4C1FCE706700DFD5FB /* CreateGroup.storyboard */,
+				90BBFA601FCFDD4800CDE81C /* GroupInfo.storyboard */,
 			);
 			name = Storyboards;
 			sourceTree = "<group>";
@@ -1567,6 +1582,12 @@
 				90BE3F4E1F3DA2B300B84B78 /* EMGroupsViewController.swift */,
 				90A387CF1FCD525800468B60 /* EMPublicGroupInfoViewController.swift */,
 				90453D4A1FCE6EA900DFD5FB /* EMCreateGroupViewController.swift */,
+				90BBFA621FCFDF4600CDE81C /* EMGroupInfoViewController.swift */,
+				90150AF41FD13418004AEF92 /* EMGroupAnnouncementViewController.swift */,
+				90150AF61FD134ED004AEF92 /* EMGroupAdminListViewController.swift */,
+				90150AF81FD13DA7004AEF92 /* EMGroupMemberListViewController.swift */,
+				90150AFA1FD141F0004AEF92 /* EMGroupBlackListViewController.swift */,
+				90150AFC1FD142A6004AEF92 /* EMGroupMuteListViewController.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -1821,6 +1842,7 @@
 				9069B3C91FC41C25004F9DBD /* EMGroupCell.xib in Resources */,
 				9011E1C81EEEC22700C43D05 /* logo9@2x.png in Resources */,
 				9011E0EA1EEEC22700C43D05 /* Button_Current Location@3x.png in Resources */,
+				90BBFA611FCFDD4800CDE81C /* GroupInfo.storyboard in Resources */,
 				9011E1C21EEEC22700C43D05 /* logo7@2x.png in Resources */,
 				9011E10B1EEEC22700C43D05 /* Button_Stats@3x.png in Resources */,
 				9011E1241EEEC22700C43D05 /* Icon_Play@3x.png in Resources */,
@@ -2048,6 +2070,7 @@
 				907FBAB51FC68273003386C1 /* EMChatroomBlackListViewController.swift in Sources */,
 				9011E1CC1EEEC38600C43D05 /* EMColorUtils.swift in Sources */,
 				90FB78981EF7EE9B00B02F60 /* EMEmoji.m in Sources */,
+				90150AF91FD13DA7004AEF92 /* EMGroupMemberListViewController.swift in Sources */,
 				9069B3C81FC41C25004F9DBD /* EMGroupCell.swift in Sources */,
 				90190C831F0F997D00A238F3 /* EMPushNotificationViewController.swift in Sources */,
 				90638D991FCED88200D76493 /* EMMemberCollectionViewCell.swift in Sources */,
@@ -2083,6 +2106,8 @@
 				90A3CAC81FCC05D2001BB4C5 /* EMChatroomAnnouncementViewController.swift in Sources */,
 				90453D4B1FCE6EA900DFD5FB /* EMCreateGroupViewController.swift in Sources */,
 				90749EDA1EF90E5B00D3A065 /* wav.mm in Sources */,
+				90BBFA631FCFDF4600CDE81C /* EMGroupInfoViewController.swift in Sources */,
+				90150AFB1FD141F0004AEF92 /* EMGroupBlackListViewController.swift in Sources */,
 				90FB78991EF7EE9B00B02F60 /* EMEmojiEmoticons.m in Sources */,
 				909602221FC7D8C700E71B93 /* EMAlertAction.swift in Sources */,
 				90749ED41EF90E5B00D3A065 /* EMCDDeviceManager+Media.m in Sources */,
@@ -2090,6 +2115,7 @@
 				90FB78891EF7BFAE00B02F60 /* EMChatRecordView.swift in Sources */,
 				906AD64C1EFBD2DC004CCCAE /* UIViewController+HUD.swift in Sources */,
 				90BE3F4F1F3DA2B300B84B78 /* EMGroupsViewController.swift in Sources */,
+				90150AFD1FD142A6004AEF92 /* EMGroupMuteListViewController.swift in Sources */,
 				902C0BC31EF24AC80069165E /* EMBaseRefreshTableViewController.swift in Sources */,
 				901D8D071F0F3998009D6644 /* EMSettingsViewController.swift in Sources */,
 				90749ED31EF90E5B00D3A065 /* EMAudioRecorderUtil.m in Sources */,
@@ -2098,6 +2124,7 @@
 				908324EA1EEFE5F000811A97 /* EMMainViewController.swift in Sources */,
 				907FBAAF1FC679C0003386C1 /* EMChatroomParticipantsViewController.swift in Sources */,
 				906AD6451EFB836D004CCCAE /* EMChatBaseBubbleView.swift in Sources */,
+				90150AF51FD13418004AEF92 /* EMGroupAnnouncementViewController.swift in Sources */,
 				90C00C771EEF8C5D0049BFAD /* UIView+HyphenateView.swift in Sources */,
 				90B43DC51F00DE0B0084E67F /* EMChatAudioBubbleView.swift in Sources */,
 				90A387D01FCD525800468B60 /* EMPublicGroupInfoViewController.swift in Sources */,
@@ -2112,6 +2139,7 @@
 				90749ED61EF90E5B00D3A065 /* EMCDDeviceManager+ProximitySensor.m in Sources */,
 				9069B3C31FC40CBE004F9DBD /* IEMGroupModelDeleagte.swift in Sources */,
 				90B43DD51F012E910084E67F /* EMApplyRequestCell.swift in Sources */,
+				90150AF71FD134ED004AEF92 /* EMGroupAdminListViewController.swift in Sources */,
 				90453D551FCEA26A00DFD5FB /* EMSelectItemViewController.swift in Sources */,
 				90749EDB1EF90E5B00D3A065 /* EMVoiceConverter.mm in Sources */,
 				90B777D21EF149AB006D0977 /* EMConversationModel.swift in Sources */,

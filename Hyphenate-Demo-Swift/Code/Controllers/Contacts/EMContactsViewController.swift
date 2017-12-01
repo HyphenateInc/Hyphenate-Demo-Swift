@@ -136,13 +136,8 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
     
     func sortContacts(contactList: Array<String>) {
         let collation =  UILocalizedIndexedCollation.current()
-        let _sectionTitles = NSMutableArray.init(array: collation.sectionTitles)
-        let _contacts = NSMutableArray()
-        for _ in 0..<_sectionTitles.count {
-            _contacts.add(Array<EMUserModel>())
-        }
-        
-        // TODO
+        var _contacts = collation.sectionTitles.map { _ in Array<EMUserModel>() }
+
         let ary = contactList.sorted { (contact1, contact2) -> Bool in
             let nickname1 = EMUserProfileManager.sharedInstance.getNickNameWithUsername(username: contact1)
             let nickname2 = EMUserProfileManager.sharedInstance.getNickNameWithUsername(username: contact2)
@@ -150,36 +145,20 @@ class EMContactsViewController: EMBaseRefreshTableViewController, UISearchBarDel
         }
         
         var _searchSource = Array<EMUserModel>()
+        var titlesSet = Set<String>()
         for hyphenateId in ary {
             let model = EMUserModel.createWithHyphenateId(hyphenateId: hyphenateId)
             if model != nil{
                 let sectionIndex = collation.section(for: model!, collationStringSelector: #selector(getter: EMUserModel.nickname))
-                var array = _contacts[sectionIndex] as! Array<EMUserModel>
-                array.append(model as! EMUserModel)
-                _contacts[sectionIndex] = array
+                titlesSet.insert(collation.sectionTitles[sectionIndex])
+                _contacts[sectionIndex].append(model as! EMUserModel)
                 _searchSource.append(model as! EMUserModel)
             }
         }
         
-        var indexSet: NSMutableIndexSet?
-        for (idx, obj) in _contacts.enumerated() {
-            let _obj = (obj as! Array<Any>)
-            if _obj.count == 0 {
-                if indexSet == nil {
-                    indexSet = NSMutableIndexSet.init()
-                }
-                indexSet?.add(idx)
-            }
-        }
-        
-        if indexSet != nil {
-            _contacts.removeObjects(at: indexSet! as IndexSet)
-            _sectionTitles.removeObjects(at: indexSet! as IndexSet)
-        }
-        
+        contacts = _contacts.flatMap({ (ary) in ary.count > 0 ? ary : nil})
+        sectionTitles = titlesSet.map({(str) in str}).sorted(by: <)
         searchSource = _searchSource
-        sectionTitles = _sectionTitles as! Array<String>
-        contacts = _contacts as! Array<Any>
     }
     
     // MARK: - Action Method

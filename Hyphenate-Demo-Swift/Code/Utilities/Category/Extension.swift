@@ -41,7 +41,7 @@ extension UIAlertController {
         }
 
         if autoAddCancelAction {
-            alert.addAction(EMAlertAction.defaultAction(title:"Cancel", handler: nil))
+            alert.addAction(EMAlertAction.cancelAction())
         }
         return alert
     }
@@ -58,7 +58,7 @@ extension UIAlertController {
         }
         
         if autoAddCancelAction {
-            alert.addAction(EMAlertAction.defaultAction(title:"Cancel", handler: nil))
+            alert.addAction(EMAlertAction.cancelAction())
         }
         return alert
     }

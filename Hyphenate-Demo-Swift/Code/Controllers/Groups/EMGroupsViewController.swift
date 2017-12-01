@@ -14,7 +14,9 @@ class EMGroupsViewController: EMBaseRefreshTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Groups"
         setupNavBar()
+        setupBackAction()
         tableView.delegate = self
         tableView.dataSource = self
         addNotifications()
@@ -22,8 +24,6 @@ class EMGroupsViewController: EMBaseRefreshTableViewController {
     }
     
     func setupNavBar() {
-        title = "Groups"
-        
         let rightBtn = UIButton(type: .custom)
         rightBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         rightBtn.setImage(UIImage(named:"Icon_Add"), for: .normal)
@@ -31,14 +31,6 @@ class EMGroupsViewController: EMBaseRefreshTableViewController {
         rightBtn.addTarget(self, action: #selector(addGroupAction), for: .touchUpInside)
         let rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        
-        let leftBtn = UIButton(type: UIButtonType.custom)
-        leftBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .normal)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .highlighted)
-        leftBtn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        let leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
-        navigationItem.leftBarButtonItem = leftBarButtonItem
     }
 
     func loadGroupsFromServer() {
@@ -66,11 +58,7 @@ class EMGroupsViewController: EMBaseRefreshTableViewController {
     }
     
     // MARK: - Action
-    
-    @objc func backAction() {
-        navigationController?.popViewController(animated: true)
-    }
-    
+
     @objc func addGroupAction() {
         weak var weakSelf = self
         let createAction = EMAlertAction.defaultAction(title: "Create a group") { (action) in

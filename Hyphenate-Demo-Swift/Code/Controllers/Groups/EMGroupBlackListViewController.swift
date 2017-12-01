@@ -1,16 +1,15 @@
 //
-//  EMChatroomBlackListViewController.swift
+//  EMGroupBlackListViewController.swift
 //  Hyphenate-Demo-Swift
 //
-//  Created by 杜洁鹏 on 2017/11/23.
+//  Created by 杜洁鹏 on 2017/12/1.
 //  Copyright © 2017年 杜洁鹏. All rights reserved.
 //
 
 import UIKit
 import Hyphenate
 
-
-class EMChatroomBlackListViewController: EMChatroomParticipantsViewController {
+class EMGroupBlackListViewController: EMChatroomParticipantsViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +23,11 @@ class EMChatroomBlackListViewController: EMChatroomParticipantsViewController {
         let removeAction = EMAlertAction.defaultAction(title: "Remove from blacklist") { (action) in
             weak var weakSelf = self
             weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
-            EMClient.shared().roomManager.unblockMembers([(model?.hyphenateID)!], fromChatroom: weakSelf?.chatroom!.chatroomId, completion: { (chatroom, error) in
+            EMClient.shared().groupManager.unblockMembers([(model?.hyphenateID)!], fromGroup: weakSelf?.group?.groupId, completion: { (result, error) in
                 weakSelf?.hideHub()
                 if error == nil {
-                    weakSelf?.postNotificationToUpdateChatroomInfo()
+                    weakSelf?.group = result
+                    weakSelf?.postNotificationToUpdateGroupInfo()
                     weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: { (indexModel) -> Bool in
                         return (indexModel as! IEMUserModel).hyphenateID == model?.hyphenateID
                     }))!)
@@ -40,7 +40,7 @@ class EMChatroomBlackListViewController: EMChatroomParticipantsViewController {
         let alertController = UIAlertController.alertWith(item: removeAction)
         present(alertController, animated: true, completion: nil)
     }
-
+    
     override func tableViewDidTriggerFooterRefresh() {
         fetchPersion(isHeader: false)
         page += pageSize
@@ -49,7 +49,7 @@ class EMChatroomBlackListViewController: EMChatroomParticipantsViewController {
     override func fetchPersion(isHeader: Bool) {
         weak var weakSelf = self
         weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
-        EMClient.shared().roomManager.getChatroomBlacklistFromServer(withId: chatroom?.chatroomId, pageNumber: page, pageSize: pageSize) { (resultList, error) in
+        EMClient.shared().groupManager.getGroupBlacklistFromServer(withId: group?.groupId, pageNumber: page, pageSize: pageSize) { (resultList, error) in
             weakSelf?.hideHub()
             weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)
             if error == nil {

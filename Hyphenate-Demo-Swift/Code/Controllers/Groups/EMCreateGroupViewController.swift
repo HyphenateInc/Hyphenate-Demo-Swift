@@ -28,28 +28,24 @@ class EMCreateGroupViewController: UITableViewController, EMSelectItemViewContro
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupForDismissKeyboard()
+         title = "New Group"
+        setupBackAction()
         setupNavBar()
+        setupForDismissKeyboard()
         tableView.tableFooterView = UIView()
         membersCollection.register(UINib(nibName: "EMMemberCollectionCell", bundle: nil), forCellWithReuseIdentifier: "EMMemberCollectionCell")
     }
     
     func setupNavBar() {
-        title = "New Group"
-        let leftBtn = UIButton(type: UIButtonType.custom)
-        leftBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .normal)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .highlighted)
-        leftBtn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        let leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-        
         let rigetBarButtonItem = UIBarButtonItem(title: "Create", style: .plain, target: self, action: #selector(createGroup))
         rigetBarButtonItem.tintColor = KermitGreenTwoColor
         navigationItem.rightBarButtonItem = rigetBarButtonItem
     }
     
     @objc func createGroup() {
+        
+        view.endEditing(true)
+        
         let groupSettngs = EMGroupOptions()
         groupSettngs.maxUsersCount = maxCount
         if publicSwitch.isOn {
@@ -59,12 +55,8 @@ class EMCreateGroupViewController: UITableViewController, EMSelectItemViewContro
         }
         weak var weakSelf = self
         
-        let invitees = selectedItems?.map({ (model) -> String in
-            model.hyphenateID
-        })
+        let invitees = selectedItems?.map({ (model) in model.hyphenateID })
 
-        view.endEditing(true)
-        
         MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow, animated: true)
         EMClient.shared().groupManager.createGroup(withSubject: subjectTextField.text, description: descriptionTextField.text, invitees: invitees, message: nil, setting: groupSettngs) { (group, error) in
             MBProgressHUD.hideAllHUDs(for: UIApplication.shared.keyWindow, animated: true)
@@ -76,11 +68,7 @@ class EMCreateGroupViewController: UITableViewController, EMSelectItemViewContro
             }
         }
     }
-    
-    @objc func backAction() {
-        navigationController?.popViewController(animated: true)
-    }
-    
+
     @IBAction func selectPhotoAction(_ sender: UIButton) {
         showAlert("unsupport")
     }

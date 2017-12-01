@@ -25,10 +25,11 @@ class EMPublicGroupInfoViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         weak var weakSelf = self
-        setupNavBar()
+        title = "Group Info"
+        setupBackAction()
         reloadGroupInfo()
         bottomBtn.isHidden = true
-        
+ 
         MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow, animated: true)
         EMClient.shared().groupManager.getGroupSpecificationFromServer(withId: group?.groupId) { (group, error) in
         MBProgressHUD.hideAllHUDs(for: UIApplication.shared.keyWindow, animated: true)
@@ -39,23 +40,7 @@ class EMPublicGroupInfoViewController: UITableViewController {
             }
         }
     }
-    
-    func setupNavBar() {
-        title = "Group Info"
-        
-        let leftBtn = UIButton(type: UIButtonType.custom)
-        leftBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .normal)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .highlighted)
-        leftBtn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        let leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-    }
-    
-    @objc func backAction() {
-        navigationController?.popViewController(animated: true)
-    }
-    
+
     func reloadGroupInfo() {
         groupNameLabel.text = group?.subject
         owerLabel.text = group?.owner

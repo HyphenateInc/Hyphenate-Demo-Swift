@@ -26,9 +26,9 @@ class EMChatroomMuteListViewController: EMChatroomParticipantsViewController {
                 weakSelf?.hideHub()
                 if error == nil {
                     self.postNotificationToUpdateChatroomInfo()
-                    let ary = NSMutableArray(array: self.dataArray! as NSArray)
-                    ary.remove(model!)
-                    self.dataArray = ary as Array
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: { (indexModel) -> Bool in
+                        return (indexModel as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    }))!)
                     self.tableView.reloadData()
                 }else {
                     weakSelf?.show((error?.errorDescription)!)

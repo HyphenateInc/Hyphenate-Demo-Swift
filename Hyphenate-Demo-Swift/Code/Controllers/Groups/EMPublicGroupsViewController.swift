@@ -16,33 +16,19 @@ class EMPublicGroupsViewController: EMBaseRefreshTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavBar()
+        title = "Public Groups"
+        setupBackAction()
         tableView.delegate = self
         tableView.dataSource = self
         
         tableViewDidTriggerHeaderRefresh()
     }
 
-    func setupNavBar() {
-        title = "Public Groups"
-        let leftBtn = UIButton(type: UIButtonType.custom)
-        leftBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .normal)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .highlighted)
-        leftBtn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        let leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-    }
-    
     func loadPublicGroupsFromServer() {
         self.tableViewDidTriggerHeaderRefresh()
     }
     
     // MARK: - Action
-    
-    @objc func backAction() {
-        navigationController?.popViewController(animated: true)
-    }
     
     override func tableViewDidTriggerHeaderRefresh() {
         page = 1
