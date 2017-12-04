@@ -29,7 +29,7 @@ class EMChatroomMuteListViewController: EMChatroomParticipantsViewController {
                     weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
                         return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
                     }))!)
-                    self.tableView.reloadData()
+                    weakSelf?.tableView.reloadData()
                 }else {
                     weakSelf?.show((error?.errorDescription)!)
                 }

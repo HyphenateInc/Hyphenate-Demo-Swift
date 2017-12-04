@@ -122,7 +122,7 @@ class EMChatroomMemberListViewController: EMChatroomParticipantsViewController {
                 }
                 
                 DispatchQueue.main.async {
-                    weakSelf?.tableView.reloadData()
+                    self.tableView.reloadData()
                     if result!.list.count < self.pageSize {
                         self.showRefreshFooter = false
                     }else {

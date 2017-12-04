@@ -77,9 +77,11 @@ class EMGroupAdminListViewController: EMChatroomParticipantsViewController {
         weak var weakSelf = self
         EMClient.shared().groupManager.getGroupSpecificationFromServer(withId: group!.groupId) { (result, error) in
             weakSelf?.hideHub()
+            weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)
             if error == nil {
-                weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)
-                weakSelf?.dataArray!.removeAll()
+                if isHeader {
+                    weakSelf?.dataArray!.removeAll()
+                }
                 var list = Array<IEMUserModel>()
                 for username in (result?.adminList)! {
                     list.append(EMUserModel.createWithHyphenateId(hyphenateId: username as! String)!)

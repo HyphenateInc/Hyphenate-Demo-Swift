@@ -17,6 +17,7 @@ class EMGroupInfoViewController: UITableViewController {
     
     @IBOutlet weak var groupIdLabel: UILabel!
     @IBOutlet weak var subjectLabel: UILabel!
+    @IBOutlet weak var descriptionLabel: UILabel!
     @IBOutlet weak var ownerLabel: UILabel!
     @IBOutlet weak var announcementLabel: UILabel!
     @IBOutlet weak var adminsCountLabel: UILabel!
@@ -75,7 +76,9 @@ class EMGroupInfoViewController: UITableViewController {
         
         groupIdLabel.text = group?.groupId
         subjectLabel.text = group?.subject
+        descriptionLabel.text = group?.description
         ownerLabel.text = group?.owner
+        extensionLabel.text = group?.setting.ext
 
         tableView.reloadData()
     }
@@ -87,41 +90,110 @@ class EMGroupInfoViewController: UITableViewController {
         case 0:
             break
         case 1:
+            if isOwner || isAdmin{
+                // Only owner or admin can change.
+                weak var weakSelf = self
+                let action = EMAlertAction.defaultAction(title: "Change", handler: { (alertAction) in
+                    let action = alertAction as! EMAlertAction
+                    let textField = action.alertController?.textFields?.first
+                    weakSelf?.showHub(inView: weakSelf?.view, "Uploading...")
+                    EMClient.shared().groupManager.updateGroupSubject(textField?.text, forGroup: weakSelf?.group?.groupId, completion: { (result, error) in
+                        weakSelf?.hideHub()
+                        if error == nil {
+                            weakSelf?.group = result
+                            weakSelf?.updateGroupInfo()
+                            weakSelf?.tableView.reloadData()
+                            NotificationCenter.default.post(name: NSNotification.Name(KEM_REFRESH_GROUPLIST_NOTIFICATION), object: result)
+                        }else {
+                            weakSelf?.show((error?.errorDescription)!)
+                        }
+                    })
+                })
+                let alert = UIAlertController.textField(withTitle:"Change Subject", item: action, defaultText: group?.subject)
+                present(alert, animated: true, completion: nil)
+            }
             break
         case 2:
+            if isOwner || isAdmin{
+                // Only owner or admin can change.
+                weak var weakSelf = self
+                let action = EMAlertAction.defaultAction(title: "Change", handler: { (alertAction) in
+                    let action = alertAction as! EMAlertAction
+                    let textField = action.alertController?.textFields?.first
+                    weakSelf?.showHub(inView: weakSelf?.view, "Uploading...")
+                    EMClient.shared().groupManager.updateDescription(textField?.text, forGroup: weakSelf?.group?.groupId, completion: { (result, error) in
+                        weakSelf?.hideHub()
+                        if error == nil {
+                            weakSelf?.group = result
+                            weakSelf?.updateGroupInfo()
+                            weakSelf?.tableView.reloadData()
+                        }else {
+                            weakSelf?.show((error?.errorDescription)!)
+                        }
+                    })
+                })
+                let alert = UIAlertController.textField(withTitle:"Change Description", item: action, defaultText: group?.description)
+                present(alert, animated: true, completion: nil)
+            }
             break
         case 3:
+            break
+        case 4:
             let groupAnnouncementViewController = EMGroupAnnouncementViewController()
             groupAnnouncementViewController.isCanChange = isOwner || isAdmin ? true : false
             groupAnnouncementViewController.group = group
             navigationController?.pushViewController(groupAnnouncementViewController, animated: true)
             break
-        case 4:
+        case 5:
             let groupAdminListVC = EMGroupAdminListViewController()
             groupAdminListVC.group = group
             groupAdminListVC.isOwner = isOwner
             groupAdminListVC.isAdmin = isAdmin
             navigationController?.pushViewController(groupAdminListVC, animated: true)
             break
-        case 5:
+        case 6:
             let groupMemberListVC = EMGroupMemberListViewController()
             groupMemberListVC.group = group
             groupMemberListVC.isOwner = isOwner
             groupMemberListVC.isAdmin = isAdmin
             navigationController?.pushViewController(groupMemberListVC, animated: true)
             break
-        case 6:
-            break
         case 7:
+            if isOwner || isAdmin{
+                // Only owner or admin can change.
+                weak var weakSelf = self
+                let action = EMAlertAction.defaultAction(title: "Change", handler: { (alertAction) in
+                    let action = alertAction as! EMAlertAction
+                    let textField = action.alertController?.textFields?.first
+                    weakSelf?.showHub(inView: weakSelf?.view, "Uploading...")
+                    EMClient.shared().groupManager.updateGroupExt(withId: weakSelf?.group?.groupId, ext: textField?.text, completion: { (result, error) in
+                        weakSelf?.hideHub()
+                        if error == nil {
+                            weakSelf?.group = result
+                            weakSelf?.updateGroupInfo()
+                            weakSelf?.tableView.reloadData()
+                        }else {
+                            weakSelf?.show((error?.errorDescription)!)
+                        }
+                    })
+                })
+                let alert = UIAlertController.textField(withTitle:"Change Extension", item: action, defaultText: group?.setting.ext)
+                present(alert, animated: true, completion: nil)
+            }
             break
         case 8:
+            let shareFileVC = EMGroupShareFileViewController()
+            shareFileVC.group = group
+            navigationController?.pushViewController(shareFileVC, animated: true)
+            break
+        case 9:
             let groupBlackListVC = EMGroupBlackListViewController()
             groupBlackListVC.group = group
             groupBlackListVC.isOwner = isOwner
             groupBlackListVC.isAdmin = isAdmin
             navigationController?.pushViewController(groupBlackListVC, animated: true)
             break
-        case 9:
+        case 10:
             let groupMuteListVC = EMGroupMuteListViewController()
             groupMuteListVC.group = group
             groupMuteListVC.isOwner = isOwner
@@ -139,7 +211,7 @@ class EMGroupInfoViewController: UITableViewController {
         }
         
         switch indexPath.row {
-        case 0, 1, 2, 3, 4, 5, 7:
+        case 0, 1, 2, 3, 4, 5, 6, 7, 8:
             return 55
         default:
             return 0

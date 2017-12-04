@@ -79,7 +79,9 @@ class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
             weakSelf?.hideHub()
             if error == nil {
                 weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)
-                weakSelf?.dataArray!.removeAll()
+                if isHeader {
+                    weakSelf?.dataArray!.removeAll()
+                }
                 var list = Array<IEMUserModel>()
                 for username in (result?.adminList)! {
                     list.append(EMUserModel.createWithHyphenateId(hyphenateId: username as! String)!)
