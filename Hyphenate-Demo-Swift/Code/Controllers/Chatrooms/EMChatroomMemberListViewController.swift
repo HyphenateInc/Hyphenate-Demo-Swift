@@ -30,9 +30,9 @@ class EMChatroomMemberListViewController: EMChatroomParticipantsViewController {
                 if error == nil {
                     weakSelf?.chatroom = result
                     weakSelf?.postNotificationToUpdateChatroomInfo()
-                    let ary = NSMutableArray(array: self.dataArray! as NSArray)
-                    ary.remove(model!)
-                    weakSelf?.dataArray = ary as Array
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
+                        return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    }))!)
                     weakSelf?.tableView.reloadData()
                 }else {
                     weakSelf?.show((error?.errorDescription)!)
@@ -48,9 +48,9 @@ class EMChatroomMemberListViewController: EMChatroomParticipantsViewController {
                 if error == nil {
                     weakSelf?.chatroom = result
                     weakSelf?.postNotificationToUpdateChatroomInfo()
-                    let ary = NSMutableArray(array: self.dataArray! as NSArray)
-                    ary.remove(model!)
-                    weakSelf?.dataArray = ary as Array
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
+                        return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    }))!)
                     weakSelf?.tableView.reloadData()
                 }else {
                     weakSelf?.show((error?.errorDescription)!)
@@ -77,8 +77,8 @@ class EMChatroomMemberListViewController: EMChatroomParticipantsViewController {
                 if error == nil {
                     weakSelf?.chatroom = result
                     weakSelf?.postNotificationToUpdateChatroomInfo()
-                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: { (indexModel) -> Bool in
-                        return (indexModel as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
+                        return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
                     }))!)
                     weakSelf?.tableView.reloadData()
                 }else {
@@ -102,7 +102,7 @@ class EMChatroomMemberListViewController: EMChatroomParticipantsViewController {
     
     override func fetchPersion(isHeader: Bool) {
         weak var weakSelf = self
-        weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
+        weakSelf?.showHub(inView: weakSelf!.view, "Loading...")
         EMClient.shared().roomManager.getChatroomMemberListFromServer(withId: chatroom?.chatroomId, cursor: cursor, pageSize: pageSize) { (result, error) in
             weakSelf?.hideHub()
             weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)

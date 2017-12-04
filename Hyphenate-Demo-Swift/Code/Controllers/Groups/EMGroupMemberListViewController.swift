@@ -8,14 +8,51 @@
 
 import UIKit
 import Hyphenate
+import MBProgressHUD
 
-class EMGroupMemberListViewController: EMChatroomParticipantsViewController {
+class EMGroupMemberListViewController: EMChatroomParticipantsViewController, EMSelectItemViewControllerDelegate{
     
     var cursor = ""
     
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Member List"
+        setupNavBar()
+    }
+    
+    func setupNavBar() {
+        let rightBtn = UIButton(type: .custom)
+        rightBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
+        rightBtn.setImage(UIImage(named:"Icon_Add"), for: .normal)
+        rightBtn.setImage(UIImage(named:"Icon_Add"), for: .highlighted)
+        rightBtn.addTarget(self, action: #selector(addMembersAction), for: .touchUpInside)
+        let rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
+        navigationItem.rightBarButtonItem = rightBarButtonItem
+    }
+    
+    // MARK: - EMSelectItemViewControllerDelegate
+    func didSelected(item: Array<IEMUserModel>?) {
+        if item != nil && item!.count > 0 {
+            weak var weakSelf = self
+            MBProgressHUD.showInMainWindow()
+            EMClient.shared().groupManager.addMembers(item!.map({$0.hyphenateID}), toGroup: group?.groupId!, message: nil, completion: { (result, error) in
+                MBProgressHUD.hideHubInMainWindow()
+                if error == nil {
+                    weakSelf?.show("Succeed")
+                }else {
+                    weakSelf?.show((error?.errorDescription)!)
+                }
+            })
+        }
+    }
+    
+    @objc func addMembersAction() {
+        let selectItemVC = EMSelectItemViewController()
+        selectItemVC.selectedAry = dataArray as? Array<IEMUserModel>
+        selectItemVC.selectType = EMSelectItemType.unShowSelected
+        selectItemVC.delegate = self
+        let nav = UINavigationController.init(rootViewController: selectItemVC)
+        present(nav, animated: true, completion: nil)
     }
     
     override func contactCellDidLongPressed(model: EMUserModel?) {
@@ -30,9 +67,9 @@ class EMGroupMemberListViewController: EMChatroomParticipantsViewController {
                 if error == nil {
                     weakSelf?.group = result
                     weakSelf?.postNotificationToUpdateGroupInfo()
-                    let ary = NSMutableArray(array: self.dataArray! as NSArray)
-                    ary.remove(model!)
-                    weakSelf?.dataArray = ary as Array
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
+                        return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    }))!)
                     weakSelf?.tableView.reloadData()
                 }else {
                     weakSelf?.show((error?.errorDescription)!)
@@ -47,9 +84,9 @@ class EMGroupMemberListViewController: EMChatroomParticipantsViewController {
                 if error == nil {
                     weakSelf?.group = result
                     weakSelf?.postNotificationToUpdateGroupInfo()
-                    let ary = NSMutableArray(array: self.dataArray! as NSArray)
-                    ary.remove(model!)
-                    weakSelf?.dataArray = ary as Array
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
+                        return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    }))!)
                     weakSelf?.tableView.reloadData()
                 }else {
                     weakSelf?.show((error?.errorDescription)!)
@@ -77,8 +114,8 @@ class EMGroupMemberListViewController: EMChatroomParticipantsViewController {
                 if error == nil {
                     weakSelf?.group = result
                     weakSelf?.postNotificationToUpdateGroupInfo()
-                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: { (indexModel) -> Bool in
-                        return (indexModel as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
+                        return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
                     }))!)
                     weakSelf?.tableView.reloadData()
                 }else {
@@ -86,7 +123,6 @@ class EMGroupMemberListViewController: EMChatroomParticipantsViewController {
                 }
             })
         }
-        
         
         let alertController = UIAlertController.alertWith(item: removeFromGroupAction, muteAction,moveToBlackList)
         if isOwner {
@@ -102,7 +138,7 @@ class EMGroupMemberListViewController: EMChatroomParticipantsViewController {
     
     override func fetchPersion(isHeader: Bool) {
         weak var weakSelf = self
-        weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
+        weakSelf?.showHub(inView: weakSelf!.view, "Loading...")
         EMClient.shared().groupManager.getGroupMemberListFromServer(withId: group?.groupId, cursor: cursor, pageSize: pageSize) { (result, error) in
             weakSelf?.hideHub()
             weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)

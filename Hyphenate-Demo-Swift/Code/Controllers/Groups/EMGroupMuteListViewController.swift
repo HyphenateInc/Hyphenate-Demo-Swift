@@ -28,8 +28,8 @@ class EMGroupMuteListViewController: EMChatroomParticipantsViewController {
                 if error == nil {
                     weakSelf?.group = result
                     self.postNotificationToUpdateGroupInfo()
-                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: { (indexModel) -> Bool in
-                        return (indexModel as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
+                        return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
                     }))!)
                     self.tableView.reloadData()
                 }else {
@@ -49,7 +49,7 @@ class EMGroupMuteListViewController: EMChatroomParticipantsViewController {
     
     override func fetchPersion(isHeader: Bool) {
         weak var weakSelf = self
-        weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
+        weakSelf?.showHub(inView: weakSelf!.view, "Loading...")
         EMClient.shared().groupManager.getGroupMuteListFromServer(withId: weakSelf?.group?.groupId, pageNumber: pageSize, pageSize: pageSize) { (resultList, error) in
             weakSelf?.hideHub()
             weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)

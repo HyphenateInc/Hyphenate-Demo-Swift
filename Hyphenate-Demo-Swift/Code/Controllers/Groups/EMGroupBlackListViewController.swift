@@ -28,8 +28,8 @@ class EMGroupBlackListViewController: EMChatroomParticipantsViewController {
                 if error == nil {
                     weakSelf?.group = result
                     weakSelf?.postNotificationToUpdateGroupInfo()
-                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: { (indexModel) -> Bool in
-                        return (indexModel as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
+                        return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
                     }))!)
                     weakSelf?.tableView.reloadData()
                 }else {
@@ -48,7 +48,7 @@ class EMGroupBlackListViewController: EMChatroomParticipantsViewController {
     
     override func fetchPersion(isHeader: Bool) {
         weak var weakSelf = self
-        weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
+        weakSelf?.showHub(inView: weakSelf!.view, "Loading...")
         EMClient.shared().groupManager.getGroupBlacklistFromServer(withId: group?.groupId, pageNumber: page, pageSize: pageSize) { (resultList, error) in
             weakSelf?.hideHub()
             weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)

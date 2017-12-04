@@ -10,18 +10,23 @@ import UIKit
 import Hyphenate
 
 protocol EMSelectItemViewControllerDelegate {
-    func didSelected(item: Array<IEMUserModel>)
+    func didSelected(item: Array<IEMUserModel>?)
+}
+
+public enum EMSelectItemType : Int {
+    case showSelected
+    case unShowSelected
 }
 
 class EMSelectItemViewController: UITableViewController {
 
     var delegate: EMSelectItemViewControllerDelegate?
-    var selectedAry = Array<IEMUserModel>()
+    var selectedAry: Array<IEMUserModel>?
     var sectionTitles = Array<String>()
     var contacts = Array<Any>()
     var titleArray: Array<String>?
-    
     var doneBtn: UIBarButtonItem?
+    var selectType = EMSelectItemType.showSelected
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -44,27 +49,34 @@ class EMSelectItemViewController: UITableViewController {
     }
     
     @objc func doneAction() {
-        delegate?.didSelected(item: Array(selectedAry))
+        delegate?.didSelected(item: selectedAry)
         dismiss(animated: true, completion: nil)
     }
     
     func updateSelectedCount() {
-        doneBtn?.title = "Done" + "("+String(selectedAry.count)+")"
+        doneBtn?.title = "Done" + "("+String(selectedAry?.count ?? 0)+")"
     }
     
     func setupDataSource() {
-        let contacts = EMClient.shared().contactManager.getContacts()
-        sortContacts(contactList: contacts as! Array<String>)
+        var contactList = EMClient.shared().contactManager.getContacts() as! Array<String>
+        if selectedAry != nil && selectType == EMSelectItemType.unShowSelected {
+            let selected = selectedAry!.map({ (model) in model.hyphenateID })
+            contactList = contactList.filter({ (username) -> Bool in
+                return !selected.contains(username)
+            })
+            selectedAry = nil
+        }
+        sortContacts(contactList: contactList)
         weak var weakSelf = self
         DispatchQueue.main.async {
             weakSelf?.tableView.reloadData()
             weakSelf?.refreshControl?.endRefreshing()
         }
 
-        EMUserProfileManager.sharedInstance.loadUserProfileInBackgroundWithBuddy(buddyList: contacts as! Array<String>, saveToLocat: true) { (succeed, error) in
+        EMUserProfileManager.sharedInstance.loadUserProfileInBackgroundWithBuddy(buddyList: contactList, saveToLocat: true) { (succeed, error) in
             if succeed {
                 DispatchQueue.global().async {
-                    weakSelf?.sortContacts(contactList: contacts as! Array<String>)
+                    weakSelf?.sortContacts(contactList: contactList)
                     DispatchQueue.main.async {
                         weakSelf?.tableView.reloadData()
                     }
@@ -130,12 +142,14 @@ class EMSelectItemViewController: UITableViewController {
         }
         
         (cell as! EMContactCell).set(model: model!)
-        if selectedAry.contains(where: { (selectedModel) -> Bool in
-            return selectedModel.hyphenateID == model?.hyphenateID
-        }) {
-            tableView .selectRow(at: indexPath, animated: false, scrollPosition: .none)
-        }else {
-            tableView .deselectRow(at: indexPath, animated: false)
+        if selectedAry != nil {
+            if selectedAry!.contains(where: { (selectedModel) -> Bool in
+                return selectedModel.hyphenateID == model?.hyphenateID
+            }) {
+                tableView .selectRow(at: indexPath, animated: false, scrollPosition: .none)
+            }else {
+                tableView .deselectRow(at: indexPath, animated: false)
+            }
         }
         
         return cell!
@@ -144,17 +158,21 @@ class EMSelectItemViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         var model: EMUserModel?
         model = (contacts[indexPath.section] as! Array)[indexPath.row]
-        selectedAry.append(model!)
+        if selectedAry == nil {
+            selectedAry = Array<IEMUserModel>()
+        }
+        selectedAry!.append(model!)
         updateSelectedCount()
     }
     
     override func tableView(_ tableView: UITableView, didDeselectRowAt indexPath: IndexPath) {
         var model: EMUserModel?
         model = (contacts[indexPath.section] as! Array)[indexPath.row]
-  
-        selectedAry.remove(at: selectedAry.index { (indexModel) -> Bool in
-            return indexModel.hyphenateID == model!.hyphenateID
+        if selectedAry != nil {
+            selectedAry!.remove(at: selectedAry!.index { (indexModel) -> Bool in
+                return indexModel.hyphenateID == model!.hyphenateID
             }!)
+        }
         
         updateSelectedCount()
     }

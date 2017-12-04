@@ -28,8 +28,8 @@ class EMGroupAdminListViewController: EMChatroomParticipantsViewController {
                 if error == nil {
                     weakSelf?.group = result
                     weakSelf?.postNotificationToUpdateGroupInfo()
-                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: { (indexModel) -> Bool in
-                        return (indexModel as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
+                        return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
                     }))!)
                     weakSelf?.tableView.reloadData()
                 }else{
@@ -57,9 +57,9 @@ class EMGroupAdminListViewController: EMChatroomParticipantsViewController {
                 if error == nil {
                     weakSelf?.group = result
                     weakSelf?.postNotificationToUpdateGroupInfo()
-                    let ary = NSMutableArray(array: self.dataArray! as NSArray)
-                    ary.remove(model!)
-                    weakSelf?.dataArray = ary as Array
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
+                        return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    }))!)
                     weakSelf?.tableView.reloadData()
                 }else{
                     weakSelf?.show((error?.errorDescription)!)
@@ -73,7 +73,7 @@ class EMGroupAdminListViewController: EMChatroomParticipantsViewController {
     }
     
     override func fetchPersion(isHeader: Bool) {
-        self.showHub(inView: view, "Uploading...")
+        self.showHub(inView: view, "Loading...")
         weak var weakSelf = self
         EMClient.shared().groupManager.getGroupSpecificationFromServer(withId: group!.groupId) { (result, error) in
             weakSelf?.hideHub()

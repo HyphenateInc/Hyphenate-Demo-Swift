@@ -28,8 +28,8 @@ class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
                 if error == nil {
                     weakSelf?.chatroom = room
                     weakSelf?.postNotificationToUpdateChatroomInfo()
-                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: { (indexModel) -> Bool in
-                        return (indexModel as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
+                        return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
                     }))!)
                     weakSelf?.tableView.reloadData()
                 }else{
@@ -57,9 +57,9 @@ class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
                 if error == nil {
                     weakSelf?.chatroom = room
                     weakSelf?.postNotificationToUpdateChatroomInfo()
-                    let ary = NSMutableArray(array: (weakSelf?.dataArray)! as NSArray)
-                    ary.remove(model!)
-                    weakSelf?.dataArray = ary as Array
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
+                        return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    }))!)
                     weakSelf?.tableView.reloadData()
                 }else{
                     weakSelf?.show((error?.errorDescription)!)
@@ -73,7 +73,7 @@ class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
     }
     
     override func fetchPersion(isHeader: Bool) {
-        self.showHub(inView: view, "Uploading...")
+        self.showHub(inView: view, "Loading...")
         weak var weakSelf = self
         EMClient.shared().roomManager.getChatroomSpecificationFromServer(withId: chatroom!.chatroomId) { (result, error) in
             weakSelf?.hideHub()

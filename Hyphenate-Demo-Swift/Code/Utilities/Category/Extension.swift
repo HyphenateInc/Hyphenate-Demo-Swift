@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import MBProgressHUD
 import UIKit
 
 extension NSObject {
@@ -29,6 +30,19 @@ extension NSObject {
     func showAlert(_ title: String?, _ message: String, _ delegate: UIAlertViewDelegate?){
         let alertView = UIAlertView.init(title: title, message: message, delegate: delegate, cancelButtonTitle: "OK")
         alertView.show()
+    }
+}
+
+extension Array {
+    func filterDuplicates<E: Equatable>(_ filter: (Element) -> E) -> [Element] {
+        var result = [Element]()
+        for value in self {
+            let key = filter(value)
+            if !result.map({filter($0)}).contains(key) {
+                result.append(value)
+            }
+        }
+        return result
     }
 }
 
@@ -75,3 +89,69 @@ extension EMAlertAction {
     }
 }
 
+extension UIViewController {
+    
+    private struct AssociatedKeys {
+        static var hub: MBProgressHUD?
+    }
+    
+    var HUD: MBProgressHUD? {
+        get {
+            return objc_getAssociatedObject(self, &AssociatedKeys.hub) as? MBProgressHUD
+        }
+        set {
+            if let newValue = newValue {
+                objc_setAssociatedObject(self, &AssociatedKeys.hub, newValue as MBProgressHUD?, objc_AssociationPolicy.OBJC_ASSOCIATION_RETAIN_NONATOMIC)
+            }
+        }
+    }
+    
+    func showHub(inView view: UIView?,_ hint: String) {
+        if view == nil {
+            return
+        }
+        HUD = MBProgressHUD(view: view)
+        HUD?.labelText = hint
+        view!.addSubview(HUD!)
+        HUD?.show(true)
+    }
+    
+    func show(_ hint: String) {
+        let view = UIApplication.shared.delegate?.window
+        let hub = MBProgressHUD.showAdded(to: view!, animated: true)
+        hub?.isUserInteractionEnabled = false
+        hub?.mode = MBProgressHUDMode.text
+        hub?.labelText = hint
+        hub?.margin = 10
+        hub?.yOffset = 180
+        hub?.removeFromSuperViewOnHide = true
+        hub?.hide(true, afterDelay: 2)
+    }
+    
+    func show(hint: String, _ yOffset: Float) {
+        let view = UIApplication.shared.delegate?.window
+        let hub = MBProgressHUD.showAdded(to: view!, animated: true)
+        hub?.isUserInteractionEnabled = false
+        hub?.mode = MBProgressHUDMode.text
+        hub?.labelText = hint
+        hub?.margin = 10
+        hub?.yOffset = 180
+        hub?.yOffset = hub!.yOffset + yOffset
+        hub?.removeFromSuperViewOnHide = true
+        hub?.hide(true, afterDelay: 2)
+    }
+    
+    func hideHub() {
+        HUD?.hide(true)
+    }
+}
+
+extension MBProgressHUD {
+    class public func showInMainWindow(animated: Bool = true) {
+        MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow, animated: animated)
+    }
+    
+    class public func hideHubInMainWindow(animated: Bool = true) {
+        MBProgressHUD.hideAllHUDs(for: UIApplication.shared.keyWindow, animated: animated)
+    }
+}

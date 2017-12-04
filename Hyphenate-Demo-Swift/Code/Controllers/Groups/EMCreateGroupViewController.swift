@@ -83,10 +83,12 @@ class EMCreateGroupViewController: UITableViewController, EMSelectItemViewContro
 
     
     // MARK: - EMSelectItemViewControllerDelegate
-    func didSelected(item: Array<IEMUserModel>) {
-        selectedItems = Array(item.reversed())
-        participantsLabel.text = "Participants: " + String(selectedItems!.count + 1) + "/2000"
-        membersCollection.reloadData()
+    func didSelected(item: Array<IEMUserModel>?) {
+        if item != nil {
+            selectedItems = Array(item!.reversed())
+            participantsLabel.text = "Participants: " + String(selectedItems!.count + 1) + "/2000"
+            membersCollection.reloadData()
+        }
     }
     
     
@@ -127,6 +129,7 @@ class EMCreateGroupViewController: UITableViewController, EMSelectItemViewContro
         case 0:
             let selectItemVC = EMSelectItemViewController()
             selectItemVC.selectedAry = Array((selectedItems ?? Array<IEMUserModel>()).reversed())
+            selectItemVC.selectType = EMSelectItemType.unShowSelected
             selectItemVC.delegate = self
             let nav = UINavigationController.init(rootViewController: selectItemVC)
             present(nav, animated: true, completion: nil)

@@ -339,7 +339,6 @@
 		906AD6451EFB836D004CCCAE /* EMChatBaseBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AD6441EFB836D004CCCAE /* EMChatBaseBubbleView.swift */; };
 		906AD6471EFB8705004CCCAE /* EMChatTextBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AD6461EFB8705004CCCAE /* EMChatTextBubbleView.swift */; };
 		906AD6491EFBC74A004CCCAE /* EMSDKHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AD6481EFBC74A004CCCAE /* EMSDKHelper.swift */; };
-		906AD64C1EFBD2DC004CCCAE /* UIViewController+HUD.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906AD64B1EFBD2DC004CCCAE /* UIViewController+HUD.swift */; };
 		906FB2551EFCD2A400CA241E /* EMChatImageBubbleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 906FB2541EFCD2A400CA241E /* EMChatImageBubbleView.swift */; };
 		90749ED21EF90E5B00D3A065 /* EMAudioPlayerUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 90749EB41EF90E5B00D3A065 /* EMAudioPlayerUtil.m */; };
 		90749ED31EF90E5B00D3A065 /* EMAudioRecorderUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = 90749EB61EF90E5B00D3A065 /* EMAudioRecorderUtil.m */; };
@@ -747,7 +746,6 @@
 		906AD6441EFB836D004CCCAE /* EMChatBaseBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatBaseBubbleView.swift; sourceTree = "<group>"; };
 		906AD6461EFB8705004CCCAE /* EMChatTextBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatTextBubbleView.swift; sourceTree = "<group>"; };
 		906AD6481EFBC74A004CCCAE /* EMSDKHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMSDKHelper.swift; sourceTree = "<group>"; };
-		906AD64B1EFBD2DC004CCCAE /* UIViewController+HUD.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIViewController+HUD.swift"; sourceTree = "<group>"; };
 		906FB2541EFCD2A400CA241E /* EMChatImageBubbleView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatImageBubbleView.swift; sourceTree = "<group>"; };
 		90749EAF1EF90E5B00D3A065 /* EMCDDeviceManagerDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCDDeviceManagerDelegate.h; sourceTree = "<group>"; };
 		90749EB01EF90E5B00D3A065 /* EMCDDeviceManagerProximitySensorDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = EMCDDeviceManagerProximitySensorDelegate.h; sourceTree = "<group>"; };
@@ -1392,7 +1390,6 @@
 		906AD64A1EFBD2BE004CCCAE /* Category */ = {
 			isa = PBXGroup;
 			children = (
-				906AD64B1EFBD2DC004CCCAE /* UIViewController+HUD.swift */,
 				907FBAB61FC68E0B003386C1 /* Extension.swift */,
 			);
 			path = Category;
@@ -2117,7 +2114,6 @@
 				90749ED41EF90E5B00D3A065 /* EMCDDeviceManager+Media.m in Sources */,
 				90749ED81EF90E5B00D3A065 /* EMCDDeviceManagerBase.m in Sources */,
 				90FB78891EF7BFAE00B02F60 /* EMChatRecordView.swift in Sources */,
-				906AD64C1EFBD2DC004CCCAE /* UIViewController+HUD.swift in Sources */,
 				90BE3F4F1F3DA2B300B84B78 /* EMGroupsViewController.swift in Sources */,
 				90150AFD1FD142A6004AEF92 /* EMGroupMuteListViewController.swift in Sources */,
 				902C0BC31EF24AC80069165E /* EMBaseRefreshTableViewController.swift in Sources */,

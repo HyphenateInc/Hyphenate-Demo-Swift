@@ -8,7 +8,7 @@
 
 import UIKit
 
-protocol IEMUserModel {
+protocol IEMUserModel{
     var hyphenateID: String {get set}
     var nickname: String {get}
     var avatarURLPath: String {get}
