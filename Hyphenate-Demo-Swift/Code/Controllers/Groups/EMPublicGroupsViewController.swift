@@ -42,10 +42,10 @@ class EMPublicGroupsViewController: EMBaseRefreshTableViewController {
     
     func fetchPublicGroupWith(page: Int, isHeader: Bool) {
         weak var weakSelf = self
-        MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow, animated: true)
+        MBProgressHUD.showInMainWindow()
         let pageSize = 50
         EMClient.shared().groupManager.getPublicGroupsFromServer(withCursor: cursor, pageSize: pageSize) { (result, error) in
-            MBProgressHUD.hideAllHUDs(for: UIApplication.shared.keyWindow, animated: true)
+            MBProgressHUD.hideHubInMainWindow()
             weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)
             let groupList = result?.list
             if error == nil && groupList != nil {

@@ -57,9 +57,9 @@ class EMCreateGroupViewController: UITableViewController, EMSelectItemViewContro
         
         let invitees = selectedItems?.map({ (model) in model.hyphenateID })
 
-        MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow, animated: true)
+        MBProgressHUD.showInMainWindow()
         EMClient.shared().groupManager.createGroup(withSubject: subjectTextField.text, description: descriptionTextField.text, invitees: invitees, message: nil, setting: groupSettngs) { (group, error) in
-            MBProgressHUD.hideAllHUDs(for: UIApplication.shared.keyWindow, animated: true)
+            MBProgressHUD.hideHubInMainWindow()
             if error == nil {
                 weakSelf?.show("Send succeed")
                 NotificationCenter.default.post(name: NSNotification.Name(KEM_REFRESH_GROUPLIST_NOTIFICATION), object: nil)

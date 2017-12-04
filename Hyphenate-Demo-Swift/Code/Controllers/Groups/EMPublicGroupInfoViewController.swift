@@ -30,9 +30,9 @@ class EMPublicGroupInfoViewController: UITableViewController {
         reloadGroupInfo()
         bottomBtn.isHidden = true
  
-        MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow, animated: true)
+        MBProgressHUD.showInMainWindow()
         EMClient.shared().groupManager.getGroupSpecificationFromServer(withId: group?.groupId) { (group, error) in
-        MBProgressHUD.hideAllHUDs(for: UIApplication.shared.keyWindow, animated: true)
+        MBProgressHUD.hideHubInMainWindow()
             if error == nil {
                 weakSelf?.bottomBtn.isHidden = false
                 weakSelf?.group = group

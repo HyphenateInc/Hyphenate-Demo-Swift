@@ -65,3 +65,13 @@ extension UIViewController {
         HUD?.hide(true)
     }
 }
+
+extension MBProgressHUD {
+    class public func showInMainWindow(animated: Bool = true) {
+        MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow, animated: animated)
+    }
+    
+    class public func hideHubInMainWindow(animated: Bool = true) {
+        MBProgressHUD.hideAllHUDs(for: UIApplication.shared.keyWindow, animated: animated)
+    }
+}

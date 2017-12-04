@@ -31,10 +31,19 @@ class EMGroupInfoViewController: UITableViewController {
         title = "Group Info"
         isOwner = group?.owner == EMClient.shared().currentUsername
         setupBackAction()
+        setupSettingsItem()
         tableView.tableFooterView = UIView()
         NotificationCenter.default.addObserver(self, selector: #selector(updateGroupInfo), name: NSNotification.Name(rawValue:KEM_REFRESH_GROUP_INFO), object: nil)
         updateGroupInfo()
         fetchGroupInfo()
+    }
+    
+    func setupSettingsItem() {
+        navigationItem.rightBarButtonItem = {
+            let item = UIBarButtonItem(title: "Settings", style: .done, target: self, action: #selector(pushToSettingsVC))
+            item.tintColor = KermitGreenTwoColor
+            return item
+        }()
     }
     
     func fetchGroupInfo() {
@@ -49,6 +58,13 @@ class EMGroupInfoViewController: UITableViewController {
                 weakSelf?.show((error?.errorDescription)!)
             }
         }
+    }
+    
+    @objc func pushToSettingsVC() {
+        let stroyboard = UIStoryboard.init(name: "GroupInfo", bundle: nil)
+        let setttingsVC = stroyboard.instantiateViewController(withIdentifier: "EMGroupSettingsViewController") as! EMGroupSettingsViewController
+        setttingsVC.group = group
+        navigationController?.pushViewController(setttingsVC, animated: true)
     }
     
     @objc func updateGroupInfo() {

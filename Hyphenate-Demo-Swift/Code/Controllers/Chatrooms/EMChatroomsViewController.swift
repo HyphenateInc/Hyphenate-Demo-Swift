@@ -106,10 +106,10 @@ class EMChatroomsViewController: EMBaseRefreshTableViewController {
     
     func fetchChatroomsWith(page: Int, isHeader: Bool) {
         weak var weakSelf = self
-        MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow, animated: true)
+        MBProgressHUD.showInMainWindow()
         let pageSize = 50
         EMClient.shared().roomManager.getChatroomsFromServer(withPage: page, pageSize: pageSize) { (aResult, error) in
-            MBProgressHUD.hideAllHUDs(for: UIApplication.shared.keyWindow, animated: true)
+            MBProgressHUD.hideHubInMainWindow()
             weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)
             if error == nil && aResult != nil {
                 let chatrooms = aResult!.list

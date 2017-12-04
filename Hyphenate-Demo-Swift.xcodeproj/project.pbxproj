@@ -368,6 +368,7 @@
 		908462351EF779270008E480 /* EMChatViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 908462331EF779270008E480 /* EMChatViewController.xib */; };
 		908462371EF77A140008E480 /* EMChatToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908462361EF77A140008E480 /* EMChatToolBar.swift */; };
 		909602221FC7D8C700E71B93 /* EMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909602211FC7D8C700E71B93 /* EMAlertAction.swift */; };
+		90A1BEF51FD5070B008B1158 /* EMGroupSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A1BEF41FD5070B008B1158 /* EMGroupSettingsViewController.swift */; };
 		90A387CC1FCD240F00468B60 /* EMPublicGroupsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A387CB1FCD240E00468B60 /* EMPublicGroupsViewController.swift */; };
 		90A387CE1FCD513200468B60 /* PublicGroupInfo.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90A387CD1FCD513200468B60 /* PublicGroupInfo.storyboard */; };
 		90A387D01FCD525800468B60 /* EMPublicGroupInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A387CF1FCD525800468B60 /* EMPublicGroupInfoViewController.swift */; };
@@ -793,6 +794,7 @@
 		908462331EF779270008E480 /* EMChatViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMChatViewController.xib; sourceTree = "<group>"; };
 		908462361EF77A140008E480 /* EMChatToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatToolBar.swift; sourceTree = "<group>"; };
 		909602211FC7D8C700E71B93 /* EMAlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAlertAction.swift; sourceTree = "<group>"; };
+		90A1BEF41FD5070B008B1158 /* EMGroupSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupSettingsViewController.swift; sourceTree = "<group>"; };
 		90A387CB1FCD240E00468B60 /* EMPublicGroupsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMPublicGroupsViewController.swift; sourceTree = "<group>"; };
 		90A387CD1FCD513200468B60 /* PublicGroupInfo.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = PublicGroupInfo.storyboard; sourceTree = "<group>"; };
 		90A387CF1FCD525800468B60 /* EMPublicGroupInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMPublicGroupInfoViewController.swift; sourceTree = "<group>"; };
@@ -1588,6 +1590,7 @@
 				90150AF81FD13DA7004AEF92 /* EMGroupMemberListViewController.swift */,
 				90150AFA1FD141F0004AEF92 /* EMGroupBlackListViewController.swift */,
 				90150AFC1FD142A6004AEF92 /* EMGroupMuteListViewController.swift */,
+				90A1BEF41FD5070B008B1158 /* EMGroupSettingsViewController.swift */,
 			);
 			path = Groups;
 			sourceTree = "<group>";
@@ -2071,6 +2074,7 @@
 				9011E1CC1EEEC38600C43D05 /* EMColorUtils.swift in Sources */,
 				90FB78981EF7EE9B00B02F60 /* EMEmoji.m in Sources */,
 				90150AF91FD13DA7004AEF92 /* EMGroupMemberListViewController.swift in Sources */,
+				90A1BEF51FD5070B008B1158 /* EMGroupSettingsViewController.swift in Sources */,
 				9069B3C81FC41C25004F9DBD /* EMGroupCell.swift in Sources */,
 				90190C831F0F997D00A238F3 /* EMPushNotificationViewController.swift in Sources */,
 				90638D991FCED88200D76493 /* EMMemberCollectionViewCell.swift in Sources */,
