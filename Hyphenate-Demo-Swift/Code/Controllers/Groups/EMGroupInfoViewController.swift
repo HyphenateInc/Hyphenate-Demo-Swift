@@ -211,7 +211,7 @@ class EMGroupInfoViewController: UITableViewController {
         }
         
         switch indexPath.row {
-        case 0, 1, 2, 3, 4, 5, 6, 7, 8:
+        case 0, 1, 2, 3, 4, 5, 6, 8:
             return 55
         default:
             return 0
