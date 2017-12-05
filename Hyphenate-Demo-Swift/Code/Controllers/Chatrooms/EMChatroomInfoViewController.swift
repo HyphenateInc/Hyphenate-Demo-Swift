@@ -28,9 +28,8 @@ class EMChatroomInfoViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         title = "Chatroom Info"
-        let currentUsername = EMClient.shared().currentUsername
-        isOwner = chatroom?.owner == currentUsername
-
+        isOwner = chatroom?.owner == EMClient.shared().currentUsername
+        setupBackAction()
         setupUI()
         fetchChatroomInfo()
         chatroomIdLabel.text = chatroom?.chatroomId
@@ -62,38 +61,29 @@ class EMChatroomInfoViewController: UITableViewController {
     }
     
     func updateInfo() {
-        self.isAdmin = (chatroom!.adminList.contains(where: { (username) -> Bool in
+        isAdmin = (chatroom!.adminList.contains(where: { (username) -> Bool in
             return (username as! String) == EMClient.shared().currentUsername
         }))
-        self.chatroomSubjectLabel.text = chatroom!.subject
-        self.chatroomDescLabel.text = chatroom!.description
-        self.chatroomOccupantCountLabel.text = String(describing: chatroom!.occupantsCount) + "/" + String(describing: chatroom!.maxOccupantsCount)
-        self.chatroomOwnerLabel.text = chatroom!.owner
-        self.chatroomAdminListLabel.text = String(describing: chatroom!.adminList.count)
-        self.chatroomMembersCountLabel.text = String(describing: chatroom!.occupantsCount - chatroom!.adminList.count - 1 /* owner */)
+        isOwner = chatroom!.owner == EMClient.shared().currentUsername
+        
+        chatroomSubjectLabel.text = chatroom!.subject
+        chatroomDescLabel.text = chatroom!.description
+        chatroomOccupantCountLabel.text = String(describing: chatroom!.occupantsCount) + "/" + String(describing: chatroom!.maxOccupantsCount)
+        chatroomOwnerLabel.text = chatroom!.owner
+        chatroomAdminListLabel.text = String(describing: chatroom!.adminList.count)
+        chatroomMembersCountLabel.text = String(describing: chatroom!.occupantsCount - chatroom!.adminList.count - 1 /* owner */)
         print(chatroom!.announcement)
-        self.tableView.reloadData()
+        tableView.reloadData()
     }
     
     func setupUI() {
-        let leftBtn = UIButton(type: UIButtonType.custom)
-        leftBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .normal)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .highlighted)
-        leftBtn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        let leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-        
         let btn = UIButton(frame: CGRect(x: 0, y: 0, width: tableView.width(), height: 40))
         btn.setTitle("Leave the chatroom", for: .normal)
         btn.addTarget(self, action: #selector(leaveChatroom), for: .touchUpInside)
         btn.backgroundColor = UIColor.red
         tableView.tableFooterView = btn
     }
-    
-    @objc func backAction() {
-        navigationController?.popViewController(animated: true)
-    }
+
     
     @objc func leaveChatroom() {
         if isOwner {
@@ -108,7 +98,7 @@ class EMChatroomInfoViewController: UITableViewController {
                 }
             }
         } else {
-            showHub(inView: UIApplication.shared.keyWindow!, "Leaving the chatroom...")
+            showHub(inView: UIApplication.shared.keyWindow, "Leaving the chatroom...")
             weak var weakSelf = self
             EMClient.shared().roomManager.leaveChatroom(chatroom!.chatroomId) { (error) in
                 weakSelf?.hideHub()
@@ -131,7 +121,7 @@ class EMChatroomInfoViewController: UITableViewController {
                 let action = EMAlertAction.defaultAction(title: "Change", handler: { (alertAction) in
                     let action = alertAction as! EMAlertAction
                     let textField = action.alertController?.textFields?.first
-                    weakSelf?.showHub(inView: (weakSelf?.view)!, "Uploading...")
+                    weakSelf?.showHub(inView: weakSelf?.view, "Uploading...")
                     EMClient.shared().roomManager.updateSubject(textField?.text, forChatroom: weakSelf?.chatroom?.chatroomId, completion: { (room, error) in
                         weakSelf?.hideHub()
                         if error == nil {
@@ -154,7 +144,7 @@ class EMChatroomInfoViewController: UITableViewController {
                 let action = EMAlertAction.defaultAction(title: "Change", handler: { (alertAction) in
                     let action = alertAction as! EMAlertAction
                     let textField = action.alertController?.textFields?.first
-                    weakSelf?.showHub(inView: (weakSelf?.view)!, "Uploading...")
+                    weakSelf?.showHub(inView: weakSelf?.view, "Uploading...")
                     EMClient.shared().roomManager.updateDescription(textField?.text, forChatroom: weakSelf?.chatroom?.chatroomId, completion: { (room, error) in
                         weakSelf?.hideHub()
                         if error == nil {

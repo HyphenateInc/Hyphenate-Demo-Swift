@@ -23,13 +23,14 @@ class EMChatroomBlackListViewController: EMChatroomParticipantsViewController {
         }
         let removeAction = EMAlertAction.defaultAction(title: "Remove from blacklist") { (action) in
             weak var weakSelf = self
+            weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
             EMClient.shared().roomManager.unblockMembers([(model?.hyphenateID)!], fromChatroom: weakSelf?.chatroom!.chatroomId, completion: { (chatroom, error) in
-                weakSelf?.showHub(inView: (weakSelf!.view)!, "Uploading...")
+                weakSelf?.hideHub()
                 if error == nil {
                     weakSelf?.postNotificationToUpdateChatroomInfo()
-                    let ary = NSMutableArray(array: self.dataArray! as NSArray)
-                    ary.remove(model!)
-                    weakSelf?.dataArray = ary as Array
+                    weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
+                        return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
+                    }))!)
                     weakSelf?.tableView.reloadData()
                 }else {
                     weakSelf?.show((error?.errorDescription)!)
@@ -47,7 +48,7 @@ class EMChatroomBlackListViewController: EMChatroomParticipantsViewController {
     
     override func fetchPersion(isHeader: Bool) {
         weak var weakSelf = self
-        weakSelf?.showHub(inView: (weakSelf!.view)!, "Uploading...")
+        weakSelf?.showHub(inView: weakSelf!.view, "Loading...")
         EMClient.shared().roomManager.getChatroomBlacklistFromServer(withId: chatroom?.chatroomId, pageNumber: page, pageSize: pageSize) { (resultList, error) in
             weakSelf?.hideHub()
             weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)

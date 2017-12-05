@@ -14,25 +14,12 @@ class EMChatroomsViewController: EMBaseRefreshTableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        setupNavBar()
+           title = "Chatrooms"
+        setupBackAction()
         tableView.delegate = self
-        tableView.dataSource = self
-        
+        tableView.dataSource = self   
         tableViewDidTriggerHeaderRefresh()
     }
-    
-    func setupNavBar() {
-        title = "Chatrooms"
-        
-        let leftBtn = UIButton(type: UIButtonType.custom)
-        leftBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .normal)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .highlighted)
-        leftBtn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        let leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
-        navigationItem.leftBarButtonItem = leftBarButtonItem
-    }
-    
     func loadGroupsFromServer() {
         tableViewDidTriggerHeaderRefresh()
     }
@@ -58,10 +45,6 @@ class EMChatroomsViewController: EMBaseRefreshTableViewController {
     }
     
     // MARK: - Action
-    
-    @objc func backAction() {
-        navigationController?.popViewController(animated: true)
-    }
 
     // MARK: - Notification Method
     
@@ -123,10 +106,10 @@ class EMChatroomsViewController: EMBaseRefreshTableViewController {
     
     func fetchChatroomsWith(page: Int, isHeader: Bool) {
         weak var weakSelf = self
-        MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow, animated: true)
+        MBProgressHUD.showInMainWindow()
         let pageSize = 50
         EMClient.shared().roomManager.getChatroomsFromServer(withPage: page, pageSize: pageSize) { (aResult, error) in
-            MBProgressHUD.hideAllHUDs(for: UIApplication.shared.keyWindow, animated: true)
+            MBProgressHUD.hideHubInMainWindow()
             weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)
             if error == nil && aResult != nil {
                 let chatrooms = aResult!.list

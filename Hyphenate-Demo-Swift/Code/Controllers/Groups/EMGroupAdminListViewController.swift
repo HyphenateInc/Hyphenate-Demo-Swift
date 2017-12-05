@@ -1,15 +1,15 @@
 //
-//  EMChatroomAdminListViewController.swift
+//  EMGroupAdminListViewController.swift
 //  Hyphenate-Demo-Swift
 //
-//  Created by 杜洁鹏 on 2017/11/22.
+//  Created by 杜洁鹏 on 2017/12/1.
 //  Copyright © 2017年 杜洁鹏. All rights reserved.
 //
 
 import UIKit
 import Hyphenate
 
-class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
+class EMGroupAdminListViewController: EMChatroomParticipantsViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,11 +23,11 @@ class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
         weak var weakSelf = self
         let removeAdminAction = EMAlertAction.defaultAction(title: "Remove from Admin") { (action) in
             weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
-            EMClient.shared().roomManager.removeAdmin(model?.hyphenateID, fromChatroom: weakSelf?.chatroom?.chatroomId, completion: { (room, error) in
+            EMClient.shared().groupManager.removeAdmin(model?.hyphenateID, fromGroup: weakSelf?.group?.groupId, completion:  { (result, error) in
                 weakSelf?.hideHub()
                 if error == nil {
-                    weakSelf?.chatroom = room
-                    weakSelf?.postNotificationToUpdateChatroomInfo()
+                    weakSelf?.group = result
+                    weakSelf?.postNotificationToUpdateGroupInfo()
                     weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
                         return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
                     }))!)
@@ -40,10 +40,10 @@ class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
         
         let muteAction = EMAlertAction.defaultAction(title: "Mute") { (action) in
             weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
-            EMClient.shared().roomManager.muteMembers([(model?.hyphenateID)!], muteMilliseconds:-1 ,fromChatroom: weakSelf?.chatroom!.chatroomId, completion: { (root, error) in
+            EMClient.shared().groupManager.muteMembers([(model?.hyphenateID)!], muteMilliseconds: -1, fromGroup: weakSelf?.group?.groupId, completion: { (resultGroup, error) in
                 weakSelf?.hideHub()
                 if error == nil {
-
+                    
                 }else{
                     weakSelf?.show((error?.errorDescription)!)
                 }
@@ -52,11 +52,11 @@ class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
         
         let moveToBlackList = EMAlertAction.defaultAction(title: "Move to blackList") { (action) in
             weakSelf?.showHub(inView: weakSelf!.view, "Uploading...")
-            EMClient.shared().roomManager.blockMembers([(model?.hyphenateID)!], fromChatroom: weakSelf?.chatroom!.chatroomId, completion: { (room, error) in
+            EMClient.shared().groupManager.unblockMembers([(model?.hyphenateID)!], fromGroup: weakSelf?.group!.groupId, completion: { (result, error) in
                 weakSelf?.hideHub()
                 if error == nil {
-                    weakSelf?.chatroom = room
-                    weakSelf?.postNotificationToUpdateChatroomInfo()
+                    weakSelf?.group = result
+                    weakSelf?.postNotificationToUpdateGroupInfo()
                     weakSelf?.dataArray?.remove(at: (weakSelf?.dataArray?.index(where: {
                         return ($0 as! IEMUserModel).hyphenateID == model?.hyphenateID
                     }))!)
@@ -75,10 +75,10 @@ class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
     override func fetchPersion(isHeader: Bool) {
         self.showHub(inView: view, "Loading...")
         weak var weakSelf = self
-        EMClient.shared().roomManager.getChatroomSpecificationFromServer(withId: chatroom!.chatroomId) { (result, error) in
+        EMClient.shared().groupManager.getGroupSpecificationFromServer(withId: group!.groupId) { (result, error) in
             weakSelf?.hideHub()
+            weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)
             if error == nil {
-                weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)
                 if isHeader {
                     weakSelf?.dataArray!.removeAll()
                 }
@@ -94,4 +94,3 @@ class EMChatroomAdminListViewController: EMChatroomParticipantsViewController {
         }
     }
 }
-

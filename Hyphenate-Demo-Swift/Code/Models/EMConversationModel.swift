@@ -16,7 +16,6 @@ class EMConversationModel: NSObject, EMRealtimeSearchUtilDelegate {
     
     init(conversation con: EMConversation) {
         conversation = con
-        
         if conversation?.type == EMConversationTypeGroupChat {
             let groups = EMClient.shared().groupManager.getJoinedGroups()
             for group in groups! {
@@ -35,6 +34,19 @@ class EMConversationModel: NSObject, EMRealtimeSearchUtilDelegate {
         if _title?.count == 0 {
             _title = conversation?.conversationId
         }
+    }
+    
+    func addNotifications() {
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTitle), name: NSNotification.Name(KEM_REFRESH_GROUPLIST_NOTIFICATION), object: nil)
+    }
+    
+    func removeNotifications() {
+        NotificationCenter.default.removeObserver(self, name: Notification.Name(KEM_REFRESH_GROUPLIST_NOTIFICATION), object: nil)
+    }
+    
+    // todo: update chatvc title when group subject has changed.
+    @objc func updateTitle(nofi: NSNotification) {
+        
     }
     
     func searchKey() -> String? {

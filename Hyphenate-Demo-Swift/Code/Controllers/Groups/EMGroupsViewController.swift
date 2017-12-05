@@ -14,16 +14,16 @@ class EMGroupsViewController: EMBaseRefreshTableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Groups"
         setupNavBar()
+        setupBackAction()
         tableView.delegate = self
         tableView.dataSource = self
-    
+        addNotifications()
         tableViewDidTriggerHeaderRefresh()
     }
     
     func setupNavBar() {
-        title = "Groups"
-        
         let rightBtn = UIButton(type: .custom)
         rightBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
         rightBtn.setImage(UIImage(named:"Icon_Add"), for: .normal)
@@ -31,14 +31,6 @@ class EMGroupsViewController: EMBaseRefreshTableViewController {
         rightBtn.addTarget(self, action: #selector(addGroupAction), for: .touchUpInside)
         let rightBarButtonItem = UIBarButtonItem(customView: rightBtn)
         navigationItem.rightBarButtonItem = rightBarButtonItem
-        
-        let leftBtn = UIButton(type: UIButtonType.custom)
-        leftBtn.frame = CGRect(x: 0, y: 0, width: 20, height: 20)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .normal)
-        leftBtn.setImage(UIImage(named:"Icon_Back"), for: .highlighted)
-        leftBtn.addTarget(self, action: #selector(backAction), for: .touchUpInside)
-        let leftBarButtonItem = UIBarButtonItem(customView: leftBtn)
-        navigationItem.leftBarButtonItem = leftBarButtonItem
     }
 
     func loadGroupsFromServer() {
@@ -66,13 +58,21 @@ class EMGroupsViewController: EMBaseRefreshTableViewController {
     }
     
     // MARK: - Action
-    
-    @objc func backAction() {
-        navigationController?.popViewController(animated: true)
-    }
-    
+
     @objc func addGroupAction() {
+        weak var weakSelf = self
+        let createAction = EMAlertAction.defaultAction(title: "Create a group") { (action) in
+            let storyboard = UIStoryboard.init(name: "CreateGroup", bundle: nil)
+            let vc = storyboard.instantiateViewController(withIdentifier: "EMCreateGroupViewController") as? EMCreateGroupViewController
+            weakSelf?.navigationController?.pushViewController(vc!, animated: true)
+        }
         
+        let joinAction = EMAlertAction.defaultAction(title: "Join public group") { (action) in
+            let joinPublicGroupVC = EMPublicGroupsViewController()
+            weakSelf?.navigationController?.pushViewController(joinPublicGroupVC, animated: true)
+        }
+        let alertController = UIAlertController.alertWith(item: createAction, joinAction)
+        present(alertController, animated: true, completion: nil)
     }
     
     // MARK: - Notification Method
@@ -125,20 +125,20 @@ class EMGroupsViewController: EMBaseRefreshTableViewController {
     
     override func tableViewDidTriggerHeaderRefresh() {
         page = 1
-        self.fetchJoinedGroupWith(page: page, isHeader: true)
+        fetchJoinedGroupWith(page: page, isHeader: true)
     }
     
     override func tableViewDidTriggerFooterRefresh() {
         page += 1
-        self.fetchJoinedGroupWith(page: page, isHeader: false)
+        fetchJoinedGroupWith(page: page, isHeader: false)
     }
     
     func fetchJoinedGroupWith(page: Int, isHeader: Bool) {
         weak var weakSelf = self
-        MBProgressHUD.showAdded(to: UIApplication.shared.keyWindow, animated: true)
+        MBProgressHUD.showInMainWindow()
         let pageSize = 50
         EMClient.shared().groupManager.getJoinedGroupsFromServer(withPage: page, pageSize: pageSize) { (groupList, error) in
-            MBProgressHUD.hideAllHUDs(for: UIApplication.shared.keyWindow, animated: true)
+            MBProgressHUD.hideHubInMainWindow()
             weakSelf?.tableViewDidFinishTriggerHeader(isHeader: isHeader)
             if error == nil && groupList != nil {
                 if (isHeader) {

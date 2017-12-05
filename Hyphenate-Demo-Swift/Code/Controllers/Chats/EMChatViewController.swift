@@ -350,13 +350,20 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     @objc func enterDetailView() {
-        let storyboard = UIStoryboard(name: "ChatroomInfo", bundle: nil)
-        let chatroomInfoVC = storyboard.instantiateViewController(withIdentifier: "ChatroomInfoViewController") as! EMChatroomInfoViewController
-        chatroomInfoVC.chatroom = EMChatroom(id: _conversaiton!.conversationId)
-        navigationController?.pushViewController(chatroomInfoVC, animated: true)
+        if _conversaiton?.type == EMConversationTypeChatRoom {
+            let storyboard = UIStoryboard(name: "ChatroomInfo", bundle: nil)
+            let chatroomInfoVC = storyboard.instantiateViewController(withIdentifier: "ChatroomInfoViewController") as! EMChatroomInfoViewController
+            chatroomInfoVC.chatroom = EMChatroom(id: _conversaiton!.conversationId)
+            navigationController?.pushViewController(chatroomInfoVC, animated: true)
+        }else {
+            let storyboard = UIStoryboard(name: "GroupInfo", bundle: nil)
+            let groupInfoVC = storyboard.instantiateViewController(withIdentifier: "EMGroupInfoViewController") as! EMGroupInfoViewController
+            groupInfoVC.group = EMGroup(id: _conversaiton?.conversationId)
+            navigationController?.pushViewController(groupInfoVC, animated: true)
+        }
     }
     
-    @objc func backAction() {
+    override func backAction() {
         NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_UPDATEUNREADCOUNT), object: nil);
         if _conversaiton!.type == EMConversationTypeChatRoom {
             showHub(inView: UIApplication.shared.keyWindow!, "Leaving the chatroom...")

@@ -24,9 +24,14 @@ class EMContactCell: UITableViewCell {
     override func awakeFromNib() {
         super.awakeFromNib()
         accessoryType = UITableViewCellAccessoryType.none
-        
         let longPress = UILongPressGestureRecognizer(target: self, action: #selector(longPressAction))
         addGestureRecognizer(longPress)
+        selectedBackgroundView = {
+            let view = UIView(frame:bounds)
+            view.backgroundColor = UIColor.white
+            return view
+        }()
+        tintColor = KermitGreenTwoColor
     }
     
     @objc func longPressAction(lpgr: UILongPressGestureRecognizer) {
