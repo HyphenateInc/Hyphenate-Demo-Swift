@@ -41,7 +41,9 @@ class EMGroupShareFileViewController: EMBaseRefreshTableViewController, EMShareF
     func didSelectFile(model: EMShareFileModel) {
         weak var weakSelf = self
         let filePath = model.fileURL.path
+        weakSelf?.showHub(inView: weakSelf?.view, "Uploading...")
         EMClient.shared().groupManager.uploadGroupSharedFile(withId: group?.groupId, filePath: filePath, progress: nil) { (shareFile, error) in
+            weakSelf?.hideHub()
             if error == nil {
                 weakSelf?.dataArray!.append(shareFile!)
                 weakSelf?.tableView.reloadData()
