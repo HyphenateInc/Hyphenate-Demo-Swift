@@ -64,7 +64,6 @@ class EMGroupShareFileViewController: EMBaseRefreshTableViewController, EMShareF
                 }
                 for file in files! {
                     weakSelf?.dataArray!.append(file)
-                    print("add file --- " + (file as! EMGroupSharedFile).fileName)
                 }
                 
                 DispatchQueue.main.async {
@@ -90,14 +89,13 @@ class EMGroupShareFileViewController: EMBaseRefreshTableViewController, EMShareF
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cellID = "ShareFileCell"
+        let cellID = "ShareFilesCell"
         var cell = tableView.dequeueReusableCell(withIdentifier: cellID) as? EMShareFileCell
         if cell == nil {
             cell = EMShareFileCell(style: .value1, reuseIdentifier: cellID)
             cell?.delegate = self
         }
         let file = dataArray![indexPath.row] as! EMGroupSharedFile
-        print(file.fileName)
         cell?.setFile(sharefile: file)
 
         return cell!
@@ -144,10 +142,10 @@ class EMGroupShareFileViewController: EMBaseRefreshTableViewController, EMShareF
     // MARK: - Table view data source
 
     override func numberOfSections(in tableView: UITableView) -> Int {
-        return dataArray?.count ?? 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 1
+        return dataArray?.count ?? 0
     }
 }
