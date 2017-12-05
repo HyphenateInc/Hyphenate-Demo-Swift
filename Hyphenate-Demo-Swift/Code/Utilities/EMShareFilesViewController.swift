@@ -19,6 +19,7 @@ class EMShareFilesViewController: UITableViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        tableView.tableFooterView = UIView()
         title = "Select file"
         setupBackAction()
     }
