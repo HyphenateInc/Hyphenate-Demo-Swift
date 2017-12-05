@@ -30,8 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
             apnsCerName = "ProductionCertificate"     
         #endif
         
-        EMShareFilesManager.sharedInstance
-        
         options?.apnsCertName = apnsCerName     
         options?.enableConsoleLog = true     
         options?.isDeleteMessagesWhenExitGroup = false     
