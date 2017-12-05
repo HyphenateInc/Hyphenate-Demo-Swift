@@ -9,17 +9,46 @@
 import UIKit
 import Hyphenate
 
-let downloadPath = NSHomeDirectory() + "/Documents/ShareFiles/"
+let downloadPath = EMShareFilesManager.sharedInstance.fileDocPath()
 
-class EMGroupShareFileViewController: EMBaseRefreshTableViewController, EMShareFileCellDelegate{
+class EMGroupShareFileViewController: EMBaseRefreshTableViewController, EMShareFileCellDelegate, EMShareFilesVCDelegate{
 
     var group: EMGroup?
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Share file"
+        title = "Share Files"
         setupBackAction()
+        setupRightBarButtonItem()
         tableViewDidTriggerHeaderRefresh()
+    }
+    
+    func setupRightBarButtonItem() {
+        navigationItem.rightBarButtonItem = {
+            let item = UIBarButtonItem(title: "UpLoad", style: .done, target: self, action: #selector(upLoadFile))
+            item.tintColor = KermitGreenTwoColor
+            return item
+        }()
+    }
+    
+    @objc func upLoadFile() {
+        let shareFileController = EMShareFilesViewController()
+        shareFileController.delegate = self
+        let navC = UINavigationController.init(rootViewController: shareFileController)
+        present(navC, animated: true, completion: nil)
+    }
+    
+    func didSelectFile(model: EMShareFileModel) {
+        weak var weakSelf = self
+        let filePath = model.fileURL.path
+        EMClient.shared().groupManager.uploadGroupSharedFile(withId: group?.groupId, filePath: filePath, progress: nil) { (shareFile, error) in
+            if error == nil {
+                weakSelf?.dataArray!.append(shareFile!)
+                weakSelf?.tableView.reloadData()
+            }else {
+                weakSelf?.show((error?.errorDescription)!)
+            }
+        }
     }
     
     func fetchShareFilesFromServer(isHeader: Bool = true) {
@@ -35,6 +64,7 @@ class EMGroupShareFileViewController: EMBaseRefreshTableViewController, EMShareF
                 }
                 for file in files! {
                     weakSelf?.dataArray!.append(file)
+                    print("add file --- " + (file as! EMGroupSharedFile).fileName)
                 }
                 
                 DispatchQueue.main.async {
@@ -67,6 +97,7 @@ class EMGroupShareFileViewController: EMBaseRefreshTableViewController, EMShareF
             cell?.delegate = self
         }
         let file = dataArray![indexPath.row] as! EMGroupSharedFile
+        print(file.fileName)
         cell?.setFile(sharefile: file)
 
         return cell!
@@ -79,7 +110,9 @@ class EMGroupShareFileViewController: EMBaseRefreshTableViewController, EMShareF
         weak var weakSelf = self
         let downloadAction = EMAlertAction.defaultAction(title: "Download") { (action) in
             weakSelf?.showHub(inView: weakSelf!.view, "Download...")
-            EMClient.shared().groupManager.downloadGroupSharedFile(withId: self.group?.groupId, filePath: downloadPath + file!.fileId, sharedFileId: file!.fileId, progress: nil, completion: { (result, error) in
+            EMClient.shared().groupManager.downloadGroupSharedFile(withId: weakSelf?.group?.groupId, filePath: downloadPath + file!.fileName, sharedFileId: file!.fileId, progress: { (progress) in
+                
+            }, completion: { (result, error) in
                 weakSelf?.hideHub()
                 if error == nil {
                     weakSelf?.show("path: " + downloadPath)

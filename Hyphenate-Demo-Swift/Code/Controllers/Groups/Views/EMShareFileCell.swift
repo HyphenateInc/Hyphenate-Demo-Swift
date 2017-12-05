@@ -30,9 +30,7 @@ class EMShareFileCell: UITableViewCell {
     
     
     func setFile(sharefile: EMGroupSharedFile) {
-        if _file != sharefile {
-            _file = sharefile
-        }
+        _file = sharefile
         textLabel?.text = _file?.fileName
         detailTextLabel?.text = String(format: "%.2lf MB", Float(_file?.fileSize ?? 0) / (1024 * 1024))
     }
