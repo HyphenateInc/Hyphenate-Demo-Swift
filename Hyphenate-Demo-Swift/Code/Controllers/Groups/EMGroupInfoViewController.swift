@@ -25,6 +25,7 @@ class EMGroupInfoViewController: UITableViewController {
     @IBOutlet weak var extensionLabel: UILabel!
     @IBOutlet weak var blacksCountLabel: UILabel!
     @IBOutlet weak var mutesCount: UILabel!
+    @IBOutlet weak var bottomButton: UIButton!
     
     
     override func viewDidLoad() {
@@ -33,7 +34,6 @@ class EMGroupInfoViewController: UITableViewController {
         isOwner = group?.owner == EMClient.shared().currentUsername
         setupBackAction()
         setupSettingsItem()
-        tableView.tableFooterView = UIView()
         NotificationCenter.default.addObserver(self, selector: #selector(updateGroupInfo), name: NSNotification.Name(rawValue:KEM_REFRESH_GROUP_INFO), object: nil)
         updateGroupInfo()
         fetchGroupInfo()
@@ -73,7 +73,11 @@ class EMGroupInfoViewController: UITableViewController {
             return (username as! String) == EMClient.shared().currentUsername
         }))
         isOwner = group!.owner == EMClient.shared().currentUsername
-        
+        if isOwner {
+            bottomButton.setTitle("Destroy group", for: .normal)
+        }else {
+            bottomButton.setTitle("Leave group", for: .normal)
+        }
         groupIdLabel.text = group?.groupId
         subjectLabel.text = group?.subject
         descriptionLabel.text = group?.description
@@ -217,4 +221,34 @@ class EMGroupInfoViewController: UITableViewController {
             return 0
         }
     }
+    
+    @IBAction func clearAllMessageAction(_ sender: UIButton) {
+        NotificationCenter.default.post(name: NSNotification.Name(KNOTIFICATIONNAME_DELETEALLMESSAGE), object: group?.groupId)
+    }
+    
+    @IBAction func bottomAction(_ sender: UIButton) {
+        weak var weakSelf = self
+        if isOwner {
+            showHub(inView: view, "Dissolution of the group...")
+            EMClient.shared().groupManager.destroyGroup(group?.groupId, finishCompletion: { (error) in
+                weakSelf?.hideHub()
+                if error == nil {
+                    NotificationCenter.default.post(name: NSNotification.Name(KEM_END_CHAT), object: nil)
+                }else {
+                    weakSelf?.show((error?.errorDescription)!)
+                }
+            })
+        } else {
+            showHub(inView: view, "Leaving of the group...")
+            EMClient.shared().groupManager.leaveGroup(group?.groupId, completion: { (error) in
+                weakSelf?.hideHub()
+                if error == nil {
+                    NotificationCenter.default.post(name: NSNotification.Name(KEM_END_CHAT), object: nil)
+                }else {
+                    weakSelf?.show((error?.errorDescription)!)
+                }
+            })
+        }
+    }
+    
 }

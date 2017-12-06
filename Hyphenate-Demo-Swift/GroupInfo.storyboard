@@ -18,6 +18,49 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <view key="tableFooterView" contentMode="scaleToFill" id="dSn-0q-fWl">
+                            <rect key="frame" x="0.0" y="484" width="375" height="110"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="zgM-tQ-YGx">
+                                    <rect key="frame" x="0.0" y="0.0" width="375" height="40"/>
+                                    <color key="backgroundColor" red="0.31943163279999998" green="0.81554228070000001" blue="0.01180960145" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="fWn-Zc-UsJ"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <state key="normal" title="Clear all messages">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="clearAllMessageAction:" destination="o96-rG-KWJ" eventType="touchUpInside" id="KhF-eH-wcI"/>
+                                    </connections>
+                                </button>
+                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="bcn-7I-9IK">
+                                    <rect key="frame" x="0.0" y="50" width="375" height="40"/>
+                                    <color key="backgroundColor" red="0.99907737969999999" green="0.22950214150000001" blue="0.18888315559999999" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <constraints>
+                                        <constraint firstAttribute="height" constant="40" id="Rrf-gC-leT"/>
+                                    </constraints>
+                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                    <state key="normal" title="Leave group">
+                                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                    </state>
+                                    <connections>
+                                        <action selector="bottomAction:" destination="o96-rG-KWJ" eventType="touchUpInside" id="PkG-m2-VXf"/>
+                                    </connections>
+                                </button>
+                            </subviews>
+                            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstAttribute="trailing" secondItem="bcn-7I-9IK" secondAttribute="trailing" id="7eS-li-ELP"/>
+                                <constraint firstItem="bcn-7I-9IK" firstAttribute="leading" secondItem="dSn-0q-fWl" secondAttribute="leading" id="BQH-4j-pU6"/>
+                                <constraint firstItem="bcn-7I-9IK" firstAttribute="top" secondItem="zgM-tQ-YGx" secondAttribute="bottom" constant="10" id="Riy-08-Wko"/>
+                                <constraint firstItem="zgM-tQ-YGx" firstAttribute="top" secondItem="dSn-0q-fWl" secondAttribute="top" id="jk9-PP-WMF"/>
+                                <constraint firstAttribute="trailing" secondItem="zgM-tQ-YGx" secondAttribute="trailing" id="oYF-gT-fM2"/>
+                                <constraint firstItem="zgM-tQ-YGx" firstAttribute="leading" secondItem="dSn-0q-fWl" secondAttribute="leading" id="xoF-hp-9E1"/>
+                            </constraints>
+                        </view>
                         <sections>
                             <tableViewSection id="Zgf-SH-snZ">
                                 <cells>
@@ -297,6 +340,7 @@
                         <outlet property="adminsCountLabel" destination="97i-bU-2au" id="eFb-SH-g8H"/>
                         <outlet property="announcementLabel" destination="qnF-lf-lDn" id="pGJ-KN-mHP"/>
                         <outlet property="blacksCountLabel" destination="diB-l0-tOT" id="fMc-Ll-brl"/>
+                        <outlet property="bottomButton" destination="bcn-7I-9IK" id="QYX-vs-HNE"/>
                         <outlet property="descriptionLabel" destination="0nX-Px-LC0" id="x5t-NB-PgR"/>
                         <outlet property="extensionLabel" destination="41W-V2-InG" id="Q2V-Pw-f8v"/>
                         <outlet property="groupIdLabel" destination="9wg-iN-cKT" id="9Pl-b3-QqW"/>
