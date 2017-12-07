@@ -321,6 +321,9 @@
 		9024B15B1F00AEAD0043FD81 /* EMLocationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9024B1591F00AEAD0043FD81 /* EMLocationViewController.xib */; };
 		902C0BC31EF24AC80069165E /* EMBaseRefreshTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C0BC11EF24AC80069165E /* EMBaseRefreshTableViewController.swift */; };
 		902C0BC61EF24BFD0069165E /* EMNotificationNames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 902C0BC51EF24BFD0069165E /* EMNotificationNames.swift */; };
+		90358A381FD7E3CF0081F3B0 /* EMCallBaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90358A371FD7E3CF0081F3B0 /* EMCallBaseViewController.swift */; };
+		90358A3B1FD7E46C0081F3B0 /* EMVoiceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90358A391FD7E46C0081F3B0 /* EMVoiceViewController.swift */; };
+		90358A3C1FD7E46C0081F3B0 /* EMVoiceViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 90358A3A1FD7E46C0081F3B0 /* EMVoiceViewController.xib */; };
 		90453D4B1FCE6EA900DFD5FB /* EMCreateGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90453D4A1FCE6EA900DFD5FB /* EMCreateGroupViewController.swift */; };
 		90453D4D1FCE706700DFD5FB /* CreateGroup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 90453D4C1FCE706700DFD5FB /* CreateGroup.storyboard */; };
 		90453D551FCEA26A00DFD5FB /* EMSelectItemViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90453D541FCEA26A00DFD5FB /* EMSelectItemViewController.swift */; };
@@ -359,6 +362,7 @@
 		907FBAB71FC68E0B003386C1 /* Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 907FBAB61FC68E0B003386C1 /* Extension.swift */; };
 		9080EDE01F03896E00B6C488 /* EMAddContactViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9080EDDE1F03896E00B6C488 /* EMAddContactViewController.swift */; };
 		9080EDE11F03896E00B6C488 /* EMAddContactViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9080EDDF1F03896E00B6C488 /* EMAddContactViewController.xib */; };
+		9081812D1FD8FB8800294B68 /* EMCallManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9081812C1FD8FB8800294B68 /* EMCallManager.swift */; };
 		908324EA1EEFE5F000811A97 /* EMMainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908324E91EEFE5F000811A97 /* EMMainViewController.swift */; };
 		908324F51EF0072700811A97 /* EMChatsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908324F41EF0072700811A97 /* EMChatsController.swift */; };
 		908324F71EF00C1F00811A97 /* EMContactsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908324F61EF00C1F00811A97 /* EMContactsViewController.swift */; };
@@ -732,6 +736,9 @@
 		9024B1591F00AEAD0043FD81 /* EMLocationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMLocationViewController.xib; sourceTree = "<group>"; };
 		902C0BC11EF24AC80069165E /* EMBaseRefreshTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMBaseRefreshTableViewController.swift; sourceTree = "<group>"; };
 		902C0BC51EF24BFD0069165E /* EMNotificationNames.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMNotificationNames.swift; sourceTree = "<group>"; };
+		90358A371FD7E3CF0081F3B0 /* EMCallBaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCallBaseViewController.swift; sourceTree = "<group>"; };
+		90358A391FD7E46C0081F3B0 /* EMVoiceViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMVoiceViewController.swift; sourceTree = "<group>"; };
+		90358A3A1FD7E46C0081F3B0 /* EMVoiceViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EMVoiceViewController.xib; sourceTree = "<group>"; };
 		90453D4A1FCE6EA900DFD5FB /* EMCreateGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCreateGroupViewController.swift; sourceTree = "<group>"; };
 		90453D4C1FCE706700DFD5FB /* CreateGroup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = CreateGroup.storyboard; sourceTree = "<group>"; };
 		90453D541FCEA26A00DFD5FB /* EMSelectItemViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMSelectItemViewController.swift; sourceTree = "<group>"; };
@@ -788,6 +795,7 @@
 		907FBAB61FC68E0B003386C1 /* Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extension.swift; sourceTree = "<group>"; };
 		9080EDDE1F03896E00B6C488 /* EMAddContactViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMAddContactViewController.swift; sourceTree = "<group>"; };
 		9080EDDF1F03896E00B6C488 /* EMAddContactViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EMAddContactViewController.xib; sourceTree = "<group>"; };
+		9081812C1FD8FB8800294B68 /* EMCallManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMCallManager.swift; sourceTree = "<group>"; };
 		908324E91EEFE5F000811A97 /* EMMainViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMMainViewController.swift; sourceTree = "<group>"; };
 		908324F41EF0072700811A97 /* EMChatsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatsController.swift; sourceTree = "<group>"; };
 		908324F61EF00C1F00811A97 /* EMContactsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMContactsViewController.swift; sourceTree = "<group>"; };
@@ -928,6 +936,7 @@
 		9011DF571EEEC00800C43D05 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				90358A331FD7E2A30081F3B0 /* Call */,
 				9017ED9A1FC442DE005C77F7 /* Chatrooms */,
 				90BE3F4D1F3DA2A500B84B78 /* Groups */,
 				908324EB1EEFF06400811A97 /* Base */,
@@ -1394,6 +1403,17 @@
 				90A3CAC71FCC05D2001BB4C5 /* EMChatroomAnnouncementViewController.swift */,
 			);
 			path = Chatrooms;
+			sourceTree = "<group>";
+		};
+		90358A331FD7E2A30081F3B0 /* Call */ = {
+			isa = PBXGroup;
+			children = (
+				90358A371FD7E3CF0081F3B0 /* EMCallBaseViewController.swift */,
+				90358A391FD7E46C0081F3B0 /* EMVoiceViewController.swift */,
+				90358A3A1FD7E46C0081F3B0 /* EMVoiceViewController.xib */,
+				9081812C1FD8FB8800294B68 /* EMCallManager.swift */,
+			);
+			path = Call;
 			sourceTree = "<group>";
 		};
 		906AD64A1EFBD2BE004CCCAE /* Category */ = {
@@ -1946,6 +1966,7 @@
 				9011E1BE1EEEC22700C43D05 /* logo6.png in Resources */,
 				9011E09E1EEEC22700C43D05 /* addContact_disable@2x.png in Resources */,
 				9011E0EF1EEEC22700C43D05 /* Button_Minimize disabled@2x.png in Resources */,
+				90358A3C1FD7E46C0081F3B0 /* EMVoiceViewController.xib in Resources */,
 				9011E0FB1EEEC22700C43D05 /* Button_Mute@2x.png in Resources */,
 				9011E1981EEEC22700C43D05 /* Button_Chat@3x.png in Resources */,
 				9011E0F61EEEC22700C43D05 /* Button_Mute active@3x.png in Resources */,
@@ -2077,6 +2098,7 @@
 				9084E3101FD6568D00D53374 /* EMShareFilesViewController.swift in Sources */,
 				90C00C7C1EEFA95B0049BFAD /* EMLoginViewController.swift in Sources */,
 				9011DF451EEEBEA400C43D05 /* AppDelegate.swift in Sources */,
+				9081812D1FD8FB8800294B68 /* EMCallManager.swift in Sources */,
 				90FB788F1EF7ED4500B02F60 /* EMFacialView.swift in Sources */,
 				90B43DC71F00F1100084E67F /* EMMessageReadManager.swift in Sources */,
 				90593CEB1FC535F40029FB66 /* EMChatroomInfoViewController.swift in Sources */,
@@ -2127,11 +2149,13 @@
 				909602221FC7D8C700E71B93 /* EMAlertAction.swift in Sources */,
 				90749ED41EF90E5B00D3A065 /* EMCDDeviceManager+Media.m in Sources */,
 				90749ED81EF90E5B00D3A065 /* EMCDDeviceManagerBase.m in Sources */,
+				90358A381FD7E3CF0081F3B0 /* EMCallBaseViewController.swift in Sources */,
 				90FB78891EF7BFAE00B02F60 /* EMChatRecordView.swift in Sources */,
 				90BE3F4F1F3DA2B300B84B78 /* EMGroupsViewController.swift in Sources */,
 				90150AFD1FD142A6004AEF92 /* EMGroupMuteListViewController.swift in Sources */,
 				902C0BC31EF24AC80069165E /* EMBaseRefreshTableViewController.swift in Sources */,
 				901D8D071F0F3998009D6644 /* EMSettingsViewController.swift in Sources */,
+				90358A3B1FD7E46C0081F3B0 /* EMVoiceViewController.swift in Sources */,
 				90749ED31EF90E5B00D3A065 /* EMAudioRecorderUtil.m in Sources */,
 				90FB78851EF78EB000B02F60 /* EMMessageTextView.swift in Sources */,
 				907FBAB31FC6822B003386C1 /* EMChatroomMuteListViewController.swift in Sources */,

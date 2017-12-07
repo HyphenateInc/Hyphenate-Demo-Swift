@@ -61,7 +61,7 @@ class EMContactInfoViewController: UITableViewController {
     }
     
     @IBAction func callVoiceAction(_ sender: UIButton) {
-        show("unsupport")
+        EMCallManager.standard.makeVoiceCall(caller: model?.hyphenateID)
     }
     
     @IBAction func callVideoAction(_ sender: UIButton) {

@@ -21,7 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         UITabBar.appearance().tintColor = KermitGreenTwoColor
         UINavigationBar.appearance().tintColor = AlmostBlackColor
         
-        let options = EMOptions.init(appkey: "hyphenatedemo#hyphenatedemo")
+        let options = EMOptions.init(appkey: "easemob-demo#chatdemoui")
         
         var apnsCerName = ""     
         #if DEBUG
@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         options?.usingHttpsOnly = true     
         
         EMClient.shared().initializeSDK(with: options)     
-        
+        EMCallManager.standard
         NotificationCenter.default.addObserver(self, selector: #selector(loginStateChange(nofi:)), name: NSNotification.Name(rawValue:KNOTIFICATION_LOGINCHANGE), object: nil)     
         
         let storyboard = UIStoryboard.init(name: "Launch", bundle: nil)     
