@@ -143,6 +143,7 @@ class EMVideoViewController: EMCallBaseViewController {
     }
     
     override func callDidAccept() {
+        super.callDidAccept()
         videoCallType = .EMVideoCalling
         setupUI()
     }

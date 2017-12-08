@@ -32,7 +32,7 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
     func setupEMCall() {
         let options = EMCallOptions()
         options.isSendPushIfOffline = true
-        options.offlineMessageText = "You Have a call..."
+        options.offlineMessageText = "Incoming video call..."
         options.videoResolution = EMCallVideoResolutionAdaptive
         callManager.setCallOptions!(options)
         callManager.add!(self, delegateQueue: nil)

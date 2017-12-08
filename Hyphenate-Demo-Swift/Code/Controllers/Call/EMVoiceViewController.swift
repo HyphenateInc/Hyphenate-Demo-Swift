@@ -99,6 +99,7 @@ class EMVoiceViewController: EMCallBaseViewController {
     }
     
     override func callDidAccept() {
+        super.callDidAccept()
         voiceCallType = .EMVoiceCalling
         setupUI()
     }
