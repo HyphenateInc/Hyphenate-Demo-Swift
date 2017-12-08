@@ -78,8 +78,8 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     func registerNotifications() {
-        NotificationCenter.default.addObserver(self, selector: #selector(endChat(withConversationIdNotification:)), name: NSNotification.Name(rawValue:KEM_END_CHAT), object: nil)
-        NotificationCenter.default.addObserver(self, selector: #selector(deleteAllMessages(sender:)), name: NSNotification.Name(rawValue:KNOTIFICATIONNAME_DELETEALLMESSAGE), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(endChat(withConversationIdNotification:)), name: NSNotification.Name(KEM_END_CHAT), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(deleteAllMessages(sender:)), name: NSNotification.Name(KNOTIFICATIONNAME_DELETEALLMESSAGE), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -382,20 +382,17 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         }
     }
     
-    @objc func deleteAllMessages(sender: AnyObject) {
+    @objc func deleteAllMessages(sender: Notification) {
         if _dataSource!.count == 0 {
             return
         }
         
-        if sender is Notification{
-            let _sender = sender as! Notification
-            let groupId = _sender.object as! String
-            let isDelete = groupId == _conversaiton!.conversationId
-            if _conversaiton?.type == EMConversationTypeChat && isDelete {
-                _conversaiton!.deleteAllMessages(nil)
-                _dataSource?.removeAll()
-                tableView.reloadData()
-            }
+        let groupId = sender.object as! String
+        let isDelete = groupId == _conversaiton!.conversationId
+        if  isDelete {
+            _conversaiton!.deleteAllMessages(nil)
+            _dataSource?.removeAll()
+            tableView.reloadData()
         }
     }
     
