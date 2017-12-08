@@ -14,8 +14,8 @@ protocol EMCallBaseVCDelegate {
     func didHungUp()
     func didAwnser()
     func didReject()
-    func didMute()
-    func didSpeaker()
+    func didMute(_ isMute:Bool)
+    func didSpeaker(speakerOut isSpeaker:Bool)
 }
 
 class EMCallBaseViewController: UIViewController {

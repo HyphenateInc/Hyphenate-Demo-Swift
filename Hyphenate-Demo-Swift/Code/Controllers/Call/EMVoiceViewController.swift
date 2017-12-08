@@ -66,6 +66,7 @@ class EMVoiceViewController: EMCallBaseViewController {
         stopTimer()
         time = 0
         if timer == nil {
+            timeLabel.text = timeStr
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
         }
     }
@@ -75,6 +76,7 @@ class EMVoiceViewController: EMCallBaseViewController {
             guard let _timer = timer else { return }
             _timer.invalidate()
         }
+        timer = nil
     }
     
     @objc func updateTime() {
@@ -84,12 +86,12 @@ class EMVoiceViewController: EMCallBaseViewController {
     
     @IBAction func speakerAction(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        delegate?.didSpeaker()
+        delegate?.didSpeaker(speakerOut: sender.isSelected)
     }
     
     @IBAction func muteAction(_ sender: UIButton) {
         sender.isSelected = !sender.isSelected
-        delegate?.didMute()
+        delegate?.didMute(sender.isSelected)
     }
 
     @IBAction func hungupAction(_ sender: UIButton) {

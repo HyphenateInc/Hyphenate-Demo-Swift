@@ -8,8 +8,11 @@
 
 import Foundation
 import Hyphenate
+import AVFoundation
 
 class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
+    
+    let nickname = EMClient.shared().pushOptions.displayName
     
     static let standard = EMCallManager()
     
@@ -51,7 +54,7 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
         }
         weak var weakSelf = self
         showVoiceVCWith(callType: EMVoiceCallType.EMVoiceCallOut, showName: (EMUserModel.createWithHyphenateId(hyphenateId: caller!)?.nickname)!)
-        callManager.start!(EMCallTypeVoice, remoteName: caller, ext: "") { (session, error) in
+        callManager.start!(EMCallTypeVoice, remoteName: caller, ext: nickname) { (session, error) in
             if error == nil {
                 weakSelf?.callSession = session
             }
@@ -65,8 +68,12 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
             return
         }
         callSession = aSession
+        var remoteName = aSession.ext
+        if remoteName?.count == 0 {
+            remoteName  = (EMUserModel.createWithHyphenateId(hyphenateId: aSession.remoteName)?.nickname)!
+        }
         if aSession.type == EMCallTypeVoice {
-            showVoiceVCWith(callType: EMVoiceCallType.EMVoiceCallIn, showName: (EMUserModel.createWithHyphenateId(hyphenateId: aSession.remoteName)?.nickname)!)
+            showVoiceVCWith(callType: EMVoiceCallType.EMVoiceCallIn, showName: remoteName!)
         }else {
             
         }
@@ -106,12 +113,14 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
     func hiddenVoiceVC() {
         if voiceViewController != nil {
             weak var weakSelf = self
-            UIView.animate(withDuration: 0.3, animations: {
-                weakSelf?.voiceViewController?.view.alpha = 0
-            }) { (_) in
-                weakSelf?.voiceViewController?.view.removeFromSuperview()
-                weakSelf?.voiceViewController = nil
-            }
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                UIView.animate(withDuration: 0.3, animations: {
+                    weakSelf?.voiceViewController?.view.alpha = 0
+                }) { (_) in
+                    weakSelf?.voiceViewController?.view.removeFromSuperview()
+                    weakSelf?.voiceViewController = nil
+                }
+            })
         }
     }
     
@@ -143,8 +152,13 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
         }
     }
     
-    func didMute() {
-        let error = callSession?.pauseVoice()
+    func didMute(_ isMute: Bool) {
+        var error: EMError?
+        if isMute {
+            error = callSession?.pauseVoice()
+        } else {
+            error = callSession?.resumeVoice()
+        }
         if error != nil {
             postErrorNotification(error?.errorDescription)
         }else {
@@ -152,7 +166,13 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
         }
     }
     
-    func didSpeaker() {
-        
+    func didSpeaker(speakerOut isSpeaker: Bool) {
+        let audioSession = AVAudioSession.sharedInstance()
+        if isSpeaker {
+            try! audioSession.overrideOutputAudioPort(AVAudioSessionPortOverride.speaker)
+        }else {
+            try! audioSession.overrideOutputAudioPort(AVAudioSessionPortOverride.none)
+        }
+        try! audioSession.setActive(true)
     }
 }
