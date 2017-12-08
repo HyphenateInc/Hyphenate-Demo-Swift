@@ -83,4 +83,8 @@ class EMCallBaseViewController: UIViewController {
             show(noti.object as! String)
         }
     }
+    
+    func callDidAccept() {
+        startTimer()
+    }
 }

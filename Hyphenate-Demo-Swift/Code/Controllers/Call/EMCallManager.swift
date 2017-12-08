@@ -64,6 +64,19 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
         }
     }
     
+    func makeVideoCall(caller: String?) {
+        if caller == nil {
+            return
+        }
+        weak var weakSelf = self
+        showVideoVCWith(callType: EMVideoCallType.EMVideoCallOut, showName: (EMUserModel.createWithHyphenateId(hyphenateId: caller!)?.nickname)!)
+        callManager.start!(EMCallTypeVideo, remoteName: caller, ext: nickname) { (session, error) in
+            if error == nil {
+                weakSelf?.callSession = session
+            }
+        }
+    }
+    
     
     // MARK: - EMCallManagerDelegate
     func callDidReceive(_ aSession: EMCallSession!) {
@@ -89,6 +102,7 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
             voiceViewController?.callDidAccept()
         }else {
             videoViewController?.remoteCameraView?.isHidden = false
+            videoViewController?.callDidAccept()
         }
     }
     

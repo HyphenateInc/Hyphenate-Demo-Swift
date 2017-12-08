@@ -18,6 +18,8 @@
                 <outlet property="callCancelBtn" destination="HYS-CV-0XS" id="CGQ-Uu-Az7"/>
                 <outlet property="callHungupBtn" destination="ovY-O6-fT0" id="Pa1-G1-t09"/>
                 <outlet property="callNameLabel" destination="nvY-Pb-qlr" id="L34-nN-GmQ"/>
+                <outlet property="muteBtn" destination="61a-cD-1G7" id="pPy-tq-T4S"/>
+                <outlet property="speakerBtn" destination="tDm-Tx-Qpm" id="9jZ-bV-lQR"/>
                 <outlet property="timeLabel" destination="1Yh-UR-c2G" id="w2e-zZ-8P0"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
             </connections>

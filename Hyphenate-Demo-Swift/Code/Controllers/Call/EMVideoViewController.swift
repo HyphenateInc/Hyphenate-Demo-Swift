@@ -63,15 +63,24 @@ class EMVideoViewController: EMCallBaseViewController {
     
     func setupUI() {
         switch videoCallType {
-        case .EMVideoCallIn:
+        case .EMVideoCallIn, .EMVideoCallOut:
             callHungupBtn.isHidden = true
             callAnswerBtn.isHidden = false
             callCancelBtn.isHidden = false
+            
+            cameraSwitchBtn.isHidden = true
+            speakerBtn.isHidden = true
+            muteBtn.isHidden = true
+            
             break
-        case .EMVideoCalling, .EMVideoCallOut:
+        case .EMVideoCalling:
             callHungupBtn.isHidden = false
             callAnswerBtn.isHidden = true
             callCancelBtn.isHidden = true
+            
+            cameraSwitchBtn.isHidden = false
+            speakerBtn.isHidden = false
+            muteBtn.isHidden = false
             break
         }
     }
@@ -82,6 +91,7 @@ class EMVideoViewController: EMCallBaseViewController {
         callHungupBtn.isHidden = isHidden
         cameraSwitchBtn.isHidden = isHidden
         muteBtn.isHidden = isHidden
+        speakerBtn.isHidden = isHidden
     }
     
     override func timerStrWillChange(_ aTimeStr: String) {
@@ -120,7 +130,14 @@ class EMVideoViewController: EMCallBaseViewController {
     }
     
     @IBAction func bgTapGestureRecognizer(_ sender: UITapGestureRecognizer) {
-        viewsHidden = !viewsHidden
-        setupUI(viewsHidden)
+        if videoCallType ==  EMVideoCallType.EMVideoCallOut{
+            viewsHidden = !viewsHidden
+            setupUI(viewsHidden)
+        }
+    }
+    
+    override func callDidAccept() {
+        videoCallType = .EMVideoCalling
+        setupUI()
     }
 }

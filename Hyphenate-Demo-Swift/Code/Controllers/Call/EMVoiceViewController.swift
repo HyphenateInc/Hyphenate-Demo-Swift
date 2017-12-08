@@ -25,7 +25,10 @@ class EMVoiceViewController: EMCallBaseViewController {
     @IBOutlet weak var callCancelBtn: UIButton!
     @IBOutlet weak var callHungupBtn: UIButton!
     @IBOutlet weak var callAnswerBtn: UIButton!
-
+    @IBOutlet weak var speakerBtn: UIButton!
+    @IBOutlet weak var muteBtn: UIButton!
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         setupUI()
@@ -34,15 +37,23 @@ class EMVoiceViewController: EMCallBaseViewController {
     
     func setupUI() {
         switch voiceCallType {
-        case .EMVoiceCallIn:
+        case .EMVoiceCallIn, .EMVoiceCallOut:
             callHungupBtn.isHidden = true
             callAnswerBtn.isHidden = false
             callCancelBtn.isHidden = false
+            
+            speakerBtn.isHidden = true
+            muteBtn.isHidden = true
+            
             break
-        case .EMVoiceCalling, .EMVoiceCallOut:
+        case .EMVoiceCalling:
             callHungupBtn.isHidden = false
             callAnswerBtn.isHidden = true
             callCancelBtn.isHidden = true
+            
+            speakerBtn.isHidden = false
+            muteBtn.isHidden = false
+            
             break
         }
     }
@@ -81,8 +92,7 @@ class EMVoiceViewController: EMCallBaseViewController {
         setupUI()
     }
     
-    func callDidAccept() {
-        super.startTimer()
+    override func callDidAccept() {
         voiceCallType = .EMVoiceCalling
         setupUI()
     }
