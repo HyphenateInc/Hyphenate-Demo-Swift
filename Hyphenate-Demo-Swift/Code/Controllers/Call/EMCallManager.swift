@@ -20,7 +20,10 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
     
     var voiceViewController: EMVoiceViewController?
     
+    var videoViewController: EMVideoViewController?
+    
     var callSession: EMCallSession?
+    
     override init() {
         super.init()
         setupEMCall()
@@ -44,7 +47,7 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
             return
         }
         
-        NotificationCenter.default.post(name: NSNotification.Name(kShowCallError), object: errorStr)
+        NotificationCenter.default.post(name: NSNotification.Name(kShowEMCallError), object: errorStr)
     }
     
     // MARK: - CallActions
@@ -61,6 +64,7 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
         }
     }
     
+    
     // MARK: - EMCallManagerDelegate
     func callDidReceive(_ aSession: EMCallSession!) {
         if voiceViewController != nil {
@@ -75,7 +79,7 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
         if aSession.type == EMCallTypeVoice {
             showVoiceVCWith(callType: EMVoiceCallType.EMVoiceCallIn, showName: remoteName!)
         }else {
-            
+            showVideoVCWith(callType: EMVideoCallType.EMVideoCallIn, showName: remoteName!)
         }
     }
     
@@ -84,13 +88,17 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
         if aSession.type == EMCallTypeVoice {
             voiceViewController?.callDidAccept()
         }else {
-            
+            videoViewController?.remoteCameraView?.isHidden = false
         }
     }
     
     func callDidEnd(_ aSession: EMCallSession!, reason aReason: EMCallEndReason, error aError: EMError!) {
         if aSession.callId == callSession?.callId {
-            hiddenVoiceVC()
+            if aSession.type == EMCallTypeVoice {
+                hiddenVoiceVC()
+            }else {
+                hiddenVideoVC()
+            }
         }
     }
     
@@ -121,7 +129,41 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
                     weakSelf?.voiceViewController = nil
                 }
             })
+            
+            addCallHistory()
         }
+    }
+    
+    func showVideoVCWith(callType: EMVideoCallType, showName: String) {
+        videoViewController = EMVideoViewController()
+        videoViewController?.videoCallType = callType
+        videoViewController?.delegate = self
+        videoViewController?.view.alpha = 0
+        videoViewController?.view.frame = (UIApplication.shared.keyWindow?.bounds)!
+        weak var weakSelf = self
+        UIApplication.shared.keyWindow?.addSubview((videoViewController?.view)!)
+        videoViewController?.callNameLabel.text = showName
+        UIView.animate(withDuration: 0.3, animations: { weakSelf?.videoViewController?.view.alpha = 1 })
+    }
+    
+    func hiddenVideoVC() {
+        if videoViewController != nil {
+            weak var weakSelf = self
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
+                UIView.animate(withDuration: 0.3, animations: {
+                    weakSelf?.videoViewController?.view.alpha = 0
+                }) { (_) in
+                    weakSelf?.videoViewController?.view.removeFromSuperview()
+                    weakSelf?.videoViewController = nil
+                }
+            })
+            
+            addCallHistory()
+        }
+    }
+    
+    func addCallHistory() {
+        
     }
     
     // MARK: - EMCallBaseVCDelegate
@@ -131,10 +173,11 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
             postErrorNotification(error?.errorDescription)
         }else {
             hiddenVoiceVC()
+            hiddenVideoVC()
         }
     }
     
-    func didAwnser() {
+    func didAnswer() {
         let error = callManager.answerIncomingCall!(callSession?.callId)
         if error != nil {
             postErrorNotification(error?.errorDescription)
@@ -149,6 +192,7 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
             postErrorNotification(error?.errorDescription)
         }else {
             hiddenVoiceVC()
+            hiddenVideoVC()
         }
     }
     
@@ -174,5 +218,31 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
             try! audioSession.overrideOutputAudioPort(AVAudioSessionPortOverride.none)
         }
         try! audioSession.setActive(true)
+    }
+
+    func didSwitchCamera(isFront: Bool) {
+        callSession?.switchCameraPosition(isFront)
+    }
+    
+    func didPauseVideo(_ isPause: Bool) {
+        var error: EMError?
+        if isPause {
+            error = callSession?.pauseVideo()
+        } else {
+            error = callSession?.resumeVideo()
+        }
+        if error != nil {
+            postErrorNotification(error?.errorDescription)
+        }else {
+            
+        }
+    }
+    
+    func didUpdataLocalCameraView(_ cameraView: UIView) {
+        callSession?.localVideoView = cameraView as! EMCallLocalView
+    }
+    
+    func didUpdataRemoteCameraView(_ cameraView: UIView) {
+        callSession?.remoteVideoView = cameraView as! EMCallRemoteView
     }
 }

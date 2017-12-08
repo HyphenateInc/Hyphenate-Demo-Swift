@@ -36,7 +36,7 @@
                     <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calling" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yh-UR-c2G">
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Calling..." textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1Yh-UR-c2G">
                     <rect key="frame" x="0.0" y="125" width="375" height="20"/>
                     <constraints>
                         <constraint firstAttribute="height" constant="20" id="hm3-sX-Feo"/>
@@ -53,9 +53,9 @@
                     </constraints>
                 </imageView>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tDm-Tx-Qpm">
-                    <rect key="frame" x="87.5" y="443.5" width="40" height="40"/>
+                    <rect key="frame" x="87.5" y="443.5" width="50" height="50"/>
                     <constraints>
-                        <constraint firstAttribute="width" constant="40" id="5Hx-ec-cFI"/>
+                        <constraint firstAttribute="width" constant="50" id="5Hx-ec-cFI"/>
                         <constraint firstAttribute="width" secondItem="tDm-Tx-Qpm" secondAttribute="height" multiplier="1:1" id="Ug8-yV-Gkf"/>
                     </constraints>
                     <state key="normal" image="Button_Speaker.png"/>
@@ -106,7 +106,7 @@
                     </constraints>
                     <state key="normal" image="Button_Answer.png"/>
                     <connections>
-                        <action selector="awnserAction:" destination="-1" eventType="touchUpInside" id="vZi-eh-7tZ"/>
+                        <action selector="answerAction:" destination="-1" eventType="touchUpInside" id="Wt5-6P-6Kv"/>
                     </connections>
                 </button>
             </subviews>

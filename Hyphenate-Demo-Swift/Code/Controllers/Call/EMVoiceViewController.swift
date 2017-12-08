@@ -18,17 +18,6 @@ enum EMVoiceCallType{
 class EMVoiceViewController: EMCallBaseViewController {
     
     var voiceCallType = EMVoiceCallType.EMVoiceCallIn
-    var timer: Timer?
-    var time = 0
-    
-    var timeStr : String{
-        get {
-            let hour = time / 3600
-            let min = (time - hour * 3600) / 60
-            let sec = time - hour * 3600 - min * 60
-            return String(format: "%02d", hour) + ":" + String(format: "%02d", min) + ":" + String(format: "%02d", sec)
-        }
-    }
     
     @IBOutlet weak var avatarImageView: UIImageView!
     @IBOutlet weak var timeLabel: UILabel!
@@ -62,26 +51,12 @@ class EMVoiceViewController: EMCallBaseViewController {
         
     }
     
-    func startTimer() {
-        stopTimer()
-        time = 0
-        if timer == nil {
-            timeLabel.text = timeStr
-            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(updateTime), userInfo: nil, repeats: true)
-        }
+    override func timerStrWillChange(_ aTimeStr: String) {
+        timeLabel.text = aTimeStr
     }
     
-    func stopTimer() {
-        if timer != nil {
-            guard let _timer = timer else { return }
-            _timer.invalidate()
-        }
-        timer = nil
-    }
-    
-    @objc func updateTime() {
-        time += 1
-        timeLabel.text = timeStr
+    override func timerStrDidChange(_ aTimeStr: String) {
+        timeLabel.text = aTimeStr
     }
     
     @IBAction func speakerAction(_ sender: UIButton) {
@@ -95,19 +70,19 @@ class EMVoiceViewController: EMCallBaseViewController {
     }
 
     @IBAction func hungupAction(_ sender: UIButton) {
-        stopTimer()
+        super.stopTimer()
         delegate?.didHungUp()
     }
     
-    @IBAction func awnserAction(_ sender: UIButton) {
-        startTimer()
-        delegate?.didAwnser()
+    @IBAction func answerAction(_ sender: UIButton) {
+        super.startTimer()
+        delegate?.didAnswer()
         voiceCallType = .EMVoiceCalling
         setupUI()
     }
     
     func callDidAccept() {
-        startTimer()
+        super.startTimer()
         voiceCallType = .EMVoiceCalling
         setupUI()
     }

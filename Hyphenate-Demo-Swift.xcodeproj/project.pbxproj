@@ -372,6 +372,8 @@
 		908462371EF77A140008E480 /* EMChatToolBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 908462361EF77A140008E480 /* EMChatToolBar.swift */; };
 		9084E3011FD64CBB00D53374 /* EMShareFilesManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9084E3001FD64CBB00D53374 /* EMShareFilesManager.swift */; };
 		9084E3101FD6568D00D53374 /* EMShareFilesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9084E30F1FD6568D00D53374 /* EMShareFilesViewController.swift */; };
+		9092A9451FDA3F9D00565FB2 /* EMVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092A9431FDA3F9D00565FB2 /* EMVideoViewController.swift */; };
+		9092A9461FDA3F9D00565FB2 /* EMVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9092A9441FDA3F9D00565FB2 /* EMVideoViewController.xib */; };
 		909602221FC7D8C700E71B93 /* EMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909602211FC7D8C700E71B93 /* EMAlertAction.swift */; };
 		90A1BEF51FD5070B008B1158 /* EMGroupSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A1BEF41FD5070B008B1158 /* EMGroupSettingsViewController.swift */; };
 		90A1BEF91FD56D68008B1158 /* EMGroupShareFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A1BEF81FD56D68008B1158 /* EMGroupShareFileViewController.swift */; };
@@ -805,6 +807,8 @@
 		908462361EF77A140008E480 /* EMChatToolBar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMChatToolBar.swift; sourceTree = "<group>"; };
 		9084E3001FD64CBB00D53374 /* EMShareFilesManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMShareFilesManager.swift; sourceTree = "<group>"; };
 		9084E30F1FD6568D00D53374 /* EMShareFilesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = EMShareFilesViewController.swift; path = "Hyphenate-Demo-Swift/Code/Utilities/EMShareFilesViewController.swift"; sourceTree = SOURCE_ROOT; };
+		9092A9431FDA3F9D00565FB2 /* EMVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMVideoViewController.swift; sourceTree = "<group>"; };
+		9092A9441FDA3F9D00565FB2 /* EMVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EMVideoViewController.xib; sourceTree = "<group>"; };
 		909602211FC7D8C700E71B93 /* EMAlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAlertAction.swift; sourceTree = "<group>"; };
 		90A1BEF41FD5070B008B1158 /* EMGroupSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupSettingsViewController.swift; sourceTree = "<group>"; };
 		90A1BEF81FD56D68008B1158 /* EMGroupShareFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupShareFileViewController.swift; sourceTree = "<group>"; };
@@ -1412,6 +1416,8 @@
 				90358A391FD7E46C0081F3B0 /* EMVoiceViewController.swift */,
 				90358A3A1FD7E46C0081F3B0 /* EMVoiceViewController.xib */,
 				9081812C1FD8FB8800294B68 /* EMCallManager.swift */,
+				9092A9431FDA3F9D00565FB2 /* EMVideoViewController.swift */,
+				9092A9441FDA3F9D00565FB2 /* EMVideoViewController.xib */,
 			);
 			path = Call;
 			sourceTree = "<group>";
@@ -1884,6 +1890,7 @@
 				9011E1391EEEC22700C43D05 /* Disabled@2x.png in Resources */,
 				9011E17D1EEEC22700C43D05 /* Chats.png in Resources */,
 				9011E0E41EEEC22700C43D05 /* Button_Camera switch@3x.png in Resources */,
+				9092A9461FDA3F9D00565FB2 /* EMVideoViewController.xib in Resources */,
 				9011E1C01EEEC22700C43D05 /* logo6@3x.png in Resources */,
 				9011E1761EEEC22700C43D05 /* Icon_New@3x.png in Resources */,
 				9011E1491EEEC22700C43D05 /* Icon_Emoji@3x.png in Resources */,
@@ -2095,6 +2102,7 @@
 			files = (
 				9080EDE01F03896E00B6C488 /* EMAddContactViewController.swift in Sources */,
 				9017ED9E1FC44486005C77F7 /* EMChatroomModel.swift in Sources */,
+				9092A9451FDA3F9D00565FB2 /* EMVideoViewController.swift in Sources */,
 				9084E3101FD6568D00D53374 /* EMShareFilesViewController.swift in Sources */,
 				90C00C7C1EEFA95B0049BFAD /* EMLoginViewController.swift in Sources */,
 				9011DF451EEEBEA400C43D05 /* AppDelegate.swift in Sources */,
