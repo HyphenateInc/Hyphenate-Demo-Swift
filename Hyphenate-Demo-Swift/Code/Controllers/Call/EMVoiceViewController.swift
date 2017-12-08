@@ -38,9 +38,15 @@ class EMVoiceViewController: EMCallBaseViewController {
     func setupUI() {
         switch voiceCallType {
         case .EMVoiceCallIn, .EMVoiceCallOut:
-            callHungupBtn.isHidden = true
-            callAnswerBtn.isHidden = false
-            callCancelBtn.isHidden = false
+            if voiceCallType == .EMVoiceCallIn {
+                callHungupBtn.isHidden = true
+                callAnswerBtn.isHidden = false
+                callCancelBtn.isHidden = false
+            }else {
+                callHungupBtn.isHidden = false
+                callAnswerBtn.isHidden = true
+                callCancelBtn.isHidden = true
+            }
             
             speakerBtn.isHidden = true
             muteBtn.isHidden = true
