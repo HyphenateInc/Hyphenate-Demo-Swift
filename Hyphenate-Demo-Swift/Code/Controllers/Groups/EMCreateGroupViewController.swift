@@ -129,7 +129,7 @@ class EMCreateGroupViewController: UITableViewController, EMSelectItemViewContro
         case 0:
             let selectItemVC = EMSelectItemViewController()
             selectItemVC.selectedAry = Array((selectedItems ?? Array<IEMUserModel>()).reversed())
-            selectItemVC.selectType = EMSelectItemType.unShowSelected
+            selectItemVC.selectType = EMSelectItemType.showSelected
             selectItemVC.delegate = self
             let nav = UINavigationController.init(rootViewController: selectItemVC)
             present(nav, animated: true, completion: nil)
