@@ -135,6 +135,8 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
     func hiddenVoiceVC() {
         if voiceViewController != nil {
             weak var weakSelf = self
+            voiceViewController?.stopTimer()
+            let time = voiceViewController?.timeStr
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                 UIView.animate(withDuration: 0.3, animations: {
                     weakSelf?.voiceViewController?.view.alpha = 0
@@ -144,7 +146,8 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
                 }
             })
             
-            addCallHistory()
+            addCallHistory(time!)
+            callSession = nil
         }
     }
     
@@ -163,6 +166,8 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
     func hiddenVideoVC() {
         if videoViewController != nil {
             weak var weakSelf = self
+            videoViewController?.stopTimer()
+            let time = videoViewController?.timeStr
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 1, execute: {
                 UIView.animate(withDuration: 0.3, animations: {
                     weakSelf?.videoViewController?.view.alpha = 0
@@ -172,12 +177,29 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
                 }
             })
             
-            addCallHistory()
+            addCallHistory(time!)
         }
     }
     
-    func addCallHistory() {
+    func addCallHistory(_ time: String) {
         
+        let conversation = EMClient.shared().chatManager.getConversation(callSession?.remoteName, type: EMConversationTypeChat, createIfNotExist: true)
+        let msgBody = EMTextMessageBody(text: time)
+        var msg: EMMessage?
+        if callSession!.isCaller {
+            msg = EMMessage(conversationID: callSession?.remoteName, from: callSession?.localName, to: callSession?.remoteName, body: msgBody, ext: nil)
+            msg?.direction = EMMessageDirectionSend
+        }else {
+            msg = EMMessage(conversationID: callSession?.remoteName, from: callSession?.remoteName, to: callSession?.localName, body: msgBody, ext: nil)
+            msg?.direction = EMMessageDirectionReceive
+        }
+        msg?.isDeliverAcked = true
+        msg?.isReadAcked = true
+        msg?.isRead = true
+        msg?.status = EMMessageStatusSucceed
+        conversation?.insert(msg, error: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(KEM_UPDATE_CONVERSATIONS), object: nil)
+        NotificationCenter.default.post(name: NSNotification.Name(KEM_ADD_CALLHISTORY), object: msg)
     }
     
     // MARK: - EMCallBaseVCDelegate
@@ -252,11 +274,11 @@ class EMCallManager: NSObject, EMCallManagerDelegate, EMCallBaseVCDelegate{
         }
     }
     
-    func didUpdataLocalCameraView(_ cameraView: UIView) {
+    func didUpdateLocalCameraView(_ cameraView: UIView) {
         callSession?.localVideoView = cameraView as! EMCallLocalView
     }
     
-    func didUpdataRemoteCameraView(_ cameraView: UIView) {
+    func didUpdateRemoteCameraView(_ cameraView: UIView) {
         callSession?.remoteVideoView = cameraView as! EMCallRemoteView
     }
 }

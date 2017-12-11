@@ -123,7 +123,17 @@ class EMChatBaseCell: UITableViewCell, EMChatBaseBubbleViewDelegate {
         _model = model
         switch _model!.message!.body.type {
         case EMMessageBodyTypeText:
-            _bubbleView = EMChatTextBubbleView()
+            if model.message?.ext != nil {
+                let isCallHistroy = model.message?.ext["isCallHistory"]
+                if isCallHistroy != nil {
+                    _bubbleView = EMChatCallHistoryBubbleView()
+                }else {
+                    _bubbleView = EMChatTextBubbleView()
+                }
+            }else {
+                _bubbleView = EMChatTextBubbleView()
+            }
+        
             break
         case EMMessageBodyTypeImage:
             _bubbleView = EMChatImageBubbleView()

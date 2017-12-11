@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         options?.usingHttpsOnly = true     
         
         EMClient.shared().initializeSDK(with: options)     
-        EMCallManager.standard
+        let _ = EMCallManager.standard
         NotificationCenter.default.addObserver(self, selector: #selector(loginStateChange(nofi:)), name: NSNotification.Name(rawValue:KNOTIFICATION_LOGINCHANGE), object: nil)     
         
         let storyboard = UIStoryboard.init(name: "Launch", bundle: nil)     

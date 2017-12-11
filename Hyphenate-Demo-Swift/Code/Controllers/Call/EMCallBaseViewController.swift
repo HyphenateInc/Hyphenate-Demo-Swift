@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import AVFoundation
 
 let kShowEMCallError = "kShowEMCallError"
 let kAddEMCallHistory = "kAddEMCallHistory"
@@ -19,22 +20,16 @@ protocol EMCallBaseVCDelegate {
     func didSpeaker(speakerOut isSpeaker:Bool)
     func didSwitchCamera(isFront: Bool)
     func didPauseVideo(_ isPause:Bool)
-    func didUpdataLocalCameraView(_ cameraView: UIView)
-    func didUpdataRemoteCameraView(_ cameraView: UIView)
+    func didUpdateLocalCameraView(_ cameraView: UIView)
+    func didUpdateRemoteCameraView(_ cameraView: UIView)
 }
 
 class EMCallBaseViewController: UIViewController {
 
+    var ringPlayer: AVAudioPlayer?
     var delegate: EMCallBaseVCDelegate?
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        registerNotifications()
-    }
-    
     var timer: Timer?
     var time = 0
-    
     var timeStr : String{
         get {
             let hour = time / 3600
@@ -42,6 +37,30 @@ class EMCallBaseViewController: UIViewController {
             let sec = time - hour * 3600 - min * 60
             return String(format: "%02d", hour) + ":" + String(format: "%02d", min) + ":" + String(format: "%02d", sec)
         }
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        registerNotifications()
+    }
+    
+    func startRing() {
+        ringPlayer?.stop()
+        let soundPath = Bundle.main.path(forResource: "callRing", ofType: "mp3")
+        if soundPath != nil {
+            let rungURL = URL(fileURLWithPath: soundPath!)
+            ringPlayer = try! AVAudioPlayer(contentsOf: rungURL)
+            ringPlayer?.volume = 1.0
+            ringPlayer?.numberOfLoops = -1
+            if ringPlayer!.prepareToPlay() {
+                ringPlayer?.play()
+            }
+        }
+    }
+    
+    func stopRing() {
+        ringPlayer?.stop()
+        ringPlayer = nil
     }
     
     func startTimer() {
