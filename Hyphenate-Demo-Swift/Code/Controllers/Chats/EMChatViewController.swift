@@ -62,7 +62,6 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         
         _chatToolBar!.delegate = self
         view.addSubview(_chatToolBar!)
-        //        _chatToolBar?.setupInput(textInfo: "test")
         
         tableViewDidTriggerHeaderRefresh()
         
@@ -80,6 +79,7 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     func registerNotifications() {
         NotificationCenter.default.addObserver(self, selector: #selector(endChat(withConversationIdNotification:)), name: NSNotification.Name(KEM_END_CHAT), object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(deleteAllMessages(sender:)), name: NSNotification.Name(KNOTIFICATIONNAME_DELETEALLMESSAGE), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(addCallHistoryFrom), name: NSNotification.Name(KEM_ADD_CALLHISTORY), object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -342,11 +342,13 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
     }
     
     @objc func makeVideoCall() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_CALL), object: ["chatter":_conversaiton?.conversationId! as Any,"type":NSNumber.init(value: 1)])
+        let model = EMUserModel.createWithHyphenateId(hyphenateId: _conversationId!)
+        EMCallManager.standard.makeVideoCall(caller: model?.hyphenateID)
     }
     
     @objc func makeAudioCall() {
-        NotificationCenter.default.post(name: NSNotification.Name(rawValue:KNOTIFICATION_CALL), object: ["chatter":_conversaiton?.conversationId! as Any,"type":NSNumber.init(value: 0)])
+        let model = EMUserModel.createWithHyphenateId(hyphenateId: _conversationId!)
+        EMCallManager.standard.makeVoiceCall(caller: model?.hyphenateID)
     }
     
     @objc func enterDetailView() {
@@ -463,6 +465,15 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
         }
     }
     
+    @objc func addCallHistoryFrom(noti: Notification) {
+        let msg = noti.object as! EMMessage
+        if msg.conversationId == _conversationId {
+            _addMessageToDatasource(message: msg)
+            tableView.reloadData()
+            _scrollViewToBottom(animated: true)
+        }
+    }
+    
     @objc func _loadMoreMessage() {
         weak var weakSelf = self
         DispatchQueue.global().async {
@@ -481,7 +492,6 @@ class EMChatViewController: UIViewController, EMChatToolBarDelegate, EMChatManag
                 }
                 weakSelf?._refresh?.endRefreshing()
                 weakSelf?.tableView.reloadData()
-                
             })
         }
     }

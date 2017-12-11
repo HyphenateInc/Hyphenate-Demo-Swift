@@ -375,6 +375,7 @@
 		9092A9451FDA3F9D00565FB2 /* EMVideoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9092A9431FDA3F9D00565FB2 /* EMVideoViewController.swift */; };
 		9092A9461FDA3F9D00565FB2 /* EMVideoViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9092A9441FDA3F9D00565FB2 /* EMVideoViewController.xib */; };
 		909602221FC7D8C700E71B93 /* EMAlertAction.swift in Sources */ = {isa = PBXBuildFile; fileRef = 909602211FC7D8C700E71B93 /* EMAlertAction.swift */; };
+		909642FF1FDE3B57002D5271 /* callRing.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 909642FE1FDE3B57002D5271 /* callRing.mp3 */; };
 		90A1BEF51FD5070B008B1158 /* EMGroupSettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A1BEF41FD5070B008B1158 /* EMGroupSettingsViewController.swift */; };
 		90A1BEF91FD56D68008B1158 /* EMGroupShareFileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A1BEF81FD56D68008B1158 /* EMGroupShareFileViewController.swift */; };
 		90A1BEFD1FD574DA008B1158 /* EMShareFileCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 90A1BEFC1FD574D9008B1158 /* EMShareFileCell.swift */; };
@@ -810,6 +811,7 @@
 		9092A9431FDA3F9D00565FB2 /* EMVideoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMVideoViewController.swift; sourceTree = "<group>"; };
 		9092A9441FDA3F9D00565FB2 /* EMVideoViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = EMVideoViewController.xib; sourceTree = "<group>"; };
 		909602211FC7D8C700E71B93 /* EMAlertAction.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMAlertAction.swift; sourceTree = "<group>"; };
+		909642FE1FDE3B57002D5271 /* callRing.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = callRing.mp3; sourceTree = "<group>"; };
 		90A1BEF41FD5070B008B1158 /* EMGroupSettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupSettingsViewController.swift; sourceTree = "<group>"; };
 		90A1BEF81FD56D68008B1158 /* EMGroupShareFileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EMGroupShareFileViewController.swift; sourceTree = "<group>"; };
 		90A1BEFC1FD574D9008B1158 /* EMShareFileCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EMShareFileCell.swift; sourceTree = "<group>"; };
@@ -1016,6 +1018,7 @@
 		9011DF631EEEC22700C43D05 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				909642FE1FDE3B57002D5271 /* callRing.mp3 */,
 				9011DF641EEEC22700C43D05 /* AddContact */,
 				9011DF6B1EEEC22700C43D05 /* Cell Tab */,
 				9011DF8D1EEEC22700C43D05 /* Chat Details */,
@@ -1972,6 +1975,7 @@
 				9011E18F1EEEC22700C43D05 /* Request accepted.png in Resources */,
 				9011E1BE1EEEC22700C43D05 /* logo6.png in Resources */,
 				9011E09E1EEEC22700C43D05 /* addContact_disable@2x.png in Resources */,
+				909642FF1FDE3B57002D5271 /* callRing.mp3 in Resources */,
 				9011E0EF1EEEC22700C43D05 /* Button_Minimize disabled@2x.png in Resources */,
 				90358A3C1FD7E46C0081F3B0 /* EMVoiceViewController.xib in Resources */,
 				9011E0FB1EEEC22700C43D05 /* Button_Mute@2x.png in Resources */,

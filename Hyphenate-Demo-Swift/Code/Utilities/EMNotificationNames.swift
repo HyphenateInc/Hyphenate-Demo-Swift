@@ -21,4 +21,5 @@ let KEM_DESTROY_CHATROOM_NOTIFICATION = "LeaveCatroomNotification"
 let KEM_REFRESH_CHATROOM_INFO = "UpdateChatroomInfoNotification"
 
 let KEM_END_CHAT = "EndChatNotification"
+let KEM_ADD_CALLHISTORY = "AddCallHistory"
 let KEM_UPDATE_CONVERSATIONS = "UpdateConversations"

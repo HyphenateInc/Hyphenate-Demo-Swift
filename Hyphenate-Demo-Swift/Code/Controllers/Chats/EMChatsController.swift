@@ -57,7 +57,7 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
         edgesForExtendedLayout = UIRectEdge(rawValue: 0);
         tableView.autoresizingMask =  [.flexibleTopMargin,.flexibleHeight];
         
-        NotificationCenter.default.addObserver(self, selector: #selector(tableView.reloadData), name: NSNotification.Name(rawValue:KEM_UPDATE_CONVERSATIONS), object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(tableViewDidTriggerHeaderRefresh), name: NSNotification.Name(KEM_UPDATE_CONVERSATIONS), object: nil)
         
         tableViewDidTriggerHeaderRefresh();
     }
@@ -220,7 +220,7 @@ class EMChatsController: EMBaseRefreshTableViewController, EMChatManagerDelegate
     
     // MARK: - action
     
-    override func tableViewDidTriggerHeaderRefresh() {
+    @objc override func tableViewDidTriggerHeaderRefresh() {
         weak var weakSelf = self
         DispatchQueue.global().async {
             let sortCons = weakSelf?._sortConversationList(aConversationList: EMClient.shared().chatManager.getAllConversations() as! Array<EMConversation>)

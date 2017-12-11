@@ -48,14 +48,14 @@ class EMVideoViewController: EMCallBaseViewController {
             remoteCameraView = EMCallRemoteView(frame: view.bounds)
             remoteCameraView!.scaleMode = EMCallViewScaleModeAspectFill
             view.addSubview(remoteCameraView!)
-            delegate?.didUpdataRemoteCameraView(remoteCameraView!)
+            delegate?.didUpdateRemoteCameraView(remoteCameraView!)
             remoteCameraView?.isHidden = true
         }
         
         if localCameraView == nil {
             localCameraView = EMCallLocalView(frame: CGRect(x: view.width() - 90 , y: 0, width: 90, height: 120))
             view.addSubview(localCameraView!)
-            delegate?.didUpdataLocalCameraView(localCameraView!)
+            delegate?.didUpdateLocalCameraView(localCameraView!)
         }
         
         view.bringSubview(toFront: callBGView)
@@ -63,23 +63,27 @@ class EMVideoViewController: EMCallBaseViewController {
     
     func setupUI() {
         switch videoCallType {
-        case .EMVideoCallIn, .EMVideoCallOut:
-            if videoCallType == .EMVideoCallIn {
-                callHungupBtn.isHidden = true
-                callAnswerBtn.isHidden = false
-                callCancelBtn.isHidden = false
-            }else {
-                callHungupBtn.isHidden = false
-                callAnswerBtn.isHidden = true
-                callCancelBtn.isHidden = true
-            }
-
+        case .EMVideoCallIn:
+            super.startRing()
+            callHungupBtn.isHidden = true
+            callAnswerBtn.isHidden = false
+            callCancelBtn.isHidden = false
+            
             cameraSwitchBtn.isHidden = true
             speakerBtn.isHidden = true
             muteBtn.isHidden = true
+            break
+        case .EMVideoCallOut:
+            callHungupBtn.isHidden = false
+            callAnswerBtn.isHidden = true
+            callCancelBtn.isHidden = true
             
+            cameraSwitchBtn.isHidden = true
+            speakerBtn.isHidden = true
+            muteBtn.isHidden = true
             break
         case .EMVideoCalling:
+            super.stopRing()
             callHungupBtn.isHidden = false
             callAnswerBtn.isHidden = true
             callCancelBtn.isHidden = true
